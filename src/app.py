@@ -6,4 +6,4 @@ app.register_blueprint(user_screens, url_prefix='/screens')
 
 @app.route('/')
 def index():
-    return render_template("base.html")
+    return render_template("base.html", user_screens=user_screens)
