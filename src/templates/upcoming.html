@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block bodysections %}
+<section class="section">
+    {% if upcoming_matches %}
+    <table class="table is-striped is-fullwidth">
+        <thead>
+          <tr>
+            <th>Division</th>
+            <th>Red</th>
+            <th>Blue</th>
+          </tr>
+        </thead>
+          {% for match in upcoming_matches %}
+          <tr>
+            <td>{{ match[0] }}</td>
+            <td>{{ match[1] }}</td>
+            <td>{{ match[2] }}</td>
+          </tr>
+          {% endfor %}
+
+        {% else %}
+        <p>Matches not fetching yet, check again in five minutes.</p>
+        {% endif %}
+  </section>
+
+{% endblock %}
