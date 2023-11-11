@@ -18,7 +18,7 @@ def routeForUpcomingMatches():
 
 @socketio.on('timer_event')
 def handle_message(timer_data):
-    print(f'match timer is set to {timer_data}')
+    #print(f'match timer is set to {timer_data}')
     emit('timer_event', timer_data, broadcast=True)
 
    
