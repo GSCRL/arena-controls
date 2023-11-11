@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block bodysections %}
+<script src="{{url_for('static', filename='easytimer.min.js')}}"></script>
+    
+<script>
+  var timerInstance = new easytimer.Timer();
+
+timerInstance.start({countdown: true, startValues: {seconds: 150.5}, precision: 'secondTenths' });
+timerInstance.pause();
+
+timerInstance.addEventListener('secondTenthsUpdated', function (e) {
+  swapHeartbeatSignStatus();
+  var time_in_seconds = (timerInstance.getTimeValues().seconds + (timerInstance.getTimeValues().minutes * 60)).toString();
+  setTimerPageTimer(time_in_seconds);
+  socket.emit("timer_event", time_in_seconds);
+});
+
+function setTimerPageTimer(timer_value) {
+  document.getElementById("timer_control_counter").innerHTML = timer_value;
+
+}
+
+function swapHeartbeatSignStatus() {
+  if (document.getElementById("heartbeat_button_id").classList.contains("is-danger"))
+   {
+    document.getElementById("heartbeat_button_id").classList = "is-large button";
+   }
+  else {
+    document.getElementById("heartbeat_button_id").classList.add("is-danger");
+  }
+}
+
+/* Timer Control Stubs */
+function startTimer() {
+  timerInstance.start({countdown: true, startValues: {seconds: 150.5}, precision: 'secondTenths' });
+}
+
+function pauseTimer() {
+  timerInstance.pause();
+}
+
+function resetTimer() {
+  timerInstance.reset();
+}
+
+function stopTimer() {
+  timerInstance.stop();
+  timerInstance.start({countdown: true, startValues: {seconds: 150.5}, precision: 'secondTenths' });
+  pauseTimer();
+}
+
+</script>
+
+<section class="section">
+    <div class="container">
+      <h1 class="title">
+        Match Timer
+      </h1>
+      <p class="subtitle">
+        (only one instance of this page can be open)
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="block">
+    <button id="heartbeat_button_id" class="button is-large is-danger" disabled>[HB]</button>
+    <button id="timer_control_counter" class="button is-large is-dark">000</button>
+    <button class="button is-large" onclick="startTimer();">Start</button>
+    <button class="button is-large" onclick="pauseTimer();">Pause</button>
+    <button class="button is-large" onclick="resetTimer();">Reset</button>
+    <button class="button is-large"  onclick="stopTimer();">Stop</button>
+
+  </section>
+
+{% endblock %}

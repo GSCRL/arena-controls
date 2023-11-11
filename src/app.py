@@ -10,7 +10,7 @@ socketio = SocketIO(app)
 
 @app.route('/')
 def index():
-    return render_template("homepage.html", user_screens=user_screens)
+    return render_template("timer.html", user_screens=user_screens)
 
 @app.route('/upcoming')
 def routeForUpcomingMatches():
