@@ -93,7 +93,7 @@
 
         function setTimerString(timer_value) {
             document.getElementById("timer").innerHTML = timer_value;
-            textFit(document.getElementsByClassName('timer'), {alignHoriz: true, alignVert: true, maxFontSize: 9999, widthOnly: true, detectMultiLine: false});
+            textFit(document.getElementsByClassName('timer'), {alignHoriz: true, alignVert: true, maxFontSize: 999, widthOnly: true, detectMultiLine: false});
         };
         // sometimes there's a race condition for the font loading, so this may have to be reset after initial load.
         
@@ -106,6 +106,10 @@
 
     socket.on("timer_event", function(timer_data) {
         setTimerString(timer_data);
+    });
+
+    socket.on("timer_bg_event", function(timer_bg_color) {
+        document.getElementsByClassName("split left")[0].style.backgroundColor = timer_bg_color;
     });
     
 </script>

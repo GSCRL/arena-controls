@@ -47,6 +47,12 @@ function stopTimer() {
   pauseTimer();
 }
 
+function eSTOP() {
+  stopTimer();
+  socket.emit("timer_event", "STOP");
+  socket.emit("timer_bg_event", "red");
+}
+
 </script>
 
 <section class="section">
@@ -67,6 +73,8 @@ function stopTimer() {
     <button class="button is-large" onclick="startTimer();">Start</button>
     <button class="button is-large" onclick="pauseTimer();">Pause</button>
     <button class="button is-large"  onclick="stopTimer();">Stop</button>
+    <br>
+    <button class="button is-large"  onclick="eSTOP();">EMERGENCY STOP</button>
 
   </section>
 
