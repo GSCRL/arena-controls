@@ -16,7 +16,7 @@ def blueScreen():
 
 @user_screens.route('/timer')
 def timerScreen():
-    return "This is an example app"
+    return render_template("justtimer.html")
 
 @user_screens.route('/judges')
 def judgesScreen():
