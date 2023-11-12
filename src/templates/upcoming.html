@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
 {% block bodysections %}
+
+<section class="hero is-info">
+  <div class="hero-body">
+    <p class="title">
+      Upcoming Matches
+    </p>
+  </div>
+</section>
 <section class="section">
     {% if upcoming_matches %}
     <table class="table is-striped is-fullwidth">
@@ -13,14 +21,42 @@
         </thead>
           {% for match in upcoming_matches %}
           <tr>
-            <td>{{ match[0] }}</td>
-            <td>{{ match[1] }}</td>
-            <td>{{ match[2] }}</td>
+            <td>Beetle</td>
+            {% for competitor in match.slots %}
+            <td>
+                  <b>{{ competitor.gscrl_friendly_name }}</b> 
+                  {% if competitor['gscrl_wlt'] %}
+                  <div class="field is-grouped is-grouped-multiline">
+                    <div class="control">
+                    <div class="tags has-addons">
+                      <span class="tag">Wins</span>
+                      <span class="tag is-success is-light">{{ competitor['gscrl_wlt']['w'] }}</span>
+                    </div>
+                  </div>
+
+                  <div class="control">
+                    <div class="tags has-addons">
+                      <span class="tag">Losses</span>
+                      <span class="tag is-danger is-light">{{ competitor['gscrl_wlt']['l'] }}</span>
+                    </div>
+                  </div>
+
+                    <div class="control">
+                    <div class="tags has-addons">
+                      <span class="tag">Ties</span>
+                      <span class="tag is-warning is-light">{{ competitor['gscrl_wlt']['t'] }}</span>
+                    </div>
+                  </div>
+                </div>
+                  {% endif %}
+              </td>
+            {% endfor %}
           </tr>
           {% endfor %}
 
         {% else %}
-        <p>Matches not fetching yet, check again in five minutes.</p>
+        <p>There are no matches in the system yet to be marked as unfinished.  Either the event is done or the event has yet to start.</p>
+        <p> Hang tight!</p>
         {% endif %}
   </section>
 
