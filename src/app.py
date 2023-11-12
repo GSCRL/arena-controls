@@ -18,12 +18,10 @@ def routeForUpcomingMatches():
 
 @socketio.on('timer_event')
 def handle_message(timer_data):
-    #print(f'match timer is set to {timer_data}')
     emit('timer_event', timer_data, broadcast=True)
 
 @socketio.on('timer_bg_event')
 def handle_message(timer_bg_data):
-    #print(f'match timer is set to {timer_data}')
     emit('timer_bg_event', timer_bg_data, broadcast=True)
 
 if __name__ == '__main__':

@@ -18,6 +18,10 @@ def blueScreen():
 def timerScreen():
     return render_template("justtimer.html")
 
+@user_screens.route('/timervertical')
+def timerScreenVertical():
+    return render_template("vert_timer.html")
+
 @user_screens.route('/judges')
 def judgesScreen():
     return "This is an example app"
