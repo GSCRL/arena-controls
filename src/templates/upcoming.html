@@ -15,6 +15,7 @@
         <thead>
           <tr>
             <th>Division</th>
+            <th>Match Info</th>
             <th>Red</th>
             <th>Blue</th>
           </tr>
@@ -22,6 +23,7 @@
           {% for match in upcoming_matches %}
           <tr>
             <td>Beetle</td>
+            <td>{{ match.name }}</td>
             {% for competitor in match.slots %}
             <td>
                   <b>{{ competitor.gscrl_friendly_name }}</b> 
