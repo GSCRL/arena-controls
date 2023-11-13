@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit
 from screens.user_screens import user_screens
 from truefinals_api.wrapper import TrueFinals
@@ -21,12 +21,14 @@ def index():
 
 @app.route("/upcoming")
 def routeForUpcomingMatches():
+    autoreload = request.args.get('autoreload')
+
     upcoming_matches = []
     for t in robotEvent.tournaments:
         temp_event_div = truefinals.getUpcomingMatchesWithPlayers(t["id"])
         # TODO Add in spot here to append the hardcoded division name for the upcoming matches screen.
         upcoming_matches.extend(temp_event_div)
-    return render_template("upcoming.html", upcoming_matches=upcoming_matches)
+    return render_template("upcoming.html", upcoming_matches=upcoming_matches, autoreload=autoreload)
 
 
 @socketio.on("timer_event")
