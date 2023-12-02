@@ -5,11 +5,22 @@ from truefinals_api.api import (
 )
 import json
 from pathlib import Path
-
+import logging
+from pprint import pprint
 
 class TrueFinals:
     def __init__(self, credential_file_location="./apicreds.json"):
-        self._credentials = json.loads(open(Path(credential_file_location)).read())
+        q = Path(credential_file_location)
+
+        if not q.exists():
+            q.touch()
+            with open(q, "w") as fileitem:
+                fileitem.write(json.dumps({"user_id": "", "api_key": ""}))
+                logging.warn(
+                    "User did not enter tokens yet, cannot access API.  Please change apicreds.json"
+                )
+
+        self._credentials = json.loads(open(q, "r").read())
 
     def getGamesWithNonZeroCompetitors(self, tournamentID: str) -> list[dict]:
         return getAllGamesWithOneOrMoreCompetitors(self._credentials, tournamentID)
@@ -19,15 +30,24 @@ class TrueFinals:
 
     def getAllTournaments(self) -> list[dict]:
         return getAllTourneys(self._credentials)
+    
+    #def getFInishedGames() ->
+    # need to go for state: done in the match itself?
 
     def getUpcomingMatchesWithPlayers(self, tournamentID: str) -> list[dict]:
         matches_nonzero = self.getGamesWithNonZeroCompetitors(tournamentID)
         competitors = self.getAllPlayersOfTournament(tournamentID)
 
+        pprint(matches_nonzero)
+        pprint(competitors)
+
         def playerIDToName(competitors, playerID: str):
             for c in competitors:
                 if c["id"] == playerID:
                     return c
+            if playerID.startswith("bye"):
+                return {"name":"Bye", "seed":"-1","wins":0, "losses":0, "ties":0} #Special case for byes in the bracket.
+            print(f"did not find competitor, oops!  Was looking for {playerID}")
 
         for match in matches_nonzero:
             for slot in match["slots"]:

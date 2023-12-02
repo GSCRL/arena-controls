@@ -10,7 +10,7 @@
   </div>
 </section>
 <section class="section">
-    {% if upcoming_matches %}
+    {% if div_matches %}
     <table class="table is-striped is-fullwidth">
         <thead>
           <tr>
@@ -20,9 +20,10 @@
             <th>Blue</th>
           </tr>
         </thead>
-          {% for match in upcoming_matches %}
+        {% for division in div_matches %}
+          {% for match in division.division %}
           <tr>
-            <td>Beetle</td>
+            <td>{{ division.weightclass }} </td>
             <td>{{ match.name }}</td>
             {% for competitor in match.slots %}
             <td>
@@ -54,6 +55,7 @@
               </td>
             {% endfor %}
           </tr>
+          {% endfor %}
           {% endfor %}
 
         {% else %}
