@@ -13,6 +13,8 @@ robotEvent = EventConfig()
 app.config["SECRET_KEY"] = "secret secret key (required)!"
 socketio = SocketIO(app)
 
+from pprint import pprint
+
 
 @app.route("/")
 def index():
@@ -30,9 +32,25 @@ def routeForUpcomingMatches():
             {"weightclass": t["weightclass"], "division": temp_event_div}
         )
 
-    print(upcoming_crossdiv_matches)
+    pprint(upcoming_crossdiv_matches)
+
     return render_template(
         "upcoming.html", div_matches=upcoming_crossdiv_matches, autoreload=autoreload
+    )
+
+
+@app.route("/lastmatches")
+def routeForLastMatches():
+    autoreload = request.args.get("autoreload")
+
+    last_crossdiv_matches = []
+    for t in robotEvent.tournaments:
+        temp_event_div = truefinals.getFinishedMatches(t["id"])
+        last_crossdiv_matches.append(
+            {"weightclass": t["weightclass"], "division": temp_event_div}
+        )
+    return render_template(
+        "last.html", div_matches=last_crossdiv_matches, autoreload=autoreload
     )
 
 

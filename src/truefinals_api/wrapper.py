@@ -35,6 +35,43 @@ class TrueFinals:
     # def getFInishedGames() ->
     # need to go for state: done in the match itself?
 
+    def getFinishedMatches(self, tournamentID: str) -> list[dict]:
+        competitors = self.getAllPlayersOfTournament(tournamentID)
+        matches = self.getGamesWithNonZeroCompetitors(tournamentID)
+
+        def playerIDToName(competitors, playerID: str):
+            for c in competitors:
+                if c["id"] == playerID:
+                    return c
+            if playerID.startswith("bye"):
+                return {
+                    "name": "Bye",
+                    "seed": -1,
+                    "wins": -1,
+                    "losses": -1,
+                    "ties": -1,
+                    "bye": True,
+                }  # Special case for byes in the bracket.
+            print(f"did not find competitor, oops!  Was looking for {playerID}")
+
+        for match in matches:
+            for slot in match["slots"]:
+                if slot["playerID"] != None:
+                    player_backfill = playerIDToName(competitors, slot["playerID"])
+
+                    if "bye" in player_backfill:  # exposing it for below filtering.
+                        match["has_bye"] = True
+
+                    slot["gscrl_friendly_name"] = player_backfill["name"]
+                    slot["gscrl_seed"] = player_backfill["seed"]
+                    slot["gscrl_wlt"] = {}
+                    slot["gscrl_wlt"]["w"] = player_backfill["wins"]
+                    slot["gscrl_wlt"]["l"] = player_backfill["losses"]
+                    slot["gscrl_wlt"]["t"] = player_backfill["ties"]
+
+        matches = [x for x in matches if x["state"] is "done" in x]
+        return matches
+
     def getUpcomingMatchesWithPlayers(self, tournamentID: str) -> list[dict]:
         matches_nonzero = self.getGamesWithNonZeroCompetitors(tournamentID)
         competitors = self.getAllPlayersOfTournament(tournamentID)

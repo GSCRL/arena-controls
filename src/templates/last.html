@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% block bodysections %}
+
+<section class="hero is-warning">
+  <div class="hero-body">
+    <p class="title">
+      Last Matches
+    </p>
+  </div>
+</section>
+<section class="section">
+    {% if div_matches %}
+    <table class="table is-striped is-fullwidth">
+        <thead>
+          <tr>
+            <th>Division</th>
+            <th>Match Info</th>
+            <th>Red</th>
+            <th>Blue</th>
+          </tr>
+        </thead>
+        {% for division in div_matches %}
+          {% for match in division.division %}
+          <tr>
+            <td>{{ division.weightclass }} </td>
+            <td>{{ match.name }}</td>
+            {% for competitor in match.slots %}
+            <td>
+                  <b>{{ competitor.gscrl_friendly_name }}</b> 
+                  {% if competitor['gscrl_wlt'] %}
+                  <div class="field is-grouped is-grouped-multiline">
+                    <div class="control">
+                    <div class="tags has-addons">
+                      <span class="tag">Wins</span>
+                      <span class="tag is-success is-light">{{ competitor['gscrl_wlt']['w'] }}</span>
+                    </div>
+                  </div>
+
+                  <div class="control">
+                    <div class="tags has-addons">
+                      <span class="tag">Losses</span>
+                      <span class="tag is-danger is-light">{{ competitor['gscrl_wlt']['l'] }}</span>
+                    </div>
+                  </div>
+
+                    <div class="control">
+                    <div class="tags has-addons">
+                      <span class="tag">Ties</span>
+                      <span class="tag is-warning is-light">{{ competitor['gscrl_wlt']['t'] }}</span>
+                    </div>
+                  </div>
+                </div>
+                  {% endif %}
+              </td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+          {% endfor %}
+
+        {% else %}
+        <p>There are no matches in the system yet to be marked as unfinished.  Either the event is done or the event has yet to start.</p>
+        <p> Hang tight!</p>
+        {% endif %}
+  </section>
+
+{% endblock %}
