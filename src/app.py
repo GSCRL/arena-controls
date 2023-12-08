@@ -49,9 +49,22 @@ def handle_message(timer_bg_data):
 @socketio.on("player_ready")
 def handle_message(ready_msg: dict):
     if ready_msg["pathname"].endswith(("red", "blue")):
-        which_station = ready_msg["pathname"].split("/")[-1] #which team side readied up will be passed from the URL name.  This allows both timer variants to ready up trivially.
+        which_station = ready_msg["pathname"].split("/")[
+            -1
+        ]  # which team side readied up will be passed from the URL name.  This allows both timer variants to ready up trivially.
         print(f"player_ready, {which_station}")
-        emit("control_player_ready_event", {'station':which_station}, broadcast=True)
+        emit("control_player_ready_event", {"station": which_station}, broadcast=True)
+
+
+@socketio.on("player_tapout")
+def handle_message(tapout_msg: dict):
+    print("tapout event")
+    if tapout_msg["pathname"].endswith(("red", "blue")):
+        which_station = tapout_msg["pathname"].split("/")[
+            -1
+        ]  # which team side readied up will be passed from the URL name.  This allows both timer variants to ready up trivially.
+        print(f"player_tapout, {which_station}")
+        emit("control_player_tapout_event", {"station": which_station}, broadcast=True)
 
 
 if __name__ == "__main__":

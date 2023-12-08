@@ -69,22 +69,27 @@
     }
     </style>
 
+<script> //user interaction stubs.
+    function ready() {
+        socket.emit('player_ready', window.location);
+    }
+
+    function tapout() {
+        socket.emit('player_tapout', window.location);
+    }
+</script>
+
 
 <div class="tophalf">
     <div class="timer" id="timer">
         000
     </div>
   </div>
- 
-  <script>
-    function ready() {
-        socket.emit('player_ready', window.location);
-    }
-  </script>
+
   <div class="bottom" style="height:50vh;">
     <div class="" style="background-color: red; width: 100%;height:50%;">
         <div class="leftb" style="height:100%;">
-            <button class="button" style="background-color: white; color: #111">TAP OUT</button>
+            <button onclick="tapout()" class="button" style="background-color: white; color: #111">TAP OUT</button>
             <button onclick="ready()" class="button">MARK READY</button>
         </div>
     </div>
@@ -92,7 +97,6 @@
 
     
 <script>
-
     function setTimerString(timer_value) {
         document.getElementById("timer").innerHTML = timer_value;
         textFit(document.getElementsByClassName('timer'), {alignHoriz: true, maxFontSize: 600, widthOnly: true, detectMultiLine: false});
@@ -106,10 +110,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
 <script type="text/javascript" charset="utf-8">
 var socket = io();
-
-socket.on('connect', function() {
-   socket.emit('test_connect', {data: 'I\'m connected!'});
-});
 
 socket.on("timer_event", function(timer_data) {
     setTimerString(timer_data);

@@ -113,17 +113,25 @@
         <div class="centered">
             <div class="topright">
                 
-                <button class="button" style="background-color: white; color: #111">TAP</button>
+                <button onclick="tapout()" class="button" style="background-color: white; color: #111">TAP</button>
             </div>
             <div class="bottomright">
          
-                <button class="button">READY</button>
+                <button onclick="ready()" class="button">READY</button>
       
             </div>
         </div>
     </div>
         
     <script>
+        //user interaction stubs.
+        function ready() {
+            socket.emit('player_ready', window.location);
+        }
+
+        function tapout() {
+            socket.emit('player_tapout', window.location);
+        }
 
         function setTimerString(timer_value) {
             document.getElementById("timer").innerHTML = timer_value;
@@ -138,9 +146,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf-8">
     var socket = io();
-    socket.on('connect', function() {
-       socket.emit('test_connect', {data: 'I\'m connected!'});
-    });
 
     socket.on("timer_event", function(timer_data) {
         setTimerString(timer_data);
