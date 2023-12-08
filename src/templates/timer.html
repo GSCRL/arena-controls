@@ -51,6 +51,7 @@ function eSTOP() {
   stopTimer();
   socket.emit("timer_event", "STOP");
   socket.emit("timer_bg_event", "red");
+  resetTeamReadies();
 }
 
 function resetTeamReadies() {
