@@ -8,6 +8,7 @@ from pathlib import Path
 import logging
 from pprint import pprint
 
+
 class TrueFinals:
     def __init__(self, credential_file_location="./apicreds.json"):
         q = Path(credential_file_location)
@@ -30,8 +31,8 @@ class TrueFinals:
 
     def getAllTournaments(self) -> list[dict]:
         return getAllTourneys(self._credentials)
-    
-    #def getFInishedGames() ->
+
+    # def getFInishedGames() ->
     # need to go for state: done in the match itself?
 
     def getUpcomingMatchesWithPlayers(self, tournamentID: str) -> list[dict]:
@@ -43,7 +44,14 @@ class TrueFinals:
                 if c["id"] == playerID:
                     return c
             if playerID.startswith("bye"):
-                return {"name":"Bye", "seed":-1,"wins":-1, "losses":-1, "ties":-1, "bye":True} #Special case for byes in the bracket.
+                return {
+                    "name": "Bye",
+                    "seed": -1,
+                    "wins": -1,
+                    "losses": -1,
+                    "ties": -1,
+                    "bye": True,
+                }  # Special case for byes in the bracket.
             print(f"did not find competitor, oops!  Was looking for {playerID}")
 
         for match in matches_nonzero:
@@ -51,8 +59,8 @@ class TrueFinals:
                 if slot["playerID"] != None:
                     player_backfill = playerIDToName(competitors, slot["playerID"])
 
-                    if 'bye' in player_backfill: #exposing it for below filtering.
-                        match['has_bye'] = True
+                    if "bye" in player_backfill:  # exposing it for below filtering.
+                        match["has_bye"] = True
 
                     slot["gscrl_friendly_name"] = player_backfill["name"]
                     slot["gscrl_seed"] = player_backfill["seed"]
@@ -61,9 +69,8 @@ class TrueFinals:
                     slot["gscrl_wlt"]["l"] = player_backfill["losses"]
                     slot["gscrl_wlt"]["t"] = player_backfill["ties"]
 
-        #Remove any match with a bye built in, so we only care about the real ones as-is.
-        
-        matches_nonzero = [x for x in matches_nonzero if not 'has_bye' in x]
+        # Remove any match with a bye built in, so we only care about the real ones as-is.
 
+        matches_nonzero = [x for x in matches_nonzero if not "has_bye" in x]
 
         return matches_nonzero

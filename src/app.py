@@ -26,7 +26,9 @@ def routeForUpcomingMatches():
     upcoming_crossdiv_matches = []
     for t in robotEvent.tournaments:
         temp_event_div = truefinals.getUpcomingMatchesWithPlayers(t["id"])
-        upcoming_crossdiv_matches.append({"weightclass":t['weightclass'], "division":temp_event_div})
+        upcoming_crossdiv_matches.append(
+            {"weightclass": t["weightclass"], "division": temp_event_div}
+        )
 
     print(upcoming_crossdiv_matches)
     return render_template(
@@ -42,6 +44,14 @@ def handle_message(timer_data):
 @socketio.on("timer_bg_event")
 def handle_message(timer_bg_data):
     emit("timer_bg_event", timer_bg_data, broadcast=True)
+
+
+@socketio.on("player_ready")
+def handle_message(ready_msg: dict):
+    if ready_msg["pathname"].endswith(("red", "blue")):
+        which_station = ready_msg["pathname"].split("/")[-1]
+        print(f"player_ready, {which_station}")
+        emit("control_player_ready_event", which_station=which_station, broadcast=True)
 
 
 if __name__ == "__main__":

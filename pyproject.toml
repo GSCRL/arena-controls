@@ -2,7 +2,7 @@
 name = "arena-controls"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Kim Chase <noreply@hi-im.kim"]
 readme = "README.md"
 packages = [{include = "src"}]
 
