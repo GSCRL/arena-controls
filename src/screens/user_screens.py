@@ -10,6 +10,7 @@ def index():
     return redirect("/")
 
 
+# Horizontal Timer Routes
 @user_screens.route("/red")
 def redScreen():
     return render_template(
@@ -26,7 +27,7 @@ def blueScreen():
 
 @user_screens.route("/timer")
 def timerScreen():
-    return render_template("justtimer.html")
+    return render_template("timer.html")
 
 
 @user_screens.route("/timervertical/red")

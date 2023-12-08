@@ -58,13 +58,17 @@ def handle_message(ready_msg: dict):
 
 @socketio.on("player_tapout")
 def handle_message(tapout_msg: dict):
-    print("tapout event")
     if tapout_msg["pathname"].endswith(("red", "blue")):
         which_station = tapout_msg["pathname"].split("/")[
             -1
         ]  # which team side readied up will be passed from the URL name.  This allows both timer variants to ready up trivially.
         print(f"player_tapout, {which_station}")
         emit("control_player_tapout_event", {"station": which_station}, broadcast=True)
+
+
+@socketio.on("reset_screen_states")
+def handle_message():
+    emit("reset_screen_states_event", broadcast=True)
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ team_color_name }}</title>
+    <title>{{ team_color_name.upper() }}</title>
     <script src="{{url_for('user_screens.static', filename='textFit.min.js')}}"></script> 
     <style>
         :root {
@@ -113,24 +113,28 @@
         <div class="centered">
             <div class="topright">
                 
-                <button onclick="tapout()" class="button" style="background-color: white; color: #111">TAP</button>
+                <button id="tapoutbutton" onclick="tapout()" class="button" style="background-color: white; color: #111">TAP</button>
             </div>
             <div class="bottomright">
          
-                <button onclick="ready()" class="button">READY</button>
+                <button id="readybutton" onclick="ready()" class="button">READY</button>
       
             </div>
         </div>
     </div>
         
     <script>
+
+
         //user interaction stubs.
         function ready() {
             socket.emit('player_ready', window.location);
+            document.getElementById("readybutton").innerText = "READIED";
         }
 
         function tapout() {
             socket.emit('player_tapout', window.location);
+            document.getElementById("tapoutbutton").innerText = "TAPPED"
         }
 
         function setTimerString(timer_value) {
@@ -149,6 +153,11 @@
 
     socket.on("timer_event", function(timer_data) {
         setTimerString(timer_data);
+    });
+
+    socket.on("reset_screen_states_event", function() {
+        document.getElementById("readybutton").innerText = "READY";
+        document.getElementById("tapoutbutton").innerText = "TAP"
     });
     
 </script>

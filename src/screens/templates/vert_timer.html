@@ -72,10 +72,12 @@
 <script> //user interaction stubs.
     function ready() {
         socket.emit('player_ready', window.location);
+        document.getElementById("readybutton").innerText = "READIED";
     }
 
     function tapout() {
         socket.emit('player_tapout', window.location);
+        document.getElementById("tapoutbutton").innerText = "TAPPED"
     }
 </script>
 
@@ -89,8 +91,8 @@
   <div class="bottom" style="height:50vh;">
     <div class="" style="background-color: red; width: 100%;height:50%;">
         <div class="leftb" style="height:100%;">
-            <button onclick="tapout()" class="button" style="background-color: white; color: #111">TAP OUT</button>
-            <button onclick="ready()" class="button">MARK READY</button>
+            <button id="tapoutbutton" onclick="tapout()" class="button" style="background-color: white; color: #111">TAP OUT</button>
+            <button id="readybutton" onclick="ready()" class="button">MARK READY</button>
         </div>
     </div>
 </div>
@@ -113,6 +115,11 @@ var socket = io();
 
 socket.on("timer_event", function(timer_data) {
     setTimerString(timer_data);
+});
+
+socket.on("reset_screen_states", function() {
+        document.getElementById("readybutton").innerText = "READY";
+        document.getElementById("tapoutbutton").innerText = "TAP"
 });
 
 </script>

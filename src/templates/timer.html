@@ -57,33 +57,38 @@ function eSTOP() {
 
 // changes the state of the readies for next.
 function resetTeamReadies() {
-  document.getElementById("redisready").innerHTML = "[NO]";
-  document.getElementById("blueisready").innerHTML = "[NO]";
+  resetTeamReadyButtons();
+  document.getElementById("redisready").innerText = "[NO]";
+  document.getElementById("blueisready").innerText = "[NO]";
 }
 
 // set the timer display for ready / not ready.  just an indicator status.
 socket.on("control_player_ready_event", (station_info) => {
   if (station_info.station === "red") {
-      document.getElementById("redisready").innerHTML = "[YES]";
+      document.getElementById("redisready").innerText = "[YES]";
   }
 
   if (station_info.station === "blue") {
-      document.getElementById("blueisready").innerHTML = "[YES]";
+      document.getElementById("blueisready").innerText = "[YES]";
   }
 });
 
 // in the event of a tapout, tell arena controls who wins automagically.
 socket.on("control_player_tapout_event", (station_info) => {
   if (station_info.station === "red") {
-      document.getElementById("redisready").innerHTML = "[TAPOUT]";
-      document.getElementById("blueisready").innerHTML = "[WIN]";
+      document.getElementById("redisready").innerText = "[TAPOUT]";
+      document.getElementById("blueisready").innerText = "[WIN]";
   }
 
   if (station_info.station === "blue") {
-      document.getElementById("blueisready").innerHTML = "[TAPOUT]";
-      document.getElementById("redisready").innerHTML = "[WIN]";
+      document.getElementById("blueisready").innerText = "[TAPOUT]";
+      document.getElementById("redisready").innerText = "[WIN]";
   }
 });
+
+function resetTeamReadyButtons() {
+  socket.emit("reset_screen_states");
+}
 
 </script>
 
