@@ -53,6 +53,24 @@ function eSTOP() {
   socket.emit("timer_bg_event", "red");
 }
 
+function resetTeamReadies() {
+  document.getElementById("redisready").innerHTML = "[NO]";
+  document.getElementById("blueisready").innerHTML = "[NO]";
+}
+// set the timer display for ready / not ready.  just an indicator status.
+socket.on("control_player_ready_event", (station_info) => {
+  console.log(station_info); // world
+  if (station_info.station === "red") {
+      document.getElementById("redisready").innerHTML = "[YES]";
+  }
+
+  if (station_info.station === "blue") {
+      document.getElementById("blueisready").innerHTML = "[YES]";
+  }
+
+
+});
+
 </script>
 
 <section class="section">
@@ -67,15 +85,25 @@ function eSTOP() {
   </section>
 
   <section class="section">
-    <div class="block">
-    <button id="heartbeat_button_id" class="button is-large is-danger" disabled>[HB]</button>
-    <button id="timer_control_counter" class="button is-large is-dark">000</button>
-    <button class="button is-large" onclick="startTimer();">Start</button>
-    <button class="button is-large" onclick="pauseTimer();">Pause</button>
-    <button class="button is-large"  onclick="stopTimer();">Stop</button>
-    <br>
-    <button class="button is-large"  onclick="eSTOP();">EMERGENCY STOP</button>
+    <div class="columns">
+      <div class="column">
 
+        <div class="block">
+          <button id="heartbeat_button_id" class="button is-large is-danger" disabled>[HB]</button>
+          <button id="timer_control_counter" class="button is-large is-dark">000</button>
+          <button class="button is-large" onclick="startTimer();">Start</button>
+          <button class="button is-large" onclick="pauseTimer();">Pause</button>
+          <button class="button is-large"  onclick="stopTimer();">Stop</button>
+          <br>
+          <button class="button is-large"  onclick="eSTOP();">EMERGENCY STOP</button>
+        </div>
+
+      </div>
+      <div class="column">
+        <h2 class="title">Ready States</h2>
+        <h3 class="title">Red: <span id="redisready">[NO]</span></h3>
+        <h3 class="title">Blue: <span id="blueisready">[NO]</span></h3>
+      </div>
   </section>
 
 {% endblock %}

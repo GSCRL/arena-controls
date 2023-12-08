@@ -76,11 +76,16 @@
     </div>
   </div>
  
+  <script>
+    function ready() {
+        socket.emit('player_ready', window.location);
+    }
+  </script>
   <div class="bottom" style="height:50vh;">
     <div class="" style="background-color: red; width: 100%;height:50%;">
         <div class="leftb" style="height:100%;">
             <button class="button" style="background-color: white; color: #111">TAP OUT</button>
-            <button class="button">MARK READY</button>
+            <button onclick="ready()" class="button">MARK READY</button>
         </div>
     </div>
 </div>
