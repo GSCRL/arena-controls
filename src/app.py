@@ -89,7 +89,7 @@ def handle_message(tapout_msg: dict):
 
 @socketio.on("reset_screen_states")
 def handle_message():
-    emit("reset_screen_states_event", broadcast=True)
+    emit("reset_screen_states", broadcast=True)
 
 
 if __name__ == "__main__":
