@@ -107,6 +107,14 @@ function resetTeamReadyButtons() {
   socket.emit("reset_screen_states");
 }
 
+function sendMSG() {
+  socket.emit("timer_event", (document.getElementById("sendmessagebox").value).replace("!", "¦").replace(" ", "!"));
+}
+
+function setTimer() {
+  timerInstance.start({countdown: true, startValues: {seconds: parseInt(document.getElementById("timerboxthing").value, 10), secondTenths:9}, precision: 'secondTenths' });
+  socket.emit("timer_event", parseInt(document.getElementById("timerboxthing").value, 10));
+}
 </script>
 
 <section class="section">
@@ -134,6 +142,12 @@ function resetTeamReadyButtons() {
           <button class="button is-large"  onclick="eSTOP();">EMERGENCY STOP</button>
           <button class="button is-large" onclick="readyTimer();">Ready Timer (set to 150)</button>
           <button class="button is-large" onclick="resetBG();">reset bg</button>
+          <br><br><br>
+          <button class="button is-large" onclick="sendMSG();">send message</button>
+          <input class="input is-large" id="sendmessagebox" type="text" placeholder="message">
+          <br><br><br>
+          <disabled button class="button is-large" onclick="setTimer();">set timer</button>
+          <input class="input is-large" id="timerboxthing" type="number" placeholder="timer">
         </div>
 
       </div>
