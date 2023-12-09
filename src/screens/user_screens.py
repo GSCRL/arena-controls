@@ -27,7 +27,7 @@ def blueScreen():
 
 @user_screens.route("/timer")
 def timerScreen():
-    return render_template("timer.html")
+    return render_template("stimer.html")
 
 
 @user_screens.route("/timervertical/red")

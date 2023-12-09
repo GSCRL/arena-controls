@@ -18,7 +18,7 @@ from pprint import pprint
 
 @app.route("/")
 def index():
-    return render_template("timer.html", user_screens=user_screens)
+    return render_template("ctimer.html", user_screens=user_screens)
 
 
 @app.route("/upcoming")
@@ -90,4 +90,4 @@ def handle_message():
 
 
 if __name__ == "__main__":
-    socketio.run(app)
+    socketio.run(app, host="192.168.8.250", port=80)
