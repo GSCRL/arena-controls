@@ -10,7 +10,7 @@ timerInstance.start({countdown: true, startValues: {seconds: 150.5}, precision: 
 timerInstance.pause();
 
 timerInstance.addEventListener('secondTenthsUpdated', function (e) {
-  swapHeartbeatSignStatus();
+  swapHeartbeatSignStatus();  
   var time_in_seconds = (timerInstance.getTimeValues().seconds + (timerInstance.getTimeValues().minutes * 60)).toString();
   setTimerPageTimer(time_in_seconds);
   socket.emit("timer_event", time_in_seconds);
@@ -33,17 +33,28 @@ function swapHeartbeatSignStatus() {
 /* Timer Control Stubs */
 function startTimer() {
   timerInstance.start({countdown: true, startValues: {seconds: 150, secondTenths:9}, precision: 'secondTenths' });
+  socket.emit("timer_bg_event", "black"); //controls the judges timer background.
 }
 
+function readyTimer() {
+  timerInstance.start({countdown: true, startValues: {seconds: 150.5}, precision: 'secondTenths' });
+  timerInstance.pause();
+  socket.emit("timer_event", "150");
+  resetBG();
+}
 function pauseTimer() {
   timerInstance.pause();
+}
+
+function resetBG() {
+  socket.emit("timer_bg_event", "black");
 }
 
 function stopTimer() {
   resetTeamReadies();
   timerInstance.stop();
-  document.getElementById("timer_control_counter").innerHTML = "---";
-  socket.emit("timer_event", "---")
+  document.getElementById("timer_control_counter").innerText = "150";
+  socket.emit("timer_event", "150")
   timerInstance.start({countdown: true, startValues: {seconds: 150, secondTenths:9}, precision: 'secondTenths' });
   pauseTimer();
 }
@@ -75,14 +86,20 @@ socket.on("control_player_ready_event", (station_info) => {
 
 // in the event of a tapout, tell arena controls who wins automagically.
 socket.on("control_player_tapout_event", (station_info) => {
+  stopTimer();
+
   if (station_info.station === "red") {
       document.getElementById("redisready").innerText = "[TAPOUT]";
       document.getElementById("blueisready").innerText = "[WIN]";
+      socket.emit("timer_event", "TAPOUT<br>BLUE WINS");
+      socket.emit("timer_bg_event", "blue");
   }
 
   if (station_info.station === "blue") {
       document.getElementById("blueisready").innerText = "[TAPOUT]";
       document.getElementById("redisready").innerText = "[WIN]";
+      socket.emit("timer_event", "TAPOUT<br>RED WINS");
+      socket.emit("timer_bg_event", "red");
   }
 });
 
@@ -115,6 +132,8 @@ function resetTeamReadyButtons() {
           <button class="button is-large"  onclick="stopTimer();">Stop</button>
           <br>
           <button class="button is-large"  onclick="eSTOP();">EMERGENCY STOP</button>
+          <button class="button is-large" onclick="readyTimer();">Ready Timer (set to 150)</button>
+          <button class="button is-large" onclick="resetBG();">reset bg</button>
         </div>
 
       </div>
