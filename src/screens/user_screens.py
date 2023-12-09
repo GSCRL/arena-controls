@@ -46,4 +46,4 @@ def blueScreenVertical():
 
 @user_screens.route("/judges")
 def judgesScreen():
-    return "This is an example app"
+    return render_template("judges.html")

@@ -53,6 +53,9 @@ def routeForLastMatches():
         "last.html", div_matches=last_crossdiv_matches, autoreload=autoreload
     )
 
+@app.route("/judges")
+def judgesScreen():
+    return render_template("judges.html")
 
 @socketio.on("timer_event")
 def handle_message(timer_data):
