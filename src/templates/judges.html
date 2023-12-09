@@ -6,15 +6,7 @@
 <script>
   var timerInstance = new easytimer.Timer();
 
-timerInstance.start({countdown: true, startValues: {seconds: 150.5}, precision: 'secondTenths' });
-timerInstance.pause();
 
-timerInstance.addEventListener('secondTenthsUpdated', function (e) {
-  swapHeartbeatSignStatus();
-  var time_in_seconds = (timerInstance.getTimeValues().seconds + (timerInstance.getTimeValues().minutes * 60)).toString();
-  setTimerPageTimer(time_in_seconds);
-  socket.emit("timer_event", time_in_seconds);
-});
 
 function setTimerPageTimer(timer_value) {
   document.getElementById("timer_control_counter").innerHTML = timer_value;
