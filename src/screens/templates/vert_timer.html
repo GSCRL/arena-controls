@@ -114,13 +114,14 @@
         textFit(document.getElementsByClassName('timer'), {alignHoriz: true, maxFontSize: 600, widthOnly: true, detectMultiLine: false});
     };
 
-    // sometimes there's a race condition for the font loading, so this may have to be reset after initial load.
-    setTimerString("000");
-    setTimerString("000");
 </script>
 
 <script type="text/javascript" charset="utf-8">
 var socket = io();
+
+socket.on('connect', function() {
+    setTimerString("000"); // should fix broken scaling for only loading once the window is rendered otherwise.  Yipee?  
+    });
 
 socket.on("timer_event", function(timer_data) {
     setTimerString(timer_data);
