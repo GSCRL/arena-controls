@@ -61,6 +61,10 @@ def judgesScreen():
 def handle_message(timer_data):
     emit("timer_event", timer_data, broadcast=True)
 
+@socketio.on("test_connect")
+def handle_message(timer_data):
+    emit("test_connect", broadcast=True)
+
 
 @socketio.on("timer_bg_event")
 def handle_message(timer_bg_data):

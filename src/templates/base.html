@@ -39,12 +39,6 @@
             </a>
     
             <div class="navbar-dropdown">
-              <a href="/screens/red" class="navbar-item">
-                Red Control
-              </a>
-              <a href="screens/blue" class="navbar-item">
-                Blue Control
-              </a>
               <hr class="navbar-divider">
               <a href="screens/timervertical/red" class="navbar-item">
                 Vertical Timer Red
@@ -80,6 +74,8 @@
     socket.on('connect', function() {
         socket.emit('test_connect', {data: 'I\'m connected!'});
     });
+
+    
     
 </script>
 

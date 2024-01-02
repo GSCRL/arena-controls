@@ -4,10 +4,20 @@
 <script src="{{url_for('static', filename='easytimer.min.js')}}"></script>
     
 <script>
-  var timerInstance = new easytimer.Timer();
+  var timerInstance = new easytimer.Timer({countdown: true, startValues: {seconds: 150.5}, precision: 'secondTenths' });
+  var countdownTimer = new easytimer.Timer({countdown: true, startValues: {seconds: 3.5}, precision: 'secondTenths' });
 
-timerInstance.start({countdown: true, startValues: {seconds: 150.5}, precision: 'secondTenths' });
+timerInstance.start();
 timerInstance.pause();
+countdownTimer.start();
+countdownTimer.pause();
+
+countdownTimer.addEventListener('secondTenthsUpdated', function (e) {
+  swapHeartbeatSignStatus();  
+  var time_in_seconds = (timerInstance.getTimeValues().seconds + (timerInstance.getTimeValues().minutes * 60)).toString();
+  setTimerPageTimer(time_in_seconds);
+  socket.emit("timer_event", time_in_seconds);
+});
 
 timerInstance.addEventListener('secondTenthsUpdated', function (e) {
   swapHeartbeatSignStatus();  
@@ -133,11 +143,22 @@ function setTimer() {
       <div class="column">
 
         <div class="block">
+          <div class="buttons has-addons">
+          <button class="button is-danger is-light is-large" id="redReady">NOT READY</button>
           <button id="heartbeat_button_id" class="button is-large is-danger" disabled>[HB]</button>
-          <button id="timer_control_counter" class="button is-large is-dark">000</button>
-          <button class="button is-large" onclick="startTimer();">Start</button>
-          <button class="button is-large" onclick="pauseTimer();">Pause</button>
-          <button class="button is-large"  onclick="stopTimer();">Stop</button>
+          <button class="button is-info is-light is-large" id="blueReady">NOT READY</button>
+        </div>
+
+        <div class="block">
+          <div class="buttons has-addons">
+            <button id="timer_control_counter" class="button is-large is-dark">000</button>
+            <button class="button is-large" onclick="startTimer();">Start▶️</button>
+            <button class="button is-large" onclick="pauseTimer();">Pause⏸️</button>
+            <button class="button is-large"  onclick="stopTimer();">Stop⏹️</button>
+          </div>
+        </div>
+
+        <div class="block">
           <br><br><br>
           <button class="button is-large"  onclick="eSTOP();">EMERGENCY STOP</button>
           <button class="button is-large" onclick="readyTimer();">Ready Timer (set to 150)</button>
@@ -148,6 +169,7 @@ function setTimer() {
           <br><br><br>
           <disabled button class="button is-large" onclick="setTimer();">set timer</button>
           <input class="input is-large" id="timerboxthing" type="number" placeholder="timer">
+        </div>
         </div>
 
       </div>
