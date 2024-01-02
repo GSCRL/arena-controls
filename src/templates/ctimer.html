@@ -4,17 +4,22 @@
 <script src="{{url_for('static', filename='easytimer.min.js')}}"></script>
     
 <script>
-  var timerInstance = new easytimer.Timer({countdown: true, startValues: {seconds: 150.5}, precision: 'secondTenths' });
-  var countdownTimer = new easytimer.Timer({countdown: true, startValues: {seconds: 3.5}, precision: 'secondTenths' });
+
+  var timerInstance = new easytimer.Timer({countdown: true, startValues: {seconds: 150.9}, precision: 'secondTenths' });
+  var countdownTimer = new easytimer.Timer({countdown: true, startValues: {seconds: 4.5}, precision: 'secondTenths' });
 
 timerInstance.start();
 timerInstance.pause();
 countdownTimer.start();
 countdownTimer.pause();
 
+countdownTimer.addEventListener('targetAchieved', function (e) {
+  timerInstance.start();
+});
+
 countdownTimer.addEventListener('secondTenthsUpdated', function (e) {
   swapHeartbeatSignStatus();  
-  var time_in_seconds = (timerInstance.getTimeValues().seconds + (timerInstance.getTimeValues().minutes * 60)).toString();
+  var time_in_seconds = (countdownTimer.getTimeValues().seconds + (countdownTimer.getTimeValues().minutes * 60)).toString();
   setTimerPageTimer(time_in_seconds);
   socket.emit("timer_event", time_in_seconds);
 });
@@ -42,12 +47,13 @@ function swapHeartbeatSignStatus() {
 
 /* Timer Control Stubs */
 function startTimer() {
-  timerInstance.start({countdown: true, startValues: {seconds: 150, secondTenths:9}, precision: 'secondTenths' });
+  countdownTimer.start();
   socket.emit("timer_bg_event", "black"); //controls the judges timer background.
+  socket.emit("timer_event", "150");
 }
 
 function readyTimer() {
-  timerInstance.start({countdown: true, startValues: {seconds: 150.5}, precision: 'secondTenths' });
+  timerInstance.start();
   timerInstance.pause();
   socket.emit("timer_event", "150");
   resetBG();
@@ -62,10 +68,10 @@ function resetBG() {
 
 function stopTimer() {
   resetTeamReadies();
-  timerInstance.stop();
   document.getElementById("timer_control_counter").innerText = "150";
   socket.emit("timer_event", "150")
-  timerInstance.start({countdown: true, startValues: {seconds: 150, secondTenths:9}, precision: 'secondTenths' });
+  timerInstance.stop();
+  timerInstance.start();
   pauseTimer();
 }
 
@@ -79,8 +85,8 @@ function eSTOP() {
 // changes the state of the readies for next.
 function resetTeamReadies() {
   resetTeamReadyButtons();
-  document.getElementById("redisready").innerText = "[NO]";
-  document.getElementById("blueisready").innerText = "[NO]";
+  document.getElementById("redisready").innerText = "NOT READY";
+  document.getElementById("blueisready").innerText = "NOT READY";
 }
 
 // set the timer display for ready / not ready.  just an indicator status.
@@ -97,7 +103,6 @@ socket.on("control_player_ready_event", (station_info) => {
 // in the event of a tapout, tell arena controls who wins automagically.
 socket.on("control_player_tapout_event", (station_info) => {
   stopTimer();
-
   if (station_info.station === "red") {
       document.getElementById("redisready").innerText = "[TAPOUT]";
       document.getElementById("blueisready").innerText = "[WIN]";
@@ -117,14 +122,13 @@ function resetTeamReadyButtons() {
   socket.emit("reset_screen_states");
 }
 
-function sendMSG() {
+function sendTimerMessage() {
   socket.emit("timer_event", (document.getElementById("sendmessagebox").value).replace("!", "¦").replace(" ", "!"));
+  // This is to reformat the string on the fly to comply with the DSEG14 oddities.
+  // still worth it - k.
+  // https://www.keshikan.net/fonts-e.html
 }
 
-function setTimer() {
-  timerInstance.start({countdown: true, startValues: {seconds: parseInt(document.getElementById("timerboxthing").value, 10), secondTenths:9}, precision: 'secondTenths' });
-  socket.emit("timer_event", parseInt(document.getElementById("timerboxthing").value, 10));
-}
 </script>
 
 <section class="section">
@@ -144,9 +148,10 @@ function setTimer() {
 
         <div class="block">
           <div class="buttons has-addons">
-          <button class="button is-danger is-light is-large" id="redReady">NOT READY</button>
-          <button id="heartbeat_button_id" class="button is-large is-danger" disabled>[HB]</button>
-          <button class="button is-info is-light is-large" id="blueReady">NOT READY</button>
+            <button class="button is-danger is-light is-large" id="redisready">NOT READY</button>
+            <button id="heartbeat_button_id" class="button is-large is-danger" disabled>[HB]</button>
+            <button class="button is-info is-light is-large" id="blueisready">NOT READY</button>
+            </div>
         </div>
 
         <div class="block">
@@ -159,25 +164,27 @@ function setTimer() {
         </div>
 
         <div class="block">
-          <br><br><br>
-          <button class="button is-large"  onclick="eSTOP();">EMERGENCY STOP</button>
-          <button class="button is-large" onclick="readyTimer();">Ready Timer (set to 150)</button>
-          <button class="button is-large" onclick="resetBG();">reset bg</button>
-          <br><br><br>
-          <button class="button is-large" onclick="sendMSG();">send message</button>
-          <input class="input is-large" id="sendmessagebox" type="text" placeholder="message">
-          <br><br><br>
-          <disabled button class="button is-large" onclick="setTimer();">set timer</button>
-          <input class="input is-large" id="timerboxthing" type="number" placeholder="timer">
-        </div>
+          <div class="buttons has-addons">
+            <button class="button is-large is-danger is-light is-rounded"  onclick="eSTOP();">EMERGENCY STOP</button>
+            <button class="button is-large" onclick="readyTimer();" hover="Set timer to 150s">Ready Timer</button>
+            <button class="button is-large is-warning is-light is-rounded" onclick="resetBG();">reset bg</button>
+          </div>
         </div>
 
-      </div>
-      <div class="column">
-        <h2 class="title">Ready States</h2>
-        <h3 class="title">Red: <span id="redisready">[NO]</span></h3>
-        <h3 class="title">Blue: <span id="blueisready">[NO]</span></h3>
-      </div>
+        <div class="block">
+          <div class="field is-grouped">
+            <p class="control is-expanded">
+              <input class="input" id="sendmessagebox" type="text" placeholder="message">
+            </p>
+            <p class="control">
+              <a class="button is-info" onclick="sendTimerMessage();">
+                send ->
+              </a>
+            </p>
+          </div>
+
+        </div>
+      </div> <!-- column end -->
   </section>
 
 {% endblock %}
