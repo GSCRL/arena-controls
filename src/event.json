@@ -2,8 +2,8 @@
     "event_name": "Seasonal Smackdown",
     "event_league": "Garden State Combat Robotics league",
     "event_tournament_codes": [
-        {"id":"4b5fa95220cf46ac", "weightclass": "Beetle"},
-        {"id":"cbe7e90529c342e9", "weightclass":"Plastic Ant"},
-        {"id":"97f2883f8b2844b5", "weightclass": "Ant"}
+        {"id":"53b3031783f14dc6", "weightclass": "Beetles"},
+        {"id":"68d77a7eae4e49bf", "weightclass":"Plastic Ants"},
+        {"id":"e0b2a154ac3e44f4", "weightclass": "Ants"}
     ]
 }

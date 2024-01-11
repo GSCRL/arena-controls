@@ -9,6 +9,7 @@ user_screens = Blueprint(
 def index():
     return redirect("/")
 
+
 @user_screens.route("/timer")
 def timerScreen():
     return render_template("stimer.html")

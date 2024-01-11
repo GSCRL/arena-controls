@@ -33,8 +33,6 @@ def getAllGames(credentials, tournamentID: str) -> list[dict]:
 
 
 # This enumerates all matches with one or more players labeled to show in the "upcoming matches" bracket.  Still need to figure out the filtering stuff.
-
-
 def getAllGamesWithOneOrMoreCompetitors(credentials, tournamentID: str) -> list[dict]:
     allGames = getAllGames(credentials, tournamentID)
 
