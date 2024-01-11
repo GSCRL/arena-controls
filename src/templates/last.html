@@ -10,7 +10,7 @@
   </div>
 </section>
 <section class="section">
-    {% if div_matches %}
+    {% if div_matches and numMatches != 0 %}
     <table class="table is-striped is-fullwidth">
         <thead>
           <tr>
@@ -59,8 +59,8 @@
           {% endfor %}
 
         {% else %}
-        <p>There are no matches in the system yet to be marked as unfinished.  Either the event is done or the event has yet to start.</p>
-        <p> Hang tight!</p>
+        <p>There are no matches in the system yet to be marked as finished.  The event hasn't started yet, or posted scores.</p>
+        <h3> Hang tight!</h3>
         {% endif %}
   </section>
 
