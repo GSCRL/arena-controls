@@ -54,6 +54,11 @@
                   {% endif %}
               </td>
             {% endfor %}
+            {% if match.slots|length == 1 %} 
+            <td>
+              <b>Not yet filled</b>
+            </td>
+            {% endif %}
           </tr>
           {% endfor %}
           {% endfor %}
