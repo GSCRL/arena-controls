@@ -28,11 +28,14 @@ def routeForUpcomingMatches():
     upcoming_crossdiv_matches = truefinals.getAllUnfinishedCrossDivMatches(
         robotEvent.tournaments
     )
-    
-    numMatches = sum([len(x['division']) for x in upcoming_crossdiv_matches])
+
+    numMatches = sum([len(x["division"]) for x in upcoming_crossdiv_matches])
 
     return render_template(
-        "upcoming.html", div_matches=upcoming_crossdiv_matches, autoreload=autoreload, numMatches=numMatches
+        "upcoming.html",
+        div_matches=upcoming_crossdiv_matches,
+        autoreload=autoreload,
+        numMatches=numMatches,
     )
 
 
@@ -44,11 +47,13 @@ def routeForLastMatches():
         robotEvent.tournaments
     )
 
-    numMatches = sum([len(x['division']) for x in last_crossdiv_matches])
-
+    numMatches = sum([len(x["division"]) for x in last_crossdiv_matches])
 
     return render_template(
-        "last.html", div_matches=last_crossdiv_matches, autoreload=autoreload, numMatches=numMatches
+        "last.html",
+        div_matches=last_crossdiv_matches,
+        autoreload=autoreload,
+        numMatches=numMatches,
     )
 
 
