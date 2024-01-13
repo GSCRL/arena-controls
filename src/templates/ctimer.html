@@ -20,6 +20,11 @@ countdownTimer.addEventListener('targetAchieved', function (e) {
 countdownTimer.addEventListener('secondTenthsUpdated', function (e) {
   swapHeartbeatSignStatus();  
   var time_in_seconds = (countdownTimer.getTimeValues().seconds + (countdownTimer.getTimeValues().minutes * 60)).toString();
+
+  if (time_in_seconds.length < 3) {
+    time_in_seconds = time_in_seconds.padStart(3, "0"); 
+  }
+  
   setTimerPageTimer(time_in_seconds);
   socket.emit("timer_event", time_in_seconds);
 });
