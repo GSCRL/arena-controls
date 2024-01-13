@@ -20,10 +20,9 @@
             <th>Blue</th>
           </tr>
         </thead>
-        {% for division in div_matches %}
-          {% for match in division.division %}
+          {% for match in div_matches %}
           <tr>
-            <td>{{ division.weightclass }} </td>
+            <td>{{ match.gscrl_weightclass }} </td>
             <td>{{ match.name }}</td>
             {% for competitor in match.slots %}
             <td>
@@ -56,11 +55,10 @@
             {% endfor %}
             {% if match.slots|length == 1 %} 
             <td>
-              <b>Not yet filled</b>
+              <i>waiting . . . </i>
             </td>
             {% endif %}
           </tr>
-          {% endfor %}
           {% endfor %}
 
         {% else %}

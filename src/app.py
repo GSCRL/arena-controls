@@ -29,7 +29,7 @@ def routeForUpcomingMatches():
         robotEvent.tournaments
     )
 
-    numMatches = sum([len(x["division"]) for x in upcoming_crossdiv_matches])
+    numMatches = len(upcoming_crossdiv_matches)
 
     return render_template(
         "upcoming.html",

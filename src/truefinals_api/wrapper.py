@@ -96,23 +96,31 @@ class TrueFinals:
         matches = [x for x in matches if x["state"] != "done" and not ("has_bye" in x)]
         return matches
 
-    def getMatchesInOrder(self, division_matches: list):
+    def getMatchesInOrder(self, cross_div_matches: list):
+
+        #pprint(division_matches)
+
+        flat_matches = []
+        for div in cross_div_matches:
+            for match in div['division']:
+                match['gscrl_weightclass'] = div['weightclass']
+                flat_matches.append(match)
+        #for match in division_matches['division']:
+        #    pprint(match)
+                
+        pprint(flat_matches)
+
         def _sortHelper(q):
             # The match name is in the format of (division):(round)-(match), ie: "W:1-1".
             return (
-                q['weightclass'],
-                q["division"]["name"].split(":")[0], #bracketside, winners vs losers
-                q["division"]["name"].split(":")[-1].split("-")[0], #round index
-                q["division"]["name"].split(":")[-1].split("-")[-1], #match index
+                q["name"].split(":")[-1].split("-")[0], #round index
+                q["name"].split(":")[0], #bracketside, winners vs losers
+                q['gscrl_weightclass'],
+                q["name"].split(":")[-1].split("-")[-1], #match index
             )
 
-        pprint(division_matches)
         # TODO SORT MATCHES PROPERLY IDFK
-        #return sorted(division_matches, key=_sortHelper, reverse=True)
-        # We need to flatten and unfuck this nightmarecode.  Please help.
-
-      
-        return division_matches
+        return sorted(flat_matches, key=_sortHelper, reverse=False)
 
     def getAllFinishedCrossDivMatches(self, divisions):
         last_crossdiv_matches = []
