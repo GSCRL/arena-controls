@@ -27,6 +27,10 @@ countdownTimer.addEventListener('secondTenthsUpdated', function (e) {
 timerInstance.addEventListener('secondTenthsUpdated', function (e) {
   swapHeartbeatSignStatus();  
   var time_in_seconds = (timerInstance.getTimeValues().seconds + (timerInstance.getTimeValues().minutes * 60)).toString();
+
+  if (time_in_seconds.length < 3) {
+    time_in_seconds = time_in_seconds.padStart(3, "0"); 
+  }
   setTimerPageTimer(time_in_seconds);
   socket.emit("timer_event", time_in_seconds);
 });
@@ -92,11 +96,11 @@ function resetTeamReadies() {
 // set the timer display for ready / not ready.  just an indicator status.
 socket.on("control_player_ready_event", (station_info) => {
   if (station_info.station === "red") {
-      document.getElementById("redisready").innerText = "[YES]";
+      document.getElementById("redisready").innerText = "[READY]";
   }
 
   if (station_info.station === "blue") {
-      document.getElementById("blueisready").innerText = "[YES]";
+      document.getElementById("blueisready").innerText = "[READY]";
   }
 });
 
