@@ -97,30 +97,36 @@ class TrueFinals:
         return matches
 
     def getMatchesInOrder(self, cross_div_matches: list):
-
-        #pprint(division_matches)
-
         flat_matches = []
         for div in cross_div_matches:
-            for match in div['division']:
-                match['gscrl_weightclass'] = div['weightclass']
+            for match in div["division"]:
+                match["gscrl_weightclass"] = div["weightclass"]
                 flat_matches.append(match)
-        #for match in division_matches['division']:
-        #    pprint(match)
-                
+
         pprint(flat_matches)
 
         def _sortHelper(q):
-            # The match name is in the format of (division):(round)-(match), ie: "W:1-1".
+            # This function is going to have to build the entire bracket out to find the "last match"
+            #  and offset the match id proportionately to represent the order they're sorted in.
+            # This is due to the need to finish at the same time, such that if one bracket is N
+            # longer than another that one will be started N rounds later.
+
+            # Yes it's messy, good luck.
             return (
-                q["name"].split(":")[-1].split("-")[0], #round index
-                q["name"].split(":")[0], #bracketside, winners vs losers
-                q['gscrl_weightclass'],
-                q["name"].split(":")[-1].split("-")[-1], #match index
+                q["name"].split(":")[-1].split("-")[0],  # round index
+                q["name"].split(":")[0],  # bracketside, winners vs losers
+                q[
+                    "gscrl_weightclass"
+                ],  # weightclass name, used as a sort so we go in order between weightclasses even if the match numbers are the same.
+                q["name"].split(":")[-1].split("-")[-1],  # match index
             )
 
-        # TODO SORT MATCHES PROPERLY IDFK
-        return sorted(flat_matches, key=_sortHelper, reverse=False)
+        flat_matches = sorted(flat_matches, key=_sortHelper, reverse=False)
+        # TODO SORT MATCHES PROPERLY, good luck.  See above comment.
+
+        # flat_matches = sorted(flat_matches, key=lambda match: match['calledSince']  else 0, reverse=True)
+        # Sort by the end time as well such thatr we can
+        return flat_matches
 
     def getAllFinishedCrossDivMatches(self, divisions):
         last_crossdiv_matches = []
@@ -130,7 +136,14 @@ class TrueFinals:
                 {"weightclass": t["weightclass"], "division": temp_event_div}
             )
 
-        return self.getMatchesInOrder(last_crossdiv_matches)
+        orderedMatches = self.getMatchesInOrder(last_crossdiv_matches)
+
+        # We retrieve them in order for consistency
+        # and re-order them based on the last published end-time to avoid having a mess with the exposure of it.
+        # In the future the matches must be better represented / manipulated to expose to controls to simplify
+        # posting of scores without Kirstin needing to spend copious amounts of time.
+
+        return sorted(orderedMatches, key=lambda x: x["endTime"], reverse=True)
 
     def getAllUnfinishedCrossDivMatches(self, divisions):
         last_crossdiv_matches = []

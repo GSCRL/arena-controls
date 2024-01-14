@@ -10,7 +10,7 @@
   </div>
 </section>
 <section class="section">
-    {% if div_matches and numMatches != 0 %}
+    {% if div_matches %}
     <table class="table is-striped is-fullwidth">
         <thead>
           <tr>
@@ -20,10 +20,9 @@
             <th>Blue</th>
           </tr>
         </thead>
-        {% for division in div_matches %}
-          {% for match in division.division %}
+          {% for match in div_matches %}
           <tr>
-            <td>{{ division.weightclass }} </td>
+            <td>{{ match.gscrl_weightclass }} </td>
             <td>{{ match.name }}</td>
             {% for competitor in match.slots %}
             <td>
@@ -55,7 +54,6 @@
               </td>
             {% endfor %}
           </tr>
-          {% endfor %}
           {% endfor %}
 
         {% else %}
