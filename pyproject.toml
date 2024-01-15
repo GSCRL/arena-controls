@@ -1,14 +1,14 @@
 [tool.poetry]
 name = "arena-controls"
 version = "0.1.0"
-description = ""
-authors = ["Kim Chase <noreply@hi-im.kim"]
+description = "Software toolkit to run a combat robotics event with a single cage.  Deeply a work in progress."
+authors = ["Kim Chase <noreply@hi-im.kim>"]
 readme = "README.md"
 packages = [{include = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-flask = "^3.0.0"
+flask = {extras = ["async"], version = "^3.0.0"}
 flask-apscheduler = "^1.13.1"
 flask-socketio = "^5.3.6"
 httpx = "^0.25.1"

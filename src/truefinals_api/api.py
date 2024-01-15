@@ -32,29 +32,6 @@ def getAllGames(credentials, tournamentID: str) -> list[dict]:
     return x
 
 
-# This enumerates all matches with one or more players labeled to show in the "upcoming matches" bracket.  Still need to figure out the filtering stuff.
-def getAllGamesWithOneOrMoreCompetitors(credentials, tournamentID: str) -> list[dict]:
-    allGames = getAllGames(credentials, tournamentID)
-
-    def howManyPlayersAreFilledIn(games: list) -> list:
-        game_out = []
-        for game in games:
-            if "slots" in game:
-                total = 0
-                for player in game["slots"]:
-                    if player["playerID"] != None:
-                        total += 1
-
-                if total != 0:
-                    game_out.append(game)
-
-        return game_out
-
-    filteredGames = howManyPlayersAreFilledIn(allGames)
-
-    return filteredGames
-
-
 def getAllPlayersInTournament(credentials, tournamentID: str) -> list[dict]:
     players = makeAPIRequest(f"/v1/tournaments/{tournamentID}/players", credentials)
 

@@ -8,3 +8,6 @@ class EventConfig:
         self.name = self._event_info["event_name"]
         self.organizers = self._event_info["event_league"]
         self.tournaments = self._event_info["event_tournament_codes"]
+        self.tournaments = [
+            x for x in self.tournaments if "id" in x and "weightclass" in x
+        ]

@@ -1,5 +1,4 @@
 from truefinals_api.api import (
-    getAllGamesWithOneOrMoreCompetitors,
     getAllPlayersInTournament,
     getAllTourneys,
     getAllGames,
@@ -62,14 +61,11 @@ class TrueFinals:
             q.touch()
             with open(q, "w") as fileitem:
                 fileitem.write(json.dumps({"user_id": "", "api_key": ""}))
-                logging.warn(
+                logging.error(
                     "User did not enter tokens yet, cannot access API.  Please change apicreds.json"
                 )
 
         self._credentials = json.loads(open(q, "r").read())
-
-    def getGamesWithNonZeroCompetitors(self, tournamentID: str) -> list[dict]:
-        return getAllGamesWithOneOrMoreCompetitors(self._credentials, tournamentID)
 
     def getAllPlayersOfTournament(self, tournamentID: str) -> list[dict]:
         return getAllPlayersInTournament(self._credentials, tournamentID)
@@ -97,6 +93,7 @@ class TrueFinals:
         return matches
 
     def getMatchesInOrder(self, cross_div_matches: list):
+        
         flat_matches = []
         for div in cross_div_matches:
             for match in div["division"]:
