@@ -57,7 +57,7 @@ function swapHeartbeatSignStatus() {
 /* Timer Control Stubs */
 function startTimer() {
   countdownTimer.start();
-  socket.emit("timer_bg_event", "black"); //controls the judges timer background.
+  socket.emit("timer_bg_event", "rgb(37, 37, 37)"); //controls the judges timer background.
   socket.emit("timer_event", "150");
 }
 
@@ -72,7 +72,7 @@ function pauseTimer() {
 }
 
 function resetBG() {
-  socket.emit("timer_bg_event", "black");
+  socket.emit("timer_bg_event", "rgb(37, 37, 37)");
 }
 
 function stopTimer() {

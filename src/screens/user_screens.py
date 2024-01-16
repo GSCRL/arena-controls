@@ -31,4 +31,4 @@ def blueScreenVertical():
 
 @user_screens.route("/judges")
 def judgesScreen():
-    return render_template("judges.html")
+    return render_template("judges_timer.html")

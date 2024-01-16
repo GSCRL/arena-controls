@@ -79,7 +79,11 @@ def handle_message(timer_bg_data):
 
 @socketio.on("player_ready")
 def handle_message(ready_msg: dict):
-    if ready_msg["pathname"].endswith(("red", "blue")):
+    if type(ready_msg) == type(""):
+        print(f"player_ready, {ready_msg}")
+        emit("control_player_ready_event", {"station": ready_msg}, broadcast=True)
+
+    elif ready_msg["pathname"].endswith(("red", "blue")):
         which_station = ready_msg["pathname"].split("/")[-1]
         print(f"player_ready, {which_station}")
         emit("control_player_ready_event", {"station": which_station}, broadcast=True)

@@ -93,7 +93,6 @@ class TrueFinals:
         return matches
 
     def getMatchesInOrder(self, cross_div_matches: list):
-        
         flat_matches = []
         for div in cross_div_matches:
             for match in div["division"]:

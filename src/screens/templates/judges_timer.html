@@ -1,0 +1,138 @@
+{% extends "screen_base.html" %}
+{% block basecontent %}
+ 
+<style>
+    :root {
+        --team-bg-color: {{team_color}};
+    }
+
+    body {
+        font-family: GlacialIndifference;
+        background-color:rgb(37, 37, 37);
+        margin: 0; /* this prevents a small bleed on the screen I guess? */
+    }
+
+    @font-face {
+        font-family: 'GlacialIndifference';
+        src: url('{{url_for('user_screens.static', filename='GlacialIndifference-Regular.woff')}}') format('woff');
+        font-style: normal;
+        font-weight: 400;
+    }
+
+    @font-face {
+        font-family: 'GlacialIndifference';
+        src: url('{{url_for('user_screens.static', filename='GlacialIndifference-Bold.woff')}}') format('woff');
+        font-style: bold;
+        font-weight: 700;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+    .timer {
+        font-family: DSEG14;
+        color:white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
+
+    .tophalf {
+        width: 100%;
+        max-height:100%;
+        height:80%;
+        margin: 0 auto;
+        padding: 10px;
+        position: relative;
+    }
+
+    .bottomhalf {
+        height:20vh;
+        overflow-x: hidden;
+        display: flex;
+    }
+    /* CSS Button for teams to press */
+    .fancybutton {
+        border: none;
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        font-size: clamp(1rem, 4cqi, 10rem);
+        font-family: GlacialIndifference;
+        font-weight: 600;
+        width: calc((1/3) * 100vw);
+        height: 20vh;
+    }
+
+     .redready {
+        background-color: red;
+     }
+
+     .blueready {
+        background-color: blue;
+     }
+
+     .eSTOP {
+        background-color: orange;
+     }
+
+    </style>
+
+<script> //user interaction stubs.
+    function readyup(botColor) {
+        socket.emit('player_ready', botColor);
+    }
+
+    function eSTOP() {
+        socket.emit("timer_event", "STOP");
+        socket.emit("timer_bg_event", "red");
+    }
+</script>
+
+
+<div class="tophalf">
+    <div class="timer" id="timer">
+        000
+    </div>
+  </div>
+
+  <div class="bottomhalf">
+            <button id="setredready" onclick="readyup('red')" class="fancybutton redready" style=>SET RED READY</button>
+            <button id="eSTOPButton" onclick="eSTOP()" class="fancybutton eSTOP" style=>eSTOP</button>
+            <button id="setblueready" onclick="readyup('blue')" class="fancybutton blueready">SET BLUE READY</button>
+</div>
+
+    
+<script>
+    function setTimerString(timer_value) {
+        document.getElementById("timer").innerHTML = timer_value;
+        textFit(document.getElementsByClassName('timer'), {alignHoriz: true, maxFontSize: 600, widthOnly: true, detectMultiLine: false});
+    };
+
+</script>
+
+<script type="text/javascript" charset="utf-8">
+var socket = io();
+
+socket.on('connect', function() {
+    setTimerString("000"); // should fix broken scaling for only loading once the window is rendered otherwise.  Yipee?  
+    });
+
+socket.on("timer_event", function(timer_data) {
+    setTimerString(timer_data);
+});
+
+socket.on("timer_bg_event", function(timer_bg_color) { //used for eSTOP only?
+        document.getElementsByTagName("body")[0].style.backgroundColor = timer_bg_color;
+    });
+
+socket.on("reset_screen_states", function() {
+        document.getElementById("setredready").innerText = "SET RED READY";
+        document.getElementById("setblueready").innerText = "SET BLUE READY"
+});
+
+</script>
+{% endblock %}
