@@ -3,6 +3,7 @@ from flask_socketio import SocketIO, emit
 from screens.user_screens import user_screens
 from truefinals_api.wrapper import TrueFinals
 from event import EventConfig
+from flask_socketio import join_room, leave_room
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.register_blueprint(user_screens, url_prefix="/screens")
@@ -12,8 +13,6 @@ robotEvent = EventConfig()
 
 app.config["SECRET_KEY"] = "secret secret key (required)!"
 socketio = SocketIO(app)
-
-from pprint import pprint
 
 
 @app.route("/")
@@ -76,6 +75,12 @@ def handle_message(timer_data):
 def handle_message(timer_bg_data):
     emit("timer_bg_event", timer_bg_data, broadcast=True)
 
+
+@socketio.on("join_cage_request")
+def join_cage_handler(request_data: dict):
+    if 'cage_id' in request_data:
+        join_room(f'cage_no_{request_data['cage_id']}')
+        emit("client_joined_room", f'cage_no_{request_data['cage_id']}')
 
 @socketio.on("player_ready")
 def handle_message(ready_msg: dict):

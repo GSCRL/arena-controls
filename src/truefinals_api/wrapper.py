@@ -33,12 +33,12 @@ def _playerIDToName(competitors, playerID: str):
 # HELPER FUNCTION
 def _backfill_byes_plus_wlt(competitors, matches):
     for match in matches:
-        match["slots"] = [x for x in match["slots"] if x["playerID"] is not None]
+        match["slots"] = [x for x in match["slots"] if (x["playerID"] is not None) or (x['gameID'].startswith("GF"))] # This filter will exclude grand finals / "TrueFinals" matches, so we need to verify it's not a grand finals match and exclude it.  
         for slot in match["slots"]:
             if slot["playerID"] != None:
                 player_backfill = _playerIDToName(competitors, slot["playerID"])
 
-                if "bye" in player_backfill:
+                if "bye" in player_backfill: #If we want to show bye'd matches, this can be commented out.
                     match["has_bye"] = True
 
                 slot["gscrl_friendly_name"] = player_backfill["name"]
