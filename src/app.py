@@ -4,15 +4,19 @@ from screens.user_screens import user_screens
 from truefinals_api.wrapper import TrueFinals
 from event import EventConfig
 from flask_socketio import join_room, leave_room
+from flask_caching import Cache
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.register_blueprint(user_screens, url_prefix="/screens")
 
-truefinals = TrueFinals()
-robotEvent = EventConfig()
-
 app.config["SECRET_KEY"] = "secret secret key (required)!"
 socketio = SocketIO(app)
+
+cache = Cache(config={"CACHE_TYPE": "SimpleCache"})
+cache.init_app(app)
+
+truefinals = TrueFinals()
+robotEvent = EventConfig()
 
 
 @app.route("/")
@@ -21,6 +25,7 @@ def index():
 
 
 @app.route("/upcoming")
+@cache.cached(timeout=29)
 def routeForUpcomingMatches():
     autoreload = request.args.get("autoreload")
 
@@ -39,6 +44,7 @@ def routeForUpcomingMatches():
 
 
 @app.route("/lastmatches")
+@cache.cached(timeout=29)
 def routeForLastMatches():
     autoreload = request.args.get("autoreload")
 
@@ -78,9 +84,10 @@ def handle_message(timer_bg_data):
 
 @socketio.on("join_cage_request")
 def join_cage_handler(request_data: dict):
-    if 'cage_id' in request_data:
-        join_room(f'cage_no_{request_data['cage_id']}')
-        emit("client_joined_room", f'cage_no_{request_data['cage_id']}')
+    if "cage_id" in request_data:
+        join_room(f'cage_no_{request_data["cage_id"]}')
+        emit("client_joined_room", f'cage_no_{request_data["cage_id"]}')
+
 
 @socketio.on("player_ready")
 def handle_message(ready_msg: dict):

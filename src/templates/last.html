@@ -3,11 +3,28 @@
 {% block bodysections %}
 
 <section class="hero is-warning">
+  {# Fancy full-page header.  Yay #}
   <div class="hero-body">
     <p class="title">
       Last Matches
     </p>
   </div>
+
+
+  {# This snippet is only applicable to multi-arena events.  This should avoid stuff breaking too egregiously. #}
+  {% if cages|length > 1%}
+  <div class="hero-foot">
+  <nav class="tabs is-boxed is-fullwidth">
+    <div class="container">
+      <ul>
+        {% for cage in cages %}
+          <li>{{ cage.name }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+</div>
+{% endif %}
 </section>
 <section class="section">
     {% if div_matches %}
