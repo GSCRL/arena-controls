@@ -15,8 +15,12 @@
     <nav class="tabs is-boxed is-fullwidth">
       <div class="container">
         <ul>
+          <li class="is-active">
+            <a>[All Cages]</a>
+          </li>
+          {# Iterate over all additional cages in the event we have more than 1. #}
           {% for cage in cages %}
-            <li>{{ cage.name }}</li>
+            <li><a>{{ cage.name }} ({{ cage.id}})</a></li>
           {% endfor %}
         </ul>
       </div>
@@ -30,6 +34,9 @@
     <table class="table is-striped is-fullwidth">
         <thead>
           <tr>
+            {% if cages %}
+            <th>Cage</th>
+            {% endif %}
             <th>Division</th>
             <th>Match Info</th>
             <th>Red</th>
@@ -38,6 +45,9 @@
         </thead>
           {% for match in div_matches %}
           <tr>
+            {% if cages %}
+            <td>Cage NULL</td>
+            {% endif %}
             <td>{{ match.gscrl_weightclass }} </td>
             <td>{{ match.name }}</td>
             {% for competitor in match.slots %}

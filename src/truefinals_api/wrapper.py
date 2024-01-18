@@ -114,6 +114,8 @@ class TrueFinals:
             # longer than another that one will be started N rounds later.
 
             # Yes it's messy, good luck.
+
+            # q['availibleSince'] and q['calledSince'] are in millisecond unix time, GMT I _believe_.
             return (
                 q["name"].split(":")[-1].split("-")[0],  # round index
                 q["name"].split(":")[0],  # bracketside, winners vs losers

@@ -40,6 +40,7 @@ def routeForUpcomingMatches():
         div_matches=upcoming_crossdiv_matches,
         autoreload=autoreload,
         numMatches=numMatches,
+        cages=[{"name": "Big Steel", "id": 1}, {"name": "Old Green", "id": 2}],
     )
 
 
