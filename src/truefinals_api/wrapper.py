@@ -2,6 +2,7 @@ import json
 import logging
 from pathlib import Path
 from pprint import pprint
+from config import settings as arena_settings
 from typing import Self
 
 from truefinals_api.api import getAllGames, getAllPlayersInTournament, getAllTourneys
@@ -104,18 +105,11 @@ def _backfill_byes_plus_wlt(competitors, matches):
 
 
 class TrueFinals:
-    def __init__(self, credential_file_location="./apicreds.json"):
-        q = Path(credential_file_location)
-
-        if not q.exists():
-            q.touch()
-            with open(q, "w") as fileitem:
-                fileitem.write(json.dumps({"user_id": "", "api_key": ""}))
-                logging.error(
-                    "User did not enter tokens yet, cannot access API.  Please change apicreds.json"
-                )
-
-        self._credentials = json.loads(open(q, "r").read())
+    def __init__(self):
+        if "truefinals" in arena_settings:
+            api_key = arena_settings.truefinals.api_key
+            user_id = arena_settings.truefinals.user_id
+            self._credentials = {"user_id": user_id, "api_key": api_key}
 
     def getAllPlayersOfTournament(self, tournamentID: str) -> list[dict]:
         return getAllPlayersInTournament(self._credentials, tournamentID)

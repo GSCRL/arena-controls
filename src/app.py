@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request
 from flask_caching import Cache
 from flask_socketio import SocketIO, emit, join_room, leave_room
-
-from event import EventConfig
 from screens.user_screens import user_screens
+from config import settings as arena_settings
 from truefinals_api.wrapper import TrueFinals
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
@@ -16,7 +15,6 @@ cache = Cache(config={"CACHE_TYPE": "SimpleCache"})
 cache.init_app(app)
 
 truefinals = TrueFinals()
-robotEvent = EventConfig()
 
 
 @app.route("/")
@@ -30,7 +28,11 @@ def routeForUpcomingMatches():
     autoreload = request.args.get("autoreload")
 
     upcoming_crossdiv_matches = truefinals.getAllUnfinishedCrossDivMatches(
-        robotEvent.tournaments
+        [
+            x
+            for x in arena_settings.tournament_keys
+            if "id" in x and "weightclass" in x and x["weightclass"] not in ["", None]
+        ]
     )
 
     numMatches = len(upcoming_crossdiv_matches)
@@ -50,7 +52,11 @@ def routeForLastMatches():
     autoreload = request.args.get("autoreload")
 
     last_crossdiv_matches = truefinals.getAllFinishedCrossDivMatches(
-        robotEvent.tournaments
+        [
+            x
+            for x in arena_settings.tournament_keys
+            if "id" in x and "weightclass" in x and x["weightclass"] not in ["", None]
+        ]
     )
 
     numMatches = len(last_crossdiv_matches)
