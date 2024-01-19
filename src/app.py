@@ -39,11 +39,12 @@ def routeForUpcomingMatches():
     numMatches = len(upcoming_crossdiv_matches)
 
     return render_template(
-        "upcoming.html",
+        "upcoming_matches.html",
         div_matches=upcoming_crossdiv_matches,
         autoreload=autoreload,
         numMatches=numMatches,
         cages=[{"name": "Big Steel", "id": 1}, {"name": "Old Green", "id": 2}],
+        event_name=arena_settings.event_name,
     )
 
 
@@ -63,10 +64,11 @@ def routeForLastMatches():
     numMatches = len(last_crossdiv_matches)
 
     return render_template(
-        "last.html",
+        "last_matches.html",
         div_matches=last_crossdiv_matches,
         autoreload=autoreload,
         numMatches=numMatches,
+        event_name=arena_settings.event_name,
     )
 
 

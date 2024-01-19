@@ -2,35 +2,48 @@
 
 {% block bodysections %}
 
-<section class="hero is-warning">
-  {# Fancy full-page header.  Yay #}
+<section class="hero is-info">
   <div class="hero-body">
+
     <p class="title">
-      Last Matches
+      Upcoming Matches
     </p>
+    {% if event_name %}
+    <p class="subtitle">
+      {{event_name}}
+    </p>
+ {% endif %}
+
   </div>
 
-
-  {# This snippet is only applicable to multi-arena events.  This should avoid stuff breaking too egregiously. #}
-  {% if cages|length > 1%}
-  <div class="hero-foot">
-  <nav class="tabs is-boxed is-fullwidth">
-    <div class="container">
-      <ul>
-        {% for cage in cages %}
-          <li>{{ cage.name }}</li>
-        {% endfor %}
-      </ul>
-    </div>
-  </nav>
-</div>
-{% endif %}
+    {# This snippet is only applicable to multi-arena events.  This should avoid stuff breaking too egregiously. #}
+    {% if cages|length > 1%}
+    <div class="hero-foot">
+    <nav class="tabs is-boxed is-fullwidth">
+      <div class="container">
+        <ul>
+          <li class="is-active">
+            <a>[All Cages]</a>
+          </li>
+          {# Iterate over all additional cages in the event we have more than 1. #}
+          {% for cage in cages %}
+            <li><a>{{ cage.name }} ({{ cage.id}})</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </nav>
+  </div>
+  {% endif %}
 </section>
+
 <section class="section">
     {% if div_matches %}
     <table class="table is-striped is-fullwidth">
         <thead>
           <tr>
+            {% if cages %}
+            <th>Cage</th>
+            {% endif %}
             <th>Division</th>
             <th>Match Info</th>
             <th>Red</th>
@@ -39,6 +52,9 @@
         </thead>
           {% for match in div_matches %}
           <tr>
+            {% if cages %}
+            <td>Cage NULL</td>
+            {% endif %}
             <td>{{ match.gscrl_weightclass }} </td>
             <td>{{ match.name }}</td>
             {% for competitor in match.slots %}
@@ -70,12 +86,17 @@
                   {% endif %}
               </td>
             {% endfor %}
+            {% if match.slots|length == 1 %} 
+            <td>
+              <i>waiting . . . </i>
+            </td>
+            {% endif %}
           </tr>
           {% endfor %}
 
         {% else %}
-        <p>There are no matches in the system yet to be marked as finished.  The event hasn't started yet, or posted scores.</p>
-        <h3> Hang tight!</h3>
+        <p>There are no matches in the system yet to be marked as unfinished.  Either the event is done or the event has yet to start.</p>
+        <p> Hang tight!</p>
         {% endif %}
   </section>
 
