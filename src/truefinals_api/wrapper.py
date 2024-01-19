@@ -1,16 +1,59 @@
-from truefinals_api.api import (
-    getAllPlayersInTournament,
-    getAllTourneys,
-    getAllGames,
-)
 import json
-from pathlib import Path
 import logging
+from pathlib import Path
 from pprint import pprint
+from typing import Self
+
+from truefinals_api.api import getAllGames, getAllPlayersInTournament, getAllTourneys
 
 """Helper function to check whether the player is a legitimate player or to get a bye.
 
 Terrible and only used for when the filtering to remove byes doesn't work."""
+
+
+class Matches:
+    def __init__(self, eventID=None, credentials=None):
+        pass
+
+
+class Match:
+    def __init__(self, match_item: dict):
+        self.match_json_original = match_item
+        self.players = self.match_json_original["slots"]
+
+    # Todo, test.
+    def numPlayers(self, includeByes=False):
+        if includeByes:  # Should include all competitors in a given match.
+            return len(self.players)
+        return len([x for x in self.players if x["playerID"] is None])
+
+    def removeByes(self) -> Self:
+        ## Return a list comprehension with the slots adjusted to not include bye'd "players" as competitors.
+        return self
+
+    def matchState(self):
+        return self.match_json_original["state"]
+
+    def backfillPlayerWLT(self, allCompetitors: list):
+        def _playerIDToName(allCompetitors: list, playerID: str):
+            for c in allCompetitors:
+                if c["id"] is playerID:
+                    return c
+            if playerID.startswith("bye"):
+                return self._generateBye()
+            logging.warning(
+                f"did not find competitor, oops!  Was looking for {playerID}"
+            )
+
+        def _generateBye(self):
+            return {
+                "name": "Bye",
+                "seed": -1,
+                "wins": -1,
+                "losses": -1,
+                "ties": -1,
+                "bye": True,
+            }
 
 
 # HELPER FUNCTION
@@ -49,10 +92,11 @@ def _backfill_byes_plus_wlt(competitors, matches):
 
                 slot["gscrl_friendly_name"] = player_backfill["name"]
                 slot["gscrl_seed"] = player_backfill["seed"]
-                slot["gscrl_wlt"] = {}
-                slot["gscrl_wlt"]["w"] = player_backfill["wins"]
-                slot["gscrl_wlt"]["l"] = player_backfill["losses"]
-                slot["gscrl_wlt"]["t"] = player_backfill["ties"]
+                slot["gscrl_wlt"] = {
+                    "w": player_backfill["wins"],
+                    "l": player_backfill["losses"],
+                    "t": player_backfill["ties"],
+                }
 
     matches = [x for x in matches if len(x["slots"]) != 0]
 

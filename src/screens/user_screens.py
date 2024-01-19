@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, redirect
+from flask import Blueprint, redirect, render_template
 
 user_screens = Blueprint(
     "user_screens", __name__, static_folder="./static", template_folder="./templates"

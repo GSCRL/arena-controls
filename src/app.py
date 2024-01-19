@@ -1,10 +1,10 @@
 from flask import Flask, render_template, request
-from flask_socketio import SocketIO, emit
+from flask_caching import Cache
+from flask_socketio import SocketIO, emit, join_room, leave_room
+
+from event import EventConfig
 from screens.user_screens import user_screens
 from truefinals_api.wrapper import TrueFinals
-from event import EventConfig
-from flask_socketio import join_room, leave_room
-from flask_caching import Cache
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.register_blueprint(user_screens, url_prefix="/screens")
