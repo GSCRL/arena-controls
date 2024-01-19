@@ -2,9 +2,9 @@ import json
 import logging
 from pathlib import Path
 from pprint import pprint
-from config import settings as arena_settings
 from typing import Self
 
+from config import settings as arena_settings
 from truefinals_api.api import getAllGames, getAllPlayersInTournament, getAllTourneys
 
 """Helper function to check whether the player is a legitimate player or to get a bye.

@@ -1,8 +1,9 @@
 from flask import Flask, render_template, request
 from flask_caching import Cache
 from flask_socketio import SocketIO, emit, join_room, leave_room
-from screens.user_screens import user_screens
+
 from config import settings as arena_settings
+from screens.user_screens import user_screens
 from truefinals_api.wrapper import TrueFinals
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
