@@ -37,7 +37,7 @@
 </section>
 
 <section class="section">
-    {% if div_matches %}
+    {% if div_matches._matches %}
     <table class="table is-striped is-fullwidth">
         <thead>
           <tr>
@@ -50,16 +50,16 @@
             <th>Blue</th>
           </tr>
         </thead>
-          {% for match in div_matches %}
+          {% for match in div_matches._matches %}
           <tr>
             {% if cages %}
             <td>Cage NULL</td>
             {% endif %}
-            <td>{{ match.gscrl_weightclass }} </td>
+            <td>{{ match.weightclass }} </td>
             <td>{{ match.name }}</td>
             {% for competitor in match.slots %}
             <td>
-                  <b>{{ competitor.gscrl_friendly_name }}</b> 
+                  <b>{{ competitor.gscrl_player_name }}</b> 
                   {% if competitor['gscrl_wlt'] %}
                   <div class="field is-grouped is-grouped-multiline">
                     <div class="control">

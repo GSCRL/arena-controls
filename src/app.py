@@ -28,21 +28,17 @@ def index():
 def routeForUpcomingMatches():
     autoreload = request.args.get("autoreload")
 
-    upcoming_crossdiv_matches = truefinals.getAllUnfinishedCrossDivMatches(
-        [
-            x
-            for x in arena_settings.tournament_keys
-            if "id" in x and "weightclass" in x and x["weightclass"] not in ["", None]
-        ]
+    upcoming_crossdiv_matches = (
+        truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
+        .withoutByes()
+        .withFilter(lambda x: x["state"] != "done")
+        .withFilter(lambda x: len(x["slots"]) != 0)
+        .done()
     )
-
-    numMatches = len(upcoming_crossdiv_matches)
-
     return render_template(
         "upcoming_matches.html",
         div_matches=upcoming_crossdiv_matches,
         autoreload=autoreload,
-        numMatches=numMatches,
         cages=[{"name": "Big Steel", "id": 1}, {"name": "Old Green", "id": 2}],
         event_name=arena_settings.event_name,
     )
@@ -53,21 +49,17 @@ def routeForUpcomingMatches():
 def routeForLastMatches():
     autoreload = request.args.get("autoreload")
 
-    last_crossdiv_matches = truefinals.getAllFinishedCrossDivMatches(
-        [
-            x
-            for x in arena_settings.tournament_keys
-            if "id" in x and "weightclass" in x and x["weightclass"] not in ["", None]
-        ]
+    matches = (
+        truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
+        .withoutByes()
+        .withFilter(lambda x: x["state"] == "done")
+        .done()
     )
-
-    numMatches = len(last_crossdiv_matches)
 
     return render_template(
         "last_matches.html",
-        div_matches=last_crossdiv_matches,
+        div_matches=matches,
         autoreload=autoreload,
-        numMatches=numMatches,
         event_name=arena_settings.event_name,
     )
 
@@ -124,9 +116,8 @@ def handle_message():
     emit("reset_screen_states", broadcast=True)
 
 
-import logging
 
-logging.basicConfig(level="INFO")
+# logging.basicConfig(level="INFO")
 
 if __name__ == "__main__":
     socketio.run(app, host="0.0.0.0", port=80)

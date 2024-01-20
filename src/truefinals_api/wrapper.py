@@ -1,4 +1,5 @@
 import json
+import logging
 from copy import deepcopy
 from pathlib import Path
 from typing import Callable, Self
@@ -38,9 +39,8 @@ class Matches:
                     match["tournamentID"] = self._eventID
 
                 # Same logic to filter by weightclass in the output / render it.
-                if 'weightclass' not in match:
-                    match['weightclass'] = self._weightclass
-                    
+                if "weightclass" not in match:
+                    match["weightclass"] = self._weightclass
 
             self.backfillNames()
 
@@ -50,6 +50,12 @@ class Matches:
 
     def __repr__(self):
         return {"tournamentID": self._eventID, "matches": self._matches}
+
+    def __str__(self):
+        return f"match list with {len(self._matches)}"
+
+    def __len__(self):
+        return len(self._matches)
 
     def backfillNames(self, competitors: list = None):
         _matches = deepcopy(self)
@@ -64,49 +70,53 @@ class Matches:
 
         for m in self._matches:
             for slot in m["slots"]:
-                if not slot["playerID"].startswith("bye"):
-                    _competitor = _getCompetitorById(slot["playerID"])
-                    slot["gscrl_player_name"] = _competitor["name"]
-                    slot["gscrl_wlt"] = {
-                        "w": _competitor["wins"],
-                        "l": _competitor["losses"],
-                        "t": _competitor["ties"],
-                    }
+                if "playerID" in slot and slot["playerID"] != None:
+                    if not slot["playerID"].startswith("bye"):
+                        _competitor = _getCompetitorById(slot["playerID"])
+                        slot["gscrl_player_name"] = _competitor["name"]
+                        slot["gscrl_wlt"] = {
+                            "w": _competitor["wins"],
+                            "l": _competitor["losses"],
+                            "t": _competitor["ties"],
+                        }
 
         return _matches
 
     def withFilter(self, filterFunction: Callable):
-        matches = deepcopy(self._matches)
-        matches = [x for x in matches if filterFunction(x)]
-
-        return Matches(self._eventID, matches)
+        self._matches = [x for x in self._matches if filterFunction(x)]
+        return self
 
     def inOrder(self, orderFilter: Callable):
         return
 
     def withoutByes(self):
-        _matches = deepcopy(self._matches)
-        for m in _matches:
-            m["slots"] = [c for c in m["slots"] if not c["playerID"].startswith("bye")]
+        for m in self._matches:
+            m["slots"] = [
+                c
+                for c in m["slots"]
+                if c["playerID"] != None and not c["playerID"].startswith("bye")
+            ]
 
-        return Matches(self._eventID, matches=_matches)
+        return self
 
     def toFile(self, path: str):
         with open(Path(path), "w") as output:
             output.write(json.dumps(self._matches, indent=4))
+        return self
 
-    def extends(self, event2: Self):
-        matches = deepcopy(self._matches)
+    def done(self):
+        return self
+
+    def extend(self, event2: Self):
         if event2._matches not in [None, []]:
             for m2 in event2._matches:
                 if "tournamentID" in m2:
-                    matches.append(m2)
+                    self._matches.append(m2)
 
-        new_matches = Matches(None, matches=matches)
         if self._eventID != event2._eventID:
-            new_matches._multiple_tournaments = True
+            self._multiple_tournaments = True
 
-        return new_matches
+        return self
 
 
 class TrueFinals:
@@ -120,9 +130,36 @@ class TrueFinals:
         players = getAllPlayersInTournament(self._credentials, tournamentID)
         return players
 
-    def getAllMatches(self, tournamentID: str, weightclass: str=None) -> Matches:
+    def getAllMatches(self, tournamentID: str, weightclass: str = None) -> Matches:
         matches = Matches(eventID=tournamentID, weightclass=weightclass)
         return matches
+
+    def getCrossDivisionMatches(self, division_list: list) -> Matches:
+        if len(division_list) == 0:
+            logging.error(
+                "No divisions included in configuration.  Please populate configuration."
+            )
+            return None
+
+        if len(division_list) == 1:
+            return self.getAllMatches(
+                tournamentID=division_list[0]["id"],
+                weightclass=division_list[0]["weightclass"],
+            ).done()
+        else:
+            _matches = self.getAllMatches(
+                tournamentID=division_list[0]["id"],
+                weightclass=division_list[0]["weightclass"],
+            ).done()
+            for i in range(1, len(division_list)):
+                _matches.extend(
+                    self.getAllMatches(
+                        division_list[i]["id"], division_list[i]["weightclass"]
+                    )
+                    .toFile(f"./{division_list[i]['weightclass']}.json")
+                    .done()
+                )
+            return _matches.done()
 
     def getFinishedMatches(self, tournamentID: str) -> list[dict]:
         pass
@@ -131,10 +168,4 @@ class TrueFinals:
         pass
 
     def getMatchesInOrder(self, cross_div_matches: list):
-        pass
-
-    def getAllFinishedCrossDivMatches(self, divisions):
-        pass
-
-    def getAllUnfinishedCrossDivMatches(self, divisions):
         pass
