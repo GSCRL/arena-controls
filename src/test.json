@@ -14,7 +14,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "winner_by_default"
+                "slotState": "winner_by_default",
+                "gscrl_player_name": "Bottomfeeder"
             }
         ],
         "state": "done",
@@ -46,7 +47,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Eschatology"
             },
             {
                 "gameID": "W-1",
@@ -56,7 +58,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Sweet Pea"
             }
         ],
         "state": "done",
@@ -89,7 +92,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "winner_by_default"
+                "slotState": "winner_by_default",
+                "gscrl_player_name": "MC Hermie"
             }
         ],
         "state": "done",
@@ -122,7 +126,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "winner_by_default"
+                "slotState": "winner_by_default",
+                "gscrl_player_name": "Ruby's Rayge"
             }
         ],
         "state": "done",
@@ -154,7 +159,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "winner_by_default"
+                "slotState": "winner_by_default",
+                "gscrl_player_name": "Block O' Cheese"
             }
         ],
         "state": "done",
@@ -186,7 +192,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Trampoline"
             },
             {
                 "gameID": "W-5",
@@ -196,7 +203,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Loaded Die"
             }
         ],
         "state": "done",
@@ -229,7 +237,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "winner_by_default"
+                "slotState": "winner_by_default",
+                "gscrl_player_name": "The Captain"
             }
         ],
         "state": "done",
@@ -262,7 +271,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "winner_by_default"
+                "slotState": "winner_by_default",
+                "gscrl_player_name": "Copacabana"
             }
         ],
         "state": "done",
@@ -294,7 +304,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-0",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Bottomfeeder"
             },
             {
                 "gameID": "W-8",
@@ -304,7 +315,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-1",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Eschatology"
             }
         ],
         "state": "done",
@@ -337,7 +349,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-2",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "MC Hermie"
             },
             {
                 "gameID": "W-9",
@@ -347,7 +360,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-3",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Ruby's Rayge"
             }
         ],
         "state": "done",
@@ -380,7 +394,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-4",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Block O' Cheese"
             },
             {
                 "gameID": "W-10",
@@ -390,7 +405,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-5",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Loaded Die"
             }
         ],
         "state": "done",
@@ -423,7 +439,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-6",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "The Captain"
             },
             {
                 "gameID": "W-11",
@@ -433,7 +450,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-7",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Copacabana"
             }
         ],
         "state": "done",
@@ -466,7 +484,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-8",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Bottomfeeder"
             },
             {
                 "gameID": "W-12",
@@ -476,7 +495,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-9",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Ruby's Rayge"
             }
         ],
         "state": "done",
@@ -509,7 +529,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-10",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Block O' Cheese"
             },
             {
                 "gameID": "W-13",
@@ -519,7 +540,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-11",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "The Captain"
             }
         ],
         "state": "done",
@@ -552,7 +574,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-12",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Ruby's Rayge"
             },
             {
                 "gameID": "W-14",
@@ -562,7 +585,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-13",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "The Captain"
             }
         ],
         "state": "done",
@@ -595,7 +619,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-14",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Ruby's Rayge"
             },
             {
                 "gameID": "W-GF",
@@ -605,7 +630,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-13",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "The Captain"
             }
         ],
         "state": "done",
@@ -635,7 +661,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-11",
                 "score": -1,
-                "slotState": "loser_by_default"
+                "slotState": "loser_by_default",
+                "gscrl_player_name": "Copacabana"
             },
             {
                 "gameID": "L-4",
@@ -645,7 +672,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-1",
                 "score": 0,
-                "slotState": "winner_by_default"
+                "slotState": "winner_by_default",
+                "gscrl_player_name": "Sweet Pea"
             }
         ],
         "state": "done",
@@ -677,7 +705,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-10",
                 "score": 0,
-                "slotState": "winner_by_default"
+                "slotState": "winner_by_default",
+                "gscrl_player_name": "Loaded Die"
             }
         ],
         "state": "done",
@@ -709,7 +738,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-9",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "MC Hermie"
             },
             {
                 "gameID": "L-6",
@@ -719,7 +749,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-5",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Trampoline"
             }
         ],
         "state": "done",
@@ -751,7 +782,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-8",
                 "score": 0,
-                "slotState": "winner_by_default"
+                "slotState": "winner_by_default",
+                "gscrl_player_name": "Eschatology"
             }
         ],
         "state": "done",
@@ -783,7 +815,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-4",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Sweet Pea"
             },
             {
                 "gameID": "L-8",
@@ -793,7 +826,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-5",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Loaded Die"
             }
         ],
         "state": "done",
@@ -825,7 +859,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-6",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "MC Hermie"
             },
             {
                 "gameID": "L-9",
@@ -835,7 +870,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-7",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Eschatology"
             }
         ],
         "state": "done",
@@ -867,7 +903,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-12",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Bottomfeeder"
             },
             {
                 "gameID": "L-10",
@@ -877,7 +914,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-8",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Sweet Pea"
             }
         ],
         "state": "done",
@@ -909,7 +947,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-13",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Block O' Cheese"
             },
             {
                 "gameID": "L-11",
@@ -919,7 +958,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-9",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Eschatology"
             }
         ],
         "state": "done",
@@ -951,7 +991,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-10",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Bottomfeeder"
             },
             {
                 "gameID": "L-12",
@@ -961,7 +1002,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-11",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Eschatology"
             }
         ],
         "state": "done",
@@ -993,7 +1035,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-14",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "The Captain"
             },
             {
                 "gameID": "L-13",
@@ -1003,7 +1046,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-12",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Bottomfeeder"
             }
         ],
         "state": "done",
@@ -1035,7 +1079,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "winner_by_default"
+                "slotState": "winner_by_default",
+                "gscrl_player_name": "Lowbot"
             }
         ],
         "state": "done",
@@ -1068,7 +1113,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Bladezilla"
             },
             {
                 "gameID": "W-1",
@@ -1078,7 +1124,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Death Rattle"
             }
         ],
         "state": "done",
@@ -1111,7 +1158,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Cheesecake"
             },
             {
                 "gameID": "W-2",
@@ -1121,7 +1169,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Hypnovision"
             }
         ],
         "state": "done",
@@ -1154,7 +1203,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Phantom"
             },
             {
                 "gameID": "W-3",
@@ -1164,7 +1214,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Topper"
             }
         ],
         "state": "done",
@@ -1197,7 +1248,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "winner_by_default"
+                "slotState": "winner_by_default",
+                "gscrl_player_name": "Ipso Facto"
             }
         ],
         "state": "done",
@@ -1230,7 +1282,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Dulce de Lucha"
             },
             {
                 "gameID": "W-5",
@@ -1240,7 +1293,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Rabot"
             }
         ],
         "state": "done",
@@ -1273,7 +1327,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Strikerbite"
             },
             {
                 "gameID": "W-6",
@@ -1283,7 +1338,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Frostbyte"
             }
         ],
         "state": "done",
@@ -1316,7 +1372,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Robomouse"
             },
             {
                 "gameID": "W-7",
@@ -1326,7 +1383,8 @@
                 "waitingTime": null,
                 "prevGameID": null,
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Bumblebee"
             }
         ],
         "state": "done",
@@ -1359,7 +1417,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-0",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Lowbot"
             },
             {
                 "gameID": "W-8",
@@ -1369,7 +1428,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-1",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Death Rattle"
             }
         ],
         "state": "done",
@@ -1402,7 +1462,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-2",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Cheesecake"
             },
             {
                 "gameID": "W-9",
@@ -1412,7 +1473,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-3",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Phantom"
             }
         ],
         "state": "done",
@@ -1445,7 +1507,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-4",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Ipso Facto"
             },
             {
                 "gameID": "W-10",
@@ -1455,7 +1518,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-5",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Dulce de Lucha"
             }
         ],
         "state": "done",
@@ -1488,7 +1552,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-6",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Frostbyte"
             },
             {
                 "gameID": "W-11",
@@ -1498,7 +1563,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-7",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Bumblebee"
             }
         ],
         "state": "done",
@@ -1531,7 +1597,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-8",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Lowbot"
             },
             {
                 "gameID": "W-12",
@@ -1541,7 +1608,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-9",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Cheesecake"
             }
         ],
         "state": "done",
@@ -1574,7 +1642,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-10",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Dulce de Lucha"
             },
             {
                 "gameID": "W-13",
@@ -1584,7 +1653,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-11",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Bumblebee"
             }
         ],
         "state": "done",
@@ -1617,7 +1687,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-12",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Cheesecake"
             },
             {
                 "gameID": "W-14",
@@ -1627,7 +1698,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-13",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Dulce de Lucha"
             }
         ],
         "state": "done",
@@ -1660,7 +1732,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-14",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Cheesecake"
             },
             {
                 "gameID": "W-GF",
@@ -1670,7 +1743,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-13",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Dulce de Lucha"
             }
         ],
         "state": "done",
@@ -1703,7 +1777,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-1",
                 "score": 0,
-                "slotState": "winner_by_default"
+                "slotState": "winner_by_default",
+                "gscrl_player_name": "Bladezilla"
             }
         ],
         "state": "done",
@@ -1735,7 +1810,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-2",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Hypnovision"
             },
             {
                 "gameID": "L-1",
@@ -1745,7 +1821,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-3",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Topper"
             }
         ],
         "state": "done",
@@ -1777,7 +1854,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-5",
                 "score": 0,
-                "slotState": "winner_by_default"
+                "slotState": "winner_by_default",
+                "gscrl_player_name": "Rabot"
             }
         ],
         "state": "done",
@@ -1809,7 +1887,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-6",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Strikerbite"
             },
             {
                 "gameID": "L-3",
@@ -1819,7 +1898,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-7",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Robomouse"
             }
         ],
         "state": "done",
@@ -1851,7 +1931,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-11",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Frostbyte"
             },
             {
                 "gameID": "L-4",
@@ -1861,7 +1942,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-0",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Bladezilla"
             }
         ],
         "state": "done",
@@ -1893,7 +1975,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-10",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Ipso Facto"
             },
             {
                 "gameID": "L-5",
@@ -1903,7 +1986,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-1",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Topper"
             }
         ],
         "state": "done",
@@ -1935,7 +2019,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-9",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Phantom"
             },
             {
                 "gameID": "L-6",
@@ -1945,7 +2030,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-2",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Rabot"
             }
         ],
         "state": "done",
@@ -1977,7 +2063,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-8",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Death Rattle"
             },
             {
                 "gameID": "L-7",
@@ -1987,7 +2074,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-3",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Robomouse"
             }
         ],
         "state": "done",
@@ -2019,7 +2107,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-4",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Frostbyte"
             },
             {
                 "gameID": "L-8",
@@ -2029,7 +2118,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-5",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Ipso Facto"
             }
         ],
         "state": "done",
@@ -2061,7 +2151,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-6",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Phantom"
             },
             {
                 "gameID": "L-9",
@@ -2071,7 +2162,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-7",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Robomouse"
             }
         ],
         "state": "done",
@@ -2103,7 +2195,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-12",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Lowbot"
             },
             {
                 "gameID": "L-10",
@@ -2113,7 +2206,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-8",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Ipso Facto"
             }
         ],
         "state": "done",
@@ -2145,7 +2239,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-13",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Bumblebee"
             },
             {
                 "gameID": "L-11",
@@ -2155,7 +2250,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-9",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Robomouse"
             }
         ],
         "state": "done",
@@ -2187,7 +2283,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-10",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Ipso Facto"
             },
             {
                 "gameID": "L-12",
@@ -2197,7 +2294,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-11",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Bumblebee"
             }
         ],
         "state": "done",
@@ -2229,7 +2327,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-14",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Dulce de Lucha"
             },
             {
                 "gameID": "L-13",
@@ -2239,7 +2338,8 @@
                 "waitingTime": null,
                 "prevGameID": "L-12",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Bumblebee"
             }
         ],
         "state": "done",
@@ -2271,7 +2371,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-GF",
                 "score": 0,
-                "slotState": "loser"
+                "slotState": "loser",
+                "gscrl_player_name": "Cheesecake"
             },
             {
                 "gameID": "W-TF",
@@ -2281,7 +2382,8 @@
                 "waitingTime": null,
                 "prevGameID": "W-GF",
                 "score": 1,
-                "slotState": "winner"
+                "slotState": "winner",
+                "gscrl_player_name": "Dulce de Lucha"
             }
         ],
         "state": "done",

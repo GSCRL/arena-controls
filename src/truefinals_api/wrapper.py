@@ -12,13 +12,21 @@ Terrible and only used for when the filtering to remove byes doesn't work."""
 
 
 class Matches:
-    def __init__(self, eventID=None, matches=None):
-        self._eventID = eventID
-        self._matches = matches
-        self.multiple_tournaments = None
+    def __init__(
+        self,
+        eventID=None,
+        matches: list = None,
+        multiple_tournaments: bool = None,
+        competitors: list = None,
+    ):
+        self._eventID: str = eventID
+        self._matches: list = matches
+        self._competitors: list = competitors
+        self._multiple_tournaments: bool = multiple_tournaments
 
         if self._matches is None and self._eventID != None:
             self._matches = getAllGames(self._eventID)
+            self._competitors = getAllPlayersInTournament(self._eventID)
 
         if self._eventID != None:
             for match in self._matches:
@@ -27,12 +35,38 @@ class Matches:
                     # In the event the eventID is none, the tournamentID of a given match should be added to said construction.
                     # If already present, skip it.  This allows merging of matches of multiple tournaments together fairly "easily".
 
+            self.backfillNames()
+
         # This captures if an erroneous list is merged / combined, having a single tournamentID does not apply anymore.
-        if self.multiple_tournaments:
+        if self._multiple_tournaments:
             self._eventID = None
 
     def __repr__(self):
         return {"tournamentID": self._eventID, "matches": self._matches}
+
+    def backfillNames(self, competitors: list = None):
+        _matches = deepcopy(self)
+        if self._competitors is None and self._eventID != None:
+            self._competitors = getAllPlayersInTournament(self._eventID)
+
+        def _getCompetitorNameById(competitor_id: str):
+            for c in self._competitors:
+                if c["id"] == competitor_id:
+                    return c["name"]
+            return None
+
+        for m in self._matches:
+            for slot in m["slots"]:
+                if not slot["playerID"].startswith("bye"):
+                    #print(type(slot))
+                    #print(dir(slot))
+                    #pprint(slot)
+                    slot['gscrl_player_name'] = _getCompetitorNameById(
+                        slot["playerID"]
+                    )
+                    # slot['gscrl_wlt'] ==
+
+        return _matches
 
     def withFilter(self, filterFunction: Callable):
         matches = deepcopy(self._matches)
@@ -63,7 +97,7 @@ class Matches:
 
         new_matches = Matches(None, matches=matches)
         if self._eventID != event2._eventID:
-            new_matches.multiple_tournaments = True
+            new_matches._multiple_tournaments = True
 
         return new_matches
 
