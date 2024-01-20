@@ -4,8 +4,8 @@ from truefinals_api.wrapper import TrueFinals
 
 
 tf = TrueFinals()
-event1 = tf.getAllMatches("68d77a7eae4e49bf")
-event2 = tf.getAllMatches("e0b2a154ac3e44f4")
+event1 = tf.getAllMatches("68d77a7eae4e49bf", weightclass="Plastic Ant")
+event2 = tf.getAllMatches("e0b2a154ac3e44f4", weightclass="Ants")
 
 combined = (
     event1.extends(event2)

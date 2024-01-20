@@ -18,11 +18,13 @@ class Matches:
         matches: list = None,
         multiple_tournaments: bool = None,
         competitors: list = None,
+        weightclass: str = None,
     ):
         self._eventID: str = eventID
         self._matches: list = matches
         self._competitors: list = competitors
         self._multiple_tournaments: bool = multiple_tournaments
+        self._weightclass = weightclass
 
         if self._matches is None and self._eventID != None:
             self._matches = getAllGames(self._eventID)
@@ -30,10 +32,15 @@ class Matches:
 
         if self._eventID != None:
             for match in self._matches:
+                # In the event the eventID is none, the tournamentID of a given match should be added to said construction.
+                # If already present, skip it.  This allows merging of matches of multiple tournaments together fairly "easily".
                 if "tournamentID" not in match:
                     match["tournamentID"] = self._eventID
-                    # In the event the eventID is none, the tournamentID of a given match should be added to said construction.
-                    # If already present, skip it.  This allows merging of matches of multiple tournaments together fairly "easily".
+
+                # Same logic to filter by weightclass in the output / render it.
+                if 'weightclass' not in match:
+                    match['weightclass'] = self._weightclass
+                    
 
             self.backfillNames()
 
@@ -113,8 +120,8 @@ class TrueFinals:
         players = getAllPlayersInTournament(self._credentials, tournamentID)
         return players
 
-    def getAllMatches(self, tournamentID: str) -> Matches:
-        matches = Matches(eventID=tournamentID)
+    def getAllMatches(self, tournamentID: str, weightclass: str=None) -> Matches:
+        matches = Matches(eventID=tournamentID, weightclass=weightclass)
         return matches
 
     def getFinishedMatches(self, tournamentID: str) -> list[dict]:
