@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 from flask_caching import Cache
-from flask_socketio import SocketIO, emit, join_room, leave_room
+from flask_socketio import SocketIO, emit, join_room
 
 from config import settings as arena_settings
 from screens.user_screens import user_screens

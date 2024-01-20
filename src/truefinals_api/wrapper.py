@@ -1,12 +1,10 @@
 import json
-import logging
-import time
+from copy import deepcopy
 from pathlib import Path
-from pprint import pprint
-from typing import Self
+from typing import Callable, Self
 
 from config import settings as arena_settings
-from truefinals_api.api import getAllGames, getAllPlayersInTournament, getAllTourneys
+from truefinals_api.api import getAllGames, getAllPlayersInTournament
 
 """Helper function to check whether the player is a legitimate player or to get a bye.
 
@@ -17,19 +15,36 @@ class Matches:
     def __init__(self, eventID=None, matches=None):
         self._eventID = eventID
         self._matches = matches
+        self.multiple_tournaments = None
 
         if self._matches is None and self._eventID != None:
             self._matches = getAllGames(self._eventID)
 
+        if self._eventID != None:
+            for match in self._matches:
+                if "tournamentID" not in match:
+                    match["tournamentID"] = self._eventID
+                    # In the event the eventID is none, the tournamentID of a given match should be added to said construction.
+                    # If already present, skip it.  This allows merging of matches of multiple tournaments together fairly "easily".
+
+        # This captures if an erroneous list is merged / combined, having a single tournamentID does not apply anymore.
+        if self.multiple_tournaments:
+            self._eventID = None
+
     def __repr__(self):
         return {"tournamentID": self._eventID, "matches": self._matches}
 
-    # Todo, accept arbitrary lambda so this greatly simplifies our user-side code I guess?  idk.
-    def withFilter(self, filterFunction):
-        pass
+    def withFilter(self, filterFunction: Callable):
+        matches = deepcopy(self._matches)
+        matches = [x for x in matches if filterFunction(x)]
+
+        return Matches(self._eventID, matches)
+
+    def inOrder(self, orderFilter: Callable):
+        return
 
     def withoutByes(self):
-        _matches = self._matches
+        _matches = deepcopy(self._matches)
         for m in _matches:
             m["slots"] = [c for c in m["slots"] if not c["playerID"].startswith("bye")]
 
@@ -39,41 +54,18 @@ class Matches:
         with open(Path(path), "w") as output:
             output.write(json.dumps(self._matches, indent=4))
 
+    def extends(self, event2: Self):
+        matches = deepcopy(self._matches)
+        if event2._matches not in [None, []]:
+            for m2 in event2._matches:
+                if "tournamentID" in m2:
+                    matches.append(m2)
 
-class Match:
-    def __init__(self, match_item: dict):
-        self.match_json_original = match_item
-        self.players = self.match_json_original["slots"]
+        new_matches = Matches(None, matches=matches)
+        if self._eventID != event2._eventID:
+            new_matches.multiple_tournaments = True
 
-    # Todo, test.
-    def numPlayers(self, includeByes=False):
-        if includeByes:  # Should include all competitors in a given match.
-            return len(self.players)
-        return len([x for x in self.players if x["playerID"] is None])
-
-    def matchState(self):
-        return self.match_json_original["state"]
-
-    def backfillPlayerWLT(self, allCompetitors: list):
-        def _playerIDToName(allCompetitors: list, playerID: str):
-            for c in allCompetitors:
-                if c["id"] is playerID:
-                    return c
-            if playerID.startswith("bye"):
-                return self._generateBye()
-            logging.warning(
-                f"did not find competitor, oops!  Was looking for {playerID}"
-            )
-
-        def _generateBye(self):
-            return {
-                "name": "Bye",
-                "seed": -1,
-                "wins": -1,
-                "losses": -1,
-                "ties": -1,
-                "bye": True,
-            }
+        return new_matches
 
 
 class TrueFinals:

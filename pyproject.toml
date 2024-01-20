@@ -18,8 +18,8 @@ dynaconf = "^3.2.4"
 [tool.poetry.group.dev.dependencies]
 black = "^23.11.0"
 djlint = "^1.34.1"
-autoflake = "^2.2.1"
 isort = "^5.13.2"
+pyproject-autoflake = "^1.0.2"
 
 [build-system]
 requires = ["poetry-core"]
@@ -30,3 +30,23 @@ profile="jinja"
 
 [tool.isort]
 profile = "black"
+
+[tool.autoflake]
+# return error code if changes are needed
+check = false
+# make changes to files instead of printing diffs
+in-place = true
+# drill down directories recursively
+recursive = true
+# exclude file/directory names that match these comma-separated globs
+exclude = "<GLOBS>"
+# by default, only unused standard library imports are removed; specify a comma-separated list of additional
+# modules/packages
+imports = "<IMPORTS>"
+# expand wildcard star imports with undefined names; this only triggers if there is only one star import in
+# the file; this is skipped if there are any uses of `__all__` or `del` in the file
+expand-star-imports = true
+# remove all unused imports (not just those from the standard library)
+remove-all-unused-imports = true
+# exclude __init__.py when removing unused imports
+ignore-init-module-imports = true

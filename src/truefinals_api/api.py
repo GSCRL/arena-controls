@@ -3,7 +3,6 @@ import logging
 
 import httpx
 
-from config import settings
 from config import settings as arena_settings
 
 # Very much a WIP.  While we _can_ use OpenAPI to generate all of the API interfaces automagically, it'll likely only implement the functions needed below.
