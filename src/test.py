@@ -1,7 +1,6 @@
-
 from truefinals_api.wrapper import TrueFinals
 
-#logging.basicConfig(level="INFO")
+# logging.basicConfig(level="INFO")
 
 
 tf = TrueFinals()

@@ -49,22 +49,22 @@ class Matches:
         if self._competitors is None and self._eventID != None:
             self._competitors = getAllPlayersInTournament(self._eventID)
 
-        def _getCompetitorNameById(competitor_id: str):
+        def _getCompetitorById(competitor_id: str):
             for c in self._competitors:
                 if c["id"] == competitor_id:
-                    return c["name"]
+                    return c
             return None
 
         for m in self._matches:
             for slot in m["slots"]:
                 if not slot["playerID"].startswith("bye"):
-                    #print(type(slot))
-                    #print(dir(slot))
-                    #pprint(slot)
-                    slot['gscrl_player_name'] = _getCompetitorNameById(
-                        slot["playerID"]
-                    )
-                    # slot['gscrl_wlt'] ==
+                    _competitor = _getCompetitorById(slot["playerID"])
+                    slot["gscrl_player_name"] = _competitor["name"]
+                    slot["gscrl_wlt"] = {
+                        "w": _competitor["wins"],
+                        "l": _competitor["losses"],
+                        "t": _competitor["ties"],
+                    }
 
         return _matches
 
