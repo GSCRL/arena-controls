@@ -1,0 +1,997 @@
+[
+    {
+        "id": "W-0",
+        "name": "",
+        "bracketID": "W",
+        "round": 0,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-0",
+                "slotIdx": 0,
+                "playerID": "4d16c7384ef94d34",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": null,
+                "score": 0,
+                "slotState": "winner_by_default"
+            }
+        ],
+        "state": "done",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": 1705157767220,
+        "nextGameSlotIDs": [
+            "W-8+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": "BY",
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "W-1",
+        "name": "W:1-1",
+        "bracketID": "W",
+        "round": 0,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-1",
+                "slotIdx": 0,
+                "playerID": "6d9fb1a5c8d544ae",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": null,
+                "score": 1,
+                "slotState": "winner"
+            },
+            {
+                "gameID": "W-1",
+                "slotIdx": 1,
+                "playerID": "9d3c629c56194b70",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": null,
+                "score": 0,
+                "slotState": "loser"
+            }
+        ],
+        "state": "done",
+        "activeSince": 1705163721359,
+        "availableSince": 1705160652411,
+        "calledSince": 1705163406462,
+        "endTime": 1705163989267,
+        "nextGameSlotIDs": [
+            "W-8+1",
+            "L-4+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "W-2",
+        "name": "",
+        "bracketID": "W",
+        "round": 0,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-2",
+                "slotIdx": 0,
+                "playerID": "0b95da0991094598",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": null,
+                "score": 0,
+                "slotState": "winner_by_default"
+            }
+        ],
+        "state": "done",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": 1705157767220,
+        "nextGameSlotIDs": [
+            "W-9+0",
+            "L-5+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": "BY",
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "W-3",
+        "name": "",
+        "bracketID": "W",
+        "round": 0,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-3",
+                "slotIdx": 0,
+                "playerID": "6f736fbe76a743f8",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": null,
+                "score": 0,
+                "slotState": "winner_by_default"
+            }
+        ],
+        "state": "done",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": 1705157767220,
+        "nextGameSlotIDs": [
+            "W-9+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": "BY",
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "W-4",
+        "name": "",
+        "bracketID": "W",
+        "round": 0,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-4",
+                "slotIdx": 0,
+                "playerID": "407a14d8fcfa48c6",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": null,
+                "score": 0,
+                "slotState": "winner_by_default"
+            }
+        ],
+        "state": "done",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": 1705157767220,
+        "nextGameSlotIDs": [
+            "W-10+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": "BY",
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "W-5",
+        "name": "W:1-2",
+        "bracketID": "W",
+        "round": 0,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-5",
+                "slotIdx": 0,
+                "playerID": "20ddfa6b896241af",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": null,
+                "score": 0,
+                "slotState": "loser"
+            },
+            {
+                "gameID": "W-5",
+                "slotIdx": 1,
+                "playerID": "ad5c21ffedd14893",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": null,
+                "score": 1,
+                "slotState": "winner"
+            }
+        ],
+        "state": "done",
+        "activeSince": 1705164020364,
+        "availableSince": 1705160652411,
+        "calledSince": 1705163725859,
+        "endTime": 1705164275461,
+        "nextGameSlotIDs": [
+            "W-10+1",
+            "L-6+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "W-6",
+        "name": "",
+        "bracketID": "W",
+        "round": 0,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-6",
+                "slotIdx": 0,
+                "playerID": "2a14f26b71e546e5",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": null,
+                "score": 0,
+                "slotState": "winner_by_default"
+            }
+        ],
+        "state": "done",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": 1705157767220,
+        "nextGameSlotIDs": [
+            "W-11+0",
+            "L-7+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": "BY",
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "W-7",
+        "name": "",
+        "bracketID": "W",
+        "round": 0,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-7",
+                "slotIdx": 0,
+                "playerID": "1f2f4ab7f79f43f0",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": null,
+                "score": 0,
+                "slotState": "winner_by_default"
+            }
+        ],
+        "state": "done",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": 1705157767220,
+        "nextGameSlotIDs": [
+            "W-11+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": "BY",
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "W-8",
+        "name": "W:2-1",
+        "bracketID": "W",
+        "round": 1,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-8",
+                "slotIdx": 0,
+                "playerID": "4d16c7384ef94d34",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-0",
+                "score": 1,
+                "slotState": "winner"
+            },
+            {
+                "gameID": "W-8",
+                "slotIdx": 1,
+                "playerID": "6d9fb1a5c8d544ae",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-1",
+                "score": 0,
+                "slotState": "loser"
+            }
+        ],
+        "state": "done",
+        "activeSince": 1705172149123,
+        "availableSince": 1705163989267,
+        "calledSince": 1705171743336,
+        "endTime": 1705172498571,
+        "nextGameSlotIDs": [
+            "W-12+0",
+            "L-7+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "W-9",
+        "name": "W:2-2",
+        "bracketID": "W",
+        "round": 1,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-9",
+                "slotIdx": 0,
+                "playerID": "0b95da0991094598",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-2",
+                "score": 0,
+                "slotState": "loser"
+            },
+            {
+                "gameID": "W-9",
+                "slotIdx": 1,
+                "playerID": "6f736fbe76a743f8",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-3",
+                "score": 1,
+                "slotState": "winner"
+            }
+        ],
+        "state": "done",
+        "activeSince": 1705171542535,
+        "availableSince": 1705160652411,
+        "calledSince": 1705171214741,
+        "endTime": 1705171659150,
+        "nextGameSlotIDs": [
+            "W-12+1",
+            "L-6+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "W-10",
+        "name": "W:2-3",
+        "bracketID": "W",
+        "round": 1,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-10",
+                "slotIdx": 0,
+                "playerID": "407a14d8fcfa48c6",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-4",
+                "score": 1,
+                "slotState": "winner"
+            },
+            {
+                "gameID": "W-10",
+                "slotIdx": 1,
+                "playerID": "ad5c21ffedd14893",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-5",
+                "score": 0,
+                "slotState": "loser"
+            }
+        ],
+        "state": "done",
+        "activeSince": 1705171901966,
+        "availableSince": 1705164275461,
+        "calledSince": 1705171705454,
+        "endTime": 1705172062498,
+        "nextGameSlotIDs": [
+            "W-13+0",
+            "L-5+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "W-11",
+        "name": "W:2-4",
+        "bracketID": "W",
+        "round": 1,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-11",
+                "slotIdx": 0,
+                "playerID": "2a14f26b71e546e5",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-6",
+                "score": 1,
+                "slotState": "winner"
+            },
+            {
+                "gameID": "W-11",
+                "slotIdx": 1,
+                "playerID": "1f2f4ab7f79f43f0",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-7",
+                "score": 0,
+                "slotState": "loser"
+            }
+        ],
+        "state": "done",
+        "activeSince": 1705171695528,
+        "availableSince": 1705160652411,
+        "calledSince": null,
+        "endTime": 1705171874414,
+        "nextGameSlotIDs": [
+            "W-13+1",
+            "L-4+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "W-12",
+        "name": "W:3-1",
+        "bracketID": "W",
+        "round": 2,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-12",
+                "slotIdx": 0,
+                "playerID": "4d16c7384ef94d34",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-8",
+                "score": 0,
+                "slotState": "loser"
+            },
+            {
+                "gameID": "W-12",
+                "slotIdx": 1,
+                "playerID": "6f736fbe76a743f8",
+                "checkInTime": 1705175120128,
+                "waitingTime": null,
+                "prevGameID": "W-9",
+                "score": 1,
+                "slotState": "winner"
+            }
+        ],
+        "state": "done",
+        "activeSince": 1705175877900,
+        "availableSince": 1705172498571,
+        "calledSince": 1705175007973,
+        "endTime": 1705176173347,
+        "nextGameSlotIDs": [
+            "W-14+0",
+            "L-10+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "W-13",
+        "name": "W:3-2",
+        "bracketID": "W",
+        "round": 2,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-13",
+                "slotIdx": 0,
+                "playerID": "407a14d8fcfa48c6",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-10",
+                "score": 0,
+                "slotState": "loser"
+            },
+            {
+                "gameID": "W-13",
+                "slotIdx": 1,
+                "playerID": "2a14f26b71e546e5",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-11",
+                "score": 1,
+                "slotState": "winner"
+            }
+        ],
+        "state": "done",
+        "activeSince": null,
+        "availableSince": 1705172062498,
+        "calledSince": 1705175882605,
+        "endTime": 1705176578371,
+        "nextGameSlotIDs": [
+            "W-14+1",
+            "L-11+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "W-14",
+        "name": "W:4-1",
+        "bracketID": "W",
+        "round": 3,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-14",
+                "slotIdx": 0,
+                "playerID": "6f736fbe76a743f8",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-12",
+                "score": 1,
+                "slotState": "winner"
+            },
+            {
+                "gameID": "W-14",
+                "slotIdx": 1,
+                "playerID": "2a14f26b71e546e5",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-13",
+                "score": 0,
+                "slotState": "loser"
+            }
+        ],
+        "state": "done",
+        "activeSince": 1705180834096,
+        "availableSince": 1705176578372,
+        "calledSince": 1705180722493,
+        "endTime": 1705181208705,
+        "nextGameSlotIDs": [
+            "W-GF+0",
+            "L-13+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "W-GF",
+        "name": "GF",
+        "bracketID": "W",
+        "round": 4,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-GF",
+                "slotIdx": 0,
+                "playerID": "6f736fbe76a743f8",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-14",
+                "score": 1,
+                "slotState": "winner"
+            },
+            {
+                "gameID": "W-GF",
+                "slotIdx": 1,
+                "playerID": "2a14f26b71e546e5",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "L-13",
+                "score": 0,
+                "slotState": "loser"
+            }
+        ],
+        "state": "done",
+        "activeSince": 1705186257729,
+        "availableSince": 1705184838734,
+        "calledSince": 1705184875998,
+        "endTime": 1705186638537,
+        "nextGameSlotIDs": null,
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": 1,
+        "loserPlacement": 2
+    },
+    {
+        "id": "L-4",
+        "name": "L:1-1",
+        "bracketID": "L",
+        "round": 0,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-4",
+                "slotIdx": 0,
+                "playerID": "1f2f4ab7f79f43f0",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-11",
+                "score": -1,
+                "slotState": "loser_by_default"
+            },
+            {
+                "gameID": "L-4",
+                "slotIdx": 1,
+                "playerID": "9d3c629c56194b70",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-1",
+                "score": 0,
+                "slotState": "winner_by_default"
+            }
+        ],
+        "state": "done",
+        "activeSince": null,
+        "availableSince": 1705171874415,
+        "calledSince": 1705174449809,
+        "endTime": 1705174477357,
+        "nextGameSlotIDs": [
+            "L-8+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": "FF",
+        "winnerPlacement": null,
+        "loserPlacement": 9
+    },
+    {
+        "id": "L-5",
+        "name": "L:2-2",
+        "bracketID": "L",
+        "round": 0,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-5",
+                "slotIdx": 0,
+                "playerID": "ad5c21ffedd14893",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-10",
+                "score": 0,
+                "slotState": "winner_by_default"
+            }
+        ],
+        "state": "done",
+        "activeSince": null,
+        "availableSince": 1705172062498,
+        "calledSince": null,
+        "endTime": 1705172062498,
+        "nextGameSlotIDs": [
+            "L-8+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": "BY",
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "L-6",
+        "name": "L:1-2",
+        "bracketID": "L",
+        "round": 0,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-6",
+                "slotIdx": 0,
+                "playerID": "0b95da0991094598",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-9",
+                "score": 1,
+                "slotState": "winner"
+            },
+            {
+                "gameID": "L-6",
+                "slotIdx": 1,
+                "playerID": "20ddfa6b896241af",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-5",
+                "score": 0,
+                "slotState": "loser"
+            }
+        ],
+        "state": "done",
+        "activeSince": 1705174872570,
+        "availableSince": 1705171659150,
+        "calledSince": 1705174491181,
+        "endTime": 1705174977456,
+        "nextGameSlotIDs": [
+            "L-9+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": 9
+    },
+    {
+        "id": "L-7",
+        "name": "L:2-4",
+        "bracketID": "L",
+        "round": 0,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-7",
+                "slotIdx": 0,
+                "playerID": "6d9fb1a5c8d544ae",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-8",
+                "score": 0,
+                "slotState": "winner_by_default"
+            }
+        ],
+        "state": "done",
+        "activeSince": null,
+        "availableSince": 1705172498571,
+        "calledSince": null,
+        "endTime": 1705172498571,
+        "nextGameSlotIDs": [
+            "L-9+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": "BY",
+        "winnerPlacement": null,
+        "loserPlacement": null
+    },
+    {
+        "id": "L-8",
+        "name": "L:2-1",
+        "bracketID": "L",
+        "round": 1,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-8",
+                "slotIdx": 0,
+                "playerID": "9d3c629c56194b70",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "L-4",
+                "score": 1,
+                "slotState": "winner"
+            },
+            {
+                "gameID": "L-8",
+                "slotIdx": 1,
+                "playerID": "ad5c21ffedd14893",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "L-5",
+                "score": 0,
+                "slotState": "loser"
+            }
+        ],
+        "state": "done",
+        "activeSince": 1705177566514,
+        "availableSince": 1705174477357,
+        "calledSince": 1705177400014,
+        "endTime": 1705177871278,
+        "nextGameSlotIDs": [
+            "L-10+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": 7
+    },
+    {
+        "id": "L-9",
+        "name": "L:2-2",
+        "bracketID": "L",
+        "round": 1,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-9",
+                "slotIdx": 0,
+                "playerID": "0b95da0991094598",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "L-6",
+                "score": 0,
+                "slotState": "loser"
+            },
+            {
+                "gameID": "L-9",
+                "slotIdx": 1,
+                "playerID": "6d9fb1a5c8d544ae",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "L-7",
+                "score": 1,
+                "slotState": "winner"
+            }
+        ],
+        "state": "done",
+        "activeSince": null,
+        "availableSince": 1705174977456,
+        "calledSince": 1705177541087,
+        "endTime": 1705178998025,
+        "nextGameSlotIDs": [
+            "L-11+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": 7
+    },
+    {
+        "id": "L-10",
+        "name": "L:3-1",
+        "bracketID": "L",
+        "round": 2,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-10",
+                "slotIdx": 0,
+                "playerID": "4d16c7384ef94d34",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-12",
+                "score": 1,
+                "slotState": "winner"
+            },
+            {
+                "gameID": "L-10",
+                "slotIdx": 1,
+                "playerID": "9d3c629c56194b70",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "L-8",
+                "score": 0,
+                "slotState": "loser"
+            }
+        ],
+        "state": "done",
+        "activeSince": 1705180593165,
+        "availableSince": 1705177871278,
+        "calledSince": 1705180202109,
+        "endTime": 1705180815076,
+        "nextGameSlotIDs": [
+            "L-12+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": 5
+    },
+    {
+        "id": "L-11",
+        "name": "L:3-2",
+        "bracketID": "L",
+        "round": 2,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-11",
+                "slotIdx": 0,
+                "playerID": "407a14d8fcfa48c6",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-13",
+                "score": 0,
+                "slotState": "loser"
+            },
+            {
+                "gameID": "L-11",
+                "slotIdx": 1,
+                "playerID": "6d9fb1a5c8d544ae",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "L-9",
+                "score": 1,
+                "slotState": "winner"
+            }
+        ],
+        "state": "done",
+        "activeSince": null,
+        "availableSince": 1705178998025,
+        "calledSince": 1705181074577,
+        "endTime": 1705181532839,
+        "nextGameSlotIDs": [
+            "L-12+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": 5
+    },
+    {
+        "id": "L-12",
+        "name": "L:4-1",
+        "bracketID": "L",
+        "round": 3,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-12",
+                "slotIdx": 0,
+                "playerID": "4d16c7384ef94d34",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "L-10",
+                "score": 1,
+                "slotState": "winner"
+            },
+            {
+                "gameID": "L-12",
+                "slotIdx": 1,
+                "playerID": "6d9fb1a5c8d544ae",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "L-11",
+                "score": 0,
+                "slotState": "loser"
+            }
+        ],
+        "state": "done",
+        "activeSince": 1705182976564,
+        "availableSince": 1705181532839,
+        "calledSince": 1705181626739,
+        "endTime": 1705183569625,
+        "nextGameSlotIDs": [
+            "L-13+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": 4
+    },
+    {
+        "id": "L-13",
+        "name": "L:5-1",
+        "bracketID": "L",
+        "round": 4,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-13",
+                "slotIdx": 0,
+                "playerID": "2a14f26b71e546e5",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-14",
+                "score": 1,
+                "slotState": "winner"
+            },
+            {
+                "gameID": "L-13",
+                "slotIdx": 1,
+                "playerID": "4d16c7384ef94d34",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "L-12",
+                "score": 0,
+                "slotState": "loser"
+            }
+        ],
+        "state": "done",
+        "activeSince": 1705184345362,
+        "availableSince": 1705183569625,
+        "calledSince": 1705183572552,
+        "endTime": 1705184838734,
+        "nextGameSlotIDs": [
+            "W-GF+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": 3
+    }
+]

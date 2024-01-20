@@ -1,17 +1,19 @@
+import json
 import logging
 
 import httpx
 
 from config import settings
+from config import settings as arena_settings
 
 # Very much a WIP.  While we _can_ use OpenAPI to generate all of the API interfaces automagically, it'll likely only implement the functions needed below.
 
 
-def makeAPIRequest(endpoint: str, credentials: dict) -> list:
-    if len(credentials) != 2:
-        raise Exception(
-            """Credentials not in format of {"user_id": "","api_key":""}.  See TrueFinals API docs for more info."""
-        )
+def makeAPIRequest(endpoint: str) -> list:
+    if "truefinals" in arena_settings:
+        api_key = arena_settings.truefinals.api_key
+        user_id = arena_settings.truefinals.user_id
+        credentials = {"user_id": user_id, "api_key": api_key}
 
     headers = {
         "x-api-user-id": credentials["user_id"],
@@ -22,8 +24,12 @@ def makeAPIRequest(endpoint: str, credentials: dict) -> list:
 
     resp = httpx.get((f"{root_endpoint}{endpoint}"), headers=headers)
 
-    logging.info({resp, resp.url})
-    return resp.json()
+    logging.info({resp, resp.url, resp.status_code})
+    logging.info(json.dumps(resp.json(), indent=4))
+    if resp.json() != None:
+        return resp.json()
+    else:
+        return None
 
 
 def getAllTourneys(credentials) -> list[dict]:
@@ -31,12 +37,12 @@ def getAllTourneys(credentials) -> list[dict]:
     return x
 
 
-def getAllGames(credentials, tournamentID: str) -> list[dict]:
-    x = makeAPIRequest(f"/v1/tournaments/{tournamentID}/games", credentials)
+def getAllGames(tournamentID: str) -> list[dict]:
+    x = makeAPIRequest(f"/v1/tournaments/{tournamentID}/games")
     return x
 
 
-def getAllPlayersInTournament(credentials, tournamentID: str) -> list[dict]:
-    players = makeAPIRequest(f"/v1/tournaments/{tournamentID}/players", credentials)
+def getAllPlayersInTournament(tournamentID: str) -> list[dict]:
+    players = makeAPIRequest(f"/v1/tournaments/{tournamentID}/players")
 
     return players

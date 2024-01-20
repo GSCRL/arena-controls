@@ -124,5 +124,9 @@ def handle_message():
     emit("reset_screen_states", broadcast=True)
 
 
+import logging
+
+logging.basicConfig(level="INFO")
+
 if __name__ == "__main__":
-    socketio.run(app, host="192.168.8.250", port=80)
+    socketio.run(app, host="0.0.0.0", port=80)

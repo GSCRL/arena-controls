@@ -1,5 +1,6 @@
 import json
 import logging
+import time
 from pathlib import Path
 from pprint import pprint
 from typing import Self
@@ -13,8 +14,30 @@ Terrible and only used for when the filtering to remove byes doesn't work."""
 
 
 class Matches:
-    def __init__(self, eventID=None, credentials=None):
+    def __init__(self, eventID=None, matches=None):
+        self._eventID = eventID
+        self._matches = matches
+
+        if self._matches is None and self._eventID != None:
+            self._matches = getAllGames(self._eventID)
+
+    def __repr__(self):
+        return {"tournamentID": self._eventID, "matches": self._matches}
+
+    # Todo, accept arbitrary lambda so this greatly simplifies our user-side code I guess?  idk.
+    def withFilter(self, filterFunction):
         pass
+
+    def withoutByes(self):
+        _matches = self._matches
+        for m in _matches:
+            m["slots"] = [c for c in m["slots"] if not c["playerID"].startswith("bye")]
+
+        return Matches(self._eventID, matches=_matches)
+
+    def toFile(self, path: str):
+        with open(Path(path), "w") as output:
+            output.write(json.dumps(self._matches, indent=4))
 
 
 class Match:
@@ -27,10 +50,6 @@ class Match:
         if includeByes:  # Should include all competitors in a given match.
             return len(self.players)
         return len([x for x in self.players if x["playerID"] is None])
-
-    def removeByes(self) -> Self:
-        ## Return a list comprehension with the slots adjusted to not include bye'd "players" as competitors.
-        return self
 
     def matchState(self):
         return self.match_json_original["state"]
@@ -57,53 +76,6 @@ class Match:
             }
 
 
-# HELPER FUNCTION
-def _playerIDToName(competitors, playerID: str):
-    for c in competitors:
-        if c["id"] == playerID:
-            return c
-    if playerID.startswith("bye"):
-        return {
-            "name": "Bye",
-            "seed": -1,
-            "wins": -1,
-            "losses": -1,
-            "ties": -1,
-            "bye": True,
-        }
-    logging.warning(f"did not find competitor, oops!  Was looking for {playerID}")
-
-
-# HELPER FUNCTION
-def _backfill_byes_plus_wlt(competitors, matches):
-    for match in matches:
-        match["slots"] = [
-            x
-            for x in match["slots"]
-            if (x["playerID"] is not None) or (x["gameID"].startswith("GF"))
-        ]  # This filter will exclude grand finals / "TrueFinals" matches, so we need to verify it's not a grand finals match and exclude it.
-        for slot in match["slots"]:
-            if slot["playerID"] != None:
-                player_backfill = _playerIDToName(competitors, slot["playerID"])
-
-                if (
-                    "bye" in player_backfill
-                ):  # If we want to show bye'd matches, this can be commented out.
-                    match["has_bye"] = True
-
-                slot["gscrl_friendly_name"] = player_backfill["name"]
-                slot["gscrl_seed"] = player_backfill["seed"]
-                slot["gscrl_wlt"] = {
-                    "w": player_backfill["wins"],
-                    "l": player_backfill["losses"],
-                    "t": player_backfill["ties"],
-                }
-
-    matches = [x for x in matches if len(x["slots"]) != 0]
-
-    return matches
-
-
 class TrueFinals:
     def __init__(self):
         if "truefinals" in arena_settings:
@@ -112,87 +84,24 @@ class TrueFinals:
             self._credentials = {"user_id": user_id, "api_key": api_key}
 
     def getAllPlayersOfTournament(self, tournamentID: str) -> list[dict]:
-        return getAllPlayersInTournament(self._credentials, tournamentID)
+        players = getAllPlayersInTournament(self._credentials, tournamentID)
+        return players
 
-    def getAllTournaments(self) -> list[dict]:
-        return getAllTourneys(self._credentials)
+    def getAllMatches(self, tournamentID: str) -> Matches:
+        matches = Matches(eventID=tournamentID)
+        return matches
 
     def getFinishedMatches(self, tournamentID: str) -> list[dict]:
-        competitors = self.getAllPlayersOfTournament(tournamentID)
-        matches = getAllGames(self._credentials, tournamentID)
-
-        matches = _backfill_byes_plus_wlt(competitors, matches)
-
-        matches = [x for x in matches if x["state"] == "done" and not ("has_bye" in x)]
-
-        return matches
+        pass
 
     def getUnfinishedMatches(self, tournamentID: str) -> list[dict]:
-        competitors = self.getAllPlayersOfTournament(tournamentID)
-        matches = getAllGames(self._credentials, tournamentID)
-
-        matches = _backfill_byes_plus_wlt(competitors, matches)
-
-        matches = [x for x in matches if x["state"] != "done" and not ("has_bye" in x)]
-        return matches
+        pass
 
     def getMatchesInOrder(self, cross_div_matches: list):
-        flat_matches = []
-        for div in cross_div_matches:
-            for match in div["division"]:
-                match["gscrl_weightclass"] = div["weightclass"]
-                flat_matches.append(match)
-
-        pprint(flat_matches)
-
-        def _sortHelper(q):
-            # This function is going to have to build the entire bracket out to find the "last match"
-            #  and offset the match id proportionately to represent the order they're sorted in.
-            # This is due to the need to finish at the same time, such that if one bracket is N
-            # longer than another that one will be started N rounds later.
-
-            # Yes it's messy, good luck.
-
-            # q['availibleSince'] and q['calledSince'] are in millisecond unix time, GMT I _believe_.
-            return (
-                q["name"].split(":")[-1].split("-")[0],  # round index
-                q["name"].split(":")[0],  # bracketside, winners vs losers
-                q[
-                    "gscrl_weightclass"
-                ],  # weightclass name, used as a sort so we go in order between weightclasses even if the match numbers are the same.
-                q["name"].split(":")[-1].split("-")[-1],  # match index
-            )
-
-        flat_matches = sorted(flat_matches, key=_sortHelper, reverse=False)
-        # TODO SORT MATCHES PROPERLY, good luck.  See above comment.
-
-        # flat_matches = sorted(flat_matches, key=lambda match: match['calledSince']  else 0, reverse=True)
-        # Sort by the end time as well such thatr we can
-        return flat_matches
+        pass
 
     def getAllFinishedCrossDivMatches(self, divisions):
-        last_crossdiv_matches = []
-        for t in divisions:
-            temp_event_div = self.getFinishedMatches(t["id"])
-            last_crossdiv_matches.append(
-                {"weightclass": t["weightclass"], "division": temp_event_div}
-            )
-
-        orderedMatches = self.getMatchesInOrder(last_crossdiv_matches)
-
-        # We retrieve them in order for consistency
-        # and re-order them based on the last published end-time to avoid having a mess with the exposure of it.
-        # In the future the matches must be better represented / manipulated to expose to controls to simplify
-        # posting of scores without Kirstin needing to spend copious amounts of time.
-
-        return sorted(orderedMatches, key=lambda x: x["endTime"], reverse=True)
+        pass
 
     def getAllUnfinishedCrossDivMatches(self, divisions):
-        last_crossdiv_matches = []
-        for t in divisions:
-            temp_event_div = self.getUnfinishedMatches(t["id"])
-            last_crossdiv_matches.append(
-                {"weightclass": t["weightclass"], "division": temp_event_div}
-            )
-
-        return self.getMatchesInOrder(last_crossdiv_matches)
+        pass
