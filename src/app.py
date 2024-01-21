@@ -28,16 +28,19 @@ def index():
 def routeForUpcomingMatches():
     autoreload = request.args.get("autoreload")
 
-    upcoming_crossdiv_matches = (
+    matches = (
         truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
         .withoutByes()
         .withFilter(lambda x: x["state"] != "done")
         .withFilter(lambda x: len(x["slots"]) != 0)
         .done()
     )
+
+    matches.toFile("test.json")
+
     return render_template(
         "upcoming_matches.html",
-        div_matches=upcoming_crossdiv_matches,
+        div_matches=matches,
         autoreload=autoreload,
         cages=[{"name": "Big Steel", "id": 1}, {"name": "Old Green", "id": 2}],
         event_name=arena_settings.event_name,
@@ -53,8 +56,11 @@ def routeForLastMatches():
         truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
         .withoutByes()
         .withFilter(lambda x: x["state"] == "done")
+        .withFilter(lambda x: len(x["slots"]) != 0)
         .done()
     )
+
+    matches.toFile("test.json")
 
     return render_template(
         "last_matches.html",
@@ -114,7 +120,6 @@ def handle_message(tapout_msg: dict):
 @socketio.on("reset_screen_states")
 def handle_message():
     emit("reset_screen_states", broadcast=True)
-
 
 
 # logging.basicConfig(level="INFO")

@@ -9,15 +9,15 @@
       Upcoming Matches
     </p>
     {% if event_name %}
-    <p class="subtitle">
-      {{event_name}}
-    </p>
- {% endif %}
+      <p class="subtitle">
+        {{event_name}}
+      </p>
+    {% endif %}
 
   </div>
 
     {# This snippet is only applicable to multi-arena events.  This should avoid stuff breaking too egregiously. #}
-    {% if cages|length > 1%}
+    {% if cages|length > 1 %}
     <div class="hero-foot">
     <nav class="tabs is-boxed is-fullwidth">
       <div class="container">
@@ -57,38 +57,56 @@
             {% endif %}
             <td>{{ match.weightclass }} </td>
             <td>{{ match.name }}</td>
-            {% for competitor in match.slots %}
-            <td>
+            {% if match.state != "unavailable" %}
+              {% for competitor in match.slots %}
+              <td>
                   <b>{{ competitor.gscrl_player_name }}</b> 
                   {% if competitor['gscrl_wlt'] %}
-                  <div class="field is-grouped is-grouped-multiline">
-                    <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag">Wins</span>
-                      <span class="tag is-success is-light">{{ competitor['gscrl_wlt']['w'] }}</span>
+                    <div class="field is-grouped is-grouped-multiline">
+                      <div class="control">
+                      <div class="tags has-addons">
+                        <span class="tag">Wins</span>
+                        <span class="tag is-success is-light">{{ competitor['gscrl_wlt']['w'] }}</span>
+                      </div>
                     </div>
-                  </div>
-
-                  <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag">Losses</span>
-                      <span class="tag is-danger is-light">{{ competitor['gscrl_wlt']['l'] }}</span>
-                    </div>
-                  </div>
 
                     <div class="control">
-                    <div class="tags has-addons">
-                      <span class="tag">Ties</span>
-                      <span class="tag is-warning is-light">{{ competitor['gscrl_wlt']['t'] }}</span>
+                      <div class="tags has-addons">
+                        <span class="tag">Losses</span>
+                        <span class="tag is-danger is-light">{{ competitor['gscrl_wlt']['l'] }}</span>
+                      </div>
+                    </div>
+
+                      <div class="control">
+                      <div class="tags has-addons">
+                        <span class="tag">Ties</span>
+                        <span class="tag is-warning is-light">{{ competitor['gscrl_wlt']['t'] }}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-                  {% endif %}
+                {% endif %}
+                </td>
+              {% endfor %} <!-- closes competitor loop -->
+
+              {# Fancy catchall for unfinished / partially filled match. #}
+              {% if match.slots|length == 1 %} 
+              <td>
+                <i>waiting . . . </i>
               </td>
-            {% endfor %}
-            {% if match.slots|length == 1 %} 
-            <td>
+              {% endif %} <!-- closes out catchall for partially filled matches. -->
+
+            {% else %} <!-- catching for if a match has zero slots filled yet. -->
+            <td colspan=2>
               <i>waiting . . . </i>
+              <div class="field is-grouped is-grouped-multiline">
+                <div class="control">
+                <div class="tags has-addons">
+                  <span class="tag">Advances from </span>
+                  {% for slot in match.slots %}
+                  <span class="tag is-success is-light">{{ slot.prevGameID}}</span>
+                  {% endfor %}
+                </div>
+              </div>
             </td>
             {% endif %}
           </tr>
@@ -97,7 +115,7 @@
         {% else %}
         <p>There are no matches in the system yet to be marked as unfinished.  Either the event is done or the event has yet to start.</p>
         <p> Hang tight!</p>
-        {% endif %}
+    {% endif %}
   </section>
 
 {% endblock %}

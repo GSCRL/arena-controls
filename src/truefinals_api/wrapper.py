@@ -90,12 +90,7 @@ class Matches:
         return
 
     def withoutByes(self):
-        for m in self._matches:
-            m["slots"] = [
-                c
-                for c in m["slots"]
-                if c["playerID"] != None and not c["playerID"].startswith("bye")
-            ]
+        self._matches = [m for m in self._matches if m["resultAnnotation"] != "BY"]
 
         return self
 
@@ -155,9 +150,7 @@ class TrueFinals:
                 _matches.extend(
                     self.getAllMatches(
                         division_list[i]["id"], division_list[i]["weightclass"]
-                    )
-                    .toFile(f"./{division_list[i]['weightclass']}.json")
-                    .done()
+                    ).done()
                 )
             return _matches.done()
 

@@ -1,2907 +1,1761 @@
 [
     {
-        "id": "W-0",
-        "name": "",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-0",
-                "slotIdx": 0,
-                "playerID": "4d16c7384ef94d34",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "winner_by_default",
-                "gscrl_player_name": "Bottomfeeder",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": null,
-        "availableSince": null,
-        "calledSince": null,
-        "endTime": 1705157767220,
-        "nextGameSlotIDs": [
-            "W-8+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": "BY",
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "W-1",
-        "name": "W:1-1",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-1",
-                "slotIdx": 0,
-                "playerID": "6d9fb1a5c8d544ae",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Eschatology",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-1",
-                "slotIdx": 1,
-                "playerID": "9d3c629c56194b70",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Sweet Pea",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705163721359,
-        "availableSince": 1705160652411,
-        "calledSince": 1705163406462,
-        "endTime": 1705163989267,
-        "nextGameSlotIDs": [
-            "W-8+1",
-            "L-4+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "W-2",
-        "name": "",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-2",
-                "slotIdx": 0,
-                "playerID": "0b95da0991094598",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "winner_by_default",
-                "gscrl_player_name": "MC Hermie",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": null,
-        "availableSince": null,
-        "calledSince": null,
-        "endTime": 1705157767220,
-        "nextGameSlotIDs": [
-            "W-9+0",
-            "L-5+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": "BY",
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "W-3",
-        "name": "",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-3",
-                "slotIdx": 0,
-                "playerID": "6f736fbe76a743f8",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "winner_by_default",
-                "gscrl_player_name": "Ruby's Rayge",
-                "gscrl_wlt": {
-                    "w": 4,
-                    "l": 0,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": null,
-        "availableSince": null,
-        "calledSince": null,
-        "endTime": 1705157767220,
-        "nextGameSlotIDs": [
-            "W-9+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": "BY",
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "W-4",
-        "name": "",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-4",
-                "slotIdx": 0,
-                "playerID": "407a14d8fcfa48c6",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "winner_by_default",
-                "gscrl_player_name": "Block O' Cheese",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": null,
-        "availableSince": null,
-        "calledSince": null,
-        "endTime": 1705157767220,
-        "nextGameSlotIDs": [
-            "W-10+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": "BY",
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "W-5",
-        "name": "W:1-2",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-5",
-                "slotIdx": 0,
-                "playerID": "20ddfa6b896241af",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Trampoline",
-                "gscrl_wlt": {
-                    "w": 0,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-5",
-                "slotIdx": 1,
-                "playerID": "ad5c21ffedd14893",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Loaded Die",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705164020364,
-        "availableSince": 1705160652411,
-        "calledSince": 1705163725859,
-        "endTime": 1705164275461,
-        "nextGameSlotIDs": [
-            "W-10+1",
-            "L-6+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "W-6",
-        "name": "",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-6",
-                "slotIdx": 0,
-                "playerID": "2a14f26b71e546e5",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "winner_by_default",
-                "gscrl_player_name": "The Captain",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": null,
-        "availableSince": null,
-        "calledSince": null,
-        "endTime": 1705157767220,
-        "nextGameSlotIDs": [
-            "W-11+0",
-            "L-7+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": "BY",
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "W-7",
-        "name": "",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-7",
-                "slotIdx": 0,
-                "playerID": "1f2f4ab7f79f43f0",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "winner_by_default",
-                "gscrl_player_name": "Copacabana",
-                "gscrl_wlt": {
-                    "w": 0,
-                    "l": 1,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": null,
-        "availableSince": null,
-        "calledSince": null,
-        "endTime": 1705157767220,
-        "nextGameSlotIDs": [
-            "W-11+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": "BY",
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "W-8",
+        "id": "W-16",
         "name": "W:2-1",
         "bracketID": "W",
         "round": 1,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "W-8",
+                "gameID": "W-16",
                 "slotIdx": 0,
-                "playerID": "4d16c7384ef94d34",
+                "playerID": "83aee3f0dfd04b59",
                 "checkInTime": null,
                 "waitingTime": null,
                 "prevGameID": "W-0",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Bottomfeeder",
+                "score": 0,
+                "slotState": "pending",
+                "gscrl_player_name": "P1",
                 "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
+                    "w": 0,
+                    "l": 0,
                     "t": 0
                 }
             },
             {
-                "gameID": "W-8",
+                "gameID": "W-16",
                 "slotIdx": 1,
-                "playerID": "6d9fb1a5c8d544ae",
+                "playerID": "5aace86b564b4f51",
                 "checkInTime": null,
                 "waitingTime": null,
                 "prevGameID": "W-1",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Eschatology",
+                "slotState": "pending",
+                "gscrl_player_name": "P16",
                 "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
+                    "w": 1,
+                    "l": 0,
                     "t": 0
                 }
             }
         ],
-        "state": "done",
-        "activeSince": 1705172149123,
-        "availableSince": 1705163989267,
-        "calledSince": 1705171743336,
-        "endTime": 1705172498571,
+        "state": "available",
+        "activeSince": null,
+        "availableSince": 1705508329940,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "W-12+0",
-            "L-7+0"
+            "W-24+0",
+            "L-15+0"
         ],
         "locationID": null,
         "resultAnnotation": null,
         "winnerPlacement": null,
         "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "W-9",
+        "id": "W-17",
         "name": "W:2-2",
         "bracketID": "W",
         "round": 1,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "W-9",
+                "gameID": "W-17",
                 "slotIdx": 0,
-                "playerID": "0b95da0991094598",
+                "playerID": "9bcb3299bacd4641",
                 "checkInTime": null,
                 "waitingTime": null,
                 "prevGameID": "W-2",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "MC Hermie",
+                "slotState": "pending",
+                "gscrl_player_name": "P8",
                 "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
+                    "w": 0,
+                    "l": 0,
                     "t": 0
                 }
             },
             {
-                "gameID": "W-9",
+                "gameID": "W-17",
                 "slotIdx": 1,
-                "playerID": "6f736fbe76a743f8",
+                "playerID": "8bb86508d14e4139",
                 "checkInTime": null,
                 "waitingTime": null,
                 "prevGameID": "W-3",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Ruby's Rayge",
+                "score": 0,
+                "slotState": "pending",
+                "gscrl_player_name": "P9",
                 "gscrl_wlt": {
-                    "w": 4,
+                    "w": 0,
                     "l": 0,
                     "t": 0
                 }
             }
         ],
-        "state": "done",
-        "activeSince": 1705171542535,
-        "availableSince": 1705160652411,
-        "calledSince": 1705171214741,
-        "endTime": 1705171659150,
+        "state": "available",
+        "activeSince": null,
+        "availableSince": 1705270225890,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "W-12+1",
-            "L-6+0"
+            "W-24+1",
+            "L-14+0"
         ],
         "locationID": null,
         "resultAnnotation": null,
         "winnerPlacement": null,
         "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "W-10",
+        "id": "W-18",
         "name": "W:2-3",
         "bracketID": "W",
         "round": 1,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "W-10",
+                "gameID": "W-18",
                 "slotIdx": 0,
-                "playerID": "407a14d8fcfa48c6",
+                "playerID": "97a2f67088fa470e",
                 "checkInTime": null,
                 "waitingTime": null,
                 "prevGameID": "W-4",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Block O' Cheese",
+                "score": 0,
+                "slotState": "pending",
+                "gscrl_player_name": "P4",
                 "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
+                    "w": 0,
+                    "l": 0,
                     "t": 0
                 }
             },
             {
-                "gameID": "W-10",
+                "gameID": "W-18",
                 "slotIdx": 1,
-                "playerID": "ad5c21ffedd14893",
+                "playerID": "54274943567e4ed5",
                 "checkInTime": null,
                 "waitingTime": null,
                 "prevGameID": "W-5",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Loaded Die",
+                "slotState": "pending",
+                "gscrl_player_name": "P13",
                 "gscrl_wlt": {
                     "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705171901966,
-        "availableSince": 1705164275461,
-        "calledSince": 1705171705454,
-        "endTime": 1705172062498,
-        "nextGameSlotIDs": [
-            "W-13+0",
-            "L-5+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "W-11",
-        "name": "W:2-4",
-        "bracketID": "W",
-        "round": 1,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-11",
-                "slotIdx": 0,
-                "playerID": "2a14f26b71e546e5",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-6",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "The Captain",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-11",
-                "slotIdx": 1,
-                "playerID": "1f2f4ab7f79f43f0",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-7",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Copacabana",
-                "gscrl_wlt": {
-                    "w": 0,
-                    "l": 1,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705171695528,
-        "availableSince": 1705160652411,
-        "calledSince": null,
-        "endTime": 1705171874414,
-        "nextGameSlotIDs": [
-            "W-13+1",
-            "L-4+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "W-12",
-        "name": "W:3-1",
-        "bracketID": "W",
-        "round": 2,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-12",
-                "slotIdx": 0,
-                "playerID": "4d16c7384ef94d34",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-8",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Bottomfeeder",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-12",
-                "slotIdx": 1,
-                "playerID": "6f736fbe76a743f8",
-                "checkInTime": 1705175120128,
-                "waitingTime": null,
-                "prevGameID": "W-9",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Ruby's Rayge",
-                "gscrl_wlt": {
-                    "w": 4,
                     "l": 0,
                     "t": 0
                 }
             }
         ],
-        "state": "done",
-        "activeSince": 1705175877900,
-        "availableSince": 1705172498571,
-        "calledSince": 1705175007973,
-        "endTime": 1705176173347,
-        "nextGameSlotIDs": [
-            "W-14+0",
-            "L-10+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "W-13",
-        "name": "W:3-2",
-        "bracketID": "W",
-        "round": 2,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-13",
-                "slotIdx": 0,
-                "playerID": "407a14d8fcfa48c6",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-10",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Block O' Cheese",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-13",
-                "slotIdx": 1,
-                "playerID": "2a14f26b71e546e5",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-11",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "The Captain",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
+        "state": "available",
         "activeSince": null,
-        "availableSince": 1705172062498,
-        "calledSince": 1705175882605,
-        "endTime": 1705176578371,
+        "availableSince": 1705508352941,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "W-14+1",
-            "L-11+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "W-14",
-        "name": "W:4-1",
-        "bracketID": "W",
-        "round": 3,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-14",
-                "slotIdx": 0,
-                "playerID": "6f736fbe76a743f8",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-12",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Ruby's Rayge",
-                "gscrl_wlt": {
-                    "w": 4,
-                    "l": 0,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-14",
-                "slotIdx": 1,
-                "playerID": "2a14f26b71e546e5",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-13",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "The Captain",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705180834096,
-        "availableSince": 1705176578372,
-        "calledSince": 1705180722493,
-        "endTime": 1705181208705,
-        "nextGameSlotIDs": [
-            "W-GF+0",
+            "W-25+0",
             "L-13+0"
         ],
         "locationID": null,
         "resultAnnotation": null,
         "winnerPlacement": null,
         "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "W-GF",
-        "name": "GF",
+        "id": "W-19",
+        "name": "W:2-4",
         "bracketID": "W",
-        "round": 4,
+        "round": 1,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "W-GF",
+                "gameID": "W-19",
                 "slotIdx": 0,
-                "playerID": "6f736fbe76a743f8",
+                "playerID": "9316bc1ad0734d0b",
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "W-14",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Ruby's Rayge",
+                "prevGameID": "W-6",
+                "score": 0,
+                "slotState": "pending",
+                "gscrl_player_name": "P5",
                 "gscrl_wlt": {
-                    "w": 4,
+                    "w": 0,
                     "l": 0,
                     "t": 0
                 }
             },
             {
-                "gameID": "W-GF",
+                "gameID": "W-19",
                 "slotIdx": 1,
-                "playerID": "2a14f26b71e546e5",
+                "playerID": "0f693874efda4f7d",
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "L-13",
+                "prevGameID": "W-7",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "The Captain",
+                "slotState": "pending",
+                "gscrl_player_name": "P12",
                 "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
+                    "w": 0,
+                    "l": 0,
                     "t": 0
                 }
             }
         ],
-        "state": "done",
-        "activeSince": 1705186257729,
-        "availableSince": 1705184838734,
-        "calledSince": 1705184875998,
-        "endTime": 1705186638537,
+        "state": "available",
+        "activeSince": null,
+        "availableSince": 1705270225890,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "W-25+1",
+            "L-12+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "W-20",
+        "name": "W:2-5",
+        "bracketID": "W",
+        "round": 1,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-20",
+                "slotIdx": 0,
+                "playerID": "901292518ec94730",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-8",
+                "score": 0,
+                "slotState": "pending",
+                "gscrl_player_name": "P2",
+                "gscrl_wlt": {
+                    "w": 0,
+                    "l": 0,
+                    "t": 0
+                }
+            },
+            {
+                "gameID": "W-20",
+                "slotIdx": 1,
+                "playerID": "1403c9bc1efe419d",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-9",
+                "score": 0,
+                "slotState": "pending",
+                "gscrl_player_name": "P15",
+                "gscrl_wlt": {
+                    "w": 1,
+                    "l": 0,
+                    "t": 0
+                }
+            }
+        ],
+        "state": "available",
+        "activeSince": null,
+        "availableSince": 1705508356789,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "W-26+0",
+            "L-11+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "W-21",
+        "name": "W:2-6",
+        "bracketID": "W",
+        "round": 1,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-21",
+                "slotIdx": 0,
+                "playerID": "9119ffc2ee0c46f6",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-10",
+                "score": 0,
+                "slotState": "pending",
+                "gscrl_player_name": "P7",
+                "gscrl_wlt": {
+                    "w": 0,
+                    "l": 0,
+                    "t": 0
+                }
+            },
+            {
+                "gameID": "W-21",
+                "slotIdx": 1,
+                "playerID": "d8360af3aad3448b",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-11",
+                "score": 0,
+                "slotState": "pending",
+                "gscrl_player_name": "P10",
+                "gscrl_wlt": {
+                    "w": 0,
+                    "l": 0,
+                    "t": 0
+                }
+            }
+        ],
+        "state": "available",
+        "activeSince": null,
+        "availableSince": 1705270225890,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "W-26+1",
+            "L-10+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "W-22",
+        "name": "W:2-7",
+        "bracketID": "W",
+        "round": 1,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-22",
+                "slotIdx": 0,
+                "playerID": "4cb37b02745d4eaa",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-12",
+                "score": 0,
+                "slotState": "pending",
+                "gscrl_player_name": "P3",
+                "gscrl_wlt": {
+                    "w": 0,
+                    "l": 0,
+                    "t": 0
+                }
+            },
+            {
+                "gameID": "W-22",
+                "slotIdx": 1,
+                "playerID": "8bb2600f73de4460",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-13",
+                "score": 0,
+                "slotState": "pending",
+                "gscrl_player_name": "P19",
+                "gscrl_wlt": {
+                    "w": 0,
+                    "l": 0,
+                    "t": 0
+                }
+            }
+        ],
+        "state": "available",
+        "activeSince": null,
+        "availableSince": 1705508362967,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "W-27+0",
+            "L-9+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "W-23",
+        "name": "W:2-8",
+        "bracketID": "W",
+        "round": 1,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-23",
+                "slotIdx": 0,
+                "playerID": "42ea1fd0095f49a9",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-14",
+                "score": 0,
+                "slotState": "pending",
+                "gscrl_player_name": "P6",
+                "gscrl_wlt": {
+                    "w": 0,
+                    "l": 0,
+                    "t": 0
+                }
+            },
+            {
+                "gameID": "W-23",
+                "slotIdx": 1,
+                "playerID": "d4c60b52b19d4b44",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-15",
+                "score": 0,
+                "slotState": "pending",
+                "gscrl_player_name": "P11",
+                "gscrl_wlt": {
+                    "w": 0,
+                    "l": 0,
+                    "t": 0
+                }
+            }
+        ],
+        "state": "available",
+        "activeSince": null,
+        "availableSince": 1705270225890,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "W-27+1",
+            "L-8+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "W-24",
+        "name": "W:3-1",
+        "bracketID": "W",
+        "round": 2,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-24",
+                "slotIdx": 0,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-16",
+                "score": 0,
+                "slotState": "pending"
+            },
+            {
+                "gameID": "W-24",
+                "slotIdx": 1,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-17",
+                "score": 0,
+                "slotState": "pending"
+            }
+        ],
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "W-28+0",
+            "L-21+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "W-25",
+        "name": "W:3-2",
+        "bracketID": "W",
+        "round": 2,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-25",
+                "slotIdx": 0,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-18",
+                "score": 0,
+                "slotState": "pending"
+            },
+            {
+                "gameID": "W-25",
+                "slotIdx": 1,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-19",
+                "score": 0,
+                "slotState": "pending"
+            }
+        ],
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "W-28+1",
+            "L-20+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "W-26",
+        "name": "W:3-3",
+        "bracketID": "W",
+        "round": 2,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-26",
+                "slotIdx": 0,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-20",
+                "score": 0,
+                "slotState": "pending"
+            },
+            {
+                "gameID": "W-26",
+                "slotIdx": 1,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-21",
+                "score": 0,
+                "slotState": "pending"
+            }
+        ],
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "W-29+0",
+            "L-23+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "W-27",
+        "name": "W:3-4",
+        "bracketID": "W",
+        "round": 2,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-27",
+                "slotIdx": 0,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-22",
+                "score": 0,
+                "slotState": "pending"
+            },
+            {
+                "gameID": "W-27",
+                "slotIdx": 1,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-23",
+                "score": 0,
+                "slotState": "pending"
+            }
+        ],
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "W-29+1",
+            "L-22+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "W-28",
+        "name": "W:4-1",
+        "bracketID": "W",
+        "round": 3,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-28",
+                "slotIdx": 0,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-24",
+                "score": 0,
+                "slotState": "pending"
+            },
+            {
+                "gameID": "W-28",
+                "slotIdx": 1,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-25",
+                "score": 0,
+                "slotState": "pending"
+            }
+        ],
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "W-30+0",
+            "L-27+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "W-29",
+        "name": "W:4-2",
+        "bracketID": "W",
+        "round": 3,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-29",
+                "slotIdx": 0,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-26",
+                "score": 0,
+                "slotState": "pending"
+            },
+            {
+                "gameID": "W-29",
+                "slotIdx": 1,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-27",
+                "score": 0,
+                "slotState": "pending"
+            }
+        ],
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "W-30+1",
+            "L-26+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "W-30",
+        "name": "W:5-1",
+        "bracketID": "W",
+        "round": 4,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-30",
+                "slotIdx": 0,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-28",
+                "score": 0,
+                "slotState": "pending"
+            },
+            {
+                "gameID": "W-30",
+                "slotIdx": 1,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-29",
+                "score": 0,
+                "slotState": "pending"
+            }
+        ],
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "W-GF+0",
+            "L-29+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "W-GF",
+        "name": "GF",
+        "bracketID": "W",
+        "round": 5,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "W-GF",
+                "slotIdx": 0,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-30",
+                "score": 0,
+                "slotState": "pending"
+            },
+            {
+                "gameID": "W-GF",
+                "slotIdx": 1,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "L-29",
+                "score": 0,
+                "slotState": "pending"
+            }
+        ],
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": null,
         "locationID": null,
         "resultAnnotation": null,
-        "winnerPlacement": 1,
-        "loserPlacement": 2,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
+        "winnerPlacement": null,
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-4",
+        "id": "L-8",
         "name": "L:1-1",
         "bracketID": "L",
         "round": 0,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-4",
+                "gameID": "L-8",
                 "slotIdx": 0,
-                "playerID": "1f2f4ab7f79f43f0",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "W-11",
-                "score": -1,
-                "slotState": "loser_by_default",
-                "gscrl_player_name": "Copacabana",
+                "prevGameID": "W-23",
+                "score": 0,
+                "slotState": "pending"
+            },
+            {
+                "gameID": "L-8",
+                "slotIdx": 1,
+                "playerID": "d487e0df9da94316",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-1",
+                "score": 0,
+                "slotState": "pending",
+                "gscrl_player_name": "P17",
                 "gscrl_wlt": {
                     "w": 0,
                     "l": 1,
                     "t": 0
                 }
-            },
-            {
-                "gameID": "L-4",
-                "slotIdx": 1,
-                "playerID": "9d3c629c56194b70",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-1",
-                "score": 0,
-                "slotState": "winner_by_default",
-                "gscrl_player_name": "Sweet Pea",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
             }
         ],
-        "state": "done",
+        "state": "unavailable",
         "activeSince": null,
-        "availableSince": 1705171874415,
-        "calledSince": 1705174449809,
-        "endTime": 1705174477357,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "L-8+0"
+            "L-16+0"
         ],
         "locationID": null,
-        "resultAnnotation": "FF",
+        "resultAnnotation": null,
         "winnerPlacement": null,
-        "loserPlacement": 9,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
+        "loserPlacement": 17,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-5",
+        "id": "L-9",
         "name": "L:2-2",
         "bracketID": "L",
         "round": 0,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-5",
+                "gameID": "L-9",
                 "slotIdx": 0,
-                "playerID": "ad5c21ffedd14893",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "W-10",
+                "prevGameID": "W-22",
                 "score": 0,
-                "slotState": "winner_by_default",
-                "gscrl_player_name": "Loaded Die",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
+                "slotState": "pending"
+            },
+            {
+                "gameID": "L-9",
+                "slotIdx": 1,
+                "playerID": "bye-98307c5eae34435c",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-2",
+                "score": 0,
+                "slotState": "pending"
             }
         ],
-        "state": "done",
+        "state": "unavailable",
         "activeSince": null,
-        "availableSince": 1705172062498,
+        "availableSince": null,
         "calledSince": null,
-        "endTime": 1705172062498,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "L-8+1"
+            "L-16+1"
         ],
         "locationID": null,
-        "resultAnnotation": "BY",
+        "resultAnnotation": null,
         "winnerPlacement": null,
         "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-6",
+        "id": "L-10",
         "name": "L:1-2",
         "bracketID": "L",
         "round": 0,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-6",
+                "gameID": "L-10",
                 "slotIdx": 0,
-                "playerID": "0b95da0991094598",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "W-9",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "MC Hermie",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
+                "prevGameID": "W-21",
+                "score": 0,
+                "slotState": "pending"
             },
             {
-                "gameID": "L-6",
+                "gameID": "L-10",
                 "slotIdx": 1,
-                "playerID": "20ddfa6b896241af",
+                "playerID": "3af981f082134f80",
                 "checkInTime": null,
                 "waitingTime": null,
                 "prevGameID": "W-5",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Trampoline",
+                "slotState": "pending",
+                "gscrl_player_name": "P20",
                 "gscrl_wlt": {
                     "w": 0,
-                    "l": 2,
+                    "l": 1,
                     "t": 0
                 }
             }
         ],
-        "state": "done",
-        "activeSince": 1705174872570,
-        "availableSince": 1705171659150,
-        "calledSince": 1705174491181,
-        "endTime": 1705174977456,
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "L-9+0"
+            "L-17+0"
         ],
         "locationID": null,
         "resultAnnotation": null,
         "winnerPlacement": null,
-        "loserPlacement": 9,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
+        "loserPlacement": 17,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-7",
+        "id": "L-11",
         "name": "L:2-4",
         "bracketID": "L",
         "round": 0,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-7",
-                "slotIdx": 0,
-                "playerID": "6d9fb1a5c8d544ae",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-8",
-                "score": 0,
-                "slotState": "winner_by_default",
-                "gscrl_player_name": "Eschatology",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": null,
-        "availableSince": 1705172498571,
-        "calledSince": null,
-        "endTime": 1705172498571,
-        "nextGameSlotIDs": [
-            "L-9+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": "BY",
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "L-8",
-        "name": "L:2-1",
-        "bracketID": "L",
-        "round": 1,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "L-8",
-                "slotIdx": 0,
-                "playerID": "9d3c629c56194b70",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "L-4",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Sweet Pea",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "L-8",
-                "slotIdx": 1,
-                "playerID": "ad5c21ffedd14893",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "L-5",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Loaded Die",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705177566514,
-        "availableSince": 1705174477357,
-        "calledSince": 1705177400014,
-        "endTime": 1705177871278,
-        "nextGameSlotIDs": [
-            "L-10+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": 7,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "L-9",
-        "name": "L:2-2",
-        "bracketID": "L",
-        "round": 1,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "L-9",
-                "slotIdx": 0,
-                "playerID": "0b95da0991094598",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "L-6",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "MC Hermie",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "L-9",
-                "slotIdx": 1,
-                "playerID": "6d9fb1a5c8d544ae",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "L-7",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Eschatology",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": null,
-        "availableSince": 1705174977456,
-        "calledSince": 1705177541087,
-        "endTime": 1705178998025,
-        "nextGameSlotIDs": [
-            "L-11+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": 7,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "L-10",
-        "name": "L:3-1",
-        "bracketID": "L",
-        "round": 2,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "L-10",
-                "slotIdx": 0,
-                "playerID": "4d16c7384ef94d34",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-12",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Bottomfeeder",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "L-10",
-                "slotIdx": 1,
-                "playerID": "9d3c629c56194b70",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "L-8",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Sweet Pea",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705180593165,
-        "availableSince": 1705177871278,
-        "calledSince": 1705180202109,
-        "endTime": 1705180815076,
-        "nextGameSlotIDs": [
-            "L-12+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": 5,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "L-11",
-        "name": "L:3-2",
-        "bracketID": "L",
-        "round": 2,
-        "scoreToWin": 1,
-        "slots": [
-            {
                 "gameID": "L-11",
                 "slotIdx": 0,
-                "playerID": "407a14d8fcfa48c6",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "W-13",
+                "prevGameID": "W-20",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Block O' Cheese",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
+                "slotState": "pending"
             },
             {
                 "gameID": "L-11",
                 "slotIdx": 1,
-                "playerID": "6d9fb1a5c8d544ae",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "L-9",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Eschatology",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": null,
-        "availableSince": 1705178998025,
-        "calledSince": 1705181074577,
-        "endTime": 1705181532839,
-        "nextGameSlotIDs": [
-            "L-12+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": 5,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "L-12",
-        "name": "L:4-1",
-        "bracketID": "L",
-        "round": 3,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "L-12",
-                "slotIdx": 0,
-                "playerID": "4d16c7384ef94d34",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "L-10",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Bottomfeeder",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "L-12",
-                "slotIdx": 1,
-                "playerID": "6d9fb1a5c8d544ae",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "L-11",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Eschatology",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705182976564,
-        "availableSince": 1705181532839,
-        "calledSince": 1705181626739,
-        "endTime": 1705183569625,
-        "nextGameSlotIDs": [
-            "L-13+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": 4,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "L-13",
-        "name": "L:5-1",
-        "bracketID": "L",
-        "round": 4,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "L-13",
-                "slotIdx": 0,
-                "playerID": "2a14f26b71e546e5",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-14",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "The Captain",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "L-13",
-                "slotIdx": 1,
-                "playerID": "4d16c7384ef94d34",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "L-12",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Bottomfeeder",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705184345362,
-        "availableSince": 1705183569625,
-        "calledSince": 1705183572552,
-        "endTime": 1705184838734,
-        "nextGameSlotIDs": [
-            "W-GF+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": 3,
-        "tournamentID": "68d77a7eae4e49bf",
-        "weightclass": "Plastic Ant"
-    },
-    {
-        "id": "W-0",
-        "name": "",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-0",
-                "slotIdx": 0,
-                "playerID": "dc190ae5b1204fb4",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "winner_by_default",
-                "gscrl_player_name": "Lowbot",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": null,
-        "availableSince": null,
-        "calledSince": null,
-        "endTime": 1705160179021,
-        "nextGameSlotIDs": [
-            "W-8+0",
-            "L-0+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": "BY",
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-1",
-        "name": "W:1-1",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-1",
-                "slotIdx": 0,
-                "playerID": "8b40ade0a7e74b43",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Bladezilla",
-                "gscrl_wlt": {
-                    "w": 0,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-1",
-                "slotIdx": 1,
-                "playerID": "35b0969b7cc44534",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Death Rattle",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": null,
-        "availableSince": 1705160583543,
-        "calledSince": 1705160599108,
-        "endTime": 1705161275065,
-        "nextGameSlotIDs": [
-            "W-8+1",
-            "L-0+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-2",
-        "name": "W:1-2",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-2",
-                "slotIdx": 0,
-                "playerID": "e0951259917349f0",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Cheesecake",
-                "gscrl_wlt": {
-                    "w": 4,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-2",
-                "slotIdx": 1,
-                "playerID": "b853fa289d8c4b05",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Hypnovision",
-                "gscrl_wlt": {
-                    "w": 0,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705161293189,
-        "availableSince": 1705160583543,
-        "calledSince": null,
-        "endTime": 1705161469973,
-        "nextGameSlotIDs": [
-            "W-9+0",
-            "L-1+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-3",
-        "name": "W:1-3",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-3",
-                "slotIdx": 0,
-                "playerID": "100c6b30cded4e0a",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Phantom",
-                "gscrl_wlt": {
-                    "w": 2,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-3",
-                "slotIdx": 1,
-                "playerID": "69a169aeb64940c5",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Topper",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705162027008,
-        "availableSince": 1705160583543,
-        "calledSince": 1705161296088,
-        "endTime": 1705162574741,
-        "nextGameSlotIDs": [
-            "W-9+1",
-            "L-1+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-4",
-        "name": "",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-4",
-                "slotIdx": 0,
-                "playerID": "08550b29bd1e4143",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "winner_by_default",
-                "gscrl_player_name": "Ipso Facto",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": null,
-        "availableSince": null,
-        "calledSince": null,
-        "endTime": 1705160179021,
-        "nextGameSlotIDs": [
-            "W-10+0",
-            "L-2+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": "BY",
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-5",
-        "name": "W:1-4",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-5",
-                "slotIdx": 0,
-                "playerID": "37b668df1fee432f",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Dulce de Lucha",
-                "gscrl_wlt": {
-                    "w": 6,
-                    "l": 1,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-5",
-                "slotIdx": 1,
-                "playerID": "e8b4d672833a4ed3",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Rabot",
-                "gscrl_wlt": {
-                    "w": 0,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705161837625,
-        "availableSince": 1705160583543,
-        "calledSince": null,
-        "endTime": 1705161975280,
-        "nextGameSlotIDs": [
-            "W-10+1",
-            "L-2+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-6",
-        "name": "W:1-5",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-6",
-                "slotIdx": 0,
-                "playerID": "6943d452f2b34503",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Strikerbite",
-                "gscrl_wlt": {
-                    "w": 0,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-6",
-                "slotIdx": 1,
-                "playerID": "5814e763eb1a4eb9",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Frostbyte",
-                "gscrl_wlt": {
-                    "w": 2,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705162511433,
-        "availableSince": 1705160583543,
-        "calledSince": 1705162457517,
-        "endTime": 1705162829682,
-        "nextGameSlotIDs": [
-            "W-11+0",
-            "L-3+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-7",
-        "name": "W:1-6",
-        "bracketID": "W",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-7",
-                "slotIdx": 0,
-                "playerID": "e33bea9a101e48c9",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Robomouse",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-7",
-                "slotIdx": 1,
-                "playerID": "bf85eeae4bcf4413",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": null,
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Bumblebee",
-                "gscrl_wlt": {
-                    "w": 4,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705162857222,
-        "availableSince": 1705160583543,
-        "calledSince": 1705162601867,
-        "endTime": 1705163285501,
-        "nextGameSlotIDs": [
-            "W-11+1",
-            "L-3+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-8",
-        "name": "W:2-1",
-        "bracketID": "W",
-        "round": 1,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-8",
-                "slotIdx": 0,
-                "playerID": "dc190ae5b1204fb4",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-0",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Lowbot",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-8",
-                "slotIdx": 1,
-                "playerID": "35b0969b7cc44534",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-1",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Death Rattle",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705165213085,
-        "availableSince": 1705161275065,
-        "calledSince": 1705164883142,
-        "endTime": 1705165751139,
-        "nextGameSlotIDs": [
-            "W-12+0",
-            "L-7+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-9",
-        "name": "W:2-2",
-        "bracketID": "W",
-        "round": 1,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-9",
-                "slotIdx": 0,
-                "playerID": "e0951259917349f0",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-2",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Cheesecake",
-                "gscrl_wlt": {
-                    "w": 4,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-9",
-                "slotIdx": 1,
-                "playerID": "100c6b30cded4e0a",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-3",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Phantom",
-                "gscrl_wlt": {
-                    "w": 2,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705164320868,
-        "availableSince": 1705162574742,
-        "calledSince": 1705163886663,
-        "endTime": 1705164475177,
-        "nextGameSlotIDs": [
-            "W-12+1",
-            "L-6+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-10",
-        "name": "W:2-3",
-        "bracketID": "W",
-        "round": 1,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-10",
-                "slotIdx": 0,
-                "playerID": "08550b29bd1e4143",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-4",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Ipso Facto",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-10",
-                "slotIdx": 1,
-                "playerID": "37b668df1fee432f",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-5",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Dulce de Lucha",
-                "gscrl_wlt": {
-                    "w": 6,
-                    "l": 1,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705164479615,
-        "availableSince": 1705161975280,
-        "calledSince": 1705164325100,
-        "endTime": 1705165157322,
-        "nextGameSlotIDs": [
-            "W-13+0",
-            "L-5+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-11",
-        "name": "W:2-4",
-        "bracketID": "W",
-        "round": 1,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-11",
-                "slotIdx": 0,
-                "playerID": "5814e763eb1a4eb9",
+                "playerID": "bye-ff1dbb66a0734ea1",
                 "checkInTime": null,
                 "waitingTime": null,
                 "prevGameID": "W-6",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Frostbyte",
-                "gscrl_wlt": {
-                    "w": 2,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-11",
-                "slotIdx": 1,
-                "playerID": "bf85eeae4bcf4413",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-7",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Bumblebee",
-                "gscrl_wlt": {
-                    "w": 4,
-                    "l": 2,
-                    "t": 0
-                }
+                "slotState": "pending"
             }
         ],
-        "state": "done",
-        "activeSince": 1705164836228,
-        "availableSince": 1705163285502,
-        "calledSince": 1705164485421,
-        "endTime": 1705165193041,
-        "nextGameSlotIDs": [
-            "W-13+1",
-            "L-4+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-12",
-        "name": "W:3-1",
-        "bracketID": "W",
-        "round": 2,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-12",
-                "slotIdx": 0,
-                "playerID": "dc190ae5b1204fb4",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-8",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Lowbot",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-12",
-                "slotIdx": 1,
-                "playerID": "e0951259917349f0",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-9",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Cheesecake",
-                "gscrl_wlt": {
-                    "w": 4,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705172907055,
-        "availableSince": 1705165751139,
-        "calledSince": 1705172111410,
-        "endTime": 1705173220445,
-        "nextGameSlotIDs": [
-            "W-14+0",
-            "L-10+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-13",
-        "name": "W:3-2",
-        "bracketID": "W",
-        "round": 2,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-13",
-                "slotIdx": 0,
-                "playerID": "37b668df1fee432f",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-10",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Dulce de Lucha",
-                "gscrl_wlt": {
-                    "w": 6,
-                    "l": 1,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-13",
-                "slotIdx": 1,
-                "playerID": "bf85eeae4bcf4413",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-11",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Bumblebee",
-                "gscrl_wlt": {
-                    "w": 4,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705172527132,
-        "availableSince": 1705165193041,
-        "calledSince": null,
-        "endTime": 1705172951850,
-        "nextGameSlotIDs": [
-            "W-14+1",
-            "L-11+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-14",
-        "name": "W:4-1",
-        "bracketID": "W",
-        "round": 3,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-14",
-                "slotIdx": 0,
-                "playerID": "e0951259917349f0",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-12",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Cheesecake",
-                "gscrl_wlt": {
-                    "w": 4,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-14",
-                "slotIdx": 1,
-                "playerID": "37b668df1fee432f",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-13",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Dulce de Lucha",
-                "gscrl_wlt": {
-                    "w": 6,
-                    "l": 1,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705180318004,
-        "availableSince": 1705173220445,
-        "calledSince": 1705179924491,
-        "endTime": 1705180570430,
-        "nextGameSlotIDs": [
-            "W-GF+0",
-            "L-13+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-GF",
-        "name": "GF",
-        "bracketID": "W",
-        "round": 4,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-GF",
-                "slotIdx": 0,
-                "playerID": "e0951259917349f0",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-14",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Cheesecake",
-                "gscrl_wlt": {
-                    "w": 4,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-GF",
-                "slotIdx": 1,
-                "playerID": "37b668df1fee432f",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "L-13",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Dulce de Lucha",
-                "gscrl_wlt": {
-                    "w": 6,
-                    "l": 1,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705185114228,
-        "availableSince": 1705183906277,
-        "calledSince": 1705183938964,
-        "endTime": 1705185581783,
-        "nextGameSlotIDs": [
-            "W-TF+1",
-            "W-TF+0"
-        ],
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "L-0",
-        "name": "L:1-1",
-        "bracketID": "L",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "L-0",
-                "slotIdx": 1,
-                "playerID": "8b40ade0a7e74b43",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-1",
-                "score": 0,
-                "slotState": "winner_by_default",
-                "gscrl_player_name": "Bladezilla",
-                "gscrl_wlt": {
-                    "w": 0,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
+        "state": "unavailable",
         "activeSince": null,
-        "availableSince": 1705161275065,
+        "availableSince": null,
         "calledSince": null,
-        "endTime": 1705161275065,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "L-4+1"
-        ],
-        "locationID": null,
-        "resultAnnotation": "BY",
-        "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "L-1",
-        "name": "L:1-1",
-        "bracketID": "L",
-        "round": 0,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "L-1",
-                "slotIdx": 0,
-                "playerID": "b853fa289d8c4b05",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-2",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Hypnovision",
-                "gscrl_wlt": {
-                    "w": 0,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "L-1",
-                "slotIdx": 1,
-                "playerID": "69a169aeb64940c5",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-3",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Topper",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": 1705165585047,
-        "availableSince": 1705162574742,
-        "calledSince": 1705165249743,
-        "endTime": 1705165706804,
-        "nextGameSlotIDs": [
-            "L-5+1"
+            "L-17+1"
         ],
         "locationID": null,
         "resultAnnotation": null,
         "winnerPlacement": null,
-        "loserPlacement": 13,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-2",
+        "id": "L-12",
         "name": "L:1-3",
         "bracketID": "L",
         "round": 0,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-2",
-                "slotIdx": 1,
-                "playerID": "e8b4d672833a4ed3",
+                "gameID": "L-12",
+                "slotIdx": 0,
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "W-5",
+                "prevGameID": "W-19",
                 "score": 0,
-                "slotState": "winner_by_default",
-                "gscrl_player_name": "Rabot",
+                "slotState": "pending"
+            },
+            {
+                "gameID": "L-12",
+                "slotIdx": 1,
+                "playerID": "a36d55c15332456e",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-9",
+                "score": 0,
+                "slotState": "pending",
+                "gscrl_player_name": "P18",
                 "gscrl_wlt": {
                     "w": 0,
-                    "l": 2,
+                    "l": 1,
                     "t": 0
                 }
             }
         ],
-        "state": "done",
+        "state": "unavailable",
         "activeSince": null,
-        "availableSince": 1705161975280,
+        "availableSince": null,
         "calledSince": null,
-        "endTime": 1705161975280,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "L-6+1"
+            "L-18+0"
         ],
         "locationID": null,
-        "resultAnnotation": "BY",
+        "resultAnnotation": null,
         "winnerPlacement": null,
-        "loserPlacement": null,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
+        "loserPlacement": 17,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-3",
-        "name": "L:1-2",
+        "id": "L-13",
+        "name": "L:2-6",
         "bracketID": "L",
         "round": 0,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-3",
+                "gameID": "L-13",
                 "slotIdx": 0,
-                "playerID": "6943d452f2b34503",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "W-6",
+                "prevGameID": "W-18",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Strikerbite",
-                "gscrl_wlt": {
-                    "w": 0,
-                    "l": 2,
-                    "t": 0
-                }
+                "slotState": "pending"
             },
             {
-                "gameID": "L-3",
+                "gameID": "L-13",
                 "slotIdx": 1,
-                "playerID": "e33bea9a101e48c9",
+                "playerID": "bye-3271d6cae2424eff",
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "W-7",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Robomouse",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
+                "prevGameID": "W-10",
+                "score": 0,
+                "slotState": "pending"
             }
         ],
-        "state": "done",
-        "activeSince": 1705165818468,
-        "availableSince": 1705163285502,
-        "calledSince": 1705165608090,
-        "endTime": 1705166182898,
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "L-7+1"
+            "L-18+1"
         ],
         "locationID": null,
         "resultAnnotation": null,
         "winnerPlacement": null,
-        "loserPlacement": 13,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-4",
+        "id": "L-14",
+        "name": "L:1-4",
+        "bracketID": "L",
+        "round": 0,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-14",
+                "slotIdx": 0,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-17",
+                "score": 0,
+                "slotState": "pending"
+            },
+            {
+                "gameID": "L-14",
+                "slotIdx": 1,
+                "playerID": "eb656ba36b53488f",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-13",
+                "score": 0,
+                "slotState": "pending",
+                "gscrl_player_name": "P14",
+                "gscrl_wlt": {
+                    "w": 0,
+                    "l": 0,
+                    "t": 0
+                }
+            }
+        ],
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "L-19+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": 17,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "L-15",
+        "name": "L:2-8",
+        "bracketID": "L",
+        "round": 0,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-15",
+                "slotIdx": 0,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-16",
+                "score": 0,
+                "slotState": "pending"
+            },
+            {
+                "gameID": "L-15",
+                "slotIdx": 1,
+                "playerID": "bye-ef6be68f03b0406f",
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-14",
+                "score": 0,
+                "slotState": "pending"
+            }
+        ],
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "L-19+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": null,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "L-16",
         "name": "L:2-1",
         "bracketID": "L",
         "round": 1,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-4",
+                "gameID": "L-16",
                 "slotIdx": 0,
-                "playerID": "5814e763eb1a4eb9",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "W-11",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Frostbyte",
-                "gscrl_wlt": {
-                    "w": 2,
-                    "l": 2,
-                    "t": 0
-                }
+                "prevGameID": "L-8",
+                "score": 0,
+                "slotState": "pending"
             },
             {
-                "gameID": "L-4",
+                "gameID": "L-16",
                 "slotIdx": 1,
-                "playerID": "8b40ade0a7e74b43",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "L-0",
+                "prevGameID": "L-9",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Bladezilla",
-                "gscrl_wlt": {
-                    "w": 0,
-                    "l": 2,
-                    "t": 0
-                }
+                "slotState": "pending"
             }
         ],
-        "state": "done",
-        "activeSince": 1705173271349,
-        "availableSince": 1705165193041,
-        "calledSince": 1705173224412,
-        "endTime": 1705173604342,
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "L-8+0"
+            "L-20+1"
         ],
         "locationID": null,
         "resultAnnotation": null,
         "winnerPlacement": null,
-        "loserPlacement": 9,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
+        "loserPlacement": 13,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-5",
+        "id": "L-17",
         "name": "L:2-2",
         "bracketID": "L",
         "round": 1,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-5",
+                "gameID": "L-17",
                 "slotIdx": 0,
-                "playerID": "08550b29bd1e4143",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "W-10",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Ipso Facto",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
+                "prevGameID": "L-10",
+                "score": 0,
+                "slotState": "pending"
             },
             {
-                "gameID": "L-5",
+                "gameID": "L-17",
                 "slotIdx": 1,
-                "playerID": "69a169aeb64940c5",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "L-1",
+                "prevGameID": "L-11",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Topper",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
+                "slotState": "pending"
             }
         ],
-        "state": "done",
-        "activeSince": 1705173641287,
-        "availableSince": 1705165706805,
-        "calledSince": 1705173275944,
-        "endTime": 1705173779598,
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "L-8+1"
+            "L-21+1"
         ],
         "locationID": null,
         "resultAnnotation": null,
         "winnerPlacement": null,
-        "loserPlacement": 9,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
+        "loserPlacement": 13,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-6",
+        "id": "L-18",
         "name": "L:2-3",
         "bracketID": "L",
         "round": 1,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-6",
+                "gameID": "L-18",
                 "slotIdx": 0,
-                "playerID": "100c6b30cded4e0a",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "W-9",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Phantom",
-                "gscrl_wlt": {
-                    "w": 2,
-                    "l": 2,
-                    "t": 0
-                }
+                "prevGameID": "L-12",
+                "score": 0,
+                "slotState": "pending"
             },
             {
-                "gameID": "L-6",
+                "gameID": "L-18",
                 "slotIdx": 1,
-                "playerID": "e8b4d672833a4ed3",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "L-2",
+                "prevGameID": "L-13",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Rabot",
-                "gscrl_wlt": {
-                    "w": 0,
-                    "l": 2,
-                    "t": 0
-                }
+                "slotState": "pending"
             }
         ],
-        "state": "done",
-        "activeSince": 1705173804608,
-        "availableSince": 1705164475177,
-        "calledSince": 1705173670465,
-        "endTime": 1705173919777,
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "L-9+0"
+            "L-22+1"
         ],
         "locationID": null,
         "resultAnnotation": null,
         "winnerPlacement": null,
-        "loserPlacement": 9,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
+        "loserPlacement": 13,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-7",
+        "id": "L-19",
         "name": "L:2-4",
         "bracketID": "L",
         "round": 1,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-7",
+                "gameID": "L-19",
                 "slotIdx": 0,
-                "playerID": "35b0969b7cc44534",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "W-8",
+                "prevGameID": "L-14",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Death Rattle",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
+                "slotState": "pending"
             },
             {
-                "gameID": "L-7",
+                "gameID": "L-19",
                 "slotIdx": 1,
-                "playerID": "e33bea9a101e48c9",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "L-3",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Robomouse",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
+                "prevGameID": "L-15",
+                "score": 0,
+                "slotState": "pending"
             }
         ],
-        "state": "done",
-        "activeSince": 1705173962892,
-        "availableSince": 1705166182898,
-        "calledSince": 1705173788049,
-        "endTime": 1705174271833,
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "L-9+1"
+            "L-23+1"
         ],
         "locationID": null,
         "resultAnnotation": null,
         "winnerPlacement": null,
-        "loserPlacement": 9,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
+        "loserPlacement": 13,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-8",
+        "id": "L-20",
         "name": "L:3-1",
         "bracketID": "L",
         "round": 2,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-8",
+                "gameID": "L-20",
                 "slotIdx": 0,
-                "playerID": "5814e763eb1a4eb9",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "L-4",
+                "prevGameID": "W-25",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Frostbyte",
-                "gscrl_wlt": {
-                    "w": 2,
-                    "l": 2,
-                    "t": 0
-                }
+                "slotState": "pending"
             },
             {
-                "gameID": "L-8",
+                "gameID": "L-20",
                 "slotIdx": 1,
-                "playerID": "08550b29bd1e4143",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "L-5",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Ipso Facto",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
+                "prevGameID": "L-16",
+                "score": 0,
+                "slotState": "pending"
             }
         ],
-        "state": "done",
-        "activeSince": 1705177786658,
-        "availableSince": 1705173779598,
-        "calledSince": 1705177194983,
-        "endTime": 1705178151834,
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "L-10+1"
+            "L-24+0"
         ],
         "locationID": null,
         "resultAnnotation": null,
         "winnerPlacement": null,
-        "loserPlacement": 7,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
+        "loserPlacement": 9,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-9",
+        "id": "L-21",
         "name": "L:3-2",
         "bracketID": "L",
         "round": 2,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-9",
+                "gameID": "L-21",
                 "slotIdx": 0,
-                "playerID": "100c6b30cded4e0a",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "L-6",
+                "prevGameID": "W-24",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Phantom",
-                "gscrl_wlt": {
-                    "w": 2,
-                    "l": 2,
-                    "t": 0
-                }
+                "slotState": "pending"
             },
             {
-                "gameID": "L-9",
+                "gameID": "L-21",
                 "slotIdx": 1,
-                "playerID": "e33bea9a101e48c9",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "L-7",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Robomouse",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
+                "prevGameID": "L-17",
+                "score": 0,
+                "slotState": "pending"
             }
         ],
-        "state": "done",
-        "activeSince": 1705177067388,
-        "availableSince": 1705174271833,
-        "calledSince": 1705176754818,
-        "endTime": 1705177462953,
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "L-11+1"
+            "L-24+1"
         ],
         "locationID": null,
         "resultAnnotation": null,
         "winnerPlacement": null,
-        "loserPlacement": 7,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
+        "loserPlacement": 9,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-10",
+        "id": "L-22",
+        "name": "L:3-3",
+        "bracketID": "L",
+        "round": 2,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-22",
+                "slotIdx": 0,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-27",
+                "score": 0,
+                "slotState": "pending"
+            },
+            {
+                "gameID": "L-22",
+                "slotIdx": 1,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "L-18",
+                "score": 0,
+                "slotState": "pending"
+            }
+        ],
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "L-25+0"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": 9,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "L-23",
+        "name": "L:3-4",
+        "bracketID": "L",
+        "round": 2,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-23",
+                "slotIdx": 0,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-26",
+                "score": 0,
+                "slotState": "pending"
+            },
+            {
+                "gameID": "L-23",
+                "slotIdx": 1,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "L-19",
+                "score": 0,
+                "slotState": "pending"
+            }
+        ],
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "L-25+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": 9,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "L-24",
         "name": "L:4-1",
         "bracketID": "L",
         "round": 3,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-10",
+                "gameID": "L-24",
                 "slotIdx": 0,
-                "playerID": "dc190ae5b1204fb4",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "W-12",
+                "prevGameID": "L-20",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Lowbot",
-                "gscrl_wlt": {
-                    "w": 1,
-                    "l": 2,
-                    "t": 0
-                }
+                "slotState": "pending"
             },
             {
-                "gameID": "L-10",
+                "gameID": "L-24",
                 "slotIdx": 1,
-                "playerID": "08550b29bd1e4143",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "L-8",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Ipso Facto",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
+                "prevGameID": "L-21",
+                "score": 0,
+                "slotState": "pending"
             }
         ],
-        "state": "done",
-        "activeSince": 1705179556652,
-        "availableSince": 1705178151834,
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
         "calledSince": null,
-        "endTime": 1705179994912,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "L-12+0"
+            "L-26+1"
         ],
         "locationID": null,
         "resultAnnotation": null,
         "winnerPlacement": null,
-        "loserPlacement": 5,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
+        "loserPlacement": 7,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-11",
+        "id": "L-25",
         "name": "L:4-2",
         "bracketID": "L",
         "round": 3,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-11",
+                "gameID": "L-25",
                 "slotIdx": 0,
-                "playerID": "bf85eeae4bcf4413",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "W-13",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Bumblebee",
-                "gscrl_wlt": {
-                    "w": 4,
-                    "l": 2,
-                    "t": 0
-                }
+                "prevGameID": "L-22",
+                "score": 0,
+                "slotState": "pending"
             },
             {
-                "gameID": "L-11",
+                "gameID": "L-25",
                 "slotIdx": 1,
-                "playerID": "e33bea9a101e48c9",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "L-9",
+                "prevGameID": "L-23",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Robomouse",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
+                "slotState": "pending"
             }
         ],
-        "state": "done",
-        "activeSince": 1705180311255,
-        "availableSince": 1705177462953,
-        "calledSince": 1705179568728,
-        "endTime": 1705180378268,
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "L-12+1"
+            "L-27+1"
         ],
         "locationID": null,
         "resultAnnotation": null,
         "winnerPlacement": null,
-        "loserPlacement": 5,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
+        "loserPlacement": 7,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-12",
+        "id": "L-26",
         "name": "L:5-1",
         "bracketID": "L",
         "round": 4,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-12",
+                "gameID": "L-26",
                 "slotIdx": 0,
-                "playerID": "08550b29bd1e4143",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "L-10",
+                "prevGameID": "W-29",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Ipso Facto",
-                "gscrl_wlt": {
-                    "w": 3,
-                    "l": 2,
-                    "t": 0
-                }
+                "slotState": "pending"
             },
             {
-                "gameID": "L-12",
+                "gameID": "L-26",
                 "slotIdx": 1,
-                "playerID": "bf85eeae4bcf4413",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "L-11",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Bumblebee",
-                "gscrl_wlt": {
-                    "w": 4,
-                    "l": 2,
-                    "t": 0
-                }
+                "prevGameID": "L-24",
+                "score": 0,
+                "slotState": "pending"
             }
         ],
-        "state": "done",
-        "activeSince": 1705181646679,
-        "availableSince": 1705180378268,
-        "calledSince": 1705181421057,
-        "endTime": 1705181936648,
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": [
-            "L-13+1"
+            "L-28+0"
         ],
         "locationID": null,
         "resultAnnotation": null,
         "winnerPlacement": null,
-        "loserPlacement": 4,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
+        "loserPlacement": 5,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     },
     {
-        "id": "L-13",
+        "id": "L-27",
+        "name": "L:5-2",
+        "bracketID": "L",
+        "round": 4,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-27",
+                "slotIdx": 0,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-28",
+                "score": 0,
+                "slotState": "pending"
+            },
+            {
+                "gameID": "L-27",
+                "slotIdx": 1,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "L-25",
+                "score": 0,
+                "slotState": "pending"
+            }
+        ],
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "L-28+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": 5,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "L-28",
         "name": "L:6-1",
         "bracketID": "L",
         "round": 5,
         "scoreToWin": 1,
         "slots": [
             {
-                "gameID": "L-13",
+                "gameID": "L-28",
                 "slotIdx": 0,
-                "playerID": "37b668df1fee432f",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "W-14",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Dulce de Lucha",
-                "gscrl_wlt": {
-                    "w": 6,
-                    "l": 1,
-                    "t": 0
-                }
+                "prevGameID": "L-26",
+                "score": 0,
+                "slotState": "pending"
             },
             {
-                "gameID": "L-13",
+                "gameID": "L-28",
                 "slotIdx": 1,
-                "playerID": "bf85eeae4bcf4413",
+                "playerID": null,
                 "checkInTime": null,
                 "waitingTime": null,
-                "prevGameID": "L-12",
+                "prevGameID": "L-27",
                 "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Bumblebee",
-                "gscrl_wlt": {
-                    "w": 4,
-                    "l": 2,
-                    "t": 0
-                }
+                "slotState": "pending"
             }
         ],
-        "state": "done",
-        "activeSince": 1705183553104,
-        "availableSince": 1705181936648,
-        "calledSince": 1705181952582,
-        "endTime": 1705183906277,
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
+        "nextGameSlotIDs": [
+            "L-29+1"
+        ],
+        "locationID": null,
+        "resultAnnotation": null,
+        "winnerPlacement": null,
+        "loserPlacement": 4,
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
+    },
+    {
+        "id": "L-29",
+        "name": "L:7-1",
+        "bracketID": "L",
+        "round": 6,
+        "scoreToWin": 1,
+        "slots": [
+            {
+                "gameID": "L-29",
+                "slotIdx": 0,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "W-30",
+                "score": 0,
+                "slotState": "pending"
+            },
+            {
+                "gameID": "L-29",
+                "slotIdx": 1,
+                "playerID": null,
+                "checkInTime": null,
+                "waitingTime": null,
+                "prevGameID": "L-28",
+                "score": 0,
+                "slotState": "pending"
+            }
+        ],
+        "state": "unavailable",
+        "activeSince": null,
+        "availableSince": null,
+        "calledSince": null,
+        "endTime": null,
         "nextGameSlotIDs": [
             "W-GF+1"
         ],
@@ -2909,60 +1763,7 @@
         "resultAnnotation": null,
         "winnerPlacement": null,
         "loserPlacement": 3,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
-    },
-    {
-        "id": "W-TF",
-        "name": "TF",
-        "bracketID": "W",
-        "round": 4,
-        "scoreToWin": 1,
-        "slots": [
-            {
-                "gameID": "W-TF",
-                "slotIdx": 0,
-                "playerID": "e0951259917349f0",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-GF",
-                "score": 0,
-                "slotState": "loser",
-                "gscrl_player_name": "Cheesecake",
-                "gscrl_wlt": {
-                    "w": 4,
-                    "l": 2,
-                    "t": 0
-                }
-            },
-            {
-                "gameID": "W-TF",
-                "slotIdx": 1,
-                "playerID": "37b668df1fee432f",
-                "checkInTime": null,
-                "waitingTime": null,
-                "prevGameID": "W-GF",
-                "score": 1,
-                "slotState": "winner",
-                "gscrl_player_name": "Dulce de Lucha",
-                "gscrl_wlt": {
-                    "w": 6,
-                    "l": 1,
-                    "t": 0
-                }
-            }
-        ],
-        "state": "done",
-        "activeSince": null,
-        "availableSince": 1705185581783,
-        "calledSince": null,
-        "endTime": 1705185589769,
-        "nextGameSlotIDs": null,
-        "locationID": null,
-        "resultAnnotation": null,
-        "winnerPlacement": 1,
-        "loserPlacement": 2,
-        "tournamentID": "e0b2a154ac3e44f4",
-        "weightclass": "Ants"
+        "tournamentID": "a9555d2838a34757",
+        "weightclass": "Ant Test"
     }
 ]

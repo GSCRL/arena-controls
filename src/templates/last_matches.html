@@ -42,13 +42,19 @@
             <th>Blue</th>
           </tr>
         </thead>
-          {% for match in div_matches %}
+          {% for match in div_matches._matches %}
           <tr>
-            <td>{{ match.gscrl_weightclass }} </td>
-            <td>{{ match.name }}</td>
+            <td>{{ match.weightclass }} </td>
+            <td>
+              {% if match.name == "" %}
+              {{ match.id }}
+              {% else %}
+                {{ match.name }} | [{{ match.id }}]
+              {% endif %}
+            </td>
             {% for competitor in match.slots %}
             <td>
-                  <b>{{ competitor.gscrl_friendly_name }}</b> 
+                  <b>{{ competitor.gscrl_player_name }}</b> 
                   {% if competitor['gscrl_wlt'] %}
                   <div class="field is-grouped is-grouped-multiline">
                     <div class="control">
@@ -75,6 +81,11 @@
                   {% endif %}
               </td>
             {% endfor %}
+            {% if match.slots|length == 1 %} 
+            <td>
+              <i>waiting . . . </i>
+            </td>
+            {% endif %}
           </tr>
           {% endfor %}
 
