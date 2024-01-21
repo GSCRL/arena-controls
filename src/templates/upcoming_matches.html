@@ -45,6 +45,7 @@
             <th>Cage</th>
             {% endif %}
             <th>Division</th>
+            <th>Bracket Round</th>
             <th>Match Info</th>
             <th>Red</th>
             <th>Blue</th>
@@ -56,6 +57,7 @@
             <td>Cage NULL</td>
             {% endif %}
             <td>{{ match.weightclass }} </td>
+            <td>{{ match.round+1 }} </td>
             <td>{{ match.name }}</td>
             {% if match.state != "unavailable" %}
               {% for competitor in match.slots %}

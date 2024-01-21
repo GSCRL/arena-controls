@@ -86,8 +86,9 @@ class Matches:
         self._matches = [x for x in self._matches if filterFunction(x)]
         return self
 
-    def inOrder(self, orderFilter: Callable):
-        return
+    def inOrder(self, orderFilter: Callable, reverse=False):
+        self._matches = sorted(self._matches, key=orderFilter, reverse=reverse)
+        return self
 
     def withoutByes(self):
         self._matches = [m for m in self._matches if m["resultAnnotation"] != "BY"]

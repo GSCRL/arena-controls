@@ -23,6 +23,17 @@ def index():
     return render_template("ctimer.html", user_screens=user_screens)
 
 
+class reversor:
+    def __init__(self, obj):
+        self.obj = obj
+
+    def __eq__(self, other):
+        return other.obj == self.obj
+
+    def __lt__(self, other):
+        return other.obj < self.obj
+
+
 @app.route("/upcoming")
 @cache.cached(timeout=29)
 def routeForUpcomingMatches():
@@ -33,6 +44,15 @@ def routeForUpcomingMatches():
         .withoutByes()
         .withFilter(lambda x: x["state"] != "done")
         .withFilter(lambda x: len(x["slots"]) != 0)
+        .inOrder(
+            lambda x: (
+                x["availableSince"] or float("inf"),
+                reversor(x["bracketID"]),
+                x["round"],
+                x["state"],
+                # x["id"],
+            )
+        )
         .done()
     )
 
