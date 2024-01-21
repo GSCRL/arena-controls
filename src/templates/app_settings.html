@@ -45,6 +45,36 @@
     </div>
 </section>
 
+<!-- Event Tournament Setup -->
+<section class="section">
+    <div class="block">
+        <h2 class="subtitle">TrueFinals Tournaments</h2>
+    </div>
+    <div class="block">
+        <table class="table is-striped is-fullwidth">
+            <thead>
+                <th>Weightclass Name</th>
+                <th>TrueFinals Key</th>
+                <th>Weightclass (grams)</th>
+            </thead>
+            <tbody>
+            {% for tournament in arena_settings.tournament_keys %} {{ loop.counter }}
+                <tr>
+                    <td>
+                        <input class="input" type="text" id="return_tourneys_name_row_{{ loop.index }}" placeholder="{{ tournament.weightclass }}" value="{{ tournament.weightclass }}">
+                    </td>
+                    <td>                    
+                        <input class="input" type="text"  id="return_tourneys_tf_key_row_{{ loop.index }}" placeholder="{{ tournament.id }}" value="{{ tournament.id }}">
+                    </td>
+                    <td>                    
+                        <input class="input" type="number"  id="return_tourneys_weightclass_gms_row_{{ loop.index }}" placeholder="{{ tournament.weightInt }}" value="{{ tournament.weightInt }}">
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
 
 <!-- Event API Key Setup-->
 <section class="section">
