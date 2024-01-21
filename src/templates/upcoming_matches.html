@@ -101,7 +101,7 @@
               <div class="field is-grouped is-grouped-multiline">
                 <div class="control">
                 <div class="tags has-addons">
-                  <span class="tag">Advances from </span>
+                  <span class="tag">Advances from {{ match.weightclass }}</span>
                   {% for slot in match.slots %}
                   <span class="tag is-success is-light">{{ slot.prevGameID}}</span>
                   {% endfor %}
