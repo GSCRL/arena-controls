@@ -105,5 +105,10 @@ $navbarBurgers.forEach( el => {
     {% block bodysections %}
 
     {% endblock %}
+
+    {# Safety for flashing during a 500 err. #}
+    {% if errormsg %}
+      <h3>{{ errormsg }}</h3>
+    {% endif %}
   </body>
 </html>

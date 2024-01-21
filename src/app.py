@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_caching import Cache
 from flask_socketio import SocketIO, emit, join_room
 
@@ -38,14 +38,11 @@ class reversor:
 def generateSettingsPage():
     if request.method == "GET":
         return render_template("app_settings.html", arena_settings=arena_settings)
-    pass
 
 
 @app.route("/upcoming")
-@cache.cached(timeout=29)
 def routeForUpcomingMatches():
     autoreload = request.args.get("autoreload")
-
     matches = (
         truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
         .withoutByes()
@@ -66,13 +63,32 @@ def routeForUpcomingMatches():
         "upcoming_matches.html",
         div_matches=matches,
         autoreload=autoreload,
-        # cages=[{"name": "Big Steel", "id": 1}, {"name": "Old Green", "id": 2}],
         event_name=arena_settings.event_name,
     )
 
 
+@app.route("/upcoming.json")
+def routeForUpcoming56Matches():
+    matches = (
+        truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
+        .withoutByes()
+        .withFilter(lambda x: x["state"] != "done")
+        .withFilter(lambda x: len(x["slots"]) != 0)
+        .inOrder(
+            lambda x: (
+                x["availableSince"] or float("inf"),
+                reversor(x["bracketID"]),
+                x["round"],
+                x["state"],
+            )
+        )
+        .done()
+    )
+
+    return jsonify(matches)
+
+
 @app.route("/lastmatches")
-@cache.cached(timeout=29)
 def routeForLastMatches():
     autoreload = request.args.get("autoreload")
 
@@ -146,9 +162,21 @@ def handle_message(tapout_msg: dict):
 def handle_message():
     emit("reset_screen_states", broadcast=True)
 
+
+@app.errorhandler(500)
+def internal_error(error):
+    autoreload = request.args.get("autoreload")
+    return render_template(
+        "base.html",
+        autoreload=autoreload,
+        errormsg="Sorry, this page has produced an error while generating.  Please try again in 30s.",
+    )
+
+
 import logging
-#logging.basicConfig(level="INFO")'
-logging.basicConfig(level="WARNING")
+
+logging.basicConfig(level="INFO")
+# logging.basicConfig(level="WARNING")
 
 if __name__ == "__main__":
     socketio.run(app, host="0.0.0.0", port=80)

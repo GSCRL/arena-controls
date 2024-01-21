@@ -10,7 +10,7 @@ def getCages():
     if "tournament_cages" not in settings:
         settings["tournament_cages"] = []
 
-    return settings['tournament_cages']
+    return settings["tournament_cages"]
 
 
 def addCage(cageName: str = None, cageID: int = None):
