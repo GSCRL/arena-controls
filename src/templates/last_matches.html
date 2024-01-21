@@ -6,13 +6,13 @@
   {# Fancy full-page header.  Yay #}
   <div class="hero-body">
     <p class="title">
-      Upcoming Matches
+      Last Matches
     </p>
     {% if event_name %}
     <p class="subtitle">
-      {{event_name}}
+      {{event_name}} | bracket powered by <b>TrueFinals</b>
     </p>
- {% endif %}
+    {% endif %}
   </div>
 
 
@@ -40,6 +40,7 @@
             <th>Match Info</th>
             <th>Red</th>
             <th>Blue</th>
+            <th>Outcome</th>
           </tr>
         </thead>
           {% for match in div_matches._matches %}
@@ -86,6 +87,23 @@
               <i>waiting . . . </i>
             </td>
             {% endif %}
+            <td>
+
+              <div class="field is-grouped is-grouped-multiline">
+                <div class="control">
+                <div class="tags has-addons">
+                  {% if match.resultAnnotation != None %}
+                  <span class="tag is-link">Win by</span>
+                  <span class="tag is-dark">{{match.result_string}}</span>
+                  {% endif %}
+                  {% if match.winner_name != "" %}
+                  <span class="tag is-success">Winner</span>
+                  <span class="tag is-dark"><b> {{ match.winner_name }} </b></span>
+                  {% endif %}
+                </div>
+              </div>
+
+            </td>
           </tr>
           {% endfor %}
 

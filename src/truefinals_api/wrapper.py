@@ -1,6 +1,5 @@
 import json
 import logging
-from copy import deepcopy
 from pathlib import Path
 from typing import Callable, Self
 
@@ -57,8 +56,49 @@ class Matches:
     def __len__(self):
         return len(self._matches)
 
+    def backfillResultStrings(self):
+        self.backfillMatchOutcomes()
+        self.backfillMatchWinner()
+
+        return self
+
+    def backfillMatchOutcomes(self):
+        def _mapping(q):
+            value = q["resultAnnotation"]
+            if value == "KO":
+                return "Knockout"
+            if value == "TO":
+                return "Tapout"
+            if value == "TKO":
+                return "Technical Knockout"
+            if value == "JD":
+                return "Judge's Decision"
+            if value == "FF":
+                return "Forfeit"
+
+        for match in self._matches:
+            match["result_string"] = ""
+            if match["resultAnnotation"] != None:
+                match["result_string"] = _mapping(match)
+
+        return self
+
+    def backfillMatchWinner(self):
+        for match in self._matches:
+            match_score_to_win = match["scoreToWin"]
+
+            match["slots"] = sorted(match["slots"], key=lambda x: x["score"])
+            for slot in match["slots"]:
+                if slot["score"] >= match_score_to_win:
+                    match["winner_name"] = slot["gscrl_player_name"]
+
+            # Technically a match by forfeit has a score of -1, making this a bit complex.  This is fine (tm).
+            if not "winner_name" in match:
+                match["winner_name"] = match["slots"][0]["gscrl_player_name"]
+
+        return self
+
     def backfillNames(self, competitors: list = None):
-        _matches = deepcopy(self)
         if self._competitors is None and self._eventID != None:
             self._competitors = getAllPlayersInTournament(self._eventID)
 
@@ -80,7 +120,7 @@ class Matches:
                             "t": _competitor["ties"],
                         }
 
-        return _matches
+        return self
 
     def withFilter(self, filterFunction: Callable):
         self._matches = [x for x in self._matches if filterFunction(x)]

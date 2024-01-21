@@ -50,19 +50,16 @@ def routeForUpcomingMatches():
                 reversor(x["bracketID"]),
                 x["round"],
                 x["state"],
-                # x["id"],
             )
         )
         .done()
     )
 
-    matches.toFile("test.json")
-
     return render_template(
         "upcoming_matches.html",
         div_matches=matches,
         autoreload=autoreload,
-        cages=[{"name": "Big Steel", "id": 1}, {"name": "Old Green", "id": 2}],
+        # cages=[{"name": "Big Steel", "id": 1}, {"name": "Old Green", "id": 2}],
         event_name=arena_settings.event_name,
     )
 
@@ -77,6 +74,7 @@ def routeForLastMatches():
         .withoutByes()
         .withFilter(lambda x: x["state"] == "done")
         .withFilter(lambda x: len(x["slots"]) != 0)
+        .backfillResultStrings()
         .done()
     )
 
