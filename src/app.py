@@ -34,6 +34,13 @@ class reversor:
         return other.obj < self.obj
 
 
+@app.route("/settings", methods=("GET", "POST"))
+def generateSettingsPage():
+    if request.method == "GET":
+        return render_template("app_settings.html", arena_settings=arena_settings)
+    pass
+
+
 @app.route("/upcoming")
 @cache.cached(timeout=29)
 def routeForUpcomingMatches():

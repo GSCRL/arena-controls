@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block bodysections %}
+<!-- Event Name / Basic Settings -->
+<section class="section">
+    <div class="block">
+        <h2 class="subtitle">Event Settings</h2>
+    </div>
+    <div class="block">
+        <p>
+            <input class="input" type="text" id="gscrl_event_name" value="{{ arena_settings.event_name }}">
+        </p>
+    </div>
+    <div class="block">
+        <p>
+            <input class="input" type="text" id="gscrl_event_league" value="{{ arena_settings.event_league }}">
+        </p>
+    </div>
+
+</section>
+<!-- Cage only metadata. -->
+<section class="section">
+    <div class="block">
+        <h2 class="subtitle">Cages</h2>
+    </div>
+    <div class="block">
+        <table class="table is-striped is-fullwidth">
+            <thead>
+                <th>Cage ID</th>
+                <th>Cage Name</th>
+            </thead>
+            <tbody>
+            {% for cage in arena_settings.tournament_cages %} {{ loop.counter }}
+                <tr>
+                    <td>
+                        <input class="input" type="number" id="return_cage_id_row_{{ loop.index }}" placeholder="{{ cage.id }}" value="{{ cage.id }}">
+                    </td>
+                    <td>                    
+                        <input class="input" type="text"  id="return_cage_name_row_{{ loop.index }}" placeholder="{{ cage.name }}" value="{{ cage.name }}">
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+<!-- Event API Key Setup-->
+<section class="section">
+    <div class="block">
+        <h2 class="subtitle">TrueFinals API Keys</h2>
+    </div>
+    <div class="block">
+        <p>
+            <input class="input" type="text" id="truefinals_user_id" value="{{ arena_settings.truefinals.user_id }}">
+        </p>
+    </div>
+    <div class="block">
+        <p>
+            <input class="input" type="text"  id="truefinals_api_key" value="{{ arena_settings.truefinals.api_key }}">
+        </p>
+    </div>
+</div>
+     
+    
+</section>
+{% endblock %}
