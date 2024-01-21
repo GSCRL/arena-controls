@@ -146,8 +146,9 @@ def handle_message(tapout_msg: dict):
 def handle_message():
     emit("reset_screen_states", broadcast=True)
 
-
-# logging.basicConfig(level="INFO")
+import logging
+#logging.basicConfig(level="INFO")'
+logging.basicConfig(level="WARNING")
 
 if __name__ == "__main__":
     socketio.run(app, host="0.0.0.0", port=80)

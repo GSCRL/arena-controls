@@ -25,6 +25,9 @@ def makeAPIRequest(endpoint: str) -> list:
 
     logging.info({resp, resp.url, resp.status_code})
     logging.info(json.dumps(resp.json(), indent=4))
+
+    if resp.status_code == 429:
+        logging.warning(f"Rate limit exceeded when calling endpoint {resp.url}")
     if resp.json() != None:
         return resp.json()
     else:
