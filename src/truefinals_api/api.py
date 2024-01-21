@@ -1,10 +1,12 @@
 import logging
 import time
-
+from copy import deepcopy
 import httpx
-
+import json
+from pprint import pprint
 from config import settings as arena_settings
 from pprint import pprint
+
 
 class APICache:
     def __init__(self, ttl=30):
@@ -12,9 +14,9 @@ class APICache:
         self.ttl = ttl
 
     def set(self, key, value):
-        self._data[key] = {"requestTime": time.time(), "value": value}
+        self._data[key] = {"requestTime": time.time(), "value": deepcopy(value)}
         logging.info(
-            f"key {key} now in cache with timestamp {self._data[key]['requestTime']} and value {value}"
+            f"key {key} now in cache with timestamp {self._data[key]['requestTime']} and value {json.dumps(value)[100:]}"
         )
         return self._data[key]["value"]
 
@@ -25,10 +27,17 @@ class APICache:
                 logging.info(
                     f"time {self._data[key]['requestTime']} is present for value"
                 )
-                if (self._data[key]["requestTime"] + self.ttl) < time.time():
-                    logging.info("value is not expired.")
-                    #print(self._data[key]['value'])
-                    return self._data[key]['value']
+                logging.info(f"TTL is set to {self.ttl}")
+                calculated_max_time = self._data[key]["requestTime"] + self.ttl
+                logging.info(
+                    f"Max expiry time is {calculated_max_time}, current time is {time.time()}"
+                )
+                if calculated_max_time < time.time():
+                    logging.info("value is expired.")
+                    return None
+                else:
+                    logging.info("Value not expired")
+                    return self._data[key]["value"]
 
         return None
 
@@ -48,7 +57,7 @@ def makeAPIRequest(endpoint: str) -> list:
 
     root_endpoint = """https://truefinals.com/api"""
 
-    pprint([{'requestTime':x['requestTime'], 'key':x['key']} for x in cache._data])
+    # pprint([{'requestTime':x['requestTime'], 'key':x['key']} for x in cache._data])
 
     if cache.get(endpoint) is None:
         print("value is not in cache, trying now!")
@@ -56,13 +65,11 @@ def makeAPIRequest(endpoint: str) -> list:
 
         if resp.status_code == 429:
             logging.warning(f"Rate limit exceeded when calling endpoint {resp.url}")
-        else:
-            return cache.set(endpoint, resp.json())
-        logging.info({resp, resp.url, resp.status_code})
 
+        cache.set(endpoint, resp.json())
     else:
-        print("value is in cache, yay!")
-        return cache.get(endpoint)
+        pprint(cache.get(endpoint))
+    return cache.get(endpoint)
 
 
 def getAllTourneys(credentials) -> list[dict]:

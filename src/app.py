@@ -67,27 +67,6 @@ def routeForUpcomingMatches():
     )
 
 
-@app.route("/upcoming.json")
-def routeForUpcoming56Matches():
-    matches = (
-        truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
-        .withoutByes()
-        .withFilter(lambda x: x["state"] != "done")
-        .withFilter(lambda x: len(x["slots"]) != 0)
-        .inOrder(
-            lambda x: (
-                x["availableSince"] or float("inf"),
-                reversor(x["bracketID"]),
-                x["round"],
-                x["state"],
-            )
-        )
-        .done()
-    )
-
-    return jsonify(matches)
-
-
 @app.route("/lastmatches")
 def routeForLastMatches():
     autoreload = request.args.get("autoreload")

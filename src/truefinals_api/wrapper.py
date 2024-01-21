@@ -28,6 +28,7 @@ class Matches:
 
         if self._matches is None and self._eventID != None:
             self._matches = getAllGames(self._eventID)
+        if self._matches is None and self._competitors is None:
             self._competitors = getAllPlayersInTournament(self._eventID)
 
         if self._eventID != None:
@@ -98,15 +99,21 @@ class Matches:
 
         return self
 
-    def backfillNames(self, competitors: list = None):
-        if self._competitors is None and self._eventID != None:
+    def backfillNames(self):
+        if self._competitors != None and self._eventID != None:
             self._competitors = getAllPlayersInTournament(self._eventID)
+            print(type(self._competitors))
+            print(self._competitors)
 
         def _getCompetitorById(competitor_id: str):
+            if self._competitors is None:
+                self._competitors = getAllPlayersInTournament(self._eventID)
+                logging.error("THIS SHOULD NOT BE NONE WTF")
+
             for c in self._competitors:
                 if c["id"] == competitor_id:
                     return c
-            return None
+            return {"name": ""}
 
         for m in self._matches:
             for slot in m["slots"]:
