@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request
 from flask_caching import Cache
 from flask_socketio import SocketIO, emit, join_room
 

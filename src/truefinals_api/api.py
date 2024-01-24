@@ -1,11 +1,11 @@
+import json
 import logging
 import time
 from copy import deepcopy
+
 import httpx
-import json
-from pprint import pprint
+
 from config import settings as arena_settings
-from pprint import pprint
 
 
 class APICache:
@@ -57,8 +57,6 @@ def makeAPIRequest(endpoint: str) -> list:
 
     root_endpoint = """https://truefinals.com/api"""
 
-    # pprint([{'requestTime':x['requestTime'], 'key':x['key']} for x in cache._data])
-
     if cache.get(endpoint) is None:
         print("value is not in cache, trying now!")
         resp = httpx.get((f"{root_endpoint}{endpoint}"), headers=headers)
@@ -67,8 +65,6 @@ def makeAPIRequest(endpoint: str) -> list:
             logging.warning(f"Rate limit exceeded when calling endpoint {resp.url}")
 
         cache.set(endpoint, resp.json())
-    else:
-        pprint(cache.get(endpoint))
     return cache.get(endpoint)
 
 

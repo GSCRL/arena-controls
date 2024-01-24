@@ -49,7 +49,8 @@ class Matches:
             self._eventID = None
 
     def __repr__(self):
-        return {"tournamentID": self._eventID, "matches": self._matches}
+        q = {"tournamentID": self._eventID, "matches": self._matches}
+        return json.dumps(q)[100:]
 
     def __str__(self):
         return f"match list with {len(self._matches)}"
@@ -76,6 +77,8 @@ class Matches:
                 return "Judge's Decision"
             if value == "FF":
                 return "Forfeit"
+            if value == "BY":
+                return "Match Bye"  # Not normally used but included for enumeration reasons.
 
         for match in self._matches:
             match["result_string"] = ""
@@ -102,8 +105,8 @@ class Matches:
     def backfillNames(self):
         if self._competitors != None and self._eventID != None:
             self._competitors = getAllPlayersInTournament(self._eventID)
-            print(type(self._competitors))
-            print(self._competitors)
+            # print(type(self._competitors))
+            # print(self._competitors)
 
         def _getCompetitorById(competitor_id: str):
             if self._competitors is None:
@@ -150,15 +153,17 @@ class Matches:
     def done(self):
         return self
 
-    def extend(self, event2: Self):
-        if event2._matches not in [None, []]:
-            for m2 in event2._matches:
-                if "tournamentID" in m2:
-                    self._matches.append(m2)
-
+    def __add__(self, event2: Self):
         if self._eventID != event2._eventID:
             self._multiple_tournaments = True
 
+        if event2._matches not in [None, []]:
+            self._matches = self._matches + event2._matches
+            self._competitors = self._competitors + event2._competitors
+
+        return self
+
+    def __radd__(self, other):
         return self
 
 
@@ -184,23 +189,15 @@ class TrueFinals:
             )
             return None
 
-        if len(division_list) == 1:
-            return self.getAllMatches(
-                tournamentID=division_list[0]["id"],
-                weightclass=division_list[0]["weightclass"],
-            ).done()
-        else:
-            _matches = self.getAllMatches(
-                tournamentID=division_list[0]["id"],
-                weightclass=division_list[0]["weightclass"],
-            ).done()
-            for i in range(1, len(division_list)):
-                _matches.extend(
-                    self.getAllMatches(
-                        division_list[i]["id"], division_list[i]["weightclass"]
-                    ).done()
-                )
-            return _matches.done()
+        q = [
+            self.getAllMatches(x["id"], x["weightclass"]).done() for x in division_list
+        ]
+        for lq in q:
+            print(type(lq))
+
+        _matches = sum(q)
+
+        return _matches.done()
 
     def getFinishedMatches(self, tournamentID: str) -> list[dict]:
         pass
