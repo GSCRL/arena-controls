@@ -80,8 +80,6 @@ def routeForLastMatches():
         .done()
     )
 
-    matches.toFile("test.json")
-
     return render_template(
         "last_matches.html",
         div_matches=matches,
