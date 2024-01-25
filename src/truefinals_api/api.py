@@ -58,7 +58,7 @@ def makeAPIRequest(endpoint: str) -> list:
     root_endpoint = """https://truefinals.com/api"""
 
     if cache.get(endpoint) is None:
-        print("value is not in cache, trying now!")
+        logging.info(f"value {endpoint} is not in cache, trying request now!")
         resp = httpx.get((f"{root_endpoint}{endpoint}"), headers=headers)
 
         if resp.status_code == 429:

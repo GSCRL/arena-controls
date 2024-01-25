@@ -10,7 +10,11 @@
   <body>
     {% if autoreload %}
     <script>
-      setTimeout(function(){ location.reload(); }, {{autoreload}});
+      setTimeout(
+        function() {
+          location.reload(); 
+        }, {{autoreload}}
+        );
       </script>
     {% endif %}
 
@@ -102,6 +106,12 @@ $navbarBurgers.forEach( el => {
     
 </script>
 
+<style>
+  .square-prog {
+    border-radius: 0px !important;
+  }
+
+</style>
     {% block bodysections %}
 
     {% endblock %}
