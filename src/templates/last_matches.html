@@ -54,7 +54,7 @@
               {% endif %}
             </td>
             {% for competitor in match.slots %}
-            <td>
+            <td {% if match.winner_name == competitor.gscrl_player_name %} class="has-background-success-light"{% endif %}>
                   <b>{{ competitor.gscrl_player_name }}</b> 
                   {% if competitor['gscrl_wlt'] %}
                   <div class="field is-grouped is-grouped-multiline">
