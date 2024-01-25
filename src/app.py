@@ -152,9 +152,8 @@ def internal_error(error):
     )
 
 
-import logging
-
-logging.basicConfig(level="INFO")
+# import logging
+# logging.basicConfig(level="INFO")
 # logging.basicConfig(level="WARNING")
 
 if __name__ == "__main__":

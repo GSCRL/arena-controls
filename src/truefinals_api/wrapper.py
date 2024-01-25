@@ -43,6 +43,7 @@ class Matches:
                     match["weightclass"] = self._weightclass
 
             self.backfillNames()
+            self.backfillFriendlyPreviousSlotName()
 
         # This captures if an erroneous list is merged / combined, having a single tournamentID does not apply anymore.
         if self._multiple_tournaments:
@@ -61,6 +62,23 @@ class Matches:
     def backfillResultStrings(self):
         self.backfillMatchOutcomes()
         self.backfillMatchWinner()
+        self.backfillFriendlyPreviousSlotName()
+
+        return self
+
+    def backfillFriendlyPreviousSlotName(self) -> Self:
+        # Used to turn the use of a match ID into the "friendly" name.
+        def matchIDToName(self, matchID: str, tournamentID: str) -> str:
+            for m in self._matches:
+                if m["tournamentID"] == tournamentID:
+                    if m["id"] == matchID:
+                        return m["name"] if not None else m["id"]
+
+        for m in self._matches:
+            for comp in m["slots"]:
+                comp["gscrl_friendly_previous_name"] = matchIDToName(
+                    self, comp["prevGameID"], m["tournamentID"]
+                )
 
         return self
 
@@ -111,7 +129,9 @@ class Matches:
         def _getCompetitorById(competitor_id: str):
             if self._competitors is None:
                 self._competitors = getAllPlayersInTournament(self._eventID)
-                logging.error("THIS SHOULD NOT BE NONE WTF")
+                logging.info(
+                    f"Event {self._eventID} has no competitors, fetching from API."
+                )
 
             for c in self._competitors:
                 if c["id"] == competitor_id:
@@ -189,13 +209,12 @@ class TrueFinals:
             )
             return None
 
-        q = [
-            self.getAllMatches(x["id"], x["weightclass"]).done() for x in division_list
-        ]
-        for lq in q:
-            print(type(lq))
-
-        _matches = sum(q)
+        _matches = sum(
+            [
+                self.getAllMatches(x["id"], x["weightclass"]).done()
+                for x in division_list
+            ]
+        )
 
         return _matches.done()
 

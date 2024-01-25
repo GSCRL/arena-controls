@@ -108,7 +108,8 @@ $navbarBurgers.forEach( el => {
 
     {# Safety for flashing during a 500 err. #}
     {% if errormsg %}
-      <h3>{{ errormsg }}</h3>
+      <h1 class="title is-1">:(</h1>
+      <h3 class="title is-2">{{ errormsg }}</h3>
     {% endif %}
   </body>
 </html>

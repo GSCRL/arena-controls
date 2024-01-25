@@ -106,7 +106,13 @@
                 <div class="tags has-addons">
                   <span class="tag">Advances from {{ match.weightclass }}</span>
                   {% for slot in match.slots %}
-                  <span class="tag is-success is-light">{{ slot.prevGameID}}</span>
+                  <span class="tag is-success is-light">
+                    {% if slot.gscrl_friendly_previous_name %}
+                      {{ slot.gscrl_friendly_previous_name }} 
+                    {% else %}
+                      {{ slot.prevGameID}}
+                    {% endif %}
+                  </span>
                   {% endfor %}
                 </div>
               </div>
