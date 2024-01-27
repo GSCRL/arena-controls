@@ -79,7 +79,7 @@
               </p>
 
               <p class="control">
-                <a class="button is-danger" href="#">
+                <a class="button is-danger" onclick="sendESTOP();">
                   <span>
                     eSTOP
                   </span>
@@ -122,7 +122,10 @@ $navbarBurgers.forEach( el => {
         socket.emit('test_connect', {data: 'I\'m connected!'});
     });
 
-    
+    function sendESTOP() {
+      socket.emit("timer_event", "STOP");
+      socket.emit("timer_bg_event", "red");
+    }
     
 </script>
 
