@@ -152,9 +152,8 @@ function sendTimerMessage() {
   </section>
 
   <section class="section">
-    <div class="columns">
-      <div class="column">
-
+    <div class="columns"> 
+      <div class="column"> <!-- left column original -->
         <div class="block">
           <div class="buttons has-addons">
             <button class="button is-danger is-light is-large" id="redisready">NOT READY</button>
@@ -191,9 +190,59 @@ function sendTimerMessage() {
               </a>
             </p>
           </div>
-
         </div>
+
       </div> <!-- column end -->
+
+      <div class="column"> <!-- test column -->
+        <article class="panel is-danger">
+          <p class="panel-heading">
+            Cage Timer Controls
+          </p>
+          <!--
+          {% if cages %}
+          <p class="panel-tabs">
+            <a class="is-active">All Cages</a>
+              {% for cage in cages %}
+                <a href="#" id="cage_ctrl_tab_{{ cage.id }}">{{ cage.name }}
+              {% endfor %}
+          </p>
+            {% endif %}  
+        -->             
+
+        <p class="panel-block">
+          <div class="field has-addons">
+            <p class="control is-expanded">
+              <input class="input is-fullwidth" type="text" placeholder="Search">
+            </p>
+            <p class="control">
+              <a class="button is-info">
+                Search
+              </a>
+            </p>
+          </div>
+        </p>
+
+          {% if matches %}
+            {% for match in matches %}
+            <a class="panel-block is-active">
+              <span class="panel-icon">
+                <i class="fas fa-book" aria-hidden="true"></i>
+              </span>
+              bulma
+            </a>
+            {% endfor %}
+          {% else %}
+          <a class="panel-block is-active">
+            <i>No matches found.</i>
+          </a>
+          {% endif %}
+         
+        </article>
+      </div> <!-- column end -->
+    </div> <!-- columns end -->
+
+
   </section>
 
 {% endblock %}
