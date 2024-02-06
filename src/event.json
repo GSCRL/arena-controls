@@ -1,6 +1,6 @@
 {
     "event_name": "Heartbreak Botbreak",
-    "event_league": "Garden State Combat Robotics league",
+    "event_league": "Garden State Combat Robotics League",
     "tournament_keys": [
         {"id":"53b3031783f14dc6", "weightclass": "Beetles", "weightInt":1360},
         {"id":"68d77a7eae4e49bf", "weightclass":"Plastic Ants", "weightInt": 453},

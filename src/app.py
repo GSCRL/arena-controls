@@ -150,9 +150,9 @@ def internal_error(error):
     )
 
 
-# import logging
-# logging.basicConfig(level="INFO")
-# logging.basicConfig(level="WARNING")
+import logging
+logging.basicConfig(level="INFO")
+#logging.basicConfig(level="WARNING")
 
 if __name__ == "__main__":
-    socketio.run(app, host="0.0.0.0", port=80)
+    socketio.run(app, host="0.0.0.0", port=80, debug=True)
