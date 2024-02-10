@@ -36,6 +36,10 @@
         document.getElementsByClassName("split left")[0].style.backgroundColor = timer_bg_color;
     });
     
+
+  addEventListener("resize", (event) => {
+    textFit(document.getElementsByClassName('timer'), {alignHoriz: true, maxFontSize: 600, widthOnly: true, detectMultiLine: false});
+});
 </script>
   </body>
 {% endblock %}
