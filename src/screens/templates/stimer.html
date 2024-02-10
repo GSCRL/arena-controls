@@ -1,16 +1,22 @@
 {% extends "screen_base.html" %}
 {% block basecontent %}
   <body>
-<style>
-        
+
+    <!-- workaround until the things are normalzed with routes and shit -->
+<style> 
+@font-face {
+  font-family: DSEG14;
+  src: url('static/DSEG14ModernMini-Bold.woff2') format('woff2');
+}
 </style>
+
     <div class="split left">
         <div class="timer" id="timer" style="width: 100%; height: 100%;">
             ---
         </div>
-      </div>       
-    <script>
+      </div>     
 
+    <script>
         function setTimerString(timer_value) {
             document.getElementById("timer").innerHTML = timer_value;
             textFit(document.getElementsByClassName('timer'), {alignHoriz: true, alignVert: true, maxFontSize: 999, widthOnly: true, detectMultiLine: false});

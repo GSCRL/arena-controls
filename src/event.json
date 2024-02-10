@@ -2,10 +2,9 @@
     "event_name": "Heartbreak Botbreak",
     "event_league": "Garden State Combat Robotics League",
     "tournament_keys": [
-        {"id":"53b3031783f14dc6", "weightclass": "Beetles", "weightInt":1360},
-        {"id":"68d77a7eae4e49bf", "weightclass":"Plastic Ants", "weightInt": 453},
-        {"id":"e0b2a154ac3e44f4", "weightclass": "Ants", "weightInt":452},
-        {"id":"a9555d2838a34757", "weightclass":"Ant Test"}
+        {"id":"4e3b92d7b64c4c03", "weightclass": "Beetles", "weightInt":1360},
+        {"id":"b14c7c8365c8482a", "weightclass":"Plastic Ants", "weightInt": 453},
+        {"id":"5568401bc98f49ad", "weightclass": "Ants", "weightInt":452}
     ],
     "tournament_cages":[
         {"name": "Big Steel", "id": 1},

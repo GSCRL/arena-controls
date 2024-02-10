@@ -20,7 +20,12 @@ truefinals = TrueFinals()
 
 @app.route("/")
 def index():
-    return render_template("ctimer.html", user_screens=user_screens)
+    return render_template("base.html", title="Landing Page")
+
+
+@app.route("/control")
+def realTimer():
+    return render_template("ctimer.html", user_screens=user_screens, title="Controller")
 
 
 class reversor:
@@ -88,11 +93,6 @@ def routeForLastMatches():
     )
 
 
-@app.route("/judges")
-def judgesScreen():
-    return render_template("judges.html")
-
-
 @socketio.on("timer_event")
 def handle_message(timer_data):
     emit("timer_event", timer_data, broadcast=True)
@@ -151,8 +151,9 @@ def internal_error(error):
 
 
 import logging
+
 logging.basicConfig(level="INFO")
-#logging.basicConfig(level="WARNING")
+# logging.basicConfig(level="WARNING")
 
 if __name__ == "__main__":
     socketio.run(app, host="0.0.0.0", port=80, debug=True)

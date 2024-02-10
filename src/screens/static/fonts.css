@@ -1,0 +1,19 @@
+
+@font-face {
+    font-family: DSEG14;
+    src: url('../static/DSEG14ModernMini-Bold.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'GlacialIndifference';
+    src: url('../static/GlacialIndifference-Regular.woff') format('woff');
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'GlacialIndifference';
+    src: url('../static/GlacialIndifference-Bold.woff') format('woff');
+    font-style: bold;
+    font-weight: 700;
+}
