@@ -76,8 +76,12 @@
             }
         });
         // actually construct our socket.io connection here such that all screens can be presumed to have this connection.
-        
+
         var socket = io();
+        socket.on('connect', function() {
+            socket.emit('connect_location', {'data': window.location.href, 'cage': {{ cageID }} });
+        });
+        
     </script>
 
 {% block basecontent %}

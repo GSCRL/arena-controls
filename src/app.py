@@ -93,14 +93,20 @@ def routeForLastMatches():
     )
 
 
+@socketio.on("connect")
+def base_connection_handler():
+    pass
+
+
+@socketio.on("connect_location")
+def connect_to_cage(data):
+    print(data)
+    join_room(f'cage_number_{data["cage"]}')
+
+
 @socketio.on("timer_event")
 def handle_message(timer_data):
     emit("timer_event", timer_data, broadcast=True)
-
-
-@socketio.on("test_connect")
-def handle_message(timer_data):
-    emit("test_connect", broadcast=True)
 
 
 @socketio.on("timer_bg_event")

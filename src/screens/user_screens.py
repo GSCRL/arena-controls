@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, render_template, Response
+from flask import Blueprint, Response, redirect, render_template
 
 user_screens = Blueprint(
     "user_screens", __name__, static_folder="./static", template_folder="./templates"
@@ -32,6 +32,7 @@ def blueScreenVertical(cageID: int):
 @user_screens.route("/<int:cageID>/judges")
 def judgesScreen(cageID: int):
     return render_template("judges_timer.html", cageID=cageID)
+
 
 # Stupid hack to get around relative pathing so it can be moved around. 0/10 do not do this.
 @user_screens.route("fonts.css")
