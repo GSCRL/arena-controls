@@ -103,7 +103,6 @@
 </script>
 
 <script type="text/javascript" charset="utf-8">
-var socket = io();
 
 socket.on('connect', function() {
     setTimerString("000"); // should fix broken scaling for only loading once the window is rendered otherwise.  Yipee?  
@@ -122,10 +121,6 @@ socket.on("reset_screen_states", function() {
         document.getElementById("tapoutbutton").innerText = "TAP OUT"
 });
 
-// responsible for reloading the font on the page size changing, so testing in dev is better.
-addEventListener("resize", (event) => {
-    textFit(document.getElementsByClassName('timer'), {alignHoriz: true, maxFontSize: 600, widthOnly: true, detectMultiLine: false});
-});
 
 </script>
 {% endblock %}

@@ -6,7 +6,7 @@
     <title>{% if team_color_name %}{{ team_color_name.upper() }}{% endif %}</title>
     <script src="{{url_for('user_screens.static', filename='textFit.min.js')}}"></script> 
     <script src="https://cdn.socket.io/4.7.3/socket.io.min.js" integrity="sha384-+miq58Ltmjm+SSP5g8Ok6dpMO/6R4n8xe/x1Yj0Bdb9kiEz25LTnWv/GZQTRQamg" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../static/fonts.css">
+    <link rel="stylesheet" href="/screens/fonts.css">
     <style>
         body {
             font-family: GlacialIndifference;
@@ -65,6 +65,20 @@
         /* CSS Button for teams to press */
         </style>
     </head>
+
+    <script>
+        // resize fixer please.
+        addEventListener("resize", (event) => {
+            if (document.getElementById("timer") !== null) {
+                if (typeof(textFit) === "function") {
+                    textFit(document.getElementsByClassName('timer'), {alignHoriz: true, maxFontSize: 600, widthOnly: true, detectMultiLine: false});
+                }
+            }
+        });
+        // actually construct our socket.io connection here such that all screens can be presumed to have this connection.
+        
+        var socket = io();
+    </script>
 
 {% block basecontent %}
 

@@ -2,31 +2,10 @@
 {% block basecontent %}
  
 <style>
-    :root {
-        --team-bg-color: {{team_color}};
-    }
-
     body {
         font-family: GlacialIndifference;
         background-color:rgb(37, 37, 37);
         margin: 0; /* this prevents a small bleed on the screen I guess? */
-    }
-
-    @font-face {
-        font-family: 'GlacialIndifference';
-        src: url('{{url_for('user_screens.static', filename='GlacialIndifference-Regular.woff')}}') format('woff');
-        font-style: normal;
-        font-weight: 400;
-    }
-
-    @font-face {
-        font-family: 'GlacialIndifference';
-        src: url('{{url_for('user_screens.static', filename='GlacialIndifference-Bold.woff')}}') format('woff');
-        font-style: bold;
-        font-weight: 700;
-    }
-
-    body {
         width: 100vw;
         height: 100vh;
         overflow: hidden;
@@ -54,6 +33,7 @@
         overflow-x: hidden;
         display: flex;
     }
+
     /* CSS Button for teams to press */
     .fancybutton {
         border: none;
@@ -115,7 +95,6 @@
 </script>
 
 <script type="text/javascript" charset="utf-8">
-var socket = io();
 
 socket.on('connect', function() {
     setTimerString("000"); // should fix broken scaling for only loading once the window is rendered otherwise.  Yipee?  
