@@ -45,6 +45,7 @@ def routeForUpcomingMatches():
         div_matches=matches,
         autoreload=autoreload,
         event_name=arena_settings.event_name,
+        arena_settings=arena_settings
     )
 
 
@@ -66,4 +67,5 @@ def routeForLastMatches():
         div_matches=matches,
         autoreload=autoreload,
         event_name=arena_settings.event_name,
+        arena_settings=arena_settings
     )
