@@ -3,11 +3,13 @@ from flask_caching import Cache
 from flask_socketio import SocketIO, emit, join_room
 
 from config import settings as arena_settings
+from matches.match_results import match_results
 from screens.user_screens import user_screens
 from truefinals_api.wrapper import TrueFinals
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.register_blueprint(user_screens, url_prefix="/screens")
+app.register_blueprint(match_results, url_prefix="/matches")
 
 app.config["SECRET_KEY"] = "secret secret key (required)!"
 socketio = SocketIO(app)
@@ -20,12 +22,19 @@ truefinals = TrueFinals()
 
 @app.route("/")
 def index():
-    return render_template("base.html", title="Landing Page")
+    return render_template(
+        "base.html", title="Landing Page", arena_settings=arena_settings
+    )
 
 
 @app.route("/control")
 def realTimer():
-    return render_template("ctimer.html", user_screens=user_screens, title="Controller")
+    return render_template(
+        "ctimer.html",
+        user_screens=user_screens,
+        title="Controller",
+        arena_settings=arena_settings,
+    )
 
 
 class reversor:
@@ -43,54 +52,6 @@ class reversor:
 def generateSettingsPage():
     if request.method == "GET":
         return render_template("app_settings.html", arena_settings=arena_settings)
-
-
-@app.route("/upcoming")
-def routeForUpcomingMatches():
-    autoreload = request.args.get("autoreload")
-    matches = (
-        truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
-        .withoutByes()
-        .withFilter(lambda x: x["state"] != "done")
-        .withFilter(lambda x: len(x["slots"]) != 0)
-        .inOrder(
-            lambda x: (
-                x["availableSince"] or float("inf"),
-                reversor(x["bracketID"]),
-                x["round"],
-                x["state"],
-            )
-        )
-        .done()
-    )
-
-    return render_template(
-        "upcoming_matches.html",
-        div_matches=matches,
-        autoreload=autoreload,
-        event_name=arena_settings.event_name,
-    )
-
-
-@app.route("/lastmatches")
-def routeForLastMatches():
-    autoreload = request.args.get("autoreload")
-
-    matches = (
-        truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
-        .withoutByes()
-        .withFilter(lambda x: x["state"] == "done")
-        .withFilter(lambda x: len(x["slots"]) != 0)
-        .backfillResultStrings()
-        .done()
-    )
-
-    return render_template(
-        "last_matches.html",
-        div_matches=matches,
-        autoreload=autoreload,
-        event_name=arena_settings.event_name,
-    )
 
 
 @socketio.on("connect")

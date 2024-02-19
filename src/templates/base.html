@@ -34,7 +34,7 @@
     
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item" href="control">
+          <a class="navbar-item" href="/control">
             Match Control
           </a>
     
@@ -44,17 +44,23 @@
             </a>
     
             <div class="navbar-dropdown">
+              {% for cage in arena_settings.tournament_cages %}
               <hr class="navbar-divider">
-              <a href="screens/timervertical/red" class="navbar-item">
-                Vertical Timer Red
+              <div class="navbar-item has-background-info has-text-primary-light" disabled>
+                Cage {{ cage.id }} ({{ cage.name }})
+              </div>
+              <a href="/screens/{{cage.id}}/timer/red" class="navbar-item">
+                Red Control
               </a>
-              <a href="screens/timervertical/blue" class="navbar-item">
-                Vertical Timer Blue
+              <a href="/screens/{{cage.id}}/timer/blue" class="navbar-item">
+                Blue Control
               </a>
               <hr class="navbar-divider">
-              <a href="screens/timer" class="navbar-item">
-                Fullscreen Timer
+              <a href="/screens/timer" class="navbar-item">
+                Big Timer
               </a>
+              <hr class="navbar-divider">
+              {% endfor %}
             </div>
           </div>
 
@@ -71,7 +77,7 @@
           <div class="navbar-item">
             <div class="field is-grouped">
               <p class="control">
-                <a class="button" href="settings">
+                <a class="button" href="/settings">
                   <span>Settings</span>
                 </a>
               </p>
