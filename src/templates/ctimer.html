@@ -4,6 +4,28 @@
 <script src="{{url_for('static', filename='easytimer.min.js')}}"></script>
     
 <script>
+  var cageID = {{ cageID }};
+
+  socket.emit(
+    "join_cage_request", 
+    {
+      'cage_id': {{ cageID }} 
+    }
+  )
+
+  function generateTimerMessage(message) {
+    return {
+      'cageID': cageID,
+      'message': message
+    };
+  }
+
+  function generateBackgroundMessage(color) {
+    return {
+      'color': color,
+      'cageID':cageID
+    }
+  }
 
   var timerInstance = new easytimer.Timer({countdown: true, startValues: {seconds: 150.9}, precision: 'secondTenths' });
   var countdownTimer = new easytimer.Timer({countdown: true, startValues: {seconds: 4.5}, precision: 'secondTenths' });
@@ -26,7 +48,7 @@ countdownTimer.addEventListener('secondTenthsUpdated', function (e) {
   }
   
   setTimerPageTimer(time_in_seconds);
-  socket.emit("timer_event", time_in_seconds);
+  socket.emit("timer_event", generateTimerMessage(time_in_seconds));
 });
 
 timerInstance.addEventListener('secondTenthsUpdated', function (e) {
@@ -37,7 +59,7 @@ timerInstance.addEventListener('secondTenthsUpdated', function (e) {
     time_in_seconds = time_in_seconds.padStart(3, "0"); 
   }
   setTimerPageTimer(time_in_seconds);
-  socket.emit("timer_event", time_in_seconds);
+  socket.emit("timer_event", generateTimerMessage(time_in_seconds));
 });
 
 function setTimerPageTimer(timer_value) {
@@ -57,14 +79,14 @@ function swapHeartbeatSignStatus() {
 /* Timer Control Stubs */
 function startTimer() {
   countdownTimer.start();
-  socket.emit("timer_bg_event", "rgb(37, 37, 37)"); //controls the judges timer background.
-  socket.emit("timer_event", "150");
+  socket.emit("timer_bg_event", generateBackgroundMessage("rgb(37, 37, 37)")); 
+  socket.emit("timer_event", generateTimerMessage("150"));
 }
 
 function readyTimer() {
   timerInstance.start();
   timerInstance.pause();
-  socket.emit("timer_event", "150");
+  socket.emit("timer_event", generateTimerMessage("150"));
   resetBG();
 }
 function pauseTimer() {
@@ -72,13 +94,13 @@ function pauseTimer() {
 }
 
 function resetBG() {
-  socket.emit("timer_bg_event", "rgb(37, 37, 37)");
+  socket.emit("timer_bg_event", generateBackgroundMessage("rgb(37, 37, 37)"));
 }
 
 function stopTimer() {
   resetTeamReadies();
   document.getElementById("timer_control_counter").innerText = "150";
-  socket.emit("timer_event", "150")
+  socket.emit("timer_event", generateTimerMessage("150"));
   timerInstance.stop();
   timerInstance.start();
   pauseTimer();
@@ -87,8 +109,8 @@ function stopTimer() {
 function eSTOP() {
   stopTimer();
   resetTeamReadies();
-  socket.emit("timer_event", "STOP");
-  socket.emit("timer_bg_event", "red");
+  socket.emit("timer_event", generateTimerMessage("STOP"));
+  socket.emit("timer_bg_event", generateBackgroundMessage("blue"));
 }
 
 // changes the state of the readies for next.
@@ -111,28 +133,34 @@ socket.on("control_player_ready_event", (station_info) => {
 
 // in the event of a tapout, tell arena controls who wins automagically.
 socket.on("control_player_tapout_event", (station_info) => {
+  console.log(station_info)
   stopTimer();
-  if (station_info.station === "red") {
+  if (station_info.playerColor === "red") {
       document.getElementById("redisready").innerText = "[TAPOUT]";
       document.getElementById("blueisready").innerText = "[WIN]";
-      socket.emit("timer_event", "TAPOUT<br>BLUE WINS");
-      socket.emit("timer_bg_event", "blue");
+      socket.emit("timer_event", generateTimerMessage("TAPOUT<br>BLUE WINS"));
+      socket.emit("timer_bg_event", generateBackgroundMessage("blue")); 
   }
 
-  if (station_info.station === "blue") {
+  if (station_info.playerColor === "blue") {
       document.getElementById("blueisready").innerText = "[TAPOUT]";
       document.getElementById("redisready").innerText = "[WIN]";
-      socket.emit("timer_event", "TAPOUT<br>RED WINS");
-      socket.emit("timer_bg_event", "red");
+      socket.emit("timer_event", generateTimerMessage("TAPOUT<br>BLUE WINS"));
+      socket.emit("timer_bg_event", generateBackgroundMessage("red")); 
   }
 });
 
 function resetTeamReadyButtons() {
-  socket.emit("reset_screen_states");
+  socket.emit("reset_screen_states", {'cageID': cageID });
 }
 
 function sendTimerMessage() {
-  socket.emit("timer_event", (document.getElementById("sendmessagebox").value).replace("!", "¦").replace(" ", "!"));
+  socket.emit("timer_event", 
+  generateTimerMessage( // we use this to encapsulate the message with per-cage information for the server to send out.  semi-trusted clients I guess.
+    (
+      document.getElementById("sendmessagebox").value).replace("!", "¦").replace(" ", "!") // this is sugar to make it render in DSEG font properly.  
+    )
+  );
   // This is to reformat the string on the fly to comply with the DSEG14 oddities.
   // still worth it - k.
   // https://www.keshikan.net/fonts-e.html
@@ -202,13 +230,13 @@ function readyBlueUp() {
 
       </div> <!-- column end -->
 
-      <!--
+      
       <div class="column"> 
         <article class="panel is-danger">
           <p class="panel-heading">
             Cage Timer Controls
           </p>
-          <!-
+          
           {% if cages %}
           <p class="panel-tabs">
             <a class="is-active">All Cages</a>
@@ -217,7 +245,7 @@ function readyBlueUp() {
               {% endfor %}
           </p>
             {% endif %}  
-        ->             
+              
 
         <p class="panel-block">
           <div class="field has-addons">
@@ -248,9 +276,9 @@ function readyBlueUp() {
           {% endif %}
          
         </article>
-      </div> <!- column end ->
-    </div> <!- columns end ->
-  -->
+      </div> <!-- column end -->
+    </div> <!-- columns end -->
+  
 
 
   </section>

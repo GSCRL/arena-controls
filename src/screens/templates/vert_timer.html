@@ -69,12 +69,12 @@
 
 <script> //user interaction stubs.
     function ready() {
-        socket.emit('player_ready', window.location);
+        socket.emit('player_ready', {'playerColor': "{{ team_color_name }}", "cageID": {{ cageID }} });
         document.getElementById("readybutton").innerText = "READIED";
     }
 
     function tapout() {
-        socket.emit('player_tapout', window.location);
+        socket.emit('player_tapout', {'playerColor': "{{ team_color_name }}", "cageID": {{ cageID }} });
         document.getElementById("tapoutbutton").innerText = "TAPPED"
     }
 </script>
@@ -108,12 +108,16 @@ socket.on('connect', function() {
     setTimerString("000"); // should fix broken scaling for only loading once the window is rendered otherwise.  Yipee?  
     });
 
+socket.emit("join_cage_request", {'cage_id': {{ cageID }} }
+)
+
 socket.on("timer_event", function(timer_data) {
     setTimerString(timer_data);
 });
 
 socket.on("timer_bg_event", function(timer_bg_color) { //used for eSTOP only?
-        document.getElementsByTagName("body")[0].style.backgroundColor = timer_bg_color;
+    console.log(timer_bg_color)
+        document.getElementsByTagName("body")[0].style.backgroundColor = timer_bg_color.color;
     });
 
 socket.on("reset_screen_states", function() {
