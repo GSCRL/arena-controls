@@ -34,10 +34,22 @@
     
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item" href="/control">
-            Match Control
-          </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Match Control
+            </a>
     
+            <div class="navbar-dropdown">
+              {% for cage in arena_settings.tournament_cages %}
+              <a href="/screens/{{cage.id}}/judges" class="navbar-item">
+                Cage {{ cage.id }} ({{ cage.name }})
+              </a>
+              {% endfor %}
+            </div>
+          </div>
+
+
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
               Team Screens
@@ -56,7 +68,7 @@
                 Blue Control
               </a>
               <hr class="navbar-divider">
-              <a href="/screens/timer" class="navbar-item">
+              <a href="/screens/{{cage.id}}/timer" class="navbar-item">
                 Big Timer
               </a>
               <hr class="navbar-divider">
