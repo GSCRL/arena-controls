@@ -1,10 +1,11 @@
 import logging
 
 from dynaconf import Dynaconf
+from pathlib import Path
 
 settings = Dynaconf(
     envvar_prefix="DYNACONF",
-    settings_files=["./event.json", "./.secrets.json"],
+    settings_files=[Path("./event.json"), Path(".secrets.json")],
 )
 
 

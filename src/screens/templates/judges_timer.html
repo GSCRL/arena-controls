@@ -93,7 +93,7 @@
 
     function eSTOP() {
         socket.emit("timer_event", generateTimerMessage("STOP"));
-  socket.emit("timer_bg_event", generateBackgroundMessage("red"));
+        socket.emit("timer_bg_event", generateBackgroundMessage("red"));
     }
 
 </script>
