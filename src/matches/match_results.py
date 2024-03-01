@@ -45,7 +45,7 @@ def routeForUpcomingMatches():
         div_matches=matches,
         autoreload=autoreload,
         event_name=arena_settings.event_name,
-        arena_settings=arena_settings
+        arena_settings=arena_settings,
     )
 
 
@@ -67,5 +67,15 @@ def routeForLastMatches():
         div_matches=matches,
         autoreload=autoreload,
         event_name=arena_settings.event_name,
-        arena_settings=arena_settings
+        arena_settings=arena_settings,
+    )
+
+
+@match_results.errorhandler(500)
+def internal_error(error):
+    autoreload = request.args.get("autoreload")
+    return render_template(
+        "base.html",
+        autoreload=autoreload,
+        errormsg="Sorry, this page has produced an error while generating.  Please try again in 30s.",
     )
