@@ -1,3 +1,5 @@
+import logging
+
 from flask import Flask, render_template, request
 from flask_caching import Cache
 from flask_socketio import SocketIO, emit, join_room, rooms
@@ -6,6 +8,8 @@ from config import settings as arena_settings
 from matches.match_results import match_results
 from screens.user_screens import user_screens
 from truefinals_api.wrapper import TrueFinals
+
+logging.basicConfig(level="INFO")
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.register_blueprint(user_screens, url_prefix="/screens")
@@ -104,11 +108,6 @@ def internal_error(error):
         errormsg="Sorry, this page has produced an error while generating.  Please try again in 30s.",
     )
 
-
-import logging
-
-logging.basicConfig(level="INFO")
-# logging.basicConfig(level="WARNING")
 
 if __name__ == "__main__":
     socketio.run(app, host="0.0.0.0", port=80, debug=True)

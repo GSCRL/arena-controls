@@ -28,6 +28,29 @@ def mandateConfig():
         logging.info("No league name set, assuming None.")
         settings["event_league"] = None  # Empty by default, fine.
 
+    if "truefinals" not in settings:
+        settings["truefinals"] = {"api_key": "", "user_id": ""}
+        logging.warning(
+            "TrueFinals API keys not set up.  App will not be able to run upcoming / last matches, or run match results directly."
+        )
+
+    if 'robotcombatevents' not in settings:
+        settings['robotcombatevents'] = {'username':"", 'password':''}
+        logging.warning("RCE credentials not provided.  Cannot automate import of brackets.")
+
+    if 'obs_ws' not in settings:
+        settings['obs_ws'] = []
+        logging.warning("No targets set for OBS Websocket control.  Please specify targets in Settings for this feature to work.")
+    else:
+        for item in settings['obs_ws']:
+            if 'uri' not in item:
+                item['uri'] = ""
+                logging.warning("Empty URI for OBSWS target.  Cannot be used, resetting.")
+            if 'token' not in item:
+                item['token'] = ""
+            if 'scene' not in item:
+                item['scene'] = ""
+
 
 mandateConfig()
 
