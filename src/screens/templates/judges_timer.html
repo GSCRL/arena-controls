@@ -62,14 +62,40 @@
     </style>
 
 <script> //user interaction stubs.
+    var cageID = {{ cageID }};
+
+    function generateTimerMessage(message) {
+    return {
+        'cageID': cageID,
+        'message': message
+    };
+    }
+
+    function generateBackgroundMessage(color) {
+    return {
+        'color': color,
+        'cageID':cageID
+    }
+    }
+
     function readyup(botColor) {
-        socket.emit('player_ready', botColor);
+        socket.emit('player_ready', {'playerColor': botColor, "cageID": {{ cageID }} });
+
+        if (botColor === "red") {
+            document.getElementById("setredready").innerText = "RED READY";
+        }
+
+        if (botColor === "blue") {
+            document.getElementById("setblueready").innerText = "RED READY";
+        }
+
     }
 
     function eSTOP() {
-        socket.emit("timer_event", "STOP");
-        socket.emit("timer_bg_event", "red");
+        socket.emit("timer_event", generateTimerMessage("STOP"));
+  socket.emit("timer_bg_event", generateBackgroundMessage("red"));
     }
+
 </script>
 
 
@@ -95,10 +121,12 @@
 </script>
 
 <script type="text/javascript" charset="utf-8">
-
-socket.on('connect', function() {
+    socket.on('connect', function() {
     setTimerString("000"); // should fix broken scaling for only loading once the window is rendered otherwise.  Yipee?  
     });
+
+socket.emit("join_cage_request", {'cage_id': {{ cageID }} }
+)
 
 socket.on("timer_event", function(timer_data) {
     setTimerString(timer_data);
