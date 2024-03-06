@@ -90,7 +90,12 @@ function readyTimer() {
   resetBG();
 }
 function pauseTimer() {
-  timerInstance.pause();
+  if (!timerInstance.isPaused())
+  {
+    timerInstance.pause();
+  } else {
+    timerInstance.start();
+  }
 }
 
 function resetBG() {
