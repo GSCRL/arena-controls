@@ -1,7 +1,6 @@
 import logging
 
 from flask import Flask, render_template, request
-from flask_caching import Cache
 from flask_socketio import SocketIO, emit, join_room, rooms
 
 from config import settings as arena_settings
@@ -17,9 +16,6 @@ app.register_blueprint(match_results, url_prefix="/matches")
 
 app.config["SECRET_KEY"] = "secret secret key (required)!"
 socketio = SocketIO(app)
-
-cache = Cache(config={"CACHE_TYPE": "SimpleCache"})
-cache.init_app(app)
 
 truefinals = TrueFinals()
 

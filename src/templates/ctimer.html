@@ -127,18 +127,18 @@ function resetTeamReadies() {
 
 // set the timer display for ready / not ready.  just an indicator status.
 socket.on("control_player_ready_event", (station_info) => {
-  if (station_info.station === "red") {
+  console.log(station_info);
+  if (station_info.playerColor === "red") {
       document.getElementById("redisready").innerText = "[READY]";
   }
 
-  if (station_info.station === "blue") {
+  if (station_info.playerColor === "blue") {
       document.getElementById("blueisready").innerText = "[READY]";
   }
 });
 
 // in the event of a tapout, tell arena controls who wins automagically.
 socket.on("control_player_tapout_event", (station_info) => {
-  console.log(station_info)
   stopTimer();
   if (station_info.playerColor === "red") {
       document.getElementById("redisready").innerText = "[TAPOUT]";
@@ -150,7 +150,7 @@ socket.on("control_player_tapout_event", (station_info) => {
   if (station_info.playerColor === "blue") {
       document.getElementById("blueisready").innerText = "[TAPOUT]";
       document.getElementById("redisready").innerText = "[WIN]";
-      socket.emit("timer_event", generateTimerMessage("TAPOUT<br>BLUE WINS"));
+      socket.emit("timer_event", generateTimerMessage("TAPOUT<br>RED WINS"));
       socket.emit("timer_bg_event", generateBackgroundMessage("red")); 
   }
 });
@@ -184,7 +184,7 @@ function readyBlueUp() {
 <section class="section">
     <div class="container">
       <h1 class="title">
-        Match Timer
+        Match Timer (Cage {{ cageID }})
       </h1>
       <p class="subtitle">
         (only one instance of this page can be open)
@@ -236,7 +236,7 @@ function readyBlueUp() {
       </div> <!-- column end -->
 
       
-      <div class="column"> 
+      <!--<div class="column"> 
         <article class="panel is-danger">
           <p class="panel-heading">
             Cage Timer Controls
@@ -281,7 +281,7 @@ function readyBlueUp() {
           {% endif %}
          
         </article>
-      </div> <!-- column end -->
+      </div> -- column end -->
     </div> <!-- columns end -->
   
 
