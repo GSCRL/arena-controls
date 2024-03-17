@@ -42,7 +42,7 @@ class APICache:
         return None
 
 
-cache = APICache(ttl=60)
+cache = APICache(ttl=120)
 
 
 def makeAPIRequest(endpoint: str) -> list:

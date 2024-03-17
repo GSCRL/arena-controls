@@ -97,6 +97,11 @@ class Matches:
                 return "Forfeit"
             if value == "BY":
                 return "Match Bye"  # Not normally used but included for enumeration reasons.
+            if value in [
+                "HLD",
+                "T",
+            ]:  # HLD is HOLD, for when a JD takes longer @ NHRL.  Still unsure what `T` is used for.
+                return "UNKNOWN"
 
         for match in self._matches:
             match["result_string"] = ""

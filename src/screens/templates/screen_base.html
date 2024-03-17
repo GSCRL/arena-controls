@@ -64,25 +64,26 @@
 
         /* CSS Button for teams to press */
         </style>
+        <script>
+            // resize fixer please.
+            addEventListener("resize", (event) => {
+                if (document.getElementById("timer") !== null) {
+                    if (typeof(textFit) === "function") {
+                        textFit(document.getElementsByClassName('timer'), {alignHoriz: true, maxFontSize: 600, widthOnly: true, detectMultiLine: false});
+                    }
+                }
+            });
+            // actually construct our socket.io connection here such that all screens can be presumed to have this connection.
+
+            var socket = io();
+            socket.on('connect', function() {
+                socket.emit('connect_location', {'data': window.location.href, 'cage': {{ cageID }} });
+            });
+            
+        </script>
     </head>
 
-    <script>
-        // resize fixer please.
-        addEventListener("resize", (event) => {
-            if (document.getElementById("timer") !== null) {
-                if (typeof(textFit) === "function") {
-                    textFit(document.getElementsByClassName('timer'), {alignHoriz: true, maxFontSize: 600, widthOnly: true, detectMultiLine: false});
-                }
-            }
-        });
-        // actually construct our socket.io connection here such that all screens can be presumed to have this connection.
-
-        var socket = io();
-        socket.on('connect', function() {
-            socket.emit('connect_location', {'data': window.location.href, 'cage': {{ cageID }} });
-        });
-        
-    </script>
+   
 
 {% block basecontent %}
 

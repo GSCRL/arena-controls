@@ -38,3 +38,8 @@ def judgesScreen(cageID: int):
 @user_screens.route("fonts.css")
 def getCSSPath():
     return Response(render_template("fonts.css"), mimetype="text/css")
+
+
+@user_screens.route("/upcoming_test")
+def judgesSfdfcreen():
+    return render_template("upcoming_match.html", cageID=99)
