@@ -68,13 +68,16 @@
     </style>
 
 <script> //user interaction stubs.
+
+    var cageID = {{ cageID }};
+
     function ready() {
-        socket.emit('player_ready', {'playerColor': "{{ team_color_name }}", "cageID": {{ cageID }} });
+        socket.emit('player_ready', {'playerColor': "{{ team_color_name }}", "cageID": cageID });
         document.getElementById("readybutton").innerText = "READIED";
     }
 
     function tapout() {
-        socket.emit('player_tapout', {'playerColor': "{{ team_color_name }}", "cageID": {{ cageID }} });
+        socket.emit('player_tapout', {'playerColor': "{{ team_color_name }}", "cageID": cageID });
         document.getElementById("tapoutbutton").innerText = "TAPPED"
     }
 </script>
@@ -88,7 +91,7 @@
 
   <div class="bottomhalf">
         <div class="buttons">
-            <button id="tapoutbutton" onclick="tapout()" class="fancybutton tapout" style=>TAP OUT</button>
+            <button id="tapoutbutton" onclick="tapout()" class="fancybutton tapout">TAP OUT</button>
             <button id="readybutton" onclick="ready()" class="fancybutton readyup">MARK READY</button>
         </div>
 </div>
@@ -106,10 +109,11 @@
 
 socket.on('connect', function() {
     setTimerString("000"); // should fix broken scaling for only loading once the window is rendered otherwise.  Yipee?  
-    });
 
-socket.emit("join_cage_request", {'cage_id': {{ cageID }} }
-)
+    socket.emit("join_cage_request", {'cage_id': cageID });
+
+});
+
 
 socket.on("timer_event", function(timer_data) {
     setTimerString(timer_data);

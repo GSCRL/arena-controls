@@ -77,7 +77,24 @@
 
             var socket = io();
             socket.on('connect', function() {
+                socket.emit('join_cage_request', {'data': window.location.href, 'cage': {{ cageID }} });
+            });
+
+              // rejoin if there's a disconnect
+            socket.on('reconnect', () => {
                 socket.emit('connect_location', {'data': window.location.href, 'cage': {{ cageID }} });
+            });
+
+
+            socket.on("connect_error", (err) => {
+                // the reason of the error, for example "xhr poll error"
+                console.log(err.message);
+
+                // some additional description, for example the status code of the initial HTTP response
+                console.log(err.description);
+
+                // some additional context, for example the XMLHttpRequest object
+                console.log(err.context);
             });
             
         </script>
