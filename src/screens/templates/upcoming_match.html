@@ -74,13 +74,11 @@
 
 <script type="text/javascript" charset="utf-8">
     socket.on('connect', function() {
+        socket.emit("join_cage_request", {'cage_id': {{ cageID }} })
     });
 
-socket.emit("join_cage_request", {'cage_id': {{ cageID }} }
-)
-
 socket.on("timer_event", function(timer_data) {
-
+    // ???
 });
 
 //textFit(document.getElementsByClassName('upper-header'), {alignHoriz: true, maxFontSize: 600, widthOnly: true, detectMultiLine: false});

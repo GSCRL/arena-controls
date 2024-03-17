@@ -28,10 +28,9 @@
     <script type="text/javascript" charset="utf-8">
         socket.on('connect', function() {
             setTimerString("000"); // should fix broken scaling for only loading once the window is rendered otherwise.  Yipee?
-            });
-
-        socket.emit("join_cage_request", {'cage_id': {{ cageID }} }
-        )
+            socket.emit("join_cage_request", {'cage_id': {{ cageID }} });
+        });
+        
 
         socket.on("timer_event", function(timer_data) {
             setTimerString(timer_data);
