@@ -163,7 +163,7 @@ function sendTimerMessage() {
   socket.emit("timer_event", 
   generateTimerMessage( // we use this to encapsulate the message with per-cage information for the server to send out.  semi-trusted clients I guess.
     (
-      document.getElementById("sendmessagebox").value).replace("!", "¦").replace(" ", "!") // this is sugar to make it render in DSEG font properly.  
+      document.getElementById("sendmessagebox").value)  //.replace("!", "¦").replace(" ", "!") // this is sugar to make it render in DSEG font properly.  
     )
   );
   // This is to reformat the string on the fly to comply with the DSEG14 oddities.

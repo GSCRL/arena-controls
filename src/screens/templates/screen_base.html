@@ -6,16 +6,48 @@
     <title>{% if team_color_name %}{{ team_color_name.upper() }}{% endif %}</title>
     <script src="{{url_for('user_screens.static', filename='textFit.min.js')}}"></script> 
     <script src="https://cdn.socket.io/4.7.3/socket.io.min.js" integrity="sha384-+miq58Ltmjm+SSP5g8Ok6dpMO/6R4n8xe/x1Yj0Bdb9kiEz25LTnWv/GZQTRQamg" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="/screens/fonts.css">
     <style>
+
+.space-mono-regular {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.space-mono-bold {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.space-mono-regular-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.space-mono-bold-italic {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-style: italic;
+}
+
         body {
             font-family: GlacialIndifference;
             color: white;
         }
 
         .timer { /* used for the fullscreen timer, yay. */
-            font-family: DSEG14;
+            font-family: 'Space Mono';
+            font-weight: 700;
             color:white;
+            height: 100%;
         }
 
 
