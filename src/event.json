@@ -2,7 +2,7 @@
     "event_name": "Spring Smash @ TCNJ",
     "event_league": "Garden State Combat Robotics League",
     "tournament_keys": [
-        {"id":"222acc834c964c14", "weightclass": "Beetles", "weightInt":1360},
+        {"id":"c1d13538e2fe4677", "weightclass": "Beetles", "weightInt":1360},
         {"id":"38630c44526f429c", "weightclass":"Plastic Ants", "weightInt": 453},
         {"id":"6a437086c3c148ea", "weightclass": "Ants", "weightInt":452}
     ],

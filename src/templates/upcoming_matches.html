@@ -53,7 +53,8 @@
         </thead>
         <tbody>
           {% for match in div_matches._matches %}
-          <tr>
+          <tr {% if 'calledSince' in match %} {% if match.calledSince != None %} class="is-link" {% endif %} {% endif %}>
+            <!-- {{ match.calledSince }}-->
             {% if cages %}
             <td>Cage NULL</td>
             {% endif %}

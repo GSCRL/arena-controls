@@ -102,6 +102,7 @@ def internal_error(error):
     return render_template(
         "base.html",
         autoreload=autoreload,
+        arena_settings=arena_settings,
         errormsg="Sorry, this page has produced an error while generating.  Please try again in 30s.",
     )
 
