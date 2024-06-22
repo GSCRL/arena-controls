@@ -101,7 +101,7 @@ return time;
             {% if cages %}
               <th>Cage</th>
             {% endif %}
-            <th>Division</th>
+            <th>Weightclass / Called Since</th>
             <th>Bracket Round</th>
             <th>Match Info</th>
             <th>Red</th>
@@ -116,8 +116,10 @@ return time;
             <td>Cage NULL</td>
             {% endif %}
 
-            <td> {% if 'calledSince' in match and match.calledSince != None %} <div > 
-              <div id="called_since_{{ match.tournamentID }}_{{ match.id }} "></div>
+            <td> {% if 'calledSince' in match and match.calledSince != None %} 
+
+
+              <span class="button is-primary" id="called_since_{{ match.tournamentID }}_{{ match.id }} "></span>
               <script>
                 document.getElementById("called_since_{{ match.tournamentID }}_{{ match.id }} ").innerHTML = "Called " + time_ago( {{ match.calledSince }} );
               </script>
