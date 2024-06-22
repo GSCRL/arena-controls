@@ -10,7 +10,21 @@ from truefinals_api.wrapper import TrueFinals
 
 logging.basicConfig(level="INFO")
 
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy.orm import DeclarativeBase
+
+class Base(DeclarativeBase):
+  pass
+
+db = SQLAlchemy(model_class=Base)
+
 app = Flask(__name__, static_folder="static", template_folder="templates")
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///combat_robot_event.db"
+db.init_app(app)
+
+with app.app_context():
+    db.create_all()
+
 app.register_blueprint(user_screens, url_prefix="/screens")
 app.register_blueprint(match_results, url_prefix="/matches")
 
