@@ -28,7 +28,8 @@ def routeForUpcomingMatches():
         truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
         .withoutByes()
         .withFilter(lambda x: x["state"] != "done")
-        .inOrder(lambda x: x['calledSince'] or float(0), reverse=True)
+        .inOrder(lambda x: (x['calledSince'] or float(0), reversor(x['state'] == 'unavailable')), reverse=True)
+        .toFile("test.json")
         #.withFilter(lambda x: len(x["slots"]) != 0)
         #.inOrder(
         #    lambda x: (
@@ -39,6 +40,7 @@ def routeForUpcomingMatches():
         #    )
         #)
         .done()
+
     )
 
     return render_template(
