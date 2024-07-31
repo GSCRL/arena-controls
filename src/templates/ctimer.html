@@ -27,6 +27,18 @@
     }
   }
 
+  function readyup(botColor) {
+      socket.emit('player_ready', {'playerColor': botColor, "cageID": {{ cageID }} });
+
+      if (botColor === "red") {
+          document.getElementById("setredready").innerText = "RED READY";
+      }
+
+      if (botColor === "blue") {
+          document.getElementById("setblueready").innerText = "RED READY";
+      }
+  }
+
   var timerInstance = new easytimer.Timer({countdown: true, startValues: {seconds: 150.9}, precision: 'secondTenths' });
   var countdownTimer = new easytimer.Timer({countdown: true, startValues: {seconds: 4.5}, precision: 'secondTenths' });
 
@@ -115,7 +127,7 @@ function eSTOP() {
   stopTimer();
   resetTeamReadies();
   socket.emit("timer_event", generateTimerMessage("STOP"));
-  socket.emit("timer_bg_event", generateBackgroundMessage("blue"));
+  socket.emit("timer_bg_event", generateBackgroundMessage("red"));
 }
 
 // changes the state of the readies for next.
@@ -171,13 +183,6 @@ function sendTimerMessage() {
   // https://www.keshikan.net/fonts-e.html
 }
 
-function readyRedUp() {
-  socket.emit('player_ready', "red");
-}
-
-function readyBlueUp() {
-  socket.emit('player_ready', "blue");
-}
 
 </script>
 
@@ -197,9 +202,9 @@ function readyBlueUp() {
       <div class="column"> <!-- left column original -->
         <div class="block">
           <div class="buttons has-addons">
-            <button class="button is-danger is-light is-large" id="redisready" onclick="readyRedUp();">NOT READY</button>
+            <button class="button is-danger is-light is-large" id="redisready" onclick="readyup('red');">NOT READY</button>
             <button id="heartbeat_button_id" class="button is-large is-danger" disabled>[HB]</button>
-            <button class="button is-info is-light is-large" id="blueisready" onclick="readyBlueUp();">NOT READY</button>
+            <button class="button is-info is-light is-large" id="blueisready" onclick="readyup('blue');">NOT READY</button>
             </div>
         </div>
 

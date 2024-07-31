@@ -114,6 +114,8 @@ def join_cage_handler(request_data: dict):
 @socketio.on("player_ready")
 def handle_message(ready_msg: dict):
     print(f"player_ready, {ready_msg} for room {[ctl_rooms for ctl_rooms in rooms()]}")
+    print(ready_msg)
+    
     emit("control_player_ready_event", ready_msg, to=f"cage_no_{ready_msg['cageID']}")
 
 
