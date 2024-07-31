@@ -43,7 +43,7 @@ class APICache:
 
 
 cache = APICache(ttl=120)
-
+competitors = {} #so we don't call this every single time we use the page.  Should hopefully cut down on the errors... I hope.
 
 def makeAPIRequest(endpoint: str) -> list:
     api_key = arena_settings.truefinals.api_key
@@ -79,6 +79,6 @@ def getAllGames(tournamentID: str) -> list[dict]:
 
 
 def getAllPlayersInTournament(tournamentID: str) -> list[dict]:
-    players = makeAPIRequest(f"/v1/tournaments/{tournamentID}/players")
-
-    return players
+    if tournamentID not in competitors:
+        competitors[tournamentID] = makeAPIRequest(f"/v1/tournaments/{tournamentID}/players")
+    return competitors[tournamentID]

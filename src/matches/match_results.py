@@ -35,7 +35,7 @@ def routeForUpcomingMatches():
             ),
             reverse=True,
         )
-        .toFile("test.json")
+        #.toFile("test.json")
         # .withFilter(lambda x: len(x["slots"]) != 0)
         # .inOrder(
         #    lambda x: (
