@@ -139,20 +139,16 @@ $navbarBurgers.forEach( el => {
 
     // rejoin if there's a disconnect
     {% if cageID %}
-
-    socket.emit(
-    "join_cage_request", 
-    {
-      'cage_id': {{ cageID }} 
-    }
-  )
-
-  {% endif %}
-
+      socket.emit(
+      "join_cage_request", 
+      {
+        'cage_id': {{ cageID }} 
+      }
+    )
+    {% endif %}
 
     function sendESTOP() {
-      socket.emit("timer_event", "STOP");
-      socket.emit("timer_bg_event", "red");
+      socket.emit("globalESTOP");
     }
     
 </script>

@@ -81,7 +81,7 @@ def addCage(cageName: str = None, cageID: int = None):
 
         return max
 
-    if cageName is None:
+    if cageName == None:
         settings["tournament_cages"].append(
             {"name": f"Cage {_getHighestCage()+1}", "id": cageID + 1}
         )

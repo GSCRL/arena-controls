@@ -139,7 +139,9 @@ class Matches:
                 )
 
             for c in self._competitors:
-                if type(c) != str: #Patch around empty API responses due to rate limiting and poor architecture on my part.
+                if (
+                    type(c) != str
+                ):  # Patch around empty API responses due to rate limiting and poor architecture on my part.
                     if c["id"] == competitor_id:
                         return c
             return {"name": ""}

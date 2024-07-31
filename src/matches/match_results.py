@@ -28,19 +28,24 @@ def routeForUpcomingMatches():
         truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
         .withoutByes()
         .withFilter(lambda x: x["state"] != "done")
-        .inOrder(lambda x: (x['calledSince'] or float(0), reversor(x['state'] == 'unavailable')), reverse=True)
+        .inOrder(
+            lambda x: (
+                x["calledSince"] or float(0),
+                reversor(x["state"] == "unavailable"),
+            ),
+            reverse=True,
+        )
         .toFile("test.json")
-        #.withFilter(lambda x: len(x["slots"]) != 0)
-        #.inOrder(
+        # .withFilter(lambda x: len(x["slots"]) != 0)
+        # .inOrder(
         #    lambda x: (
         #        x["availableSince"] or float("inf"),
         #        reversor(x["bracketID"]),
         #        x["round"],
         #        x["state"],
         #    )
-        #)
+        # )
         .done()
-
     )
 
     return render_template(
