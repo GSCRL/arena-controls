@@ -1,6 +1,6 @@
 import logging
 
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 from flask_socketio import SocketIO, emit, join_room, rooms
 
 from config import settings as arena_settings
@@ -17,6 +17,8 @@ class Base(DeclarativeBase):
   pass
 
 db = SQLAlchemy(model_class=Base)
+
+current_clients = {}
 
 app = Flask(__name__, static_folder="static", template_folder="templates")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///combat_robot_event.db"
@@ -57,11 +59,31 @@ def generateSettingsPage():
     if request.method == "GET":
         return render_template("app_settings.html", arena_settings=arena_settings)
 
+@app.route("/clients", methods=("GET", "POST"))
+def _temp_clients_page():
+    return jsonify(current_clients)
+
+
 
 @socketio.on("connect")
 def base_connection_handler():
     pass
 
+@socketio.on('disconnect')
+def disconnect_handler():
+    if request.sid in current_clients:
+        del current_clients[request.sid]
+        print("Client removed via disconnection.")
+
+# Wrapper to take note of clients as they connect/reconnect to store in above so we can keep track of their current page.
+@socketio.on("exists")
+def state_client_exists():
+    print(dir(request))
+    #print(f"SID: {request.sid}")
+    if request.sid not in current_clients:
+        current_clients[request.sid] = request.remote_addr
+        print(f"SID {request.sid} added to global store (IP is {request.remote_addr})")
+        emit("arena_query_location", to=request.sid)
 
 @socketio.on("timer_event")
 def handle_message(timer_message):
@@ -95,6 +117,7 @@ def handle_message(ready_msg: dict):
     emit("control_player_ready_event", ready_msg, to=f"cage_no_{ready_msg['cageID']}")
 
 
+
 @socketio.on("player_tapout")
 def handle_message(tapout_msg: dict):
     print(
@@ -103,7 +126,6 @@ def handle_message(tapout_msg: dict):
     emit(
         "control_player_tapout_event", tapout_msg, to=f"cage_no_{tapout_msg['cageID']}"
     )
-
 
 @socketio.on("reset_screen_states")
 def handle_message(reset_data):

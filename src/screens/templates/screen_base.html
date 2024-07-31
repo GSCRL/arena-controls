@@ -108,12 +108,15 @@
             // actually construct our socket.io connection here such that all screens can be presumed to have this connection.
 
             var socket = io();
+
             socket.on('connect', function() {
+                socket.emit('exists');
                 socket.emit('join_cage_request', {'data': window.location.href, 'cage': {{ cageID }} });
             });
 
               // rejoin if there's a disconnect
             socket.on('reconnect', () => {
+                socket.emit('exists');
                 socket.emit('connect_location', {'data': window.location.href, 'cage': {{ cageID }} });
             });
 
@@ -132,10 +135,7 @@
         </script>
     </head>
 
-   
-
 {% block basecontent %}
-
-
 {% endblock %}
+
 </html>
