@@ -28,6 +28,7 @@ def routeForUpcomingMatches():
         truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
         .withoutByes()
         .withFilter(lambda x: x["state"] != "done")
+        .withFilter(lambda x: x['state'] == "called")
         .inOrder(
             lambda x: (
                 x["calledSince"] or float(0),
