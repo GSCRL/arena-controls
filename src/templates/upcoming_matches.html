@@ -110,22 +110,19 @@ return time;
         </thead>
         <tbody>
           {% for match in div_matches._matches %}
-          <tr {% if 'calledSince' in match %} {% if match.calledSince != None %} class="is-link" {% endif %} {% endif %}>
+          <tr {% if 'calledSince' in match %} {% if match.calledSince != None %} {# class="is-link" #}{% endif %} {% endif %}>
             <!-- {{ match }}-->
             {% if cages %}
             <td>Cage NULL</td>
             {% endif %}
 
-            <td> {% if 'calledSince' in match and match.calledSince != None %} 
+            <td> 
 
-
-              <span class="button is-primary" id="called_since_{{ match.tournamentID }}_{{ match.id }} "></span>
+            <span class="button is-primary" id="called_since_{{ match.tournamentID }}_{{ match.id }} "></span>
               <script>
                 document.getElementById("called_since_{{ match.tournamentID }}_{{ match.id }} ").innerHTML = "Called " + time_ago( {{ match.calledSince }} );
               </script>
-              
-              
-              </div>   {% else %}   {{ match.weightclass }} {% endif %} </td>
+            </td>
 
             <td>{{ match.round+1 }} </td>
             <td>{{ match.name }}</td>

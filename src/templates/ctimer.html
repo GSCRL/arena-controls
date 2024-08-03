@@ -183,6 +183,11 @@ function sendTimerMessage() {
   // https://www.keshikan.net/fonts-e.html
 }
 
+function manualTimerInput() {
+  timerInstance.stop();
+  timerInstance.start({ startValues:{seconds: parseFloat(prompt("Enter manual timer value.  Timer will be paused upon sconfirmation."))}});
+  pauseTimer();
+}
 
 </script>
 
@@ -210,7 +215,7 @@ function sendTimerMessage() {
 
         <div class="block">
           <div class="buttons has-addons">
-            <button id="timer_control_counter" class="button is-large is-dark">000</button>
+            <button id="timer_control_counter" class="button is-large is-dark" onclick="manualTimerInput();">000</button>
             <button class="button is-large" onclick="startTimer();">Start▶️</button>
             <button class="button is-large" onclick="pauseTimer();">Pause⏸️</button>
             <button class="button is-large"  onclick="stopTimer();">Stop⏹️</button>
