@@ -36,63 +36,6 @@
 </section>
 {% endif %}
 
-<script>
-function time_ago(time) {
-
-switch (typeof time) {
-  case 'number':
-    break;
-  case 'string':
-    time = +new Date(time);
-    break;
-  case 'object':
-    if (time.constructor === Date) time = time.getTime();
-    break;
-  default:
-    time = +new Date();
-}
-var time_formats = [
-  [60, 'seconds', 1], // 60
-  [120, '1 minute ago', '1 minute from now'], // 60*2
-  [3600, 'minutes', 60], // 60*60, 60
-  [7200, '1 hour ago', '1 hour from now'], // 60*60*2
-  [86400, 'hours', 3600], // 60*60*24, 60*60
-  [172800, 'Yesterday', 'Tomorrow'], // 60*60*24*2
-  [604800, 'days', 86400], // 60*60*24*7, 60*60*24
-  [1209600, 'Last week', 'Next week'], // 60*60*24*7*4*2
-  [2419200, 'weeks', 604800], // 60*60*24*7*4, 60*60*24*7
-  [4838400, 'Last month', 'Next month'], // 60*60*24*7*4*2
-  [29030400, 'months', 2419200], // 60*60*24*7*4*12, 60*60*24*7*4
-  [58060800, 'Last year', 'Next year'], // 60*60*24*7*4*12*2
-  [2903040000, 'years', 29030400], // 60*60*24*7*4*12*100, 60*60*24*7*4*12
-  [5806080000, 'Last century', 'Next century'], // 60*60*24*7*4*12*100*2
-  [58060800000, 'centuries', 2903040000] // 60*60*24*7*4*12*100*20, 60*60*24*7*4*12*100
-];
-var seconds = (+new Date() - time) / 1000,
-  token = 'ago',
-  list_choice = 1;
-
-if (seconds == 0) {
-  return 'Just now'
-}
-if (seconds < 0) {
-  seconds = Math.abs(seconds);
-  token = 'from now';
-  list_choice = 2;
-}
-var i = 0,
-  format;
-while (format = time_formats[i++])
-  if (seconds < format[0]) {
-    if (typeof format[2] == 'string')
-      return format[list_choice];
-    else
-      return Math.floor(seconds / format[2]) + ' ' + format[1] + ' ' + token;
-  }
-return time;
-}
-
-</script>
 <section class="section">
     {% if div_matches._matches %}
     <table class="table is-striped is-fullwidth">
@@ -103,8 +46,8 @@ return time;
             {% endif %}
             <th>Called Since</th>
             <th>Match Info</th>
-            <th>Red</th>
-            <th>Blue</th>
+            <th colspan="2">Red</th>
+            <th colspan="2">Blue</th>
           </tr>
         </thead>
         <tbody>
@@ -112,32 +55,36 @@ return time;
           <tr {% if 'calledSince' in match %} {% if match.calledSince != None %} {# class="is-link" #}{% endif %} {% endif %}>
             <td> 
 
-            <span class="button is-primary" id="called_since_{{ match.tournamentID }}_{{ match.id }} "></span>
+            <span class="button is-small is-primary" id="called_since_{{ match.tournamentID }}_{{ match.id }} "></span>
               <script>
                 document.getElementById("called_since_{{ match.tournamentID }}_{{ match.id }} ").innerHTML = "Called " + time_ago( {{ match.calledSince }} );
               </script>
             </td>
 
-            <td>{{ match.weightclass[:4].upper() }}-{{ match.name }}</td>
+            <td><b>{{ match.weightclass[:4].upper() }}-{{ match.name }}</b></td> 
+            <!-- This is the "Match Info" short code.  It's ugly but useful.-->
+
             {% if match.state != "unavailable" %}
               {% for competitor in match.slots %}
-              <td>
-                  <b>{{ competitor.gscrl_player_name }}</b> 
+              <!-- COmpetitor name for the current L-to-R iteration loop. -->
+              <td><b>{{ competitor.gscrl_player_name }}</b> </td>
+              <td>  
                   {% if competitor['gscrl_wlt'] %}
                     <div class="field is-grouped is-grouped-multiline">
+
                       <div class="control">
+                      <b>
                       <div class="tags has-addons">
-                        <span class="tag">W</span>
-                        <span class="tag is-success is-light">{{ competitor['gscrl_wlt']['w'] }}</span>
-                        <span class="tag">L</span>
-                        <span class="tag is-danger is-light">{{ competitor['gscrl_wlt']['l'] }}</span>
-                        <span class="tag">T</span>
-                        <span class="tag is-warning is-light">{{ competitor['gscrl_wlt']['t'] }}</span>
+                        <span class="tag">WLT</span>
+                        <span class="tag is-primary is-light is-rounded">{{ competitor['gscrl_wlt']['w'] }}</span>
+                        <span class="tag is-danger is-light is-rounded">{{ competitor['gscrl_wlt']['l'] }}</span>
+                        <span class="tag is-warning is-light is-rounded">{{ competitor['gscrl_wlt']['t'] }}</span>
                         </div>
+                        </b>
                       </div>
                     </div>
                 {% endif %}
-                </td>
+              </td>
               {% endfor %} <!-- closes competitor loop -->
 
               {# Fancy catchall for unfinished / partially filled match. #}
