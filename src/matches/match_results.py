@@ -24,10 +24,10 @@ class reversor:
 @match_results.route("/upcoming")
 def routeForUpcomingMatches():
     autoreload = request.args.get("autoreload")
+    show_header = request.args.get("show_header")
     matches = (
         truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
         .withoutByes()
-        .withFilter(lambda x: x["state"] != "done")
         .withFilter(lambda x: x['state'] in ["called", 'ready', 'active'])
         .inOrder(
             lambda x: (
@@ -36,16 +36,6 @@ def routeForUpcomingMatches():
             ),
             reverse=False, 
         )
-        #.toFile("test.json")
-        # .withFilter(lambda x: len(x["slots"]) != 0)
-        # .inOrder(
-        #    lambda x: (
-        #        x["availableSince"] or float("inf"),
-        #        reversor(x["bracketID"]),
-        #        x["round"],
-        #        x["state"],
-        #    )
-        # )
         .done()
     )
 
@@ -53,6 +43,7 @@ def routeForUpcomingMatches():
         "upcoming_matches.html",
         div_matches=matches,
         autoreload=autoreload,
+        show_header=show_header,
         event_name=arena_settings.event_name,
         arena_settings=arena_settings,
     )

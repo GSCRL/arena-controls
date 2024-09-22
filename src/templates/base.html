@@ -19,6 +19,7 @@
       </script>
     {% endif %}
 
+    {% if not show_header %}
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
@@ -80,7 +81,10 @@
           </div>
 
           <a href="/matches/upcoming?autoreload=30000" class="navbar-item">
-            Upcoming Matches
+            Next Up
+          </a>
+          <a href="/matches/upcoming?autoreload=30000&show_header=False" class="navbar-item">
+            >>
           </a>
 
           <a href="/matches/completed?autoreload=30000" class="navbar-item">
@@ -110,6 +114,7 @@
         </div>
       </div>
     </nav>
+    {% endif %}
 
 <script>
    document.addEventListener('DOMContentLoaded', () => {
@@ -153,15 +158,11 @@ $navbarBurgers.forEach( el => {
     
 </script>
 
-<style>
-  .square-prog {
-    border-radius: 0px !important;
-  }
+<!-- Start Body Block from base.html -->
+{% block bodysections %}
 
-</style>
-    {% block bodysections %}
-
-    {% endblock %}
+{% endblock %}
+<!-- end baseblock from base.html. -->
 
     {# Safety for flashing during a 500 err. #}
     {% if errormsg %}

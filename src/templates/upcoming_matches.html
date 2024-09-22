@@ -2,9 +2,9 @@
 
 {% block bodysections %}
 
+{% if not show_header %} <!-- URLarg, may not be included all the time. -->
 <section class="hero is-info">
   <div class="hero-body">
-
     <p class="title">
       Upcoming Matches
     </p>
@@ -13,7 +13,6 @@
       {{ event_name }} | bracket powered by <b>TrueFinals</b>
     </p>
     {% endif %}
-
   </div>
 
     {# This snippet is only applicable to multi-arena events.  This should avoid stuff breaking too egregiously. #}
@@ -35,6 +34,7 @@
   </div>
   {% endif %}
 </section>
+{% endif %}
 
 <script>
 function time_ago(time) {
@@ -102,7 +102,7 @@ return time;
               <th>Cage</th>
             {% endif %}
             <th>Weightclass / Called Since</th>
-            <th>Bracket Round</th>
+            <!--<th>Bracket Round</th>-->
             <th>Match Info</th>
             <th>Red</th>
             <th>Blue</th>
@@ -112,10 +112,6 @@ return time;
           {% for match in div_matches._matches %}
           <tr {% if 'calledSince' in match %} {% if match.calledSince != None %} {# class="is-link" #}{% endif %} {% endif %}>
             <!-- {{ match }}-->
-            {% if cages %}
-            <td>Cage NULL</td>
-            {% endif %}
-
             <td> 
 
             <span class="button is-primary" id="called_since_{{ match.tournamentID }}_{{ match.id }} "></span>
@@ -124,8 +120,8 @@ return time;
               </script>
             </td>
 
-            <td>{{ match.round+1 }} </td>
-            <td>{{ match.name }}</td>
+            <!--<td>{{ match.round+1 }} </td>-->
+            <td>{{ match.weightclass[:4].upper() }}-{{ match.name }}</td>
             {% if match.state != "unavailable" %}
               {% for competitor in match.slots %}
               <td>
@@ -134,25 +130,15 @@ return time;
                     <div class="field is-grouped is-grouped-multiline">
                       <div class="control">
                       <div class="tags has-addons">
-                        <span class="tag">Wins</span>
+                        <span class="tag">W</span>
                         <span class="tag is-success is-light">{{ competitor['gscrl_wlt']['w'] }}</span>
-                      </div>
-                    </div>
-
-                    <div class="control">
-                      <div class="tags has-addons">
-                        <span class="tag">Losses</span>
+                        <span class="tag">L</span>
                         <span class="tag is-danger is-light">{{ competitor['gscrl_wlt']['l'] }}</span>
-                      </div>
-                    </div>
-
-                      <div class="control">
-                      <div class="tags has-addons">
-                        <span class="tag">Ties</span>
+                        <span class="tag">T</span>
                         <span class="tag is-warning is-light">{{ competitor['gscrl_wlt']['t'] }}</span>
+                        </div>
                       </div>
                     </div>
-                  </div>
                 {% endif %}
                 </td>
               {% endfor %} <!-- closes competitor loop -->
@@ -195,5 +181,4 @@ return time;
         <p>🤖🦾🎆🧨</p>
     {% endif %}
   </section>
-
 {% endblock %}

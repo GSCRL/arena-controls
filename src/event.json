@@ -2,9 +2,9 @@
     "event_name": "2023-2024 Season Championship",
     "event_league": "Garden State Combat Robotics League",
     "tournament_keys": [
-        {"id":"39cd579393c14c99", "weightclass": "Beetles", "weightInt":1360},
-        {"id":"2995357887744491", "weightclass":"Plastic Ants", "weightInt": 453},
-        {"id":"64635a402aa5410f", "weightclass": "Ants", "weightInt":452}
+        {"id":"a7c1cde165524cef", "weightclass": "Beetles", "weightInt":1360},
+        {"id":"56937eb314654f13", "weightclass":"Plastic Ants", "weightInt": 453},
+        {"id":"e30df56f90ce4728", "weightclass": "Ants", "weightInt":452}
     ],
     "tournament_cages":[
         {"name": "Big Steel", "id": 1},

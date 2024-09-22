@@ -83,7 +83,6 @@ def disconnect_handler():
 @socketio.on("exists")
 def state_client_exists():
     print(dir(request))
-    # print(f"SID: {request.sid}")
     if request.sid not in current_clients:
         current_clients[request.sid] = request.remote_addr
         print(f"SID {request.sid} added to global store (IP is {request.remote_addr})")
@@ -121,19 +120,19 @@ def join_cage_handler(request_data: dict):
             f'cage_no_{request_data["cage_id"]}',
             to=f"cage_no_{request_data['cage_id']}",
         )
-        print(f"User SID ({request.sid}) has joined Cage #{request_data['cage_id']}")
+        logging.info(f"User SID ({request.sid}) has joined Cage #{request_data['cage_id']}")
 
 
 @socketio.on("player_ready")
 def handle_message(ready_msg: dict):
-    print(f"player_ready, {ready_msg} for room {[ctl_rooms for ctl_rooms in rooms()]}")
-    print(ready_msg)
+    logging.info(f"player_ready, {ready_msg} for room {[ctl_rooms for ctl_rooms in rooms()]}")
+    logging.info(ready_msg)
     emit("control_player_ready_event", ready_msg, to=f"cage_no_{ready_msg['cageID']}")
 
 
 @socketio.on("player_tapout")
 def handle_message(tapout_msg: dict):
-    print(
+    logging.info(
         f"player_tapout, {tapout_msg} for room {[ctl_rooms for ctl_rooms in rooms()]}"
     )
     emit(

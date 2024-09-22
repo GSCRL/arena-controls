@@ -225,12 +225,3 @@ class TrueFinals:
         )
 
         return _matches.done()
-
-    def getFinishedMatches(self, tournamentID: str) -> list[dict]:
-        pass
-
-    def getUnfinishedMatches(self, tournamentID: str) -> list[dict]:
-        pass
-
-    def getMatchesInOrder(self, cross_div_matches: list):
-        pass

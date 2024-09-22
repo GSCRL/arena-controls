@@ -7,6 +7,14 @@ import httpx
 
 from config import settings as arena_settings
 
+# This was shamelessly copied and may not work
+# as intended.  The intent is to move the API
+# request workers to the background such that
+# they can be polled on more regular intervals
+# stored in memory, and then periodically giv-
+# en to clients for the most up-to-date match
+# behavior without needing to potentially hit
+# an error state.
 
 class APICache:
     def __init__(self, ttl=30):
