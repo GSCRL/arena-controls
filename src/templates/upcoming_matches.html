@@ -101,8 +101,7 @@ return time;
             {% if cages %}
               <th>Cage</th>
             {% endif %}
-            <th>Weightclass / Called Since</th>
-            <!--<th>Bracket Round</th>-->
+            <th>Called Since</th>
             <th>Match Info</th>
             <th>Red</th>
             <th>Blue</th>
@@ -111,7 +110,6 @@ return time;
         <tbody>
           {% for match in div_matches._matches %}
           <tr {% if 'calledSince' in match %} {% if match.calledSince != None %} {# class="is-link" #}{% endif %} {% endif %}>
-            <!-- {{ match }}-->
             <td> 
 
             <span class="button is-primary" id="called_since_{{ match.tournamentID }}_{{ match.id }} "></span>
@@ -120,7 +118,6 @@ return time;
               </script>
             </td>
 
-            <!--<td>{{ match.round+1 }} </td>-->
             <td>{{ match.weightclass[:4].upper() }}-{{ match.name }}</td>
             {% if match.state != "unavailable" %}
               {% for competitor in match.slots %}
@@ -171,14 +168,14 @@ return time;
             </td>
             {% endif %}
           </tr>
-          {% endfor %}
+          {% endfor %} <!-- Closes loop for competitors in a given match.  Mostly a catch-all tbh.  -->
         </tbody>
       </table>
 
-        {% else %}
-        <p>There are no matches in the system yet to be called for fights.</p>
-        <p> Hang tight, we'll get to the robot carnage shortly!</p>
-        <p>🤖🦾🎆🧨</p>
+    {% else %} <!-- catchall for no valid matches.  Usually happens at the start or end of an event.  -->
+          <p>There are no matches in the system called for fights.</p>
+          <p> Hang tight, we'll get to the robot carnage shortly!</p>
+          <p>🤖🦾🎆🧨</p>
     {% endif %}
   </section>
 {% endblock %}
