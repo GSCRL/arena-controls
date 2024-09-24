@@ -9,12 +9,12 @@
     </div>
     <div class="block">
         <p>
-            <input class="input" type="text" id="gscrl_event_name" value="{{ arena_settings.event_name }}">
+            <input class="input" type="text" id="gscrl_event_name" value="{{ arena_settings.event_name }}" placeholder="Event Name">
         </p>
     </div>
     <div class="block">
         <p>
-            <input class="input" type="text" id="gscrl_event_league" value="{{ arena_settings.event_league }}">
+            <input class="input" type="text" id="gscrl_event_league" value="{{ arena_settings.event_league }}" placeholder="Event League">
         </p>
     </div>
 </section>
@@ -84,12 +84,12 @@
     </div>
     <div class="block">
         <p>
-            <input class="input" type="text" id="truefinals_user_id" value="{{ arena_settings.truefinals.user_id }}">
+            <input class="input" type="text" id="truefinals_user_id" value="{{ arena_secrets.truefinals.user_id }}">
         </p>
     </div>
     <div class="block">
         <p>
-            <input class="input" type="text"  id="truefinals_api_key" value="{{ arena_settings.truefinals.api_key }}">
+            <input class="input" type="text"  id="truefinals_api_key" value="{{ arena_secrets.truefinals.api_key }}">
         </p>
     </div>
 </section>
@@ -99,21 +99,28 @@
     <div class="block">
         <h2 class="subtitle">OBS-Websocket Config</h2>
     </div>
+    {% for obs_ws_setup in arena_secrets.obs_ws %}
     <div class="block">
         <p>
-            <input class="input" type="text"  id="obs_ws_ip" value="{{ arena_settings.obs.config_ws_ip }}" placeholder="IP Address (like 192.168.50.8)">
+            <input class="input" type="text"  id="obs_ws_ip" value="{{ obs_ws_setup.uri }}" placeholder="URI (like 192.168.50.8)">
         </p>
     </div>
     <div class="block">
         <p>
-            <input class="input" type="number" id="obs_ws_port" value="{{ arena_settings.obs.config_ws_port }}" placeholder="Websocket Port (like 4459)">
+            <input class="input" type="text" id="obs_ws_friendly_name" value="{{ obs_ws_setup.friendly_name }}" placeholder="Friendly Name">
         </p>
     </div>
     <div class="block">
         <p>
-            <input class="input" type="text" id="obs_ws_api_key" value="{{ arena_settings.obs.config_ws_api_key }}" placeholder="Like dfhudsfghsduiyfb">
+            <input class="input" type="text" id="obs_ws_api_token" value="{{ obs_ws_setup.token }}" placeholder="OBS WS Token (like dhfuisdhgfiusbnv)">
         </p>
     </div>
+    <div class="block">
+        <p>
+            <input class="input" type="text" id="obs_ws_api_scene" value="{{ obs_ws_setup.scene }}" placeholder="Scene Name">
+        </p>
+    </div>
+    {% endfor %}
 </section>
 
 

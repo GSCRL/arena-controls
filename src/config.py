@@ -5,8 +5,13 @@ from dynaconf import Dynaconf
 
 settings = Dynaconf(
     envvar_prefix="DYNACONF",
-    settings_files=[Path("./event.json"), Path(".secrets.json")],
+    settings_files=[Path("./event.json")]
 )
+
+secrets = Dynaconf(
+    envvar_prefix="DYNACONF", 
+    settings_files=[Path(".secrets.json")]
+    )
 
 
 def mandateConfig():
@@ -26,32 +31,34 @@ def mandateConfig():
 
     if "event_league" not in settings:
         logging.info("No league name set, assuming None.")
-        settings["event_league"] = None  # Empty by default, fine.
+        settings["event_league"] = ""  # Empty by default, fine.
 
-    if "truefinals" not in settings:
-        settings["truefinals"] = {"api_key": "", "user_id": ""}
+    if "truefinals" not in secrets:
+        secrets["truefinals"] = {"api_key": "", "user_id": ""}
         logging.warning(
             "TrueFinals API keys not set up.  App will not be able to run upcoming / last matches, or run match results directly."
         )
 
-    if "robotcombatevents" not in settings:
-        settings["robotcombatevents"] = {"username": "", "password": ""}
+    if "robotcombatevents" not in secrets:
+        secrets["robotcombatevents"] = {"username": "", "password": ""}
         logging.warning(
             "RCE credentials not provided.  Cannot automate import of brackets."
         )
 
-    if "obs_ws" not in settings:
+    if "obs_ws" not in secrets:
         settings["obs_ws"] = []
         logging.warning(
             "No targets set for OBS Websocket control.  Please specify targets in Settings for this feature to work."
         )
     else:
-        for item in settings["obs_ws"]:
+        for item in secrets["obs_ws"]:
             if "uri" not in item:
                 item["uri"] = ""
                 logging.warning(
                     "Empty URI for OBSWS target.  Cannot be used, resetting."
                 )
+            if 'friendly_name' not in item:
+                item['friendly_name'] = ""
             if "token" not in item:
                 item["token"] = ""
             if "scene" not in item:

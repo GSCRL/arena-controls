@@ -3,7 +3,7 @@ import logging
 from flask import Flask, render_template, request, jsonify
 from flask_socketio import SocketIO, emit, join_room, rooms
 
-from config import settings as arena_settings
+from config import settings as arena_settings, secrets as arena_secrets
 from matches.match_results import match_results
 from screens.user_screens import user_screens
 from truefinals_api.wrapper import TrueFinals
@@ -59,7 +59,7 @@ def realTimer(cageID):
 @app.route("/settings", methods=("GET", "POST"))
 def generateSettingsPage():
     if request.method == "GET":
-        return render_template("app_settings.html", arena_settings=arena_settings)
+        return render_template("app_settings.html", arena_settings=arena_settings, arena_secrets=arena_secrets)
 
 
 @app.route("/clients", methods=("GET", "POST"))
