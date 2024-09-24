@@ -11,6 +11,12 @@ secrets = Dynaconf(envvar_prefix="DYNACONF", settings_files=[Path(".secrets.json
 def mandateConfig():
     logging.info("Running initial configuration assertion.")
 
+    if "match_duration" not in settings:
+        logging.warning("Match duration was not present, assuming 2m30s.")
+        settings[
+            "match_duration"
+        ] = 150.9  # we start at .9 such that the JS antics behave correctly.
+
     if "tournament_cages" not in settings:
         logging.warning("No event cages / locations set, assuming new event.")
         settings["tournament_cages"] = []

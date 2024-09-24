@@ -53,14 +53,12 @@ class APICache:
 
 cache = APICache(ttl=300)
 
-# This caches the items less likely to change (if at all during the 
-# course of the event.  The field software probably shouldn't be 
+# This caches the items less likely to change (if at all during the
+# course of the event.  The field software probably shouldn't be
 # called until this is set up finally and tournaments are started.
 
 event_codes = {}
-competitors = (
-    {}
-)  
+competitors = {}
 
 
 def makeAPIRequest(endpoint: str) -> list:
@@ -89,6 +87,7 @@ def makeAPIRequest(endpoint: str) -> list:
 def getAllTourneys(credentials) -> list[dict]:
     x = makeAPIRequest("/v1/user/tournaments", credentials)
     return x
+
 
 def getAllGames(tournamentID: str) -> list[dict]:
     if tournamentID not in event_codes:

@@ -2,6 +2,7 @@ import logging
 
 from flask import Flask, render_template, request, jsonify
 from flask_socketio import SocketIO, emit, join_room, rooms
+from util.wrappers import ac_render_template
 
 from config import settings as arena_settings, secrets as arena_secrets
 from matches.match_results import match_results
@@ -40,29 +41,24 @@ truefinals = TrueFinals()
 
 @app.route("/")
 def index():
-    return render_template(
-        "base.html", title="Landing Page", arena_settings=arena_settings
-    )
+    return ac_render_template("base.html", title="Landing Page")
 
 
 @app.route("/control/<int:cageID>")
 def realTimer(cageID):
-    return render_template(
+    return ac_render_template(
         "ctimer.html",
         user_screens=user_screens,
         title="Controller",
         cageID=cageID,
-        arena_settings=arena_settings,
     )
 
 
 @app.route("/settings", methods=("GET", "POST"))
 def generateSettingsPage():
     if request.method == "GET":
-        return render_template(
+        return ac_render_template(
             "app_settings.html",
-            arena_settings=arena_settings,
-            arena_secrets=arena_secrets,
         )
 
 
@@ -158,10 +154,9 @@ def handle_message(reset_data):
 @app.errorhandler(500)
 def internal_error(error):
     autoreload = request.args.get("autoreload")
-    return render_template(
+    return ac_render_template(
         "base.html",
         autoreload=autoreload,
-        arena_settings=arena_settings,
         errormsg="Sorry, this page has produced an error while generating.  Please try again in 30s.",
     )
 

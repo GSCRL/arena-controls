@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request
 
 from config import settings as arena_settings
 from truefinals_api.wrapper import TrueFinals
+from util.wrappers import ac_render_template
 
 match_results = Blueprint(
     "match_results", __name__, static_folder="./static", template_folder="./templates"
@@ -39,13 +40,12 @@ def routeForUpcomingMatches():
         .done()
     )
 
-    return render_template(
+    return ac_render_template(
         "upcoming_matches.html",
         div_matches=matches,
         autoreload=autoreload,
         show_header=show_header,
         event_name=arena_settings.event_name,
-        arena_settings=arena_settings,
     )
 
 
@@ -62,12 +62,11 @@ def routeForLastMatches():
         .done()
     )
 
-    return render_template(
+    return ac_render_template(
         "last_matches.html",
         div_matches=matches,
         autoreload=autoreload,
         event_name=arena_settings.event_name,
-        arena_settings=arena_settings,
     )
 
 
