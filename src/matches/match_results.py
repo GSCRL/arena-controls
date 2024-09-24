@@ -45,7 +45,6 @@ def routeForUpcomingMatches():
         div_matches=matches,
         autoreload=autoreload,
         show_header=show_header,
-        event_name=arena_settings.event_name,
     )
 
 
@@ -57,7 +56,6 @@ def routeForLastMatches():
         truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
         .withoutByes()
         .withFilter(lambda x: x["state"] == "done")
-        .withFilter(lambda x: len(x["slots"]) != 0)
         .backfillResultStrings()
         .done()
     )
@@ -66,7 +64,6 @@ def routeForLastMatches():
         "last_matches.html",
         div_matches=matches,
         autoreload=autoreload,
-        event_name=arena_settings.event_name,
     )
 
 
