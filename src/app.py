@@ -59,7 +59,11 @@ def realTimer(cageID):
 @app.route("/settings", methods=("GET", "POST"))
 def generateSettingsPage():
     if request.method == "GET":
-        return render_template("app_settings.html", arena_settings=arena_settings, arena_secrets=arena_secrets)
+        return render_template(
+            "app_settings.html",
+            arena_settings=arena_settings,
+            arena_secrets=arena_secrets,
+        )
 
 
 @app.route("/clients", methods=("GET", "POST"))
@@ -97,6 +101,7 @@ def global_safety_eSTOP():
         emit("timer_event", to=v)
         emit("timer_bg_event", "red", to=v)
 
+
 # Old global handler, should probably be moved to globally accessible timer area.
 @socketio.on("timer_event")
 def handle_message(timer_message):
@@ -104,6 +109,7 @@ def handle_message(timer_message):
     emit(
         "timer_event", timer_message["message"], to=f"cage_no_{timer_message['cageID']}"
     )
+
 
 @socketio.on("timer_bg_event")
 def handle_message(timer_bg_data):
@@ -120,12 +126,16 @@ def join_cage_handler(request_data: dict):
             f'cage_no_{request_data["cage_id"]}',
             to=f"cage_no_{request_data['cage_id']}",
         )
-        logging.info(f"User SID ({request.sid}) has joined Cage #{request_data['cage_id']}")
+        logging.info(
+            f"User SID ({request.sid}) has joined Cage #{request_data['cage_id']}"
+        )
 
 
 @socketio.on("player_ready")
 def handle_message(ready_msg: dict):
-    logging.info(f"player_ready, {ready_msg} for room {[ctl_rooms for ctl_rooms in rooms()]}")
+    logging.info(
+        f"player_ready, {ready_msg} for room {[ctl_rooms for ctl_rooms in rooms()]}"
+    )
     logging.info(ready_msg)
     emit("control_player_ready_event", ready_msg, to=f"cage_no_{ready_msg['cageID']}")
 

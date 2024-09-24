@@ -3,15 +3,9 @@ from pathlib import Path
 
 from dynaconf import Dynaconf
 
-settings = Dynaconf(
-    envvar_prefix="DYNACONF",
-    settings_files=[Path("./event.json")]
-)
+settings = Dynaconf(envvar_prefix="DYNACONF", settings_files=[Path("./event.json")])
 
-secrets = Dynaconf(
-    envvar_prefix="DYNACONF", 
-    settings_files=[Path(".secrets.json")]
-    )
+secrets = Dynaconf(envvar_prefix="DYNACONF", settings_files=[Path(".secrets.json")])
 
 
 def mandateConfig():
@@ -57,8 +51,8 @@ def mandateConfig():
                 logging.warning(
                     "Empty URI for OBSWS target.  Cannot be used, resetting."
                 )
-            if 'friendly_name' not in item:
-                item['friendly_name'] = ""
+            if "friendly_name" not in item:
+                item["friendly_name"] = ""
             if "token" not in item:
                 item["token"] = ""
             if "scene" not in item:

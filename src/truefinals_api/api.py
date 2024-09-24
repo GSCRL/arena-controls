@@ -5,7 +5,7 @@ from copy import deepcopy
 
 import httpx
 
-from config import settings as arena_settings
+from config import settings as arena_settings, secrets as arena_secrets
 
 # This was shamelessly copied and may not work
 # as intended.  The intent is to move the API
@@ -16,8 +16,9 @@ from config import settings as arena_settings
 # behavior without needing to potentially hit
 # an error state.
 
+
 class APICache:
-    def __init__(self, ttl=30):
+    def __init__(self, ttl=30):  # 30s cache, hopefully good.
         self._data = {}
         self.ttl = ttl
 
@@ -50,12 +51,21 @@ class APICache:
         return None
 
 
-cache = APICache(ttl=120)
-competitors = {} #so we don't call this every single time we use the page.  Should hopefully cut down on the errors... I hope.
+cache = APICache(ttl=300)
+
+# This caches the items less likely to change (if at all during the 
+# course of the event.  The field software probably shouldn't be 
+# called until this is set up finally and tournaments are started.
+
+event_codes = {}
+competitors = (
+    {}
+)  
+
 
 def makeAPIRequest(endpoint: str) -> list:
-    api_key = arena_settings.truefinals.api_key
-    user_id = arena_settings.truefinals.user_id
+    api_key = arena_secrets.truefinals.api_key
+    user_id = arena_secrets.truefinals.user_id
     credentials = {"user_id": user_id, "api_key": api_key}
 
     headers = {
@@ -80,13 +90,17 @@ def getAllTourneys(credentials) -> list[dict]:
     x = makeAPIRequest("/v1/user/tournaments", credentials)
     return x
 
-
 def getAllGames(tournamentID: str) -> list[dict]:
-    x = makeAPIRequest(f"/v1/tournaments/{tournamentID}/games")
-    return x
+    if tournamentID not in event_codes:
+        event_codes[tournamentID] = makeAPIRequest(
+            f"/v1/tournaments/{tournamentID}/games"
+        )
+    return event_codes[tournamentID]
 
 
 def getAllPlayersInTournament(tournamentID: str) -> list[dict]:
     if tournamentID not in competitors:
-        competitors[tournamentID] = makeAPIRequest(f"/v1/tournaments/{tournamentID}/players")
+        competitors[tournamentID] = makeAPIRequest(
+            f"/v1/tournaments/{tournamentID}/players"
+        )
     return competitors[tournamentID]
