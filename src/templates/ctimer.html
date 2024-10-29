@@ -5,6 +5,7 @@
     
 <script>
   var cageID = {{ cageID }};
+  var match_duration = 150;
 
   socket.emit(
     "join_cage_request", 
@@ -31,50 +32,43 @@
       socket.emit('player_ready', {'playerColor': botColor, "cageID": {{ cageID }} });
 
       if (botColor === "red") {
-          document.getElementById("setredready").innerText = "RED READY";
+          document.getElementById("redisready").innerText = "RED READY";
       }
 
       if (botColor === "blue") {
-          document.getElementById("setblueready").innerText = "RED READY";
+          document.getElementById("blueisready").innerText = "RED READY";
       }
   }
 
-  var timerInstance = new easytimer.Timer({countdown: true, startValues: {seconds: 150.9}, precision: 'secondTenths' });
+  var timerInstance = new easytimer.Timer({countdown: true, startValues: {seconds: match_duration + 0.9}, precision: 'secondTenths' });
   var countdownTimer = new easytimer.Timer({countdown: true, startValues: {seconds: 4.5}, precision: 'secondTenths' });
-
-timerInstance.start();
-timerInstance.pause();
-countdownTimer.start();
-countdownTimer.pause();
 
 countdownTimer.addEventListener('targetAchieved', function (e) {
   timerInstance.start();
 });
 
-countdownTimer.addEventListener('secondTenthsUpdated', function (e) {
-  swapHeartbeatSignStatus();  
-  var time_in_seconds = (countdownTimer.getTimeValues().seconds + (countdownTimer.getTimeValues().minutes * 60)).toString();
-
+function send_padded_timer_msg(time_in_seconds) {
   if (time_in_seconds.length < 3) {
     time_in_seconds = time_in_seconds.padStart(3, "0"); 
   }
   
-  setTimerPageTimer(time_in_seconds);
+  set_control_display_value(time_in_seconds);
   socket.emit("timer_event", generateTimerMessage(time_in_seconds));
+}
+
+countdownTimer.addEventListener('secondTenthsUpdated', function (e) {
+  var time_in_seconds = (countdownTimer.getTimeValues().seconds + (countdownTimer.getTimeValues().minutes * 60)).toString();
+  swapHeartbeatSignStatus();
+  send_padded_timer_msg(time_in_seconds);
 });
 
-timerInstance.addEventListener('secondTenthsUpdated', function (e) {
-  swapHeartbeatSignStatus();  
+timerInstance.addEventListener('secondTenthsUpdated', function (e) { 
   var time_in_seconds = (timerInstance.getTimeValues().seconds + (timerInstance.getTimeValues().minutes * 60)).toString();
-
-  if (time_in_seconds.length < 3) {
-    time_in_seconds = time_in_seconds.padStart(3, "0"); 
-  }
-  setTimerPageTimer(time_in_seconds);
-  socket.emit("timer_event", generateTimerMessage(time_in_seconds));
+  swapHeartbeatSignStatus(); 
+  send_padded_timer_msg(time_in_seconds);
 });
 
-function setTimerPageTimer(timer_value) {
+function set_control_display_value(timer_value) {
   document.getElementById("timer_control_counter").innerHTML = timer_value;
 }
 
@@ -90,23 +84,22 @@ function swapHeartbeatSignStatus() {
 
 /* Timer Control Stubs */
 function startTimer() {
-  countdownTimer.start();
-  socket.emit("timer_bg_event", generateBackgroundMessage("rgb(37, 37, 37)")); 
-  socket.emit("timer_event", generateTimerMessage("150"));
-}
+    if (!timerInstance.isRunning() && (!countdownTimer.isRunning())) {
+      if (timerInstance.isPaused()) {
+        timerInstance.start(); // resume condition.
+      } else {
+        countdownTimer.start();
+        //socket.emit("timer_bg_event", generateBackgroundMessage("rgb(37, 37, 37)")); 
+        //socket.emit("timer_event", generateTimerMessage(match_duration.toString()));
+      }
+    }
 
-function readyTimer() {
-  timerInstance.start();
-  timerInstance.pause();
-  socket.emit("timer_event", generateTimerMessage("150"));
-  resetBG();
 }
 function pauseTimer() {
-  if (!timerInstance.isPaused())
-  {
+  if (!countdownTimer.isPaused()) {
+    countdownTimer.pause();
+  } else if (!timerInstance.isPaused()) {
     timerInstance.pause();
-  } else {
-    timerInstance.start();
   }
 }
 
@@ -115,13 +108,27 @@ function resetBG() {
 }
 
 function stopTimer() {
-  resetTeamReadies();
-  document.getElementById("timer_control_counter").innerText = "150";
-  socket.emit("timer_event", generateTimerMessage("150"));
+  document.getElementById("timer_control_counter").innerText = match_duration.toString();
+  socket.emit("timer_event", generateTimerMessage(match_duration.toString()));
+
+  timerInstance.reset();
+  countdownTimer.reset();
+
   timerInstance.stop();
-  timerInstance.start();
-  pauseTimer();
+  countdownTimer.stop();
+
+  resetTeamReadies();
 }
+
+document.addEventListener("keypress", function(event) {
+		if (event.code == "Space") {
+      if (timerInstance.isRunning() || countdownTimer.isRunning()) {
+        stopTimer();
+        eSTOP();
+      }
+		}
+});
+
 
 function eSTOP() {
   stopTimer();
@@ -185,7 +192,7 @@ function sendTimerMessage() {
 
 function manualTimerInput() {
   timerInstance.stop();
-  timerInstance.start({ startValues:{seconds: parseFloat(prompt("Enter manual timer value.  Timer will be paused upon sconfirmation."))}});
+  timerInstance.start({ startValues:{seconds: parseFloat(prompt("Enter manual timer value.  Timer will be paused upon confirmation."))}});
   pauseTimer();
 }
 
@@ -206,26 +213,37 @@ function manualTimerInput() {
     <div class="columns"> 
       <div class="column"> <!-- left column original -->
         <div class="block">
-          <div class="buttons has-addons">
-            <button class="button is-danger is-light is-large" id="redisready" onclick="readyup('red');">NOT READY</button>
-            <button id="heartbeat_button_id" class="button is-large is-danger" disabled>[HB]</button>
-            <button class="button is-info is-light is-large" id="blueisready" onclick="readyup('blue');">NOT READY</button>
+          <style>
+            .third-widths {
+              width: 33%;
+            }
+          </style>
+          <div class="buttons has-addons" style="width: 100%;">
+            <button class="button is-danger is-light is-large third-widths" id="redisready" onclick="readyup('red');">NOT READY</button>
+            <button id="heartbeat_button_id" class="button is-large is-danger third-widths" disabled>[HB]</button>
+            <button class="button is-info is-light is-large third-widths" id="blueisready" onclick="readyup('blue');">NOT READY</button>
             </div>
         </div>
 
         <div class="block">
           <div class="buttons has-addons">
-            <button id="timer_control_counter" class="button is-large is-dark" onclick="manualTimerInput();">000</button>
-            <button class="button is-large" onclick="startTimer();">Start▶️</button>
-            <button class="button is-large" onclick="pauseTimer();">Pause⏸️</button>
-            <button class="button is-large"  onclick="stopTimer();">Stop⏹️</button>
+            <style>
+              .fifth-widths {
+                width: 20%;
+              }
+            </style>
+            <button id="timer_control_counter" class="button is-large is-dark fifth-widths" onclick="manualTimerInput();">000</button>
+            <button class="button is-large fifth-widths" onclick="startTimer();">Start▶️</button>
+            <button class="button is-large fifth-widths" onclick="pauseTimer();">Pause⏸️</button>
+            <button class="button is-large fifth-widths"  onclick="stopTimer();">Stop⏹️</button>
+            <button class="button is-large fifth-widths"  onclick="manualTimerInput();">Change🖩</button>
           </div>
         </div>
 
         <div class="block">
           <div class="buttons has-addons">
             <button class="button is-large is-danger is-light is-rounded"  onclick="eSTOP();">EMERGENCY STOP</button>
-            <button class="button is-large" onclick="readyTimer();" hover="Set timer to 150s">Ready Timer</button>
+            <!--<button class="button is-large" onclick="readyTimer();" hover="Set timer to 150s">Ready Timer</button>-->
             <button class="button is-large is-warning is-light is-rounded" onclick="resetBG();">reset bg</button>
           </div>
         </div>
@@ -233,69 +251,34 @@ function manualTimerInput() {
         <div class="block">
           <div class="field is-grouped">
             <p class="control is-expanded">
-              <input class="input" id="sendmessagebox" type="text" placeholder="message">
+              <script>
+                // we use this to send a message when doing stuff.
+                function search(ele) {
+                  if(event.key === 'Enter') {
+                      sendTimerMessage();
+                      document.getElementById("sendmessagebox").value = ""; // we want to clear the contents.    
+                  }
+                }
+              </script>
+              <input class="input" id="sendmessagebox" type="text" placeholder="message" onkeydown="search(this)">
             </p>
-            <p class="control">
+            <p class="control">            
               <a class="button is-info" onclick="sendTimerMessage();">
                 send ->
               </a>
             </p>
           </div>
         </div>
-
       </div> <!-- column end -->
 
-      
-      <!--<div class="column"> 
-        <article class="panel is-danger">
-          <p class="panel-heading">
-            Cage Timer Controls
-          </p>
-          
-          {% if cages %}
-          <p class="panel-tabs">
-            <a class="is-active">All Cages</a>
-              {% for cage in cages %}
-                <a href="#" id="cage_ctrl_tab_{{ cage.id }}">{{ cage.name }}
-              {% endfor %}
-          </p>
-            {% endif %}  
-              
+      <div class="column">
 
-        <p class="panel-block">
-          <div class="field has-addons">
-            <p class="control is-expanded">
-              <input class="input is-fullwidth" type="text" placeholder="Search">
-            </p>
-            <p class="control">
-              <a class="button is-info">
-                Search
-              </a>
-            </p>
-          </div>
-        </p>
+      </div>
 
-          {% if matches %}
-            {% for match in matches %}
-            <a class="panel-block is-active">
-              <span class="panel-icon">
-                <i class="fas fa-book" aria-hidden="true"></i>
-              </span>
-              bulma
-            </a>
-            {% endfor %}
-          {% else %}
-          <a class="panel-block is-active">
-            <i>No matches found.</i>
-          </a>
-          {% endif %}
-         
-        </article>
-      </div> -- column end -->
     </div> <!-- columns end -->
-  
-
-
   </section>
 
+  <script>
+    stopTimer();
+  </script>
 {% endblock %}

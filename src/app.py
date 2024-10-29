@@ -82,7 +82,6 @@ def disconnect_handler():
 # Wrapper to take note of clients as they connect/reconnect to store in above so we can keep track of their current page.
 @socketio.on("exists")
 def state_client_exists():
-    print(dir(request))
     if request.sid not in current_clients:
         current_clients[request.sid] = request.remote_addr
         print(f"SID {request.sid} added to global store (IP is {request.remote_addr})")
