@@ -13,6 +13,7 @@
       'cage_id': {{ cageID }} 
     }
   )
+  socket.emit('client_attests_existence', {'location': window.location.href});
 
   function generateTimerMessage(message) {
     return {

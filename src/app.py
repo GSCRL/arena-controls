@@ -67,9 +67,9 @@ def _temp_clients_page():
     return jsonify(current_clients)
 
 
-@socketio.on("connect")
-def base_connection_handler():
-    pass
+#@socketio.on("connect")
+#def base_connection_handler():
+#    pass
 
 
 @socketio.on("disconnect")
@@ -79,11 +79,15 @@ def disconnect_handler():
         print("Client removed via disconnection.")
 
 
+@socketio.on('client_attests_existence')
+def _handle_attestation(location):
+    current_clients[request.sid] = (request.remote_addr, request.url, location['location'])
+
 # Wrapper to take note of clients as they connect/reconnect to store in above so we can keep track of their current page.
 @socketio.on("exists")
 def state_client_exists():
     if request.sid not in current_clients:
-        current_clients[request.sid] = request.remote_addr
+        current_clients[request.sid] = (request.remote_addr, request.url)
         print(f"SID {request.sid} added to global store (IP is {request.remote_addr})")
         emit("arena_query_location", to=request.sid)
 

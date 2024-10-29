@@ -112,7 +112,7 @@ socket.on('connect', function() {
     setTimerString("000"); // should fix broken scaling for only loading once the window is rendered otherwise.  Yipee?  
 
     socket.emit("join_cage_request", {'cage_id': cageID });
-
+    socket.emit('client_attests_existence', {'location': window.location.href});
 });
 
 
