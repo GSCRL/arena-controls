@@ -18,12 +18,22 @@
   socket.emit('client_notify_schedule', 'tell me please!');
 
   socket.on("schedule_data", (schedule_rendered) => {
+    var temp = document.getElementById("button_spinny_helper");
+        if (temp !== null) {
+          temp.classList.remove("is-loading");
+          console.log("Removed spinner.");
+        }
     document.getElementById("matches_result_location").innerHTML = schedule_rendered;
   });
 
   /* HELPERS FOR EMITTING MESSAGES */
 
   function refresh_schedule_please() {
+        var temp = document.getElementById("button_spinny_helper");
+        if (temp !== null) {
+          temp.classList.add("is-loading");
+          console.log("added spinner CSS.");
+        }
         socket.emit('client_requests_schedule');
         // a lil stub, just for us.
     }

@@ -57,7 +57,7 @@
         height:50%; /* this ensures the button groups only use up half the screen real estate. */
     }
 
-    .tapout {
+    .robot_name {
         background-color: white; 
         color: #111; 
         font-weight: bold;
@@ -68,22 +68,6 @@
     }
     </style>
 
-<script> //user interaction stubs.
-
-    var cageID = {{ cageID }};
-
-    function ready() {
-        socket.emit('player_ready', {'playerColor': "{{ team_color_name }}", "cageID": cageID });
-        document.getElementById("readybutton").innerText = "READIED";
-    }
-
-    function tapout() {
-        socket.emit('player_tapout', {'playerColor': "{{ team_color_name }}", "cageID": cageID });
-        document.getElementById("tapoutbutton").innerText = "TAPPED"
-    }
-</script>
-
-
 <div class="tophalf">
     <div class="timer" id="timer">
         000
@@ -92,21 +76,34 @@
 
   <div class="bottomhalf">
         <div class="buttons">
-            <button id="tapoutbutton" onclick="tapout()" class="fancybutton tapout">TAP OUT</button>
+            <button id="robot_name_button" onclick="tapout()" class="fancybutton robot_name"></button>
             <button id="readybutton" onclick="ready()" class="fancybutton readyup">MARK READY</button>
         </div>
 </div>
 
-    
-<script>
-    function setTimerString(timer_value) {
-        document.getElementById("timer").innerHTML = timer_value;
-        textFit(document.getElementsByClassName('timer'), {alignHoriz: true, maxFontSize: 600, widthOnly: true, detectMultiLine: false});
-    };
-
-</script>
 
 <script type="text/javascript" charset="utf-8">
+
+    
+var cageID = {{ cageID }};
+var team_color_name = "{{ team_color_name }}";
+
+function ready() {
+    socket.emit('player_ready', {'playerColor': "{{ team_color_name }}", "cageID": cageID });
+    document.getElementById("readybutton").innerText = "READIED";
+}
+
+function tapout() {
+    socket.emit('player_tapout', {'playerColor': "{{ team_color_name }}", "cageID": cageID });
+    //document.getElementById("robot_name_button").innerText = "TAPPED"
+}
+
+
+function setTimerString(timer_value) {
+    document.getElementById("timer").innerHTML = timer_value;
+    textFit(document.getElementsByClassName('timer'), {alignHoriz: true, maxFontSize: 600, widthOnly: true, detectMultiLine: false});
+};
+
 
 socket.on('connect', function() {
     setTimerString("000"); // should fix broken scaling for only loading once the window is rendered otherwise.  Yipee?  
@@ -127,7 +124,13 @@ socket.on("timer_bg_event", function(timer_bg_color) { //used for eSTOP only?
 
 socket.on("reset_screen_states", function() {
         document.getElementById("readybutton").innerText = "MARK READY";
-        document.getElementById("tapoutbutton").innerText = "TAP OUT";
+        document.getElementById("robot_name_button").innerText = "";
+});
+
+socket.on("robot_name_color", function(dict_of_data) {
+    if (dict_of_data['color'] == team_color_name ) {
+        document.getElementById("robot_name_button").innerText = dict_of_data['name'];
+    }
 });
 
 
