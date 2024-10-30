@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, jsonify
 
 from config import settings as arena_settings
 from truefinals_api.wrapper import TrueFinals
@@ -20,6 +20,25 @@ class reversor:
 
     def __lt__(self, other):
         return other.obj < self.obj
+
+
+@match_results.route("/upcoming.json")
+def _json_api_results():
+    matches = (
+        truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
+        .withoutByes()
+        .withFilter(lambda x: x["state"] in ["called", "ready", "active"])
+        .inOrder(
+            lambda x: (
+                x["calledSince"] or float(0),
+                reversor(x["state"] == "unavailable"),
+            ),
+            reverse=False,
+        )
+        .done()
+    )
+
+    return jsonify(matches._matches)
 
 
 @match_results.route("/upcoming")
@@ -57,6 +76,7 @@ def routeForLastMatches():
         .withoutByes()
         .withFilter(lambda x: x["state"] == "done")
         .backfillResultStrings()
+        .toFile("test.json")
         .done()
     )
 

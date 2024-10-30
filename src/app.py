@@ -13,6 +13,7 @@ logging.basicConfig(level="INFO")
 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
+import requests
 
 
 class Base(DeclarativeBase):
@@ -67,8 +68,8 @@ def _temp_clients_page():
     return jsonify(current_clients)
 
 
-#@socketio.on("connect")
-#def base_connection_handler():
+# @socketio.on("connect")
+# def base_connection_handler():
 #    pass
 
 
@@ -79,9 +80,30 @@ def disconnect_handler():
         print("Client removed via disconnection.")
 
 
-@socketio.on('client_attests_existence')
+@socketio.on("client_attests_existence")
 def _handle_attestation(location):
-    current_clients[request.sid] = (request.remote_addr, request.url, location['location'])
+    current_clients[request.sid] = (
+        request.remote_addr,
+        request.url,
+        location["location"],
+    )
+
+
+@socketio.on("client_notify_schedule")
+def _handle_notif_schedule(location):
+    join_room("schedule_update")
+
+
+@socketio.on("client_requests_schedule")
+def _handle_schedule_upd():
+    data = requests.get("http://127.0.0.1:80/matches/upcoming.json").json()
+
+    emit(
+        "schedule_data",
+        render_template("_partial_template_matches.html", data=data),
+        to="schedule_update",
+    )
+
 
 # Wrapper to take note of clients as they connect/reconnect to store in above so we can keep track of their current page.
 @socketio.on("exists")
@@ -165,4 +187,4 @@ def internal_error(error):
 
 
 if __name__ == "__main__":
-    socketio.run(app, host="0.0.0.0", port=80, debug=True)
+    socketio.run(app, host="0.0.0.0", port=80, debug=False)

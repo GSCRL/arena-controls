@@ -2,9 +2,7 @@
     "event_name": "Seasonal Smackdown @ Bridgewater Mall",
     "event_league": "Garden State Combat Robotics League",
     "tournament_keys": [
-        {"id":"a7c1cde165524cef", "weightclass": "BTL", "weightInt":1360},
-        {"id":"56937eb314654f13", "weightclass":"PLANT", "weightInt": 453},
-        {"id":"e30df56f90ce4728", "weightclass": "ANT", "weightInt":452}
+        {"id":"c1d13538e2fe4677", "weightclass": "BTL", "weightInt":1360}        
     ],
     "tournament_cages":[
         {"name": "Big Steel", "id": 1},

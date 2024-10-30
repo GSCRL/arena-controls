@@ -14,6 +14,19 @@
     }
   )
   socket.emit('client_attests_existence', {'location': window.location.href});
+  // we use this to add a client to the room of peripherals that require pre-rendered schedule updates.  This is likely to be the only place it's used.
+  socket.emit('client_notify_schedule', 'tell me please!');
+
+  socket.on("schedule_data", (schedule_rendered) => {
+    document.getElementById("matches_result_location").innerHTML = schedule_rendered;
+  });
+
+  /* HELPERS FOR EMITTING MESSAGES */
+
+  function refresh_schedule_please() {
+        socket.emit('client_requests_schedule');
+        // a lil stub, just for us.
+    }
 
   function generateTimerMessage(message) {
     return {
@@ -219,21 +232,21 @@ function manualTimerInput() {
               width: 33%;
             }
           </style>
-          <div class="buttons has-addons" style="width: 100%;">
-            <button class="button is-danger is-light is-large third-widths" id="redisready" onclick="readyup('red');">NOT READY</button>
-            <button id="heartbeat_button_id" class="button is-large is-danger third-widths" disabled>[HB]</button>
-            <button class="button is-info is-light is-large third-widths" id="blueisready" onclick="readyup('blue');">NOT READY</button>
+            <div class="buttons has-addons is-fullwidth">
+                <button class="button is-danger is-light is-large third-widths" id="redisready" onclick="readyup('red');">NOT READY</button>
+                <button id="heartbeat_button_id" class="button is-large is-danger third-widths" disabled>[HB]</button>
+                <button class="button is-info is-light is-large third-widths" id="blueisready" onclick="readyup('blue');">NOT READY</button>
             </div>
         </div>
 
         <div class="block">
-          <div class="buttons has-addons">
+          <div class="buttons has-addons is-fullwidth">
             <style>
               .fifth-widths {
                 width: 20%;
               }
             </style>
-            <button id="timer_control_counter" class="button is-large is-dark fifth-widths" onclick="manualTimerInput();">000</button>
+            <button class="button is-large is-dark fifth-widths" id="timer_control_counter" onclick="manualTimerInput();">000</button>
             <button class="button is-large fifth-widths" onclick="startTimer();">Start▶️</button>
             <button class="button is-large fifth-widths" onclick="pauseTimer();">Pause⏸️</button>
             <button class="button is-large fifth-widths"  onclick="stopTimer();">Stop⏹️</button>
@@ -250,7 +263,7 @@ function manualTimerInput() {
         </div>
 
         <div class="block">
-          <div class="field is-grouped">
+          <div class="field has-addons">
             <p class="control is-expanded">
               <script>
                 // we use this to send a message when doing stuff.
@@ -272,9 +285,9 @@ function manualTimerInput() {
         </div>
       </div> <!-- column end -->
 
-      <div class="column">
+      <div class="column" id="matches_result_location"> <!-- matches column.-->
 
-      </div>
+      </div> <!-- end column matches. -->
 
     </div> <!-- columns end -->
   </section>
