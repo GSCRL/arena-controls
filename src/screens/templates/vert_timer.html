@@ -127,10 +127,10 @@ socket.on("reset_screen_states", function() {
         document.getElementById("robot_name_button").innerText = "";
 });
 
-socket.on("robot_name_color", function(dict_of_data) {
-    if (dict_of_data['color'] == team_color_name ) {
-        document.getElementById("robot_name_button").innerText = dict_of_data['name'];
-    }
+socket.on("robot_match_share_name", function(colors) {
+if (colors[0] == team_color_name) {
+    document.getElementById("robot_name_button").innerText = colors[1];
+}
 });
 
 

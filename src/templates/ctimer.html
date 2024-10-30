@@ -27,6 +27,20 @@
   });
 
   /* HELPERS FOR EMITTING MESSAGES */
+function load_competitors_names(red_name, blue_name) {
+  var red_temp = document.getElementById(red_name).value;
+  var blue_temp = document.getElementById(blue_name).value;
+
+  console.log(red_temp, blue_temp);
+
+  if ((red_temp !== null) && (blue_temp !== null)) {
+    socket.emit('robot_match_color_name', cageID=cageID, red_name = red_temp, blue_name=blue_temp);
+  } else {
+    var red_placeholder = document.getElementById(red_name).value;
+    var blue_placeholder = document.getElementById(blue).value;
+    socket.emit('robot_match_color_name', cageID=cageID, red_name = red_placeholder, blue_name=blue_placeholder);
+  }
+}
 
   function refresh_schedule_please() {
         var temp = document.getElementById("button_spinny_helper");
@@ -265,14 +279,6 @@ function manualTimerInput() {
         </div>
 
         <div class="block">
-          <div class="buttons has-addons">
-            <button class="button is-large is-danger is-light is-rounded"  onclick="eSTOP();">EMERGENCY STOP</button>
-            <!--<button class="button is-large" onclick="readyTimer();" hover="Set timer to 150s">Ready Timer</button>-->
-            <button class="button is-large is-warning is-light is-rounded" onclick="resetBG();">reset bg</button>
-          </div>
-        </div>
-
-        <div class="block">
           <div class="field has-addons">
             <p class="control is-expanded">
               <script>
@@ -304,5 +310,6 @@ function manualTimerInput() {
 
   <script>
     stopTimer();
+    socket.emit('client_requests_schedule'); // testing.  Here's hoping it works.
   </script>
 {% endblock %}

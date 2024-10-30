@@ -171,9 +171,16 @@ def handle_message(tapout_msg: dict):
     )
 
 
+# This takes in the message sent out from ctimer.html and re-broadcasts it to the room as two messages, etc.
+@socketio.on("robot_match_color_name")
+def _handler_colors(cageID, red_name, blue_name):
+    emit("robot_match_share_name", ["red", red_name.strip()], to=f"cage_no_{cageID}")
+    emit("robot_match_share_name", ["blue", blue_name.strip()], to=f"cage_no_{cageID}")
+
+
 @socketio.on("reset_screen_states")
 def handle_message(reset_data):
-    emit("reset_screen_states", f"cage_no_{reset_data['cageID']}")
+    emit("reset_screen_states", to=f"cage_no_{reset_data['cageID']}")
 
 
 @app.errorhandler(500)
@@ -185,6 +192,9 @@ def internal_error(error):
         errormsg="Sorry, this page has produced an error while generating.  Please try again in 30s.",
     )
 
+
+logging.basicConfig()
+logging.getLogger().setLevel(logging.INFO)
 
 if __name__ == "__main__":
     socketio.run(app, host="0.0.0.0", port=80, debug=False)

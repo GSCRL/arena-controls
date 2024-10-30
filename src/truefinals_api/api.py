@@ -51,14 +51,11 @@ class APICache:
         return None
 
 
-cache = APICache(ttl=300)
+cache = APICache(ttl=120)
 
 # This caches the items less likely to change (if at all during the
 # course of the event.  The field software probably shouldn't be
 # called until this is set up finally and tournaments are started.
-
-event_codes = {}
-competitors = {}
 
 
 def makeAPIRequest(endpoint: str) -> list:
@@ -79,6 +76,7 @@ def makeAPIRequest(endpoint: str) -> list:
 
         if resp.status_code == 429:
             logging.warning(f"Rate limit exceeded when calling endpoint {resp.url}")
+            return {}  # this is probably fine, right?
 
         cache.set(endpoint, resp.json())
     return cache.get(endpoint)
@@ -90,16 +88,8 @@ def getAllTourneys(credentials) -> list[dict]:
 
 
 def getAllGames(tournamentID: str) -> list[dict]:
-    if tournamentID not in event_codes:
-        event_codes[tournamentID] = makeAPIRequest(
-            f"/v1/tournaments/{tournamentID}/games"
-        )
-    return event_codes[tournamentID]
+    return makeAPIRequest(f"/v1/tournaments/{tournamentID}/games")
 
 
 def getAllPlayersInTournament(tournamentID: str) -> list[dict]:
-    if tournamentID not in competitors:
-        competitors[tournamentID] = makeAPIRequest(
-            f"/v1/tournaments/{tournamentID}/players"
-        )
-    return competitors[tournamentID]
+    return makeAPIRequest(f"/v1/tournaments/{tournamentID}/players")

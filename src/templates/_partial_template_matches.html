@@ -14,6 +14,30 @@
             </div>
         </nav>
     </div>
+
+    <div class="panel-block" style="display: block; ">
+        <nav class="level">
+                <div class="level-item">
+                    <input class="input" id="placeholder_red_name" type="text" placeholder="Red Bot Name">
+                </div>
+                <div class="level-item">
+                    <p> vs </p>
+                </div>
+                <div class="level-item">
+                    <input class="input" id="placeholder_blue_name" type="text" placeholder="Blue Bot Name">
+                </div>
+
+                <div class="level-right">
+                    <div class="level-item">
+                        <p>
+                            <button class="button" onclick="load_competitors_names('placeholder_red_name', 'placeholder_blue_name');">➔</button>
+                        </p>
+                    </div>
+                </div>
+        </nav>
+    </div>
+
+
     {% for match in data %}
     {% set red_name = match['slots'][0]['gscrl_player_name'] %}
     {% set blue_name = match['slots'][1]['gscrl_player_name'] %}
@@ -28,12 +52,17 @@
                           </span>
                           <p>
                             Match {{ match['name'] }}<br>
-                            {{ match['slots'][0]['gscrl_player_name'] }} 
+                            
+                            <span id="r{{ loop.index }}_red_competitor_name">
+                                {{ match['slots'][0]['gscrl_player_name'] }} 
+                            </span>
                             <span class="icon has-text-danger">
                                 <i class="fas fa-circle"></i>
-                              </span>
-                               vs {{ match['slots'][1]['gscrl_player_name'] }} 
-
+                            </span>
+                               vs 
+                            <span id="r{{ loop.index }}_blue_competitor_name">
+                                    {{ match['slots'][1]['gscrl_player_name'] }} 
+                            </span>
                                <span class="icon has-text-info">
                                 <i class="fas fa-circle"></i>
                               </span>
@@ -45,7 +74,7 @@
                 <div class="level-right">
                     <div class="level-item">
                         <p>
-                            <button class="button">✓</button>
+                            <button class="button" onclick="load_competitors_names( 'r{{ loop.index }}_red_competitor_name', 'r{{ loop.index }}_blue_competitor_name');">✓</button>
                         </p>
                     </div>
                 </div>
