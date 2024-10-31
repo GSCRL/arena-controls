@@ -177,6 +177,15 @@ def _handler_colors(cageID, red_name, blue_name):
     emit("robot_match_share_name", ["blue", blue_name], to=f"cage_no_{cageID}")
 
 
+@socketio.on("c_play_sound_event")
+def _handle_sound_playback(input_struct):
+    emit(
+        "play_sound_event",
+        input_struct["sound"],
+        to=f"cage_no_{input_struct['cageID']}",
+    )
+
+
 @socketio.on("reset_screen_states")
 def handle_message(reset_data):
     emit("reset_screen_states", to=f"cage_no_{reset_data['cageID']}")

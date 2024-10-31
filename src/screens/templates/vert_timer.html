@@ -76,14 +76,13 @@
 
   <div class="bottomhalf">
         <div class="buttons">
-            <button id="robot_name_button" class="fancybutton robot_name"></button>
+            <button id="robot_name_button" onclick="play()" class="fancybutton robot_name"></button>
             <button id="readybutton" onclick="ready()" class="fancybutton readyup">MARK READY</button>
         </div>
 </div>
 
 
 <script type="text/javascript" charset="utf-8">
-
     
 var cageID = {{ cageID }};
 var team_color_name = "{{ team_color_name }}";
@@ -113,7 +112,7 @@ socket.on("timer_event", function(timer_data) {
 
 socket.on("timer_bg_event", function(timer_bg_color) { //used for eSTOP only?
     console.log(timer_bg_color)
-        document.getElementsByTagName("body")[0].style.backgroundColor = timer_bg_color.color;
+    document.getElementsByTagName("body")[0].style.backgroundColor = timer_bg_color.color;
     });
 
 socket.on("reset_screen_states", function() {

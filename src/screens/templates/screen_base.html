@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-
+    <link href="/screens/fonts.css" rel="stylesheet">
     <style>
 
 .space-mono-regular {
@@ -96,6 +96,10 @@
         /* CSS Button for teams to press */
         </style>
         <script>
+
+        var start_match_sound = new Audio('/screens/static/audio/match_start_tones.mp3');
+        var end_match_sound = new Audio('/screens/static/audio/match_end.wav');
+
             // resize fixer please.
             addEventListener("resize", (event) => {
                 if (document.getElementById("timer") !== null) {
@@ -129,6 +133,15 @@
 
                 // some additional context, for example the XMLHttpRequest object
                 console.log(err.context);
+            });
+
+            socket.on("play_sound_event", function(sound_name) {
+                if (sound_name == "start_match") {
+                    start_match_sound.play();
+                }
+                if (sound_name == "end_match") {
+                    end_match_sound.play();
+                }
             });
             
         </script>

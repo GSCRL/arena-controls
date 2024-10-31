@@ -116,10 +116,25 @@ function send_padded_timer_msg(time_in_seconds) {
   set_control_display_value(time_in_seconds);
   socket.emit("timer_event", generateTimerMessage(time_in_seconds));
 }
+var hasPlayedMatchStart = false;
+var hasPlayedMatchEnd = false;
 
 countdownTimer.addEventListener('secondTenthsUpdated', function (e) {
   var time_in_seconds = (countdownTimer.getTimeValues().seconds + (countdownTimer.getTimeValues().minutes * 60)).toString();
+
+  // match start sound duration is 3.5s.
+  // match end duration doesn't matter.
   swapHeartbeatSignStatus();
+  //console.log((countdownTimer.getTimeValues().seconds + (.1 * countdownTimer.getTimeValues().secondTenths)));
+
+  if (countdownTimer.getTimeValues().seconds + (.1 * countdownTimer.getTimeValues().secondTenths) < 3.6) {
+    if (!hasPlayedMatchStart) {
+      hasPlayedMatchStart = true;
+      socket.emit("c_play_sound_event", {'cageID': cageID, 'sound': 'start_match'});
+      console.log("tried to play match start sound.");
+    }
+  }
+
   send_padded_timer_msg(time_in_seconds);
 });
 
@@ -127,6 +142,14 @@ timerInstance.addEventListener('secondTenthsUpdated', function (e) {
   var time_in_seconds = (timerInstance.getTimeValues().seconds + (timerInstance.getTimeValues().minutes * 60)).toString();
   swapHeartbeatSignStatus(); 
   send_padded_timer_msg(time_in_seconds);
+
+  if (timerInstance.getTimeValues().seconds + (.1 * timerInstance.getTimeValues().secondTenths) < 0.2) {
+    if (!hasPlayedMatchEnd) {
+      hasPlayedMatchEnd = true;
+      socket.emit("c_play_sound_event", {'cageID': cageID, 'sound': 'end_match'});
+      console.log("tried to play match end sound.");
+    }
+  }
 });
 
 function set_control_display_value(timer_value) {
@@ -186,6 +209,9 @@ function stopTimer() {
   countdownTimer.stop();
 
   resetTeamReadies();
+
+  hasPlayedMatchStart = false;
+  hasPlayedMatchEnd = false;
 }
 
 document.addEventListener("keypress", function(event) {
