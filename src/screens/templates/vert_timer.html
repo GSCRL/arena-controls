@@ -76,7 +76,7 @@
 
   <div class="bottomhalf">
         <div class="buttons">
-            <button id="robot_name_button" onclick="tapout()" class="fancybutton robot_name"></button>
+            <button id="robot_name_button" class="fancybutton robot_name"></button>
             <button id="readybutton" onclick="ready()" class="fancybutton readyup">MARK READY</button>
         </div>
 </div>
@@ -92,12 +92,6 @@ function ready() {
     socket.emit('player_ready', {'playerColor': "{{ team_color_name }}", "cageID": cageID });
     document.getElementById("readybutton").innerText = "READIED";
 }
-
-function tapout() {
-    socket.emit('player_tapout', {'playerColor': "{{ team_color_name }}", "cageID": cageID });
-    //document.getElementById("robot_name_button").innerText = "TAPPED"
-}
-
 
 function setTimerString(timer_value) {
     document.getElementById("timer").innerHTML = timer_value;
@@ -123,8 +117,16 @@ socket.on("timer_bg_event", function(timer_bg_color) { //used for eSTOP only?
     });
 
 socket.on("reset_screen_states", function() {
-        document.getElementById("readybutton").innerText = "MARK READY";
+    document.getElementById("readybutton").innerText = "MARK READY";
+    document.getElementById("robot_name_button").innerText = "";
+});
+
+// basically all the same as above. 
+socket.on("control_player_ready_event", function(shit_ingst) {
+    if (shit_ingst['playerColor'] == team_color_name) {
+        document.getElementById("readybutton").innerText = "READY";
         document.getElementById("robot_name_button").innerText = "";
+    }
 });
 
 socket.on("robot_match_share_name", function(colors) {

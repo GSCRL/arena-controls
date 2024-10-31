@@ -174,8 +174,8 @@ def handle_message(tapout_msg: dict):
 # This takes in the message sent out from ctimer.html and re-broadcasts it to the room as two messages, etc.
 @socketio.on("robot_match_color_name")
 def _handler_colors(cageID, red_name, blue_name):
-    emit("robot_match_share_name", ["red", red_name.strip()], to=f"cage_no_{cageID}")
-    emit("robot_match_share_name", ["blue", blue_name.strip()], to=f"cage_no_{cageID}")
+    emit("robot_match_share_name", ["red", red_name], to=f"cage_no_{cageID}")
+    emit("robot_match_share_name", ["blue", blue_name], to=f"cage_no_{cageID}")
 
 
 @socketio.on("reset_screen_states")

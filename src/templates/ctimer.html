@@ -28,18 +28,21 @@
 
   /* HELPERS FOR EMITTING MESSAGES */
 function load_competitors_names(red_name, blue_name) {
-  var red_temp = document.getElementById(red_name).value;
-  var blue_temp = document.getElementById(blue_name).value;
 
-  console.log(red_temp, blue_temp);
+  // we get the-inline variable PTR so we don't need to specifically worry about them, and then specialcase `span` and `input` types.
+  var red_temp = document.getElementById(red_name)
+  var blue_temp = document.getElementById(blue_name)
 
-  if ((red_temp !== null) && (blue_temp !== null)) {
-    socket.emit('robot_match_color_name', cageID=cageID, red_name = red_temp, blue_name=blue_temp);
-  } else {
-    var red_placeholder = document.getElementById(red_name).value;
-    var blue_placeholder = document.getElementById(blue).value;
-    socket.emit('robot_match_color_name', cageID=cageID, red_name = red_placeholder, blue_name=blue_placeholder);
-  }
+    // Tags do not have a `value`, just a `valueOf()` that doesn't do what we want.  SO we just specialcase it.
+    if (red_temp.localName === "span") {
+      var red_placeholder = red_temp.innerText;
+      var blue_placeholder = blue_temp.innerText;
+    } else {
+      // used for the input tag as a fallback case.
+      var red_placeholder = red_temp.value;
+      var blue_placeholder = blue_temp.value;
+    }
+   socket.emit('robot_match_color_name', cageID=cageID, red_name = red_placeholder, blue_name=blue_placeholder);
 }
 
   function refresh_schedule_please() {
