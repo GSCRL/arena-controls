@@ -51,41 +51,43 @@
 
     <div class="panel-block" style="display: block; ">
         <nav class="level">
-                <div class="level-left">
-                    <div class="level-item">
-
-                        <span class="panel-icon">
-                            <i class="fas fa-explosion" aria-hidden="true"></i>
+            <div class="level-left">
+                <div class="level-item">
+                    <span class="panel-icon">
+                        <i class="fas fa-explosion" aria-hidden="true"></i>
+                      </span>
+                      <p>
+                        Match {{ match['name'] }}<br>
+                        
+                        <span id="r{{ loop.index }}_red_competitor_name">
+                            {{ match['slots'][0]['gscrl_player_name'] }} 
+                        </span>
+                        <span class="icon has-text-danger">
+                            <i class="fas fa-circle"></i>
+                        </span>
+                           vs 
+                        <span id="r{{ loop.index }}_blue_competitor_name">
+                                {{ match['slots'][1]['gscrl_player_name'] }} 
+                        </span>
+                           <span class="icon has-text-info">
+                            <i class="fas fa-circle"></i>
                           </span>
-                          <p>
-                            Match {{ match['name'] }}<br>
-                            
-                            <span id="r{{ loop.index }}_red_competitor_name">
-                                {{ match['slots'][0]['gscrl_player_name'] }} 
-                            </span>
-                            <span class="icon has-text-danger">
-                                <i class="fas fa-circle"></i>
-                            </span>
-                               vs 
-                            <span id="r{{ loop.index }}_blue_competitor_name">
-                                    {{ match['slots'][1]['gscrl_player_name'] }} 
-                            </span>
-                               <span class="icon has-text-info">
-                                <i class="fas fa-circle"></i>
-                              </span>
-                          </p>
-
-                    </div>
+                      </p>
                 </div>
+            </div>
 
-                <div class="level-right">
-                    <div class="level-item">
-                        <p>
-                            <button class="button" title="Load bot names to tablets." onclick="load_competitors_names( 'r{{ loop.index }}_red_competitor_name', 'r{{ loop.index }}_blue_competitor_name');">⤴</button>
-                        </p>
-                    </div>
+            <div class="level-item">
+                <div id="{{ match.tournamentID }}_{{ match.id }}" style="display:none;">{{ match.calledSince }}</div>
+                <span class="button is-warning called_since" id="called_since_{{ match.tournamentID }}_{{ match.id }}"></span>
+            </div>
+
+            <div class="level-right">
+                <div class="level-item">
+                    <p>
+                        <button class="button" title="Load bot names to tablets." onclick="load_competitors_names( 'r{{ loop.index }}_red_competitor_name', 'r{{ loop.index }}_blue_competitor_name');">⤴</button>
+                    </p>
                 </div>
-
+            </div>
         </nav>
     </div>
     {% endfor %}

@@ -23,8 +23,28 @@
           temp.classList.remove("is-loading");
           console.log("Removed spinner.");
         }
+
+    // below is to do the client-side calculation of time-since a match being called.
+    // we have to post-hook the partial re-render.
+    // this is probably easier in full-butt JS stuff. Augh.
+
     document.getElementById("matches_result_location").innerHTML = schedule_rendered;
-  });
+
+    var called_since_updates = document.getElementsByClassName("called_since");
+    //console.log(called_since_updates);
+      for (item in called_since_updates) {
+        console.log((typeof(called_since_updates[item])));
+        if ((typeof(called_since_updates[item])) == typeof(called_since_updates[0])) {
+          var _temp_1 = called_since_updates[item].getAttribute('id').replace("called_since_","");
+          console.log(_temp_1, typeof(_temp_1));
+          var _temp_2 = document.getElementById(_temp_1);
+
+          var timestamps = Number(_temp_2.innerHTML);
+          console.log(timestamps)
+          called_since_updates[item].innerHTML = "Called " + time_ago(timestamps);
+        }
+      }
+    });
 
   /* HELPERS FOR EMITTING MESSAGES */
 function load_competitors_names(red_name, blue_name) {
@@ -316,7 +336,7 @@ function manualTimerInput() {
                   }
                 }
               </script>
-              <input class="input" id="sendmessagebox" type="text" placeholder="message" onkeydown="search(this)">
+              <input class="input" id="sendmessagebox" type="text" placeholder="Status message to send on screens." onkeydown="search(this)">
             </p>
             <p class="control">            
               <a class="button is-info" onclick="sendTimerMessage();">

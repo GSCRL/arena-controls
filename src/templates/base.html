@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>GSCRL Arena & Timing Systems {% if title %} | {{ title }} {% endif %}</title>
     <link rel="stylesheet" href="{{url_for('static', filename='bulma/css/bulma.css')}}">
-    <link rel="stylesheet" href="{{url_for('static', filename='fa/fontawesome-all.min.css')}} "/>
+    <link rel="stylesheet" href="{{url_for('static', filename='fa/fontawesome-all.min.css')}}"/>
+    <script src="{{url_for('static', filename='socket.io.min.js')}}"></script> 
   </head>
   <body>
     {% if autoreload %}
@@ -138,7 +139,7 @@ $navbarBurgers.forEach( el => {
 
 });
 </script>
-<script src="https://cdn.socket.io/4.7.3/socket.io.min.js" integrity="sha384-+miq58Ltmjm+SSP5g8Ok6dpMO/6R4n8xe/x1Yj0Bdb9kiEz25LTnWv/GZQTRQamg" crossorigin="anonymous"></script> <script type="text/javascript" charset="utf-8">
+<script type="text/javascript" charset="utf-8">
     var socket = io();
 
     // rejoin if there's a disconnect
