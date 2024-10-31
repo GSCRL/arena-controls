@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
     <title>{% if team_color_name %}{{ team_color_name.upper() }}{% endif %}</title>
     <script src="{{url_for('user_screens.static', filename='textFit.min.js')}}"></script> 
-    <script src="https://cdn.socket.io/4.7.3/socket.io.min.js" integrity="sha384-+miq58Ltmjm+SSP5g8Ok6dpMO/6R4n8xe/x1Yj0Bdb9kiEz25LTnWv/GZQTRQamg" crossorigin="anonymous"></script>
+    <script src="{{url_for('user_screens.static', filename='socket.io.min.js')}}"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="/screens/fonts.css">
     <style>
 
 .space-mono-regular {
