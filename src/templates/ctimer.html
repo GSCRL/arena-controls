@@ -146,6 +146,13 @@ function pauseTimer() {
 
 function resetBG() {
   socket.emit("timer_bg_event", generateBackgroundMessage("rgb(37, 37, 37)"));
+  var matches_sidebar = document.getElementsByClassName('panel-heading');
+
+  if (matches_sidebar) {
+    if (matches_sidebar[0] !== null) {
+      matches_sidebar[0].style.backgroundColor = "rgb(37, 37, 37)";
+    }
+  }
 }
 
 function stopTimer() {
@@ -170,6 +177,19 @@ document.addEventListener("keypress", function(event) {
 		}
 });
 
+function change_colors() {
+  document.getElementById('color_picker_label').click();
+  var coloring = document.getElementById('hidden_color_picker');
+  coloring.click();
+  socket.emit("timer_bg_event", generateBackgroundMessage(coloring.value));
+
+  var matches_sidebar = document.getElementsByClassName('panel-heading');
+  if (matches_sidebar) {
+    if (matches_sidebar[0] !== null) {
+      matches_sidebar[0].style.backgroundColor = coloring.value;
+    }
+  }
+}
 
 function eSTOP() {
   stopTimer();
@@ -238,6 +258,9 @@ function manualTimerInput() {
 }
 
 </script>
+
+<label id="color_picker_label" for="hidden_color_picker" style="display:none;"></label>
+<input type="color" id="hidden_color_picker" style="display:none;" onchange="change_colors();">
 
 <section class="section">
     <div class="container">

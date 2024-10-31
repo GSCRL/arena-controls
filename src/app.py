@@ -134,7 +134,6 @@ def handle_message(timer_message):
 
 @socketio.on("timer_bg_event")
 def handle_message(timer_bg_data):
-    print(timer_bg_data)
     emit("timer_bg_event", timer_bg_data, to=f"cage_no_{timer_bg_data['cageID']}")
 
 
