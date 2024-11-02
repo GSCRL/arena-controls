@@ -5,7 +5,8 @@
     
 <script>
   var cageID = {{ cageID }};
-  var match_duration = 150;
+  var match_duration_timestamp = 150;
+  var mid_match_warning_timestamp = 30; // this is based on brief player survey.  may change.
 
   socket.emit(
     "join_cage_request", 
@@ -33,14 +34,19 @@
     var called_since_updates = document.getElementsByClassName("called_since");
     //console.log(called_since_updates);
       for (item in called_since_updates) {
-        console.log((typeof(called_since_updates[item])));
-        if ((typeof(called_since_updates[item])) == typeof(called_since_updates[0])) {
-          var _temp_1 = called_since_updates[item].getAttribute('id').replace("called_since_","");
-          console.log(_temp_1, typeof(_temp_1));
-          var _temp_2 = document.getElementById(_temp_1);
+        //console.log((typeof(called_since_updates[item])));
+        // for some reason, the results are ALWAYS:
+        // (the actual items)
+        // some other stuff.
+        // some other stuff.
+        // We only want whatever the first type is or it errors out horridly.
 
-          var timestamps = Number(_temp_2.innerHTML);
-          console.log(timestamps)
+        if ((typeof(called_since_updates[item])) == typeof(called_since_updates[0])) {
+          var _timestamp_called_of_match = called_since_updates[item].getAttribute('id').replace("called_since_","");
+          console.log(_timestamp_called_of_match, typeof(_timestamp_called_of_match));
+          var _timestamp_parent_item = document.getElementById(_timestamp_called_of_match);
+
+          var timestamps = Number(_timestamp_parent_item.innerHTML);
           called_since_updates[item].innerHTML = "Called " + time_ago(timestamps);
         }
       }
@@ -101,7 +107,7 @@ function load_competitors_names(red_name, blue_name) {
       }
   }
 
-  var timerInstance = new easytimer.Timer({countdown: true, startValues: {seconds: match_duration + 0.9}, precision: 'secondTenths' });
+  var timerInstance = new easytimer.Timer({countdown: true, startValues: {seconds: match_duration_timestamp + 0.9}, precision: 'secondTenths' });
   var countdownTimer = new easytimer.Timer({countdown: true, startValues: {seconds: 4.5}, precision: 'secondTenths' });
 
 countdownTimer.addEventListener('targetAchieved', function (e) {
@@ -113,11 +119,14 @@ function send_padded_timer_msg(time_in_seconds) {
     time_in_seconds = time_in_seconds.padStart(3, "0"); 
   }
   
-  set_control_display_value(time_in_seconds);
+  set_control_timer_value(time_in_seconds);
   socket.emit("timer_event", generateTimerMessage(time_in_seconds));
 }
+
+// USED FOR SOUND PLAYING EVENTS ONLY.
 var hasPlayedMatchStart = false;
 var hasPlayedMatchEnd = false;
+var hasPlayedMidMatchWarning = false;
 
 countdownTimer.addEventListener('secondTenthsUpdated', function (e) {
   var time_in_seconds = (countdownTimer.getTimeValues().seconds + (countdownTimer.getTimeValues().minutes * 60)).toString();
@@ -150,9 +159,24 @@ timerInstance.addEventListener('secondTenthsUpdated', function (e) {
       console.log("tried to play match end sound.");
     }
   }
+    //console.log(timerInstance.getTimeValues().seconds + (.1 * timerInstance.getTimeValues().secondTenths));
+    var _temp_timer_state = timerInstance.getTimeValues();
+    
+    if (
+        (((_temp_timer_state.minutes * 60) + (_temp_timer_state.seconds) + (.1 * _temp_timer_state.secondTenths)) <= mid_match_warning_timestamp))
+         {
+          console.log(timerInstance.getTimeValues().seconds);
+          console.log(mid_match_warning_timestamp);
+          if (!hasPlayedMidMatchWarning) {
+            hasPlayedMidMatchWarning = true;
+            socket.emit("c_play_sound_event", {'cageID': cageID, 'sound': 'mid_match_chime'});
+            console.log("tried to play match mid-bell sound.");
+        }
+  }
+
 });
 
-function set_control_display_value(timer_value) {
+function set_control_timer_value(timer_value) {
   document.getElementById("timer_control_counter").innerHTML = timer_value;
 }
 
@@ -199,8 +223,8 @@ function resetBG() {
 }
 
 function stopTimer() {
-  document.getElementById("timer_control_counter").innerText = match_duration.toString();
-  socket.emit("timer_event", generateTimerMessage(match_duration.toString()));
+  document.getElementById("timer_control_counter").innerText = match_duration_timestamp.toString();
+  socket.emit("timer_event", generateTimerMessage(match_duration_timestamp.toString()));
 
   timerInstance.reset();
   countdownTimer.reset();
@@ -212,6 +236,7 @@ function stopTimer() {
 
   hasPlayedMatchStart = false;
   hasPlayedMatchEnd = false;
+  hasPlayedMidMatchWarning = false;
 }
 
 document.addEventListener("keypress", function(event) {
@@ -264,6 +289,8 @@ socket.on("control_player_ready_event", (station_info) => {
 });
 
 // in the event of a tapout, tell arena controls who wins automagically.
+// This is not used in the version past 2024/11/02 (KC.)
+/*
 socket.on("control_player_tapout_event", (station_info) => {
   stopTimer();
   if (station_info.playerColor === "red") {
@@ -280,6 +307,7 @@ socket.on("control_player_tapout_event", (station_info) => {
       socket.emit("timer_bg_event", generateBackgroundMessage("red")); 
   }
 });
+*/
 
 function resetTeamReadyButtons() {
   socket.emit("reset_screen_states", {'cageID': cageID });
@@ -299,7 +327,12 @@ function sendTimerMessage() {
 
 function manualTimerInput() {
   timerInstance.stop();
-  timerInstance.start({ startValues:{seconds: parseFloat(prompt("Enter manual timer value.  Timer will be paused upon confirmation."))}});
+  var timer_value = parseFloat(prompt("Enter manual timer value.  Timer will be paused upon confirmation."));
+  console.log(timer_value);
+  if (timer_value !== null) {
+    timerInstance.start({ startValues:{seconds: timer_value}});
+    set_control_timer_value(timer_value);
+  }
   pauseTimer();
 }
 

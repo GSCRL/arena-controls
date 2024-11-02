@@ -99,6 +99,8 @@
 
         var start_match_sound = new Audio('/screens/static/audio/match_start_tones.mp3');
         var end_match_sound = new Audio('/screens/static/audio/match_end.wav');
+        var mid_match_chime = new Audio('/screens/static/audio/mid_match_tone.mp3');
+
 
             // resize fixer please.
             addEventListener("resize", (event) => {
@@ -139,8 +141,11 @@
                 if (sound_name == "start_match") {
                     start_match_sound.play();
                 }
-                if (sound_name == "end_match") {
+                else if (sound_name == "end_match") {
                     end_match_sound.play();
+                }
+                else if (sound_name == "mid_match_chime") {
+                    mid_match_chime.play();
                 }
             });
             
