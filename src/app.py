@@ -119,8 +119,11 @@ def state_client_exists():
 def global_safety_eSTOP():
     valid_rooms = [ctl_rooms for ctl_rooms in rooms()]
     for v in valid_rooms:
-        emit("timer_event", to=v)
-        emit("timer_bg_event", "red", to=v)
+        emit("timer_event", "STOP", to=v)
+        emit("timer_bg_event", {
+      'color': "red",
+      'cageID':999
+    }, to=v)
 
 
 # Old global handler, should probably be moved to globally accessible timer area.

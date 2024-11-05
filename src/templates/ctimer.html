@@ -129,30 +129,31 @@ var hasPlayedMatchEnd = false;
 var hasPlayedMidMatchWarning = false;
 
 countdownTimer.addEventListener('secondTenthsUpdated', function (e) {
-  var time_in_seconds = (countdownTimer.getTimeValues().seconds + (countdownTimer.getTimeValues().minutes * 60)).toString();
+  var time_in_seconds = (countdownTimer.getTimeValues().seconds + (countdownTimer.getTimeValues().minutes * 60)).toString(); // used to send message and not much else.
+  var countdown_timer_value = (countdownTimer.getTimeValues().seconds + (countdownTimer.getTimeValues().minutes * 60) + (.1 * countdownTimer.getTimeValues().secondTenths));
 
   // match start sound duration is 3.5s.
   // match end duration doesn't matter.
   swapHeartbeatSignStatus();
   //console.log((countdownTimer.getTimeValues().seconds + (.1 * countdownTimer.getTimeValues().secondTenths)));
 
-  if (countdownTimer.getTimeValues().seconds + (.1 * countdownTimer.getTimeValues().secondTenths) < 3.6) {
+  if (countdown_timer_value < 3.6) {
     if (!hasPlayedMatchStart) {
       hasPlayedMatchStart = true;
       socket.emit("c_play_sound_event", {'cageID': cageID, 'sound': 'start_match'});
       console.log("tried to play match start sound.");
     }
   }
-
   send_padded_timer_msg(time_in_seconds);
 });
 
 timerInstance.addEventListener('secondTenthsUpdated', function (e) { 
   var time_in_seconds = (timerInstance.getTimeValues().seconds + (timerInstance.getTimeValues().minutes * 60)).toString();
+  var match_timer_value = (timerInstance.getTimeValues().seconds + (timerInstance.getTimeValues().minutes * 60) + (.1 * timerInstance.getTimeValues().secondTenths));
   swapHeartbeatSignStatus(); 
   send_padded_timer_msg(time_in_seconds);
 
-  if (timerInstance.getTimeValues().seconds + (.1 * timerInstance.getTimeValues().secondTenths) < 0.2) {
+  if (match_timer_value < 0.2) {
     if (!hasPlayedMatchEnd) {
       hasPlayedMatchEnd = true;
       socket.emit("c_play_sound_event", {'cageID': cageID, 'sound': 'end_match'});
@@ -160,11 +161,8 @@ timerInstance.addEventListener('secondTenthsUpdated', function (e) {
     }
   }
     //console.log(timerInstance.getTimeValues().seconds + (.1 * timerInstance.getTimeValues().secondTenths));
-    var _temp_timer_state = timerInstance.getTimeValues();
     
-    if (
-        (((_temp_timer_state.minutes * 60) + (_temp_timer_state.seconds) + (.1 * _temp_timer_state.secondTenths)) <= mid_match_warning_timestamp))
-         {
+    if (match_timer_value < mid_match_warning_timestamp) {
           console.log(timerInstance.getTimeValues().seconds);
           console.log(mid_match_warning_timestamp);
           if (!hasPlayedMidMatchWarning) {
@@ -215,7 +213,7 @@ function resetBG() {
   socket.emit("timer_bg_event", generateBackgroundMessage("rgb(37, 37, 37)"));
   var matches_sidebar = document.getElementsByClassName('panel-heading');
 
-  if (matches_sidebar) {
+  if (matches_sidebar.length > 0) {
     if (matches_sidebar[0] !== null) {
       matches_sidebar[0].style.backgroundColor = "rgb(37, 37, 37)";
     }
@@ -225,6 +223,7 @@ function resetBG() {
 function stopTimer() {
   document.getElementById("timer_control_counter").innerText = match_duration_timestamp.toString();
   socket.emit("timer_event", generateTimerMessage(match_duration_timestamp.toString()));
+  resetBG(); // this gets rid of the eSTOP red bg.
 
   timerInstance.reset();
   countdownTimer.reset();
@@ -399,9 +398,21 @@ function manualTimerInput() {
             </p>
             <p class="control">            
               <a class="button is-info" onclick="sendTimerMessage();">
-                send ->
+              ->
               </a>
             </p>
+          </div>
+        </div>
+
+        <div class="block">
+          <div class="buttons">
+            <script>
+              function _hidden_test_sound() {
+                socket.emit("c_play_sound_event", {'cageID': cageID, 'sound': 'start_match'});
+              }
+            </script>
+            <button class="button is-large is-dark" onclick="_hidden_test_sound()">Sound Test</button>
+
           </div>
         </div>
       </div> <!-- column end -->
