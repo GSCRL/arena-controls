@@ -7,6 +7,7 @@
   var cageID = {{ cageID }};
   var match_duration_timestamp = 150;
   var mid_match_warning_timestamp = 30; // this is based on brief player survey.  may change.
+  var warn_midmatch = false;
 
   socket.emit(
     "join_cage_request", 
@@ -162,15 +163,17 @@ timerInstance.addEventListener('secondTenthsUpdated', function (e) {
   }
     //console.log(timerInstance.getTimeValues().seconds + (.1 * timerInstance.getTimeValues().secondTenths));
     
-    if (match_timer_value < mid_match_warning_timestamp) {
-          console.log(timerInstance.getTimeValues().seconds);
-          console.log(mid_match_warning_timestamp);
-          if (!hasPlayedMidMatchWarning) {
-            hasPlayedMidMatchWarning = true;
-            socket.emit("c_play_sound_event", {'cageID': cageID, 'sound': 'mid_match_chime'});
-            console.log("tried to play match mid-bell sound.");
-        }
-  }
+    if (warn_midmatch) {
+      if (match_timer_value < mid_match_warning_timestamp) {
+            console.log(timerInstance.getTimeValues().seconds);
+            console.log(mid_match_warning_timestamp);
+            if (!hasPlayedMidMatchWarning) {
+              hasPlayedMidMatchWarning = true;
+              socket.emit("c_play_sound_event", {'cageID': cageID, 'sound': 'mid_match_chime'});
+              console.log("tried to play match mid-bell sound.");
+            }
+      }
+    }
 
 });
 
@@ -178,14 +181,11 @@ function set_control_timer_value(timer_value) {
   document.getElementById("timer_control_counter").innerHTML = timer_value;
 }
 
+// well that's easier.  
+// The toggle function adds a class to an item if not present, removes it if it is.
+// exactly what we need, so this is just a wrapper.  Ope!
 function swapHeartbeatSignStatus() {
-  if (document.getElementById("heartbeat_button_id").classList.contains("is-danger"))
-   {
-    document.getElementById("heartbeat_button_id").classList = "is-large button";
-   }
-  else {
-    document.getElementById("heartbeat_button_id").classList.add("is-danger");
-  }
+  document.getElementById("heartbeat_button_id").classList.toggle("is-danger");
 }
 
 /* Timer Control Stubs */
@@ -328,7 +328,7 @@ function manualTimerInput() {
   timerInstance.stop();
   var timer_value = parseFloat(prompt("Enter manual timer value.  Timer will be paused upon confirmation."));
   console.log(timer_value);
-  if (timer_value !== null) {
+  if ((timer_value !== null) && (!isNaN(timer_value))) {
     timerInstance.start({ startValues:{seconds: timer_value}});
     set_control_timer_value(timer_value);
   }
@@ -397,8 +397,8 @@ function manualTimerInput() {
               <input class="input" id="sendmessagebox" type="text" placeholder="Status message to send on screens." onkeydown="search(this)">
             </p>
             <p class="control">            
-              <a class="button is-info" onclick="sendTimerMessage();">
-              ->
+              <a class="button is-info is-light" onclick="sendTimerMessage();">
+                ⟫
               </a>
             </p>
           </div>
@@ -408,10 +408,15 @@ function manualTimerInput() {
           <div class="buttons">
             <script>
               function _hidden_test_sound() {
-                socket.emit("c_play_sound_event", {'cageID': cageID, 'sound': 'start_match'});
+                socket.emit("c_play_sound_event", {'cageID': cageID, 'sound': 'mid_match_chime'});
+              }
+
+              function _hidden_hide_timer() {
+                socket.emit("timer_event", generateTimerMessage(""));
               }
             </script>
             <button class="button is-large is-dark" onclick="_hidden_test_sound()">Sound Test</button>
+            <button class="button is-large is-dark" onclick="_hidden_hide_timer()">Hide Timer</button>
 
           </div>
         </div>

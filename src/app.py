@@ -5,7 +5,7 @@ from flask_socketio import SocketIO, emit, join_room, rooms
 from util.wrappers import ac_render_template
 
 from config import settings as arena_settings, secrets as arena_secrets
-from matches.match_results import match_results
+from matches.match_results import match_results, _json_api_stub
 from screens.user_screens import user_screens
 from truefinals_api.wrapper import TrueFinals
 
@@ -96,8 +96,7 @@ def _handle_notif_schedule(location):
 
 @socketio.on("client_requests_schedule")
 def _handle_schedule_upd():
-    data = requests.get("http://127.0.0.1:80/matches/upcoming.json").json()
-
+    data = (_json_api_stub()._matches)
     emit(
         "schedule_data",
         render_template("_partial_template_matches.html", data=data),
@@ -120,10 +119,7 @@ def global_safety_eSTOP():
     valid_rooms = [ctl_rooms for ctl_rooms in rooms()]
     for v in valid_rooms:
         emit("timer_event", "STOP", to=v)
-        emit("timer_bg_event", {
-      'color': "red",
-      'cageID':999
-    }, to=v)
+        emit("timer_bg_event", {"color": "red", "cageID": 999}, to=v)
 
 
 # Old global handler, should probably be moved to globally accessible timer area.
