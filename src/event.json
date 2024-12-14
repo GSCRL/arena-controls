@@ -7,7 +7,7 @@
         {"id":"9d1f08d48c3945de", "weightclass": "ANT", "weightInt":452}
     ],
     "tournament_cages":[
-        {"name": "Homebrew Steel", "id": 1},
-        {"name": "Something Borrowed", "id": 2}
+        {"name": "Classic [Red]", "id": 1},
+        {"name": "Borrowed [Black]", "id": 2}
     ]
 }

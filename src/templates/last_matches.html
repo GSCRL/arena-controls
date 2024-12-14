@@ -32,8 +32,15 @@
 {% endif %}
 </section>
 <section class="section">
-    {% if div_matches %}
+  {% if div_matches %}
     <table class="table is-striped is-fullwidth">
+      <thead>
+        <tr>
+          <th colspan="5">
+            {{ div_matches|length }} matches complete
+          </th>
+        </tr>
+      </thead>
         <thead>
           <tr>
             <th>Division</th>

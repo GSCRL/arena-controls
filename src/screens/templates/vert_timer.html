@@ -123,8 +123,8 @@ socket.on("reset_screen_states", function() {
 // basically all the same as above. 
 socket.on("control_player_ready_event", function(shit_ingst) {
     if (shit_ingst['playerColor'] == team_color_name) {
-        document.getElementById("readybutton").innerText = "READY";
-        document.getElementById("robot_name_button").innerText = "";
+        document.getElementById("readybutton").innerText = "READIED";
+        //document.getElementById("robot_name_button").innerText = "";
     }
 });
 

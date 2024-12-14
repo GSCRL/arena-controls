@@ -86,6 +86,8 @@ def getAllTourneys(credentials) -> list[dict]:
     x = makeAPIRequest("/v1/user/tournaments", credentials)
     return x
 
+def getEventInformation(tournamentID: str) -> dict:
+    return makeAPIRequest(f"/v1/tournaments/{tournamentID}")
 
 def getAllGames(tournamentID: str) -> list[dict]:
     return makeAPIRequest(f"/v1/tournaments/{tournamentID}/games")

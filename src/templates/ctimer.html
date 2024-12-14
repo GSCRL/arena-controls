@@ -138,7 +138,7 @@ countdownTimer.addEventListener('secondTenthsUpdated', function (e) {
   swapHeartbeatSignStatus();
   //console.log((countdownTimer.getTimeValues().seconds + (.1 * countdownTimer.getTimeValues().secondTenths)));
 
-  if (countdown_timer_value < 3.6) {
+  if (countdown_timer_value < 3.8) {
     if (!hasPlayedMatchStart) {
       hasPlayedMatchStart = true;
       socket.emit("c_play_sound_event", {'cageID': cageID, 'sound': 'start_match'});
@@ -154,7 +154,7 @@ timerInstance.addEventListener('secondTenthsUpdated', function (e) {
   swapHeartbeatSignStatus(); 
   send_padded_timer_msg(time_in_seconds);
 
-  if (match_timer_value < 0.2) {
+  if (match_timer_value < 0.5) {
     if (!hasPlayedMatchEnd) {
       hasPlayedMatchEnd = true;
       socket.emit("c_play_sound_event", {'cageID': cageID, 'sound': 'end_match'});
@@ -414,9 +414,19 @@ function manualTimerInput() {
               function _hidden_hide_timer() {
                 socket.emit("timer_event", generateTimerMessage(""));
               }
+              function _hidden_cage_safe() {
+                socket.emit("timer_bg_event", generateBackgroundMessage("lightgreen"));
+              }
+
+              function _hidden_cage_unsafe() {
+                socket.emit("timer_bg_event", generateBackgroundMessage("red"));
+              }
+              
             </script>
             <button class="button is-large is-dark" onclick="_hidden_test_sound()">Sound Test</button>
             <button class="button is-large is-dark" onclick="_hidden_hide_timer()">Hide Timer</button>
+            <button class="button is-large is-dark" onclick="_hidden_cage_unsafe()">Set Cage UNSAFE</button>
+            <button class="button is-large is-dark" onclick="_hidden_cage_safe()">Set Cage SAFE</button>
 
           </div>
         </div>
