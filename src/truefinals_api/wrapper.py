@@ -152,11 +152,18 @@ class Matches:
                     if not slot["playerID"].startswith("bye"):
                         _competitor = _getCompetitorById(slot["playerID"])
                         slot["gscrl_player_name"] = _competitor["name"]
-                        slot["gscrl_wlt"] = {
-                            "w": _competitor["wins"],
-                            "l": _competitor["losses"],
-                            "t": _competitor["ties"],
-                        }
+                        try:
+                            slot["gscrl_wlt"] = {
+                                "w": _competitor["wins"],
+                                "l": _competitor["losses"],
+                                "t": _competitor["ties"],
+                            }
+                        except:
+                                slot["gscrl_wlt"] = {
+                                "w": _-1,
+                                "l": -1,
+                                "t": -1,
+                            }
 
         return self
 
