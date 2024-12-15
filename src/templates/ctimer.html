@@ -204,7 +204,8 @@ function startTimer() {
 function pauseTimer() {
   if (!countdownTimer.isPaused()) {
     countdownTimer.pause();
-  } else if (!timerInstance.isPaused()) {
+  } 
+  if (!timerInstance.isPaused()) {
     timerInstance.pause();
   }
 }
