@@ -61,6 +61,20 @@ def generateSettingsPage():
         )
 
 
+@app.route("/debug/requests")
+def _debug_requests():
+    from truefinals_api.cached_api import TrueFinalsAPICache
+
+    return jsonify(
+        TrueFinalsAPICache.select()
+        .order_by(TrueFinalsAPICache.last_requested)
+        .limit(100)
+        .output(load_json=True)
+        .run_sync()
+
+    )
+
+
 @app.route("/clients", methods=("GET", "POST"))
 def _temp_clients_page():
     return jsonify(current_clients)

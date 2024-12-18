@@ -63,9 +63,7 @@ class TrueFinalsAPICache(Table, db=lru_DB):
 TrueFinalsAPICache.create_table(if_not_exists=True).run_sync()
 
 
-def getAPIEndpointRespectfully(api_endpoint: str, expiry=60):
-    logging.info(f"expiry is {expiry} while calling {api_endpoint}")
-
+def _generate_cache_query(api_endpoint, expiry=60, expired_is_ok=False):
     find_response = (
         TrueFinalsAPICache.select(
             TrueFinalsAPICache.api_path,
@@ -75,12 +73,25 @@ def getAPIEndpointRespectfully(api_endpoint: str, expiry=60):
         )
         .where(TrueFinalsAPICache.api_path == api_endpoint)
         .where(TrueFinalsAPICache.successful == True)
-        .where((TrueFinalsAPICache.last_requested + expiry > time()))
-        .order_by(TrueFinalsAPICache.last_requested, ascending=False)
+    )
+    if not expired_is_ok:
+        find_response = find_response.where(
+            (TrueFinalsAPICache.last_requested + expiry > time())
+        )
+
+    find_response = (
+        find_response.order_by(TrueFinalsAPICache.last_requested, ascending=False)
+        .limit(1)
         .output(load_json=True)
     )
 
-    find_response = find_response.run_sync()
+    return find_response
+
+
+def getAPIEndpointRespectfully(api_endpoint: str, expiry=60):
+    logging.info(f"expiry is {expiry} while calling {api_endpoint}")
+
+    find_response = _generate_cache_query(api_endpoint, expiry).run_sync()
 
     # Key is not present.
     if len(find_response) == 0:
@@ -108,22 +119,18 @@ def getAPIEndpointRespectfully(api_endpoint: str, expiry=60):
     else:
         logging.info(f"Valid keys found, not requesting {api_endpoint}.")
 
-    # Since we may need to re-run the query, we simply re-insert it.
-    # There may be a more elegant way in the future.
-    find_response = (
-        TrueFinalsAPICache.select(
-            TrueFinalsAPICache.api_path,
-            TrueFinalsAPICache.last_requested,
-            TrueFinalsAPICache.response,
-            TrueFinalsAPICache.resp_code,
-        )
-        .where(TrueFinalsAPICache.api_path == api_endpoint)
-        .where(TrueFinalsAPICache.successful == True)
-        .where((TrueFinalsAPICache.last_requested + expiry > time()))
-        .order_by(TrueFinalsAPICache.last_requested, ascending=False)
-        .output(load_json=True)
-        .run_sync()
-    )
+    find_response = _generate_cache_query(
+        api_endpoint=api_endpoint, expiry=expiry
+    ).run_sync()
+
+    # last ditch effort of "if we didn't get good data the last
+    # invocation, we try to return known stale data we have a
+    # copy of."
+
+    if len(find_response) == 0:
+        _generate_cache_query(
+            api_endpoint=api_endpoint, expiry=expiry, expired_is_ok=True
+        ).run_sync()
 
     return find_response
 
@@ -148,7 +155,7 @@ def getEventInformation(tournamentID: str) -> dict:
 
 def getAllGames(tournamentID: str) -> list[dict]:
     return getAPIEndpointRespectfully(
-        f"/v1/tournaments/{tournamentID}/games", expiry=30
+        f"/v1/tournaments/{tournamentID}/games", expiry=15
     )
 
 

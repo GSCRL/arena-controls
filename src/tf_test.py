@@ -5,10 +5,13 @@ import logging
 logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
 
-
-data_stuff = getAllTournamentsMatches()
-
 import json
+import time
+
+while True:
+    ata_stuff = getAllTournamentsMatches()
+    time.sleep(1)
+
 
 data_stuff = [x for x in data_stuff if x["resultAnnotation"] != "BY"]
 print(len(data_stuff))
