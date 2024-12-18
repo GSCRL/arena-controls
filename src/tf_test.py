@@ -7,12 +7,7 @@ from truefinals_api.cached_wrapper import (
 # logging.basicConfig()
 # logging.getLogger().setLevel(logging.INFO)
 
-
-# while True:
 matches_list = getAllTournamentsMatches()
-
-matches_dict = {}
-
 from truefinals_api.cached_wrapper import getPlayerByIds
 
 output = []
