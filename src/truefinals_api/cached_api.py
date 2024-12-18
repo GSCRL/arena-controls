@@ -77,13 +77,17 @@ def getAPIEndpointRespectfully(api_endpoint: str, expiry=60):
         .where(TrueFinalsAPICache.successful == True)
         .where((TrueFinalsAPICache.last_requested + expiry > time()))
         .order_by(TrueFinalsAPICache.last_requested, ascending=False)
+        .output(load_json=True)
     )
 
     find_response = find_response.run_sync()
 
     # Key is not present.
     if len(find_response) == 0:
-        print(f"No valid keys, adding new request for {api_endpoint}")
+        logging.info(f"No valid keys, adding new request for {api_endpoint}")
+        # TODO change to enqueue system and run in distinct thread I think?
+        # That or a global worker for DB operations to avoid headaches or something.
+
         query_remote = makeAPIRequest(api_endpoint)
         # print(query_remote.headers)
         insert_query = TrueFinalsAPICache.insert(
@@ -101,10 +105,27 @@ def getAPIEndpointRespectfully(api_endpoint: str, expiry=60):
         ).run_sync()
 
         TrueFinalsAPICache.update(force=True)
-        # save_query = TrueFinalsAPICache.select().limit(1).run_sync()
-        # save_query.save()
     else:
         logging.info(f"Valid keys found, not requesting {api_endpoint}.")
+
+    # Since we may need to re-run the query, we simply re-insert it.
+    # There may be a more elegant way in the future.
+    find_response = (
+        TrueFinalsAPICache.select(
+            TrueFinalsAPICache.api_path,
+            TrueFinalsAPICache.last_requested,
+            TrueFinalsAPICache.response,
+            TrueFinalsAPICache.resp_code,
+        )
+        .where(TrueFinalsAPICache.api_path == api_endpoint)
+        .where(TrueFinalsAPICache.successful == True)
+        .where((TrueFinalsAPICache.last_requested + expiry > time()))
+        .order_by(TrueFinalsAPICache.last_requested, ascending=False)
+        .output(load_json=True)
+        .run_sync()
+    )
+
+    return find_response
 
 
 # Below are the stubs we hope to use to use the above APICache antics we've made.
@@ -119,6 +140,8 @@ def getAPIEndpointRespectfully(api_endpoint: str, expiry=60):
 # That's a long ten seconds.
 
 
+# Below functions assume you ONLY want the unexpired items.
+# This would obviously present a headache for some use cases.
 def getEventInformation(tournamentID: str) -> dict:
     return getAPIEndpointRespectfully(f"/v1/tournaments/{tournamentID}")
 

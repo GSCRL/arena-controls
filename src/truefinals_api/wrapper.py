@@ -97,10 +97,10 @@ class Matches:
                 return "Forfeit"
             if value == "BY":
                 return "Match Bye"  # Not normally used but included for enumeration reasons.
-            if value in [
-                "HLD",
-                "T",
-            ]:  # HLD is HOLD, for when a JD takes longer @ NHRL.  Still unsure what `T` is used for.
+            if value == "HLD":
+                return "Held For Review"
+                # HLD is HOLD, for when a JD takes longer @ NHRL.  Still unsure what `T` is used for.  Tie?
+            if value in ["T"]:
                 return "UNKNOWN"
 
         for match in self._matches:

@@ -1,14 +1,17 @@
 from config import settings as arena_settings
-from truefinals_api.cached_api import (
-    getAllGames,
-    getAllPlayersInTournament,
-    getEventInformation,
-)
+from truefinals_api.cached_wrapper import getAllTournamentsMatches
+import logging
 
-tourneys = [x["id"] for x in arena_settings["tournament_keys"]]
+logging.basicConfig()
+logging.getLogger().setLevel(logging.INFO)
 
-while True:
-    for item in tourneys:
-        make_wrapped = getAllPlayersInTournament(item)
-        continuing_on = getAllGames(item)
-        and_some_more = getEventInformation(item)
+
+data_stuff = getAllTournamentsMatches()
+
+import json
+
+data_stuff = [x for x in data_stuff if x["resultAnnotation"] != "BY"]
+print(len(data_stuff))
+
+# with open("new_cached_files.json", "w") as temporary_boi:
+#    temporary_boi.write(json.dumps(data_stuff, indent=2))

@@ -36,9 +36,9 @@ def makeAPIRequest(endpoint: str) -> list:
     return resp
 
 
-def getAllTourneys(credentials) -> list[dict]:
-    x = makeAPIRequest("/v1/user/tournaments", credentials)
-    return x
+# def getAllTourneys(credentials) -> list[dict]:
+#    x = makeAPIRequest("/v1/user/tournaments", credentials)
+#   return x
 
 
 def getEventInformation(tournamentID: str) -> dict:
