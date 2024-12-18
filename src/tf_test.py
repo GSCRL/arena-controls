@@ -1,24 +1,31 @@
-from config import settings as arena_settings
+from pprint import pprint
+
 from truefinals_api.cached_wrapper import (
     getAllTournamentsMatches,
-    getAllTournamentsLocations,
 )
-import logging
 
-logging.basicConfig()
-logging.getLogger().setLevel(logging.INFO)
+# logging.basicConfig()
+# logging.getLogger().setLevel(logging.INFO)
 
-import json
-import time
 
 # while True:
-# ata_stuff = getAllTournamentsMatches()
-ttr = getAllTournamentsLocations()
+matches_list = getAllTournamentsMatches()
+
+matches_dict = {}
+
+from truefinals_api.cached_wrapper import getPlayerByIds
+
+for match in matches_list:
+    for player in match["slots"]:
+        q = getPlayerByIds(match["tournamentID"], player["playerID"])
+        pprint(q["name"])
+
+# ttr = getAllTournamentsPlayers()
 # time.sleep(1)
 
 
 # data_stuff = [x for x in data_stuff if x["resultAnnotation"] != "BY"]
 # print(len(data_stuff))
 
-with open("new_cached_files.json", "w") as temporary_boi:
-    temporary_boi.write(json.dumps(ttr, indent=2))
+# with open("new_cached_files.json", "w") as temporary_boi:
+#    temporary_boi.write(json.dumps(ttr, indent=2))

@@ -30,28 +30,11 @@ pyproject-autoflake = "^1.0.2"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
-[tool.djlint]
-profile="jinja"
+[tool.ruff]
+target-version = "py39"
 
-[tool.isort]
-profile = "black"
-
-[tool.autoflake]
-# return error code if changes are needed
-check = false
-# make changes to files instead of printing diffs
-in-place = true
-# drill down directories recursively
-recursive = true
-# exclude file/directory names that match these comma-separated globs
-exclude = "<GLOBS>"
-# by default, only unused standard library imports are removed; specify a comma-separated list of additional
-# modules/packages
-imports = "<IMPORTS>"
-# expand wildcard star imports with undefined names; this only triggers if there is only one star import in
-# the file; this is skipped if there are any uses of `__all__` or `del` in the file
-expand-star-imports = true
-# remove all unused imports (not just those from the standard library)
-remove-all-unused-imports = true
-# exclude __init__.py when removing unused imports
-ignore-init-module-imports = true
+[tool.ruff.lint]
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
+# Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
+# McCabe complexity (`C901`) by default.
+select = ["E4", "E7", "E9", "F"]

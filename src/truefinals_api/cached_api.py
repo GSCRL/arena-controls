@@ -59,8 +59,18 @@ class TrueFinalsAPICache(Table, db=lru_DB):
     resp_headers = JSON()
 
 
+# This is only used as a persistent cache in the same datastore to avoid headaches.
+class TrueFinalsTournamentsPlayers(Table, db=lru_DB):
+    pk_id = UUID(primary_key=True)
+    tournament_id = Text()
+    id = Text()
+    last_updated = BigInt()
+    player_data = JSON()
+
+
 # Need to assert that the table exists first, or else it fails horridly.
 TrueFinalsAPICache.create_table(if_not_exists=True).run_sync()
+TrueFinalsTournamentsPlayers.create_table(if_not_exists=True).run_sync()
 
 
 def _generate_cache_query(api_endpoint, expiry=60, expired_is_ok=False):

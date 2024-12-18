@@ -120,7 +120,7 @@ class Matches:
                     match["winner_name"] = slot["gscrl_player_name"]
 
             # Technically a match by forfeit has a score of -1, making this a bit complex.  This is fine (tm).
-            if not "winner_name" in match:
+            if "winner_name" not in match:
                 match["winner_name"] = match["slots"][0]["gscrl_player_name"]
 
         return self

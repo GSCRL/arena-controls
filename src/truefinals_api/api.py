@@ -1,6 +1,5 @@
 import logging
 
-
 # This was shamelessly copied and may not work
 # as intended.  The intent is to move the API
 # request workers to the background such that
