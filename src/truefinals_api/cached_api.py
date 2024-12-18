@@ -51,6 +51,7 @@ class TrueFinalsAPICache(Table, db=lru_DB):
     api_path = Text()
     successful = Boolean()
     resp_code = BigInt()
+    resp_headers = JSON()
 
 
 # Need to assert that the table exists first, or else it fails horridly.
@@ -69,11 +70,7 @@ def getAPIEndpointRespectfully(api_endpoint: str, expiry=60):
         )
         .where(TrueFinalsAPICache.api_path == api_endpoint)
         .where(TrueFinalsAPICache.successful == True)
-        .where(
-            (
-                TrueFinalsAPICache.last_requested + expiry > time() 
-            )
-        )
+        .where((TrueFinalsAPICache.last_requested + expiry > time()))
         .order_by(TrueFinalsAPICache.last_requested, ascending=False)
     )
 
@@ -83,6 +80,7 @@ def getAPIEndpointRespectfully(api_endpoint: str, expiry=60):
     if len(find_response) == 0:
         print(f"No valid keys, adding new request for {api_endpoint}")
         query_remote = makeAPIRequest(api_endpoint)
+        # print(query_remote.headers)
         insert_query = TrueFinalsAPICache.insert(
             TrueFinalsAPICache(
                 response=query_remote.json(),
@@ -92,7 +90,7 @@ def getAPIEndpointRespectfully(api_endpoint: str, expiry=60):
                 ),
                 last_requested=time(),
                 api_path=api_endpoint,
-                resp_code=query_remote.status_code,
+                resp_headers=query_remote.headers,
             )
         ).run_sync()
 
@@ -120,16 +118,25 @@ def getEventInformation(tournamentID: str) -> dict:
 
 
 def getAllGames(tournamentID: str) -> list[dict]:
-    return getAPIEndpointRespectfully(f"/v1/tournaments/{tournamentID}/games",expiry=30)
+    return getAPIEndpointRespectfully(
+        f"/v1/tournaments/{tournamentID}/games", expiry=30
+    )
 
 
 def getAllPlayersInTournament(tournamentID: str) -> list[dict]:
-    return getAPIEndpointRespectfully(f"/v1/tournaments/{tournamentID}/players",expiry=(5*60))
+    return getAPIEndpointRespectfully(
+        f"/v1/tournaments/{tournamentID}/players", expiry=(5 * 60)
+    )
 
 
 def getEventLocations(tournamentID: str) -> list[dict]:
-    return getAPIEndpointRespectfully(f"/v1/tournaments/{tournamentID}/locations",expiry=(60*60))
+    return getAPIEndpointRespectfully(
+        f"/v1/tournaments/{tournamentID}/locations", expiry=(60 * 60)
+    )
+
 
 # DO NOT USE LIGHTLY.  THIS EMPTIES THE FILE.
-def purge_API_Cache():
-    TrueFinalsAPICache.delete(force=True)
+def purge_API_Cache(timer_passed=3600):
+    TrueFinalsAPICache.delete().where(
+        (TrueFinalsAPICache.last_requested + timer_passed < time())
+    ).run_sync()

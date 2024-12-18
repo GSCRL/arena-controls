@@ -16,43 +16,6 @@ from config import settings as arena_settings, secrets as arena_secrets
 # behavior without needing to potentially hit
 # an error state.
 
-
-class APICache:
-    def __init__(self, ttl=30):  # 30s cache, hopefully good.
-        self._data = {}
-        self.ttl = ttl
-
-    def set(self, key, value):
-        self._data[key] = {"requestTime": time.time(), "value": deepcopy(value)}
-        logging.info(
-            f"key {key} now in cache with timestamp {self._data[key]['requestTime']} and value {json.dumps(value)[100:]}"
-        )
-        return self._data[key]["value"]
-
-    def get(self, key):
-        if key in self._data:
-            logging.info(f"key {key} present in cache")
-            if "requestTime" in self._data[key]:
-                logging.info(
-                    f"time {self._data[key]['requestTime']} is present for value"
-                )
-                logging.info(f"TTL is set to {self.ttl}")
-                calculated_max_time = self._data[key]["requestTime"] + self.ttl
-                logging.info(
-                    f"Max expiry time is {calculated_max_time}, current time is {time.time()}"
-                )
-                if calculated_max_time < time.time():
-                    logging.info("value is expired.")
-                    return None
-                else:
-                    logging.info("Value not expired")
-                    return self._data[key]["value"]
-
-        return None
-
-
-cache = APICache(ttl=120)
-
 from httpx import Client
 
 tf_api_session = Client()
