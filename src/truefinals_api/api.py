@@ -1,11 +1,5 @@
-import json
 import logging
-import time
-from copy import deepcopy
 
-import httpx
-
-from config import settings as arena_settings, secrets as arena_secrets
 
 # This was shamelessly copied and may not work
 # as intended.  The intent is to move the API
@@ -15,8 +9,9 @@ from config import settings as arena_settings, secrets as arena_secrets
 # en to clients for the most up-to-date match
 # behavior without needing to potentially hit
 # an error state.
-
 from httpx import Client
+
+from config import secrets as arena_secrets
 
 tf_api_session = Client()
 # This caches the items less likely to change (if at all during the

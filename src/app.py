@@ -1,19 +1,17 @@
 import logging
 
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, jsonify, render_template, request
 from flask_socketio import SocketIO, emit, join_room, rooms
-from util.wrappers import ac_render_template
 
-from config import settings as arena_settings, secrets as arena_secrets
-from matches.match_results import match_results, _json_api_stub
+from matches.match_results import _json_api_stub, match_results
 from screens.user_screens import user_screens
 from truefinals_api.wrapper import TrueFinals
+from util.wrappers import ac_render_template
 
 logging.basicConfig(level="INFO")
 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import DeclarativeBase
-import requests
 
 
 class Base(DeclarativeBase):

@@ -1,7 +1,4 @@
 from config import settings as arena_settings
-from pprint import pprint
-import time
-
 from truefinals_api.cached_api import (
     getAllGames,
     getAllPlayersInTournament,

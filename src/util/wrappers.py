@@ -1,5 +1,7 @@
-from flask import Flask, render_template
-from config import settings as arena_settings, secrets as arena_secrets
+from flask import render_template
+
+from config import secrets as arena_secrets
+from config import settings as arena_settings
 
 
 def ac_render_template(template: str, **kwargs):

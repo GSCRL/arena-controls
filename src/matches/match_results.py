@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, jsonify, render_template, request
 
 from config import settings as arena_settings
 from truefinals_api.wrapper import TrueFinals

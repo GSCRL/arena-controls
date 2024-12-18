@@ -1,22 +1,15 @@
-import json
 import logging
-from pathlib import Path
-from typing import Callable, Self
 
-from config import settings as arena_settings
-from truefinals_api.api import makeAPIRequest
-
+# Text type is VarChar without limit, probably fine?
 from time import time
-import re
+
+from piccolo.columns import JSON, UUID, BigInt, Boolean, Text
+from piccolo.engine.sqlite import SQLiteEngine
 
 # ORM Test, ty Devyn.
 from piccolo.table import Table
-from piccolo.columns import UUID, Text, BigInt, Boolean, JSON
-from piccolo.engine.sqlite import SQLiteEngine
 
-# Text type is VarChar without limit, probably fine?
-
-from pprint import pprint
+from truefinals_api.api import makeAPIRequest
 
 lru_DB = SQLiteEngine(path="tf_lru.sqlite")
 
@@ -28,7 +21,19 @@ unsure of interval of observation.  However, this neglects the
  
 As such, our limit is half of the rated one by default, and as 
 well is accomodating of the need for some requests that may 
-not be done yet, and or still result in rate-limiting."""
+not be done yet, and or still result in rate-limiting.
+
+TrueFinals also returns the rate limit information in headers like so:
+
+X-RateLimit-Limit: Maximum number of requests allowed within a window (10s).
+X-RateLimit-Remaining: How many requests the user has left within the current window.
+X-RateLimit-Reset: Unix timestamp in milliseconds when the limits are reset.
+
+They are stored below, so we should look for the last response overall to 
+validate rate limiting, and remove ones past their expiry most likely, 
+rather than keeping them in perpetuity.
+
+"""
 
 
 def are_rate_limited() -> bool:
@@ -90,6 +95,7 @@ def getAPIEndpointRespectfully(api_endpoint: str, expiry=60):
                 ),
                 last_requested=time(),
                 api_path=api_endpoint,
+                resp_code=query_remote.status_code,
                 resp_headers=query_remote.headers,
             )
         ).run_sync()
