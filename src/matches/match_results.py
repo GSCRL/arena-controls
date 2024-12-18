@@ -21,6 +21,7 @@ class reversor:
     def __lt__(self, other):
         return other.obj < self.obj
 
+
 def _json_api_stub():
     matches = (
         truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
@@ -36,6 +37,7 @@ def _json_api_stub():
         .done()
     )
     return matches
+
 
 @match_results.route("/upcoming.json")
 def _json_api_results():

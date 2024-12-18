@@ -159,8 +159,8 @@ class Matches:
                                 "t": _competitor["ties"],
                             }
                         except:
-                                slot["gscrl_wlt"] = {
-                                "w": _-1,
+                            slot["gscrl_wlt"] = {
+                                "w": _ - 1,
                                 "l": -1,
                                 "t": -1,
                             }

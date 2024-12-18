@@ -53,6 +53,9 @@ class APICache:
 
 cache = APICache(ttl=120)
 
+from httpx import Client
+
+tf_api_session = Client()
 # This caches the items less likely to change (if at all during the
 # course of the event.  The field software probably shouldn't be
 # called until this is set up finally and tournaments are started.
@@ -70,24 +73,19 @@ def makeAPIRequest(endpoint: str) -> list:
 
     root_endpoint = """https://truefinals.com/api"""
 
-    if cache.get(endpoint) is None:
-        logging.info(f"value {endpoint} is not in cache, trying request now!")
-        resp = httpx.get((f"{root_endpoint}{endpoint}"), headers=headers)
-
-        if resp.status_code == 429:
-            logging.warning(f"Rate limit exceeded when calling endpoint {resp.url}")
-            return {}  # this is probably fine, right?
-
-        cache.set(endpoint, resp.json())
-    return cache.get(endpoint)
+    logging.info(f"value {endpoint} is not in cache, trying request now!")
+    resp = tf_api_session.get((f"{root_endpoint}{endpoint}"), headers=headers)
+    return resp
 
 
 def getAllTourneys(credentials) -> list[dict]:
     x = makeAPIRequest("/v1/user/tournaments", credentials)
     return x
 
+
 def getEventInformation(tournamentID: str) -> dict:
     return makeAPIRequest(f"/v1/tournaments/{tournamentID}")
+
 
 def getAllGames(tournamentID: str) -> list[dict]:
     return makeAPIRequest(f"/v1/tournaments/{tournamentID}/games")

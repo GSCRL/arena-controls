@@ -67,13 +67,10 @@ def generateSettingsPage():
 def _temp_clients_page():
     return jsonify(current_clients)
 
+
 @app.route("/matches.json")
 def _debug_route_matches():
     return jsonify(_json_api_stub()._matches)
-
-# @socketio.on("connect")
-# def base_connection_handler():
-#    pass
 
 
 @socketio.on("disconnect")
@@ -97,11 +94,9 @@ def _handle_notif_schedule(location):
     join_room("schedule_update")
 
 
-
-
 @socketio.on("client_requests_schedule")
 def _handle_schedule_upd():
-    data = (_json_api_stub()._matches)
+    data = _json_api_stub()._matches
     emit(
         "schedule_data",
         render_template("_partial_template_matches.html", data=data),
