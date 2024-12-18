@@ -61,6 +61,15 @@ def getAllTournamentsPlayers():
     return output_structure
 
 
+"""
+This absurd function takes the contents of the temporary database and uses it to
+produce a synthetic proto-view for use in building the dictionary for finding
+players quickly and effectively across cross-tournament keys.
+
+This being faster than for loops feels absurd, I agree.
+"""
+
+
 def build_dict_from_db():
     matches_dict = {}
 
@@ -76,8 +85,6 @@ def build_dict_from_db():
         TrueFinalsTournamentsPlayers.delete(force=True)
 
         all_tournaments_players = getAllTournamentsPlayers()
-
-        # pprint(all_tournaments_players[0])
 
         refactor_list = [
             {

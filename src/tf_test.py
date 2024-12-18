@@ -15,17 +15,18 @@ matches_dict = {}
 
 from truefinals_api.cached_wrapper import getPlayerByIds
 
+output = []
+
 for match in matches_list:
-    for player in match["slots"]:
-        q = getPlayerByIds(match["tournamentID"], player["playerID"])
-        pprint(q["name"])
+    output.append(
+        {
+            "match_key": match["id"],
+            "tournament_key": match["tournamentID"],
+            "players": [
+                getPlayerByIds(match["tournamentID"], player["playerID"])
+                for player in match["slots"]
+            ],
+        }
+    )
 
-# ttr = getAllTournamentsPlayers()
-# time.sleep(1)
-
-
-# data_stuff = [x for x in data_stuff if x["resultAnnotation"] != "BY"]
-# print(len(data_stuff))
-
-# with open("new_cached_files.json", "w") as temporary_boi:
-#    temporary_boi.write(json.dumps(ttr, indent=2))
+pprint(output)
