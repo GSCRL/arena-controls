@@ -1,0 +1,68 @@
+[
+  {
+    "id": "47b0eb605c9a4e05",
+    "name": "Red Arena",
+    "activeGameID": null,
+    "lastCompletedGameID": "L-48",
+    "queue": [],
+    "unavailableQueue": [],
+    "blockActive": false,
+    "root_tournament_fk": "2146ec5eb37a47ba",
+    "staleness_time": 1734543954
+  },
+  {
+    "id": "fd79e9d3a54b4dee",
+    "name": "Black Arena",
+    "activeGameID": null,
+    "lastCompletedGameID": "L-61",
+    "queue": [],
+    "unavailableQueue": [],
+    "blockActive": false,
+    "root_tournament_fk": "2146ec5eb37a47ba",
+    "staleness_time": 1734543954
+  },
+  {
+    "id": "29b4297792454cf7",
+    "name": "Red Cage",
+    "activeGameID": null,
+    "lastCompletedGameID": "L-27",
+    "queue": [],
+    "unavailableQueue": [],
+    "blockActive": false,
+    "root_tournament_fk": "3a3d36b1473c4b9d",
+    "staleness_time": 1734543955
+  },
+  {
+    "id": "6c5cff278b5b42ca",
+    "name": "Black Cage",
+    "activeGameID": null,
+    "lastCompletedGameID": "W-GF",
+    "queue": [],
+    "unavailableQueue": [],
+    "blockActive": false,
+    "root_tournament_fk": "3a3d36b1473c4b9d",
+    "staleness_time": 1734543955
+  },
+  {
+    "id": "8e6c840eaa7047f9",
+    "name": "Red Cage",
+    "activeGameID": null,
+    "lastCompletedGameID": "L-58",
+    "queue": [],
+    "unavailableQueue": [],
+    "blockActive": false,
+    "root_tournament_fk": "9d1f08d48c3945de",
+    "staleness_time": 1734543955
+  },
+  {
+    "id": "6fd20966d5b24544",
+    "name": "Black Cage",
+    "activeGameID": null,
+    "lastCompletedGameID": "W-GF",
+    "queue": [],
+    "unavailableQueue": [],
+    "blockActive": false,
+    "root_tournament_fk": "9d1f08d48c3945de",
+    "staleness_time": 1734543955
+  }
+]

@@ -4,7 +4,8 @@
     "tournament_keys": [
         {"id":"2146ec5eb37a47ba", "weightclass": "BTL", "weightInt": 1360},
         {"id":"3a3d36b1473c4b9d", "weightclass":"PLANT", "weightInt": 453},
-        {"id":"9d1f08d48c3945de", "weightclass": "ANT", "weightInt":452}
+        {"id":"9d1f08d48c3945de", "weightclass": "ANT", "weightInt":452},
+        {"id":"c1d13538e2fe4677", "weightclass":"TEST", "weightInt":9999}
     ],
     "tournament_cages":[
         {"name": "Classic [Red]", "id": 1},

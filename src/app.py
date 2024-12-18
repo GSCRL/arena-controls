@@ -71,7 +71,6 @@ def _debug_requests():
         .limit(100)
         .output(load_json=True)
         .run_sync()
-
     )
 
 
