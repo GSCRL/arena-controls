@@ -143,6 +143,12 @@ def getEventLocations(tournamentID: str) -> list[dict]:
 
 # DO NOT USE LIGHTLY.  THIS EMPTIES THE FILE.
 def purge_API_Cache(timer_passed=3600):
+    # We only care about the last 10 minutes of event match failures I suspect.
+    TrueFinalsAPICache.delete().where(
+        TrueFinalsAPICache.last_requested + 600 < time()
+    ).where(not TrueFinalsAPICache.successful).run_sync()
+
+    # Anything past the last hour we get rid of.
     TrueFinalsAPICache.delete().where(
         (TrueFinalsAPICache.last_requested + timer_passed < time())
     ).run_sync()

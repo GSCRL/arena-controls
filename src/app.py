@@ -202,4 +202,4 @@ logging.basicConfig()
 logging.getLogger().setLevel(logging.INFO)
 
 if __name__ == "__main__":
-    socketio.run(app, host="0.0.0.0", port=80, debug=False)
+    socketio.run(app, host="0.0.0.0", port=80, debug=True)
