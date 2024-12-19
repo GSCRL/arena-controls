@@ -37,7 +37,7 @@ socketio = SocketIO(app)
 
 @app.route("/")
 def index():
-    return ac_render_template("base.html", title="Landing Page")
+    return ac_render_template("homepage.html", title="Landing Page")
 
 
 @app.route("/control/<int:cageID>")

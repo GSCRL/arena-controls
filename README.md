@@ -1,6 +1,8 @@
-# GSCRL Arena Controls
+# Bracketeer - for fun and glory.
 
 A work-in-progress tool to run the timers for matches for combat robotics, as well as some stream overlay stuff.
+
+This was initially built for the [Garden State Combat Robotics League](https://www.gscrl.org) but much of it is portable to other organizing bodies.
 
 ## Integrations
 
@@ -12,7 +14,7 @@ There will also be the ability to import some data from RobotCombatEvents should
 
 This system is written in python and managed with poetry.
 
-To install you'll need python 3.7 or greater, then to install `pipx` per the install guide [here.](https://github.com/pypa/pipx?tab=readme-ov-file#install-pipx)
+To install you'll need python 3.9 or greater, then to install `pipx` per the install guide [here.](https://github.com/pypa/pipx?tab=readme-ov-file#install-pipx)
 
 Then, install poetry via the steps [here.](https://python-poetry.org/docs/)
 
@@ -24,5 +26,7 @@ Afterwards, you should `cd` to your install location, `poetry install`, and then
 
 Note: Please be sure to change your IP to something static for consistency with the timer clients for reconnects.
 
-We typically use `192.168.10.250` and set the travel router to have a DNS override for that to `internal.gscrl.org`.
+We typically use `192.168.8.250` and set the travel router to have a DNS override for that to `arena.gscrl.org`.
+
+This is done on a specific-use travel router, like [this one.](https://www.amazon.com/GL-iNet-GL-SFT1200-Secure-Travel-Router/dp/B09N72FMH5)
 

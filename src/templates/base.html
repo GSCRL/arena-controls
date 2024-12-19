@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GSCRL Arena & Timing Systems {% if title %} | {{ title }} {% endif %}</title>
+    <title>Bracketeer {% if title %} | {{ title }} {% endif %}</title>
     <link rel="stylesheet" href="{{url_for('static', filename='bulma/css/bulma.css')}}">
     <link rel="stylesheet" href="{{url_for('static', filename='fa/fontawesome-all.min.css')}}"/>
     <script src="{{url_for('static', filename='socket.io.min.js')}}"></script> 
@@ -24,7 +24,7 @@
       {# navbar menu antics for actually hacing submenus in the nav.  https://codepen.io/lublak/pen/mdmEdKN #}
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
-          <h1><b>GSCRL Controls</b></h1>
+          <h1><b>Bracketeer | play for bragging rights</b></h1>
         </a>
     
         <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
