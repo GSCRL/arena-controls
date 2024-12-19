@@ -1,7 +1,13 @@
 from flask import Blueprint, jsonify, render_template, request
+from pprint import pprint
 
 from config import settings as arena_settings
 from truefinals_api.wrapper import TrueFinals
+from truefinals_api.cached_wrapper import (
+    getAllTournamentsPlayers,
+    getAllTournamentsMatches,
+    getAllTournamentsLocations,
+)
 from util.wrappers import ac_render_template
 
 match_results = Blueprint(
@@ -23,46 +29,44 @@ class reversor:
 
 
 def _json_api_stub():
-    matches = (
-        truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
-        .withoutByes()
-        .withFilter(lambda x: x["state"] in ["called", "ready", "active"])
-        .inOrder(
-            lambda x: (
-                x["calledSince"] or float(0),
-                reversor(x["state"] == "unavailable"),
-            ),
-            reverse=False,
-        )
-        .done()
+    matches = getAllTournamentsMatches()
+    matches = [m for m in matches if m["state"] in ["called", "ready", "active"]]
+
+    print(len(matches))
+    matches = sorted(
+        matches,
+        key=lambda x: (
+            x["calledSince"] or float(0),
+            reversor(x["state"] == "unavailable"),
+        ),
+        reverse=False,
     )
     return matches
 
 
 @match_results.route("/upcoming.json")
 def _json_api_results():
-    matches = _json_api_stub
-    return jsonify(matches._matches)
+    matches = _json_api_stub()
+    return jsonify(matches)
 
 
 @match_results.route("/upcoming")
 def routeForUpcomingMatches():
     autoreload = request.args.get("autoreload")
     show_header = request.args.get("show_header")
-    matches = (
-        truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
-        .withoutByes()
-        .withFilter(lambda x: x["state"] in ["called", "ready", "active"])
-        .inOrder(
-            lambda x: (
-                x["calledSince"] or float(0),
-                reversor(x["state"] == "unavailable"),
-            ),
-            reverse=False,
-        )
-        .done()
-    )
 
+    matches = getAllTournamentsMatches()
+    matches = [m for m in matches if m["state"] in ["called", "ready", "active"]]
+
+    # print(len(matches))
+    matches = sorted(
+        matches,
+        key=lambda x: (
+            x["calledSince"] or float(0),
+            reversor(x["state"] == "unavailable"),
+        ),
+        reverse=False,
+    )
     return ac_render_template(
         "upcoming_matches.html",
         div_matches=matches,

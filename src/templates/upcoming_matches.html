@@ -37,7 +37,7 @@
 {% endif %}
 
 <section class="section">
-    {% if div_matches._matches %}
+    {% if div_matches %}
     <table class="table is-striped is-fullwidth">
         <thead>
           <tr>
@@ -51,14 +51,21 @@
           </tr>
         </thead>
         <tbody>
-          {% for match in div_matches._matches %}
+          {% for match in div_matches %}
           <tr {% if 'calledSince' in match %} {% if match.calledSince != None %} {# class="is-link" #}{% endif %} {% endif %}>
             <td> 
 
             <span class="button is-small is-primary" id="called_since_{{ match.tournamentID }}_{{ match.id }} "></span>
+              {% if match.calledSince is not none %}
               <script>
                 document.getElementById("called_since_{{ match.tournamentID }}_{{ match.id }} ").innerHTML = "Called " + time_ago( {{ match.calledSince }} );
               </script>
+              {% else %}
+              <script>
+                document.getElementById("called_since_{{ match.tournamentID }}_{{ match.id }} ").innerHTML = "ACTIVE NOW";
+                document.getElementById("called_since_{{ match.tournamentID }}_{{ match.id }} ").classList.replace('is-primary', 'is-danger');
+              </script>
+              {% endif %}
             </td>
 
             <td><b>{{ match.weightclass[:4].upper() }}-{{ match.name }}</b></td> 
