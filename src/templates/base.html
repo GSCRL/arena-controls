@@ -21,6 +21,7 @@
 
     {% if not show_header %}
     <nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+      {# navbar menu antics for actually hacing submenus in the nav.  https://codepen.io/lublak/pen/mdmEdKN #}
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
           <h1><b>GSCRL Controls</b></h1>
@@ -56,40 +57,53 @@
 
           <div class="navbar-item has-dropdown is-hoverable">
             <a class="navbar-link">
-              Team Screens
+              Competitors
             </a>
     
             <div class="navbar-dropdown">
               {% for cage in arena_settings.tournament_cages %}
               <hr class="navbar-divider">
-              <div class="navbar-item has-background-info has-text-primary-light" disabled>
-                Cage {{ cage.id }} ({{ cage.name }})
+              <div class="navbar-item" disabled>
+                🏛️ Cage {{ cage.id }} | {{ cage.name }}
               </div>
+              <hr class="navbar-divider">
               <a href="/screens/{{cage.id}}/timer/red" class="navbar-item">
-                Red Control
+                🔴 | Red Robot
               </a>
               <a href="/screens/{{cage.id}}/timer/blue" class="navbar-item">
-                Blue Control
+                🔵 | Blue Robot
               </a>
               <hr class="navbar-divider">
               <a href="/screens/{{cage.id}}/timer" class="navbar-item">
-                Big Timer
+                ⏲️ | Big Timer
               </a>
-              <hr class="navbar-divider">
+              <a href="/screens/{{cage.id}}/judges" class="navbar-item">
+                📋 | Judge's View
+              </a>
+
               {% endfor %}
             </div>
           </div>
 
-          <a href="/matches/upcoming?autoreload=30000" class="navbar-item">
-            Next Up
-          </a>
-          <a href="/matches/upcoming?autoreload=30000&show_header=False" class="navbar-item">
-            ⟫
-          </a>
-
-          <a href="/matches/completed?autoreload=30000" class="navbar-item">
-            Completed Matches
-          </a>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Queueing
+            </a>
+    
+            <div class="navbar-dropdown">
+              <hr class="navbar-divider">
+              <a href="/matches/upcoming?autoreload=30000" class="navbar-item">
+                Next Up
+              </a>
+              <a href="/matches/upcoming?autoreload=30000&show_header=False" class="navbar-item">
+                Next Up (Hidden Menubars)
+              </a>
+              <hr class="navbar-divider">
+              <a href="/matches/completed?autoreload=30000" class="navbar-item">
+                Completed Fights
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="navbar-end">
