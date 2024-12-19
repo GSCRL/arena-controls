@@ -5,7 +5,6 @@ from flask_socketio import SocketIO, emit, join_room, rooms
 
 from matches.match_results import _json_api_stub, match_results
 from screens.user_screens import user_screens
-from truefinals_api.wrapper import TrueFinals
 from util.wrappers import ac_render_template
 
 logging.basicConfig(level="INFO")
@@ -34,8 +33,6 @@ app.register_blueprint(match_results, url_prefix="/matches")
 
 app.config["SECRET_KEY"] = "secret secret key (required)!"
 socketio = SocketIO(app)
-
-truefinals = TrueFinals()
 
 
 @app.route("/")

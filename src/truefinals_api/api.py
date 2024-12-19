@@ -33,20 +33,3 @@ def makeAPIRequest(endpoint: str) -> list:
     logging.info(f"value {endpoint} is not in cache, trying request now!")
     resp = tf_api_session.get((f"{root_endpoint}{endpoint}"), headers=headers)
     return resp
-
-
-# def getAllTourneys(credentials) -> list[dict]:
-#    x = makeAPIRequest("/v1/user/tournaments", credentials)
-#   return x
-
-
-def getEventInformation(tournamentID: str) -> dict:
-    return makeAPIRequest(f"/v1/tournaments/{tournamentID}")
-
-
-def getAllGames(tournamentID: str) -> list[dict]:
-    return makeAPIRequest(f"/v1/tournaments/{tournamentID}/games")
-
-
-def getAllPlayersInTournament(tournamentID: str) -> list[dict]:
-    return makeAPIRequest(f"/v1/tournaments/{tournamentID}/players")

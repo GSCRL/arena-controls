@@ -1,20 +1,13 @@
 from flask import Blueprint, jsonify, render_template, request
-from pprint import pprint
 
-from config import settings as arena_settings
-from truefinals_api.wrapper import TrueFinals
 from truefinals_api.cached_wrapper import (
-    getAllTournamentsPlayers,
-    getAllTournamentsMatches,
-    getAllTournamentsLocations,
+    getAllTournamentsMatchesWithPlayers,
 )
 from util.wrappers import ac_render_template
 
 match_results = Blueprint(
     "match_results", __name__, static_folder="./static", template_folder="./templates"
 )
-
-truefinals = TrueFinals()
 
 
 class reversor:
@@ -28,11 +21,21 @@ class reversor:
         return other.obj < self.obj
 
 
-def _json_api_stub():
-    matches = getAllTournamentsMatches()
-    matches = [m for m in matches if m["state"] in ["called", "ready", "active"]]
+def filtering_func(x):
+    # print(x)
+    if "state" in x:
+        return x["state"] in ["called", "ready", "active"]
+    return False
 
-    print(len(matches))
+
+def _json_api_stub():
+    matches = getAllTournamentsMatchesWithPlayers(filterFunction=filtering_func)
+    # import json
+
+    # with open("matches_with_plauers.json",'w') as outy:
+    #    outy.write(json.dumps(matches, indent=4))
+    # matches = [m for m in matches if m["state"] in ]
+
     matches = sorted(
         matches,
         key=lambda x: (
@@ -41,12 +44,14 @@ def _json_api_stub():
         ),
         reverse=False,
     )
+
     return matches
 
 
 @match_results.route("/upcoming.json")
 def _json_api_results():
     matches = _json_api_stub()
+
     return jsonify(matches)
 
 
@@ -55,18 +60,8 @@ def routeForUpcomingMatches():
     autoreload = request.args.get("autoreload")
     show_header = request.args.get("show_header")
 
-    matches = getAllTournamentsMatches()
-    matches = [m for m in matches if m["state"] in ["called", "ready", "active"]]
+    matches = _json_api_stub()
 
-    # print(len(matches))
-    matches = sorted(
-        matches,
-        key=lambda x: (
-            x["calledSince"] or float(0),
-            reversor(x["state"] == "unavailable"),
-        ),
-        reverse=False,
-    )
     return ac_render_template(
         "upcoming_matches.html",
         div_matches=matches,
@@ -79,14 +74,7 @@ def routeForUpcomingMatches():
 def routeForLastMatches():
     autoreload = request.args.get("autoreload")
 
-    matches = (
-        truefinals.getCrossDivisionMatches(arena_settings.tournament_keys)
-        .withoutByes()
-        .withFilter(lambda x: x["state"] == "done")
-        .backfillResultStrings()
-        .toFile("test.json")
-        .done()
-    )
+    matches = []
 
     return ac_render_template(
         "last_matches.html",

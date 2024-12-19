@@ -1,6 +1,5 @@
 from time import time
 
-from piccolo.engine.sqlite import SQLiteEngine
 
 from config import settings as arena_settings
 from truefinals_api.cached_api import (
@@ -9,8 +8,10 @@ from truefinals_api.cached_api import (
     getAllPlayersInTournament,
     getEventLocations,
 )
+import logging
 
-lru_DB = SQLiteEngine(path="tf_lru.sqlite")
+# used for player lookup to avoid rebuilding constantly.  Should be faster.
+
 
 """
 Tournament locations call will return a list if there's more than one location / any is defined.
@@ -70,9 +71,12 @@ This being faster than for loops feels absurd, I agree.
 """
 
 
-def build_dict_from_db():
-    matches_dict = {}
+def build_player_dict_via_db_proxy():
+    player_id_dict = {}
+    start_build = time()
 
+    # If there are no valid players we can use to build this
+    # data as they've expired since we got them.
     if (
         len(
             TrueFinalsTournamentsPlayers.select()
@@ -83,6 +87,7 @@ def build_dict_from_db():
         == 0
     ):
         TrueFinalsTournamentsPlayers.delete(force=True)
+        player_id_dict = {}
 
         all_tournaments_players = getAllTournamentsPlayers()
 
@@ -108,22 +113,24 @@ def build_dict_from_db():
     for tournament_player in (
         TrueFinalsTournamentsPlayers.select().output(load_json=True).run_sync()
     ):
-        if tournament_player["tournament_id"] not in matches_dict:
-            matches_dict[tournament_player["tournament_id"]] = {}
+        if tournament_player["tournament_id"] not in player_id_dict:
+            player_id_dict[tournament_player["tournament_id"]] = {}
 
         if (
             tournament_player["id"]
-            not in matches_dict[tournament_player["tournament_id"]]
+            not in player_id_dict[tournament_player["tournament_id"]]
         ):
-            matches_dict[tournament_player["tournament_id"]][
+            player_id_dict[tournament_player["tournament_id"]][
                 tournament_player["id"]
             ] = tournament_player
 
-    return matches_dict
+    end_build = time()
+    logging.info(f"Player dict build step took {end_build - start_build}s")
+    return player_id_dict
 
 
 def getPlayerByIds(tournamentID: str, playerID: str):
-    value = build_dict_from_db()
+    value = build_player_dict_via_db_proxy()
 
     if tournamentID in value:
         if playerID in value[tournamentID]:
@@ -148,7 +155,23 @@ def getPlayerByIds(tournamentID: str, playerID: str):
     # fmt: on
 
 
-def getAllTournamentsMatches():
+def getAllTournamentsMatchesWithPlayers(filterFunction=None):
+    matches = getAllTournamentsMatchesSimple(filterFunction)
+
+    print(len(matches))
+    if filterFunction:
+        matches = [x for x in matches if filterFunction(x)]
+
+    for match in matches:
+        for player in match["slots"]:
+            player["bracketeer_player_data"] = getPlayerByIds(
+                match["tournamentID"], player["playerID"]
+            )
+
+    return matches
+
+
+def getAllTournamentsMatchesSimple(filterFunction=None):
     output_structure = []
 
     for tournament_key in arena_settings["tournament_keys"]:
@@ -156,8 +179,6 @@ def getAllTournamentsMatches():
         _current_name = tournament_key["weightclass"]
 
         _current_data = getAllGames(_current_fk)
-
-        # print(_current_data)
 
         if len(_current_data) == 1:
             print(
@@ -170,5 +191,11 @@ def getAllTournamentsMatches():
                 match["staleness_time"] = _current_data[0]["last_requested"]
 
                 output_structure.append(match)
+
+        logging.info(f"num matches before filter: {len(output_structure)}")
+        if filterFunction:
+            _current_data = [x for x in output_structure if filterFunction(x)]
+
+        logging.info(f"num matches after filter: {len(output_structure)}")
 
     return output_structure

@@ -1,13 +1,13 @@
 from pprint import pprint
 
 from truefinals_api.cached_wrapper import (
-    getAllTournamentsMatches,
+    getAllTournamentsMatchesSimple,
 )
 
 # logging.basicConfig()
 # logging.getLogger().setLevel(logging.INFO)
 
-matches_list = getAllTournamentsMatches()
+matches_list = getAllTournamentsMatchesSimple()
 from truefinals_api.cached_wrapper import getPlayerByIds
 
 output = []
