@@ -104,7 +104,7 @@ def _handle_notif_schedule(location):
 
 @socketio.on("client_requests_schedule")
 def _handle_schedule_upd():
-    data = _json_api_stub()._matches
+    data = _json_api_stub()
     emit(
         "schedule_data",
         render_template("_partial_template_matches.html", data=data),

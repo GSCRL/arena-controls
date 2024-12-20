@@ -63,7 +63,7 @@ def routeForUpcomingMatches():
     matches = _json_api_stub()
 
     return ac_render_template(
-        "upcoming_matches.html",
+        "queueing/upcoming_matches.html",
         div_matches=matches,
         autoreload=autoreload,
         show_header=show_header,
@@ -77,7 +77,7 @@ def routeForLastMatches():
     matches = []
 
     return ac_render_template(
-        "last_matches.html",
+        "queueing/last_matches.html",
         div_matches=matches,
         autoreload=autoreload,
     )
