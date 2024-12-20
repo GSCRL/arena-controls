@@ -62,14 +62,14 @@
                       <!-- {{ match }} -->
                         
                         <span id="r{{ loop.index }}_red_competitor_name">
-                            {{ match['slots'][0]['bracketeer_player_data']['name'] }} 
+                            <a target="_blank" href="https://www.truefinals.com/tournament/{{ match['slots'][0]['bracketeer_player_data']['root_tournament_fk'] }}/playerpath/{{ match['slots'][0]['bracketeer_player_data']['id'] }}">{{ match['slots'][0]['bracketeer_player_data']['name'] }}</a>
                         </span>
                         <span class="icon has-text-danger">
                             <i class="fas fa-circle"></i>
                         </span>
                            vs 
                         <span id="r{{ loop.index }}_blue_competitor_name">
-                            {{ match['slots'][1]['bracketeer_player_data']['name'] }} 
+                            <a target="_blank" href="https://www.truefinals.com/tournament/{{ match['slots'][1]['bracketeer_player_data']['root_tournament_fk'] }}/playerpath/{{ match['slots'][1]['bracketeer_player_data']['id'] }}">{{ match['slots'][1]['bracketeer_player_data']['name'] }}</a>
                         </span>
                            <span class="icon has-text-info">
                             <i class="fas fa-circle"></i>
